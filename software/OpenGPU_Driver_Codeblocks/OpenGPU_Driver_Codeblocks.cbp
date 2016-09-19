@@ -26,7 +26,7 @@
 				<Option host_application="glxgears" />
 				<Option run_host_application_in_terminal="1" />
 				<ExtraCommands>
-					<Add before='####./autogen.sh --enable-debug --with-dri-drivers=&quot;&quot; --disable-gallium-llvm --disable-llvm-shared-libs  --with-gallium-drivers=swrast CFLAGS=&quot;-m64 -g -Og&quot; CXXFLAGS=&quot;-m64 -g -Og&quot;' />
+					<Add before='####USAR PARA CONFIGURAR MAKEFILES###./autogen.sh --enable-debug --with-dri-drivers=&quot;&quot; --disable-gallium-llvm --disable-llvm-shared-libs  --with-gallium-drivers=swrast CFLAGS=&quot;-m64 -g -Og&quot; CXXFLAGS=&quot;-m64 -g -Og&quot;' />
 					<Mode after="always" />
 				</ExtraCommands>
 				<MakeCommands>
