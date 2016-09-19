@@ -1,0 +1,31 @@
+# !/bin/bash
+
+case "$1" in
+  --help)
+	echo "This script needs a binary or a link to a binary named 'openglapp' that uses OpenGL in same folder"
+	echo "Esse script precisa de um binário ou um link para um binário chamado 'openglapp' que use OpenGL na mesma pasta"
+	exit 0
+    ;;
+  "")
+	echo "Profile OpenGL application using Valgrind and KCachegrind"
+	echo "Profile de aplicação OpenGL usando Valgrind e KCachegrind"
+    ;;
+  *)
+	printf "Usage: $0\n$0 --help for more information\n\n"
+	printf "Uso: $0\n$0 --help para mais informações\n\n\n"
+	exit 1
+    ;;
+esac
+
+export LD_LIBRARY_PATH=$PWD/../mesa/lib
+export LIBGL_DRIVERS_PATH=$PWD/../mesa/lib
+export LIBGL_DRIVERS_PATH=$PWD/../mesa/lib/gallium
+export LIBGL_ALWAYS_SOFTWARE=1
+export GALLIUM_PRINT_OPTIONS=1
+
+valgrind --tool=callgrind ./openglapp || (sleep 1 && callgrind_control --kill)
+sleep 1
+export LATEST_FILE=`ls -t callgrind* | head -1`
+kcachegrind $LATEST_FILE &
+
+exit 0
