@@ -379,8 +379,8 @@ setup_sort_vertices(struct setup_context *setup,
     *  - two-sided stencil test
     * 0 = front-facing, 1 = back-facing
     */
-   setup->facing = 
-      ((det < 0.0) ^ 
+   setup->facing =
+      ((det < 0.0) ^
        (setup->softpipe->rasterizer->front_ccw));
 
    {
@@ -821,7 +821,7 @@ sp_setup_tri(struct setup_context *setup,
 
    if (setup->softpipe->no_rast || setup->softpipe->rasterizer->rasterizer_discard)
       return;
-   
+
    det = calc_det(v0, v1, v2);
    /*
    debug_printf("%s\n", __FUNCTION__ );
@@ -1521,3 +1521,17 @@ sp_setup_create_context(struct softpipe_context *softpipe)
 
    return setup;
 }
+
+//--OPENGPU
+/**
+ * Do triangle rasterization using OPENGPU VIRTUAL RASTERIZER.
+ */
+void
+ogpu_raster_tri(struct setup_context *setup,
+             const float (*v0)[4],
+             const float (*v1)[4],
+             const float (*v2)[4])
+{
+    sp_setup_tri(setup,v0,v1,v2);
+}
+//--OPENGPU

@@ -49,7 +49,7 @@ struct sp_setup_info {
    } attrib[PIPE_MAX_SHADER_OUTPUTS];
 };
 
-void 
+void
 sp_setup_tri(struct setup_context *setup,
              const float (*v0)[4],
              const float (*v1)[4],
@@ -73,5 +73,13 @@ sp_clamp_viewport_idx(int idx)
 struct setup_context *sp_setup_create_context( struct softpipe_context *softpipe );
 void sp_setup_prepare( struct setup_context *setup );
 void sp_setup_destroy_context( struct setup_context *setup );
+
+//--OGPU
+void
+ogpu_raster_tri(struct setup_context *setup,
+             const float (*v0)[4],
+             const float (*v1)[4],
+             const float (*v2)[4]);
+//--OGPU
 
 #endif

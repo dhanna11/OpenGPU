@@ -8070,6 +8070,9 @@
 		<Unit filename="../mesa/src/util/u_atomic_test.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="ogpu.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Extensions>
 			<envvars set="softpipe" />
 			<code_completion />
