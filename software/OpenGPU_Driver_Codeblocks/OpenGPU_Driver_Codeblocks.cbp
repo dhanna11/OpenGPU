@@ -23,8 +23,6 @@
 				<Option object_output="/home/fabricio/Desktop/OpenGPU/mesa_project/.objs" />
 				<Option type="1" />
 				<Option compiler="mesa_gnu_gcc_compiler" />
-				<Option host_application="glxgears" />
-				<Option run_host_application_in_terminal="1" />
 				<ExtraCommands>
 					<Add before='####USAR PARA CONFIGURAR MAKEFILES###./autogen.sh --enable-debug --with-dri-drivers=&quot;&quot; --disable-gallium-llvm --disable-llvm-shared-libs  --with-gallium-drivers=swrast CFLAGS=&quot;-m64 -g -Og&quot; CXXFLAGS=&quot;-m64 -g -Og&quot;' />
 					<Mode after="always" />

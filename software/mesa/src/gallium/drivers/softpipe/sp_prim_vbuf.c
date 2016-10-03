@@ -204,27 +204,19 @@ sp_vbuf_draw_elements(struct vbuf_render *vbr, const ushort *indices, uint nr)
       break;
 
    case PIPE_PRIM_TRIANGLES:
-       //--OGPU
        for (i = 2; i < nr; i += 3) {
          ogpu_raster_tri( setup,
                        get_vert(vertex_buffer, indices[i-2], stride),
                        get_vert(vertex_buffer, indices[i-1], stride),
                        get_vert(vertex_buffer, indices[i-0], stride) );
       }
-//      for (i = 2; i < nr; i += 3) {
-//         sp_setup_tri( setup,
-//                       get_vert(vertex_buffer, indices[i-2], stride),
-//                       get_vert(vertex_buffer, indices[i-1], stride),
-//                       get_vert(vertex_buffer, indices[i-0], stride) );
-//      }
-//--OGPU
       break;
 
    case PIPE_PRIM_TRIANGLE_STRIP:
       if (flatshade_first) {
          for (i = 2; i < nr; i += 1) {
             /* emit first triangle vertex as first triangle vertex */
-            sp_setup_tri( setup,
+            ogpu_raster_tri( setup,
                           get_vert(vertex_buffer, indices[i-2], stride),
                           get_vert(vertex_buffer, indices[i+(i&1)-1], stride),
                           get_vert(vertex_buffer, indices[i-(i&1)], stride) );
@@ -234,7 +226,7 @@ sp_vbuf_draw_elements(struct vbuf_render *vbr, const ushort *indices, uint nr)
       else {
          for (i = 2; i < nr; i += 1) {
             /* emit last triangle vertex as last triangle vertex */
-            sp_setup_tri( setup,
+            ogpu_raster_tri( setup,
                           get_vert(vertex_buffer, indices[i+(i&1)-2], stride),
                           get_vert(vertex_buffer, indices[i-(i&1)-1], stride),
                           get_vert(vertex_buffer, indices[i-0], stride) );
@@ -246,7 +238,7 @@ sp_vbuf_draw_elements(struct vbuf_render *vbr, const ushort *indices, uint nr)
       if (flatshade_first) {
          for (i = 2; i < nr; i += 1) {
             /* emit first non-spoke vertex as first vertex */
-            sp_setup_tri( setup,
+            ogpu_raster_tri( setup,
                           get_vert(vertex_buffer, indices[i-1], stride),
                           get_vert(vertex_buffer, indices[i-0], stride),
                           get_vert(vertex_buffer, indices[0], stride) );
@@ -255,7 +247,7 @@ sp_vbuf_draw_elements(struct vbuf_render *vbr, const ushort *indices, uint nr)
       else {
          for (i = 2; i < nr; i += 1) {
             /* emit last non-spoke vertex as last vertex */
-            sp_setup_tri( setup,
+            ogpu_raster_tri( setup,
                           get_vert(vertex_buffer, indices[0], stride),
                           get_vert(vertex_buffer, indices[i-1], stride),
                           get_vert(vertex_buffer, indices[i-0], stride) );
@@ -268,12 +260,12 @@ sp_vbuf_draw_elements(struct vbuf_render *vbr, const ushort *indices, uint nr)
       if (flatshade_first) {
          /* emit last quad vertex as first triangle vertex */
          for (i = 3; i < nr; i += 4) {
-            sp_setup_tri( setup,
+            ogpu_raster_tri( setup,
                           get_vert(vertex_buffer, indices[i-0], stride),
                           get_vert(vertex_buffer, indices[i-3], stride),
                           get_vert(vertex_buffer, indices[i-2], stride) );
 
-            sp_setup_tri( setup,
+            ogpu_raster_tri( setup,
                           get_vert(vertex_buffer, indices[i-0], stride),
                           get_vert(vertex_buffer, indices[i-2], stride),
                           get_vert(vertex_buffer, indices[i-1], stride) );
@@ -282,12 +274,12 @@ sp_vbuf_draw_elements(struct vbuf_render *vbr, const ushort *indices, uint nr)
       else {
          /* emit last quad vertex as last triangle vertex */
          for (i = 3; i < nr; i += 4) {
-            sp_setup_tri( setup,
+            ogpu_raster_tri( setup,
                           get_vert(vertex_buffer, indices[i-3], stride),
                           get_vert(vertex_buffer, indices[i-2], stride),
                           get_vert(vertex_buffer, indices[i-0], stride) );
 
-            sp_setup_tri( setup,
+            ogpu_raster_tri( setup,
                           get_vert(vertex_buffer, indices[i-2], stride),
                           get_vert(vertex_buffer, indices[i-1], stride),
                           get_vert(vertex_buffer, indices[i-0], stride) );
@@ -300,11 +292,11 @@ sp_vbuf_draw_elements(struct vbuf_render *vbr, const ushort *indices, uint nr)
       if (flatshade_first) {
          /* emit last quad vertex as first triangle vertex */
          for (i = 3; i < nr; i += 2) {
-            sp_setup_tri( setup,
+            ogpu_raster_tri( setup,
                           get_vert(vertex_buffer, indices[i-0], stride),
                           get_vert(vertex_buffer, indices[i-3], stride),
                           get_vert(vertex_buffer, indices[i-2], stride) );
-            sp_setup_tri( setup,
+            ogpu_raster_tri( setup,
                           get_vert(vertex_buffer, indices[i-0], stride),
                           get_vert(vertex_buffer, indices[i-1], stride),
                           get_vert(vertex_buffer, indices[i-3], stride) );
@@ -313,11 +305,11 @@ sp_vbuf_draw_elements(struct vbuf_render *vbr, const ushort *indices, uint nr)
       else {
          /* emit last quad vertex as last triangle vertex */
          for (i = 3; i < nr; i += 2) {
-            sp_setup_tri( setup,
+            ogpu_raster_tri( setup,
                           get_vert(vertex_buffer, indices[i-3], stride),
                           get_vert(vertex_buffer, indices[i-2], stride),
                           get_vert(vertex_buffer, indices[i-0], stride) );
-            sp_setup_tri( setup,
+            ogpu_raster_tri( setup,
                           get_vert(vertex_buffer, indices[i-1], stride),
                           get_vert(vertex_buffer, indices[i-3], stride),
                           get_vert(vertex_buffer, indices[i-0], stride) );
@@ -332,7 +324,7 @@ sp_vbuf_draw_elements(struct vbuf_render *vbr, const ushort *indices, uint nr)
       if (flatshade_first) {
          /* emit first polygon  vertex as first triangle vertex */
          for (i = 2; i < nr; i += 1) {
-            sp_setup_tri( setup,
+            ogpu_raster_tri( setup,
                           get_vert(vertex_buffer, indices[0], stride),
                           get_vert(vertex_buffer, indices[i-1], stride),
                           get_vert(vertex_buffer, indices[i-0], stride) );
@@ -341,7 +333,7 @@ sp_vbuf_draw_elements(struct vbuf_render *vbr, const ushort *indices, uint nr)
       else {
          /* emit first polygon  vertex as last triangle vertex */
          for (i = 2; i < nr; i += 1) {
-            sp_setup_tri( setup,
+            ogpu_raster_tri( setup,
                           get_vert(vertex_buffer, indices[i-1], stride),
                           get_vert(vertex_buffer, indices[i-0], stride),
                           get_vert(vertex_buffer, indices[0], stride) );
@@ -425,25 +417,17 @@ sp_vbuf_draw_arrays(struct vbuf_render *vbr, uint start, uint nr)
       break;
 
    case PIPE_PRIM_TRIANGLES:
-       //--OGPU
        for (i = 2; i < nr; i += 3) {
          ogpu_raster_tri( setup,
                        get_vert(vertex_buffer, i-2, stride),
                        get_vert(vertex_buffer, i-1, stride),
                        get_vert(vertex_buffer, i-0, stride) );
       }
-//      for (i = 2; i < nr; i += 3) {
-//         sp_setup_tri( setup,
-//                       get_vert(vertex_buffer, i-2, stride),
-//                       get_vert(vertex_buffer, i-1, stride),
-//                       get_vert(vertex_buffer, i-0, stride) );
-//      }
-//--OGPU
       break;
 
    case PIPE_PRIM_TRIANGLES_ADJACENCY:
       for (i = 5; i < nr; i += 6) {
-         sp_setup_tri( setup,
+         ogpu_raster_tri( setup,
                        get_vert(vertex_buffer, i-5, stride),
                        get_vert(vertex_buffer, i-3, stride),
                        get_vert(vertex_buffer, i-1, stride) );
@@ -454,7 +438,7 @@ sp_vbuf_draw_arrays(struct vbuf_render *vbr, uint start, uint nr)
       if (flatshade_first) {
          for (i = 2; i < nr; i++) {
             /* emit first triangle vertex as first triangle vertex */
-            sp_setup_tri( setup,
+            ogpu_raster_tri( setup,
                           get_vert(vertex_buffer, i-2, stride),
                           get_vert(vertex_buffer, i+(i&1)-1, stride),
                           get_vert(vertex_buffer, i-(i&1), stride) );
@@ -463,7 +447,7 @@ sp_vbuf_draw_arrays(struct vbuf_render *vbr, uint start, uint nr)
       else {
          for (i = 2; i < nr; i++) {
             /* emit last triangle vertex as last triangle vertex */
-            sp_setup_tri( setup,
+            ogpu_raster_tri( setup,
                           get_vert(vertex_buffer, i+(i&1)-2, stride),
                           get_vert(vertex_buffer, i-(i&1)-1, stride),
                           get_vert(vertex_buffer, i-0, stride) );
@@ -475,7 +459,7 @@ sp_vbuf_draw_arrays(struct vbuf_render *vbr, uint start, uint nr)
       if (flatshade_first) {
          for (i = 5; i < nr; i += 2) {
             /* emit first triangle vertex as first triangle vertex */
-            sp_setup_tri( setup,
+            ogpu_raster_tri( setup,
                           get_vert(vertex_buffer, i-5, stride),
                           get_vert(vertex_buffer, i+(i&1)*2-3, stride),
                           get_vert(vertex_buffer, i-(i&1)*2-1, stride) );
@@ -484,7 +468,7 @@ sp_vbuf_draw_arrays(struct vbuf_render *vbr, uint start, uint nr)
       else {
          for (i = 5; i < nr; i += 2) {
             /* emit last triangle vertex as last triangle vertex */
-            sp_setup_tri( setup,
+            ogpu_raster_tri( setup,
                           get_vert(vertex_buffer, i+(i&1)*2-5, stride),
                           get_vert(vertex_buffer, i-(i&1)*2-3, stride),
                           get_vert(vertex_buffer, i-1, stride) );
@@ -496,7 +480,7 @@ sp_vbuf_draw_arrays(struct vbuf_render *vbr, uint start, uint nr)
       if (flatshade_first) {
          for (i = 2; i < nr; i += 1) {
             /* emit first non-spoke vertex as first vertex */
-            sp_setup_tri( setup,
+            ogpu_raster_tri( setup,
                           get_vert(vertex_buffer, i-1, stride),
                           get_vert(vertex_buffer, i-0, stride),
                           get_vert(vertex_buffer, 0, stride)  );
@@ -505,7 +489,7 @@ sp_vbuf_draw_arrays(struct vbuf_render *vbr, uint start, uint nr)
       else {
          for (i = 2; i < nr; i += 1) {
             /* emit last non-spoke vertex as last vertex */
-            sp_setup_tri( setup,
+            ogpu_raster_tri( setup,
                           get_vert(vertex_buffer, 0, stride),
                           get_vert(vertex_buffer, i-1, stride),
                           get_vert(vertex_buffer, i-0, stride) );
@@ -518,11 +502,11 @@ sp_vbuf_draw_arrays(struct vbuf_render *vbr, uint start, uint nr)
       if (flatshade_first) {
          /* emit last quad vertex as first triangle vertex */
          for (i = 3; i < nr; i += 4) {
-            sp_setup_tri( setup,
+                ogpu_raster_tri( setup,
                           get_vert(vertex_buffer, i-0, stride),
                           get_vert(vertex_buffer, i-3, stride),
                           get_vert(vertex_buffer, i-2, stride) );
-            sp_setup_tri( setup,
+            ogpu_raster_tri( setup,
                           get_vert(vertex_buffer, i-0, stride),
                           get_vert(vertex_buffer, i-2, stride),
                           get_vert(vertex_buffer, i-1, stride) );
@@ -531,11 +515,11 @@ sp_vbuf_draw_arrays(struct vbuf_render *vbr, uint start, uint nr)
       else {
          /* emit last quad vertex as last triangle vertex */
          for (i = 3; i < nr; i += 4) {
-            sp_setup_tri( setup,
+            ogpu_raster_tri( setup,
                           get_vert(vertex_buffer, i-3, stride),
                           get_vert(vertex_buffer, i-2, stride),
                           get_vert(vertex_buffer, i-0, stride) );
-            sp_setup_tri( setup,
+            ogpu_raster_tri( setup,
                           get_vert(vertex_buffer, i-2, stride),
                           get_vert(vertex_buffer, i-1, stride),
                           get_vert(vertex_buffer, i-0, stride) );
@@ -548,11 +532,11 @@ sp_vbuf_draw_arrays(struct vbuf_render *vbr, uint start, uint nr)
       if (flatshade_first) {
          /* emit last quad vertex as first triangle vertex */
          for (i = 3; i < nr; i += 2) {
-            sp_setup_tri( setup,
+            ogpu_raster_tri( setup,
                           get_vert(vertex_buffer, i-0, stride),
                           get_vert(vertex_buffer, i-3, stride),
                           get_vert(vertex_buffer, i-2, stride) );
-            sp_setup_tri( setup,
+            ogpu_raster_tri( setup,
                           get_vert(vertex_buffer, i-0, stride),
                           get_vert(vertex_buffer, i-1, stride),
                           get_vert(vertex_buffer, i-3, stride) );
@@ -561,11 +545,11 @@ sp_vbuf_draw_arrays(struct vbuf_render *vbr, uint start, uint nr)
       else {
          /* emit last quad vertex as last triangle vertex */
          for (i = 3; i < nr; i += 2) {
-            sp_setup_tri( setup,
+            ogpu_raster_tri( setup,
                           get_vert(vertex_buffer, i-3, stride),
                           get_vert(vertex_buffer, i-2, stride),
                           get_vert(vertex_buffer, i-0, stride) );
-            sp_setup_tri( setup,
+            ogpu_raster_tri( setup,
                           get_vert(vertex_buffer, i-1, stride),
                           get_vert(vertex_buffer, i-3, stride),
                           get_vert(vertex_buffer, i-0, stride) );
@@ -580,7 +564,7 @@ sp_vbuf_draw_arrays(struct vbuf_render *vbr, uint start, uint nr)
       if (flatshade_first) {
          /* emit first polygon  vertex as first triangle vertex */
          for (i = 2; i < nr; i += 1) {
-            sp_setup_tri( setup,
+            ogpu_raster_tri( setup,
                           get_vert(vertex_buffer, 0, stride),
                           get_vert(vertex_buffer, i-1, stride),
                           get_vert(vertex_buffer, i-0, stride) );
@@ -589,7 +573,7 @@ sp_vbuf_draw_arrays(struct vbuf_render *vbr, uint start, uint nr)
       else {
          /* emit first polygon  vertex as last triangle vertex */
          for (i = 2; i < nr; i += 1) {
-            sp_setup_tri( setup,
+            ogpu_raster_tri( setup,
                           get_vert(vertex_buffer, i-1, stride),
                           get_vert(vertex_buffer, i-0, stride),
                           get_vert(vertex_buffer, 0, stride) );

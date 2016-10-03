@@ -1523,6 +1523,43 @@ sp_setup_create_context(struct softpipe_context *softpipe)
 }
 
 //--OPENGPU
+struct ogpu_edge
+{
+    unsigned x0,y0;
+    unsigned x1,y1;
+};
+
+struct ogpu_box
+{
+    float x0,y0;
+    float x1,y1;
+};
+
+static inline unsigned ogpu_fix_float(float f)
+{
+    return (unsigned)f;
+}
+
+static void ogpu_setup(//INPUTS
+                       const unsigned *raster_clock,
+                       const float (*v0)[2],const float (*v1)[2],const float (*v2)[2], //v*: input vertices
+                       //OUTPUTS
+                       struct ogpu_box *box, //bound box
+                       unsigned *quad_gen,
+                       struct ogpu_edge *e0,struct ogpu_edge *e1,struct ogpu_edge *e2) //e*: edges
+{
+    e0->x0=ogpu_fix_float(v0[0][0]);    e0->y0=ogpu_fix_float(v0[0][1]);
+    e0->x1=ogpu_fix_float(v1[0][0]);    e0->y1=ogpu_fix_float(v1[0][1]);
+
+    e1->x0=ogpu_fix_float(v1[0][0]);    e1->y0=ogpu_fix_float(v1[0][1]);
+    e1->x1=ogpu_fix_float(v2[0][0]);    e1->y1=ogpu_fix_float(v2[0][1]);
+
+    e2->x0=ogpu_fix_float(v2[0][0]);    e2->y0=ogpu_fix_float(v2[0][1]);
+    e2->x1=ogpu_fix_float(v0[0][0]);    e2->y1=ogpu_fix_float(v0[0][1]);
+
+    return;
+}
+
 /**
  * Do triangle rasterization using OPENGPU VIRTUAL RASTERIZER.
  */
@@ -1532,6 +1569,26 @@ ogpu_raster_tri(struct setup_context *setup,
              const float (*v1)[4],
              const float (*v2)[4])
 {
+    static unsigned counter=0;
+    printf("Tri %d\nv0\tx:%.1f\ty:%.1f\tz:%.1f\tw:%.1f\n"
+           "v1\tx:%.1f\ty:%.1f\tz:%.1f\tw:%.1f\n"
+           "v2\tx:%.1f\ty:%.1f\tz:%.1f\tw:%.1f\n\n",counter++,v0[0][0],v0[0][1],v0[0][2],v0[0][3],
+                                                  v1[0][0],v1[0][1],v1[0][2],v1[0][3],
+                                                  v2[0][0],v2[0][1],v2[0][2],v2[0][3]);
+    struct ogpu_edge *e0,*e1,*e2;
+    e0=(struct ogpu_edge*)malloc(sizeof(struct ogpu_edge));
+    e1=(struct ogpu_edge*)malloc(sizeof(struct ogpu_edge));
+    e2=(struct ogpu_edge*)malloc(sizeof(struct ogpu_edge));
+    ogpu_setup(0,(const float (*)[2])v0,(const float (*)[2])v1,(const float (*)[2])v2,0,0,e0,e1,e2);
+    printf("e0\tx0:%d y0:%d\tx1:%d y1:%d\n"
+           "e1\tx0:%d y0:%d\tx1:%d y1:%d\n"
+           "e2\tx0:%d y0:%d\tx1:%d y1:%d\n",e0->x0,e0->y0,e0->x1,e0->y1,
+                                            e1->x0,e1->y0,e1->x1,e1->y1,
+                                            e2->x0,e2->y0,e2->x1,e2->y1);
+
     sp_setup_tri(setup,v0,v1,v2);
+    free(e0);
+    free(e1);
+    free(e2);
 }
 //--OPENGPU
