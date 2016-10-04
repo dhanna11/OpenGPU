@@ -1523,10 +1523,12 @@ sp_setup_create_context(struct softpipe_context *softpipe)
 }
 
 //--OPENGPU
+typedef uint8_t ogpu_bit;
+
 struct ogpu_edge
 {
-    unsigned x0,y0;
-    unsigned x1,y1;
+    uint32_t x0,y0;
+    uint32_t x1,y1;
 };
 
 struct ogpu_box
@@ -1535,19 +1537,46 @@ struct ogpu_box
     float x1,y1;
 };
 
-static inline unsigned ogpu_fix_float(float f)
+struct ogpu_quad
 {
-    return (unsigned)f;
+    //Fragment-vector element correspondence
+    //  #===#===#
+    //  | 0 | 1 |
+    //  #===#===#
+    //  | 2 | 3 |
+    //  #===#===#
+    uint16_t m[4][2];
+};
+
+struct ogpu_tile
+{
+    uint16_t x0,y0;
+    uint16_t x1,y1;
+};
+
+static inline uint32_t ogpu_fix_float(float f)
+{
+    return (uint32_t)f;
 }
 
 static void ogpu_setup(//INPUTS
-                       const unsigned *raster_clock,
+                       const ogpu_bit *raster_clock,
                        const float (*v0)[2],const float (*v1)[2],const float (*v2)[2], //v*: input vertices
                        //OUTPUTS
+                       ogpu_bit *quad_gen,
                        struct ogpu_box *box, //bound box
-                       unsigned *quad_gen,
                        struct ogpu_edge *e0,struct ogpu_edge *e1,struct ogpu_edge *e2) //e*: edges
 {
+    //input sensibility verification
+    static ogpu_bit data_raster_clock=0;
+    if(*raster_clock!=data_raster_clock)
+    {
+        if(*raster_clock) {data_raster_clock=1;} //set on rising edge
+        else {data_raster_clock=0; return;} //reset on falling edge
+    }
+    else return;
+
+    //Edges data allocating and fixing floating points
     e0->x0=ogpu_fix_float(v0[0][0]);    e0->y0=ogpu_fix_float(v0[0][1]);
     e0->x1=ogpu_fix_float(v1[0][0]);    e0->y1=ogpu_fix_float(v1[0][1]);
 
@@ -1557,7 +1586,152 @@ static void ogpu_setup(//INPUTS
     e2->x0=ogpu_fix_float(v2[0][0]);    e2->y0=ogpu_fix_float(v2[0][1]);
     e2->x1=ogpu_fix_float(v0[0][0]);    e2->y1=ogpu_fix_float(v0[0][1]);
 
-    return;
+    //Define triangle bound box
+    ogpu_bit c1,c2,c3;
+    c1=v0[0][0]<=v1[0][0];
+    c2=v0[0][0]<=v2[0][0];
+    c3=v1[0][0]<=v2[0][0];
+    if(c1)
+    {
+        if(c3)
+        {
+            box->x0=v0[0][0];
+            box->x1=v2[0][0];
+        }
+        else
+        {
+            if(c2)
+            {
+                box->x0=v0[0][0];
+                box->x1=v1[0][0];
+            }
+            else
+            {
+                box->x0=v2[0][0];
+                box->x1=v1[0][0];
+            }
+        }
+    }
+    else
+    {
+        if(c2)
+        {
+            box->x0=v1[0][0];
+            box->x1=v2[0][0];
+        }
+        else
+        {
+            if(c3)
+            {
+                box->x0=v1[0][0];
+                box->x1=v0[0][0];
+            }
+            else
+            {
+                box->x0=v2[0][0];
+                box->x1=v0[0][0];
+            }
+        }
+    }
+    c1=v0[0][1]<=v1[0][1];
+    c2=v0[0][1]<=v2[0][1];
+    c3=v1[0][1]<=v2[0][1];
+    if(c1)
+    {
+        if(c3)
+        {
+            box->y0=v0[0][1];
+            box->y1=v2[0][1];
+        }
+        else
+        {
+            if(c2)
+            {
+                box->y0=v0[0][1];
+                box->y1=v1[0][1];
+            }
+            else
+            {
+                box->y0=v2[0][1];
+                box->y1=v1[0][1];
+            }
+        }
+    }
+    else
+    {
+        if(c2)
+        {
+            box->y0=v1[0][1];
+            box->y1=v2[0][1];
+        }
+        else
+        {
+            if(c3)
+            {
+                box->y0=v1[0][1];
+                box->y1=v0[0][1];
+            }
+            else
+            {
+                box->y0=v2[0][1];
+                box->y1=v0[0][1];
+            }
+        }
+    }
+}
+
+static void ogpu_quad_generator(//INPUTS
+                                const ogpu_bit *quad_gen,
+                                const ogpu_bit *quad_control_clock,
+                                const struct ogpu_box *box, //(x0,y0) must be at left and at upper side of (x1,y1)
+                                const struct ogpu_tile *tile, //(x0,y0) must be at left and at upper side of (x1,y1)
+                                //OUTPUTS
+                                ogpu_bit *quad_clock,
+                                ogpu_bit *end_tile,
+                                struct ogpu_quad *quad)
+{
+    static ogpu_bit data_quad_gen=0,data_gen_quads=0;
+    static uint16_t i=0,j=0,x0=0,y0=0,x1=0,y1=0;
+    //input sensibility verification
+    if(*quad_gen!=data_quad_gen)
+    {
+        if(*quad_gen) //set on rising edge
+        {
+            data_quad_gen=1;
+            if((tile->x1 < box->x0) || (tile->x0 > box->x1)) {return;} //checks if box is not
+            if((tile->y1 < box->y0) || (tile->y0 > box->y1)) {return;} //intersecting tile
+            data_gen_quads=1;
+            j=x0=(tile->y0 <= box->y0)?box->y0:tile->y0;
+            i=y0=(tile->x0 <= box->x0)?box->x0:tile->x0;
+            x1=(tile->x1 >= box->x1)?box->x1:tile->x1;
+            y1=(tile->y1 >= box->y1)?box->y1:tile->y1;
+        }
+        else {data_quad_gen=0; data_gen_quads=0;return;} //reset on falling edge
+    }
+    else if(!data_gen_quads) return;
+    //generate quad coords
+    quad->m[0][0]=i;     quad->m[1][0]=i;
+    quad->m[0][1]=j;     quad->m[1][1]=j+1;
+    quad->m[2][0]=i+1;   quad->m[3][0]=i+1;
+    quad->m[2][1]=j;     quad->m[3][1]=j+1;
+    j+=2;
+    if(j>x1)
+    {
+        j=x0;
+        i+=2;
+        if(i>y1)
+        {
+            *end_tile=1;
+            data_gen_quads=0;
+        }
+    }
+    *quad_clock=1;
+}
+
+
+static uint8_t ogpu_edge_test(struct ogpu_edge e,uint16_t x,uint16_t y)
+{
+    return 0;
 }
 
 /**
@@ -1575,20 +1749,27 @@ ogpu_raster_tri(struct setup_context *setup,
            "v2\tx:%.1f\ty:%.1f\tz:%.1f\tw:%.1f\n\n",counter++,v0[0][0],v0[0][1],v0[0][2],v0[0][3],
                                                   v1[0][0],v1[0][1],v1[0][2],v1[0][3],
                                                   v2[0][0],v2[0][1],v2[0][2],v2[0][3]);
-    struct ogpu_edge *e0,*e1,*e2;
-    e0=(struct ogpu_edge*)malloc(sizeof(struct ogpu_edge));
-    e1=(struct ogpu_edge*)malloc(sizeof(struct ogpu_edge));
-    e2=(struct ogpu_edge*)malloc(sizeof(struct ogpu_edge));
-    ogpu_setup(0,(const float (*)[2])v0,(const float (*)[2])v1,(const float (*)[2])v2,0,0,e0,e1,e2);
+    ogpu_bit raster_clock=0,quad_gen=0,quad_control_clock=0,quad_clock=0,end_tile=0;
+    struct ogpu_edge e0,e1,e2;
+    struct ogpu_box box;
+    struct ogpu_quad quad;
+    struct ogpu_tile tile;
+    tile.x0=0; tile.y0=0; tile.x1=31; tile.y1=31;
+    do
+    {
+        ogpu_setup(&raster_clock,(const float (*)[2])v0,(const float (*)[2])v1,(const float (*)[2])v2,
+                   &quad_gen,&box,&e0,&e1,&e2);
+        ogpu_quad_generator(&quad_gen,&quad_control_clock,&box,&tile,
+                            &quad_clock,&end_tile,&quad);
+    }while(!end_tile);
+
     printf("e0\tx0:%d y0:%d\tx1:%d y1:%d\n"
            "e1\tx0:%d y0:%d\tx1:%d y1:%d\n"
-           "e2\tx0:%d y0:%d\tx1:%d y1:%d\n",e0->x0,e0->y0,e0->x1,e0->y1,
-                                            e1->x0,e1->y0,e1->x1,e1->y1,
-                                            e2->x0,e2->y0,e2->x1,e2->y1);
-
+           "e2\tx0:%d y0:%d\tx1:%d y1:%d\n",e0.x0,e0.y0,e0.x1,e0.y1,
+                                            e1.x0,e1.y0,e1.x1,e1.y1,
+                                            e2.x0,e2.y0,e2.x1,e2.y1);
+    printf("B0(%.1f,%.1f)\n"
+           "B1(%.1f,%.1f)\n",box.x0,box.y0,box.x1,box.y1);
     sp_setup_tri(setup,v0,v1,v2);
-    free(e0);
-    free(e1);
-    free(e2);
 }
 //--OPENGPU
