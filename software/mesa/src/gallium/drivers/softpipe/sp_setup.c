@@ -1529,6 +1529,7 @@ typedef uint8_t ogpu_command;
 enum OGPU_COMMAND
 {
     OGPU_CMD_NOP=0,
+    OGPU_CMD_PREPARE=0xA5,
     OGPU_CMD_RASTER=0xAA
 };
 
@@ -1603,7 +1604,7 @@ static void ogpu_setup(ogpu_bit clock,
                        const ogpu_bit start_raster,
                        const float (*v0)[2],const float (*v1)[2],const float (*v2)[2], //v*: input vertices
                        //OUTPUTS
-                       struct ogpu_box *box, //bound box
+                       //struct ogpu_box *box, //bound box
                        struct ogpu_edge *e0,struct ogpu_edge *e1,struct ogpu_edge *e2, //e*: edges
                        ogpu_bit *setup_done)
 {
@@ -1621,98 +1622,98 @@ static void ogpu_setup(ogpu_bit clock,
     e2->x0=ogpu_ufix_float(v2[0][0]);    e2->y0=ogpu_ufix_float(v2[0][1]);
     e2->x1=ogpu_ufix_float(v0[0][0]);    e2->y1=ogpu_ufix_float(v0[0][1]);
 
-    //Define triangle bound box
-    ogpu_bit c1,c2,c3;
-    c1=v0[0][0]<=v1[0][0];
-    c2=v0[0][0]<=v2[0][0];
-    c3=v1[0][0]<=v2[0][0];
-    if(c1)
-    {
-        if(c3)
-        {
-            box->x0=v0[0][0];
-            box->x1=v2[0][0];
-        }
-        else
-        {
-            if(c2)
-            {
-                box->x0=v0[0][0];
-                box->x1=v1[0][0];
-            }
-            else
-            {
-                box->x0=v2[0][0];
-                box->x1=v1[0][0];
-            }
-        }
-    }
-    else
-    {
-        if(c2)
-        {
-            box->x0=v1[0][0];
-            box->x1=v2[0][0];
-        }
-        else
-        {
-            if(c3)
-            {
-                box->x0=v1[0][0];
-                box->x1=v0[0][0];
-            }
-            else
-            {
-                box->x0=v2[0][0];
-                box->x1=v0[0][0];
-            }
-        }
-    }
-    c1=v0[0][1]<=v1[0][1];
-    c2=v0[0][1]<=v2[0][1];
-    c3=v1[0][1]<=v2[0][1];
-    if(c1)
-    {
-        if(c3)
-        {
-            box->y0=v0[0][1];
-            box->y1=v2[0][1];
-        }
-        else
-        {
-            if(c2)
-            {
-                box->y0=v0[0][1];
-                box->y1=v1[0][1];
-            }
-            else
-            {
-                box->y0=v2[0][1];
-                box->y1=v1[0][1];
-            }
-        }
-    }
-    else
-    {
-        if(c2)
-        {
-            box->y0=v1[0][1];
-            box->y1=v2[0][1];
-        }
-        else
-        {
-            if(c3)
-            {
-                box->y0=v1[0][1];
-                box->y1=v0[0][1];
-            }
-            else
-            {
-                box->y0=v2[0][1];
-                box->y1=v0[0][1];
-            }
-        }
-    }
+    //Define triangle bound box //SOFTPIPE'S CLIPRECT DEFINES BOUND BOX BEFORE RASTERIZER STAGE
+//    ogpu_bit c1,c2,c3;
+//    c1=v0[0][0]<=v1[0][0];
+//    c2=v0[0][0]<=v2[0][0];
+//    c3=v1[0][0]<=v2[0][0];
+//    if(c1)
+//    {
+//        if(c3)
+//        {
+//            box->x0=v0[0][0];
+//            box->x1=v2[0][0];
+//        }
+//        else
+//        {
+//            if(c2)
+//            {
+//                box->x0=v0[0][0];
+//                box->x1=v1[0][0];
+//            }
+//            else
+//            {
+//                box->x0=v2[0][0];
+//                box->x1=v1[0][0];
+//            }
+//        }
+//    }
+//    else
+//    {
+//        if(c2)
+//        {
+//            box->x0=v1[0][0];
+//            box->x1=v2[0][0];
+//        }
+//        else
+//        {
+//            if(c3)
+//            {
+//                box->x0=v1[0][0];
+//                box->x1=v0[0][0];
+//            }
+//            else
+//            {
+//                box->x0=v2[0][0];
+//                box->x1=v0[0][0];
+//            }
+//        }
+//    }
+//    c1=v0[0][1]<=v1[0][1];
+//    c2=v0[0][1]<=v2[0][1];
+//    c3=v1[0][1]<=v2[0][1];
+//    if(c1)
+//    {
+//        if(c3)
+//        {
+//            box->y0=v0[0][1];
+//            box->y1=v2[0][1];
+//        }
+//        else
+//        {
+//            if(c2)
+//            {
+//                box->y0=v0[0][1];
+//                box->y1=v1[0][1];
+//            }
+//            else
+//            {
+//                box->y0=v2[0][1];
+//                box->y1=v1[0][1];
+//            }
+//        }
+//    }
+//    else
+//    {
+//        if(c2)
+//        {
+//            box->y0=v1[0][1];
+//            box->y1=v2[0][1];
+//        }
+//        else
+//        {
+//            if(c3)
+//            {
+//                box->y0=v1[0][1];
+//                box->y1=v0[0][1];
+//            }
+//            else
+//            {
+//                box->y0=v2[0][1];
+//                box->y1=v0[0][1];
+//            }
+//        }
+//    }
     //////////////////
     //     SEQ      //
     //////////////////
@@ -1771,10 +1772,15 @@ static void ogpu_quad_generator(ogpu_bit clock,
                     if((tile.x1 < box.x0) || (tile.x0 > box.x1)) {*quad_ready=0;*end_tile=1;return;} //checks if box is not
                     if((tile.y1 < box.y0) || (tile.y0 > box.y1)) {*quad_ready=0;*end_tile=1;return;} //intersecting tile
                     generate_quads=1; //else generate quads
-                    i=y0=(tile.y0 <= box.y0)?box.y0:tile.y0;
-                    j=x0=(tile.x0 <= box.x0)?box.x0:tile.x0;
-                    x1=(tile.x1 >= box.x1)?box.x1:tile.x1;
-                    y1=(tile.y1 >= box.y1)?box.y1:tile.y1;
+                    //clip tile: this helps discard void areas
+                    i=y0=(tile.y0 <= box.y0)?(uint16_t)box.y0:tile.y0; //y0 is not used?
+                    j=x0=(tile.x0 <= box.x0)?(uint16_t)box.x0:tile.x0;
+                    x1=(tile.x1 >= box.x1)?(uint16_t)box.x1:tile.x1;
+                    y1=(tile.y1 >= box.y1)?(uint16_t)box.y1:tile.y1;
+                    //end clip tile
+                    i&=~(1<<0);    //guarantee even number clearing first bit, this
+                    x0=j&=~(1<<0); //is important to maintain quads at same place
+                                   //independently of clipping
                 }
                 //generate quad coords
                 quad->m[0][0]=j;     quad->m[1][0]=j+1;
@@ -1860,10 +1866,15 @@ static void ogpu_triangle_edge_test(ogpu_bit clock,
     //////////////////
     //     COMB     //
     //////////////////
-    _quad_mask[0]=(edge_mask0[0][0]&&edge_mask1[0][0]&&edge_mask2[0][0]);
-    _quad_mask[1]=(edge_mask0[0][1]&&edge_mask1[0][1]&&edge_mask2[0][1]);
-    _quad_mask[2]=(edge_mask0[0][2]&&edge_mask1[0][2]&&edge_mask2[0][2]);
-    _quad_mask[3]=(edge_mask0[0][3]&&edge_mask1[0][3]&&edge_mask2[0][3]);
+    //if edge bits from one fragment are 1,1,1 or 0,0,0, draw fragment
+    _quad_mask[0]=(edge_mask0[0][0]&&edge_mask1[0][0]&&edge_mask2[0][0])||
+                    (!(edge_mask0[0][0]||edge_mask1[0][0]||edge_mask2[0][0]));
+    _quad_mask[1]=(edge_mask0[0][1]&&edge_mask1[0][1]&&edge_mask2[0][1])||
+                    (!(edge_mask0[0][1]||edge_mask1[0][1]||edge_mask2[0][1]));
+    _quad_mask[2]=(edge_mask0[0][2]&&edge_mask1[0][2]&&edge_mask2[0][2])||
+                    (!(edge_mask0[0][2]||edge_mask1[0][2]||edge_mask2[0][2]));
+    _quad_mask[3]=(edge_mask0[0][3]&&edge_mask1[0][3]&&edge_mask2[0][3])||
+                    (!(edge_mask0[0][3]||edge_mask1[0][3]||edge_mask2[0][3]));
     _draw_quad=_quad_mask[0]||_quad_mask[1]||_quad_mask[2]||_quad_mask[3];
 
     //////////////////
@@ -2089,6 +2100,7 @@ static void ogpu_quad_store(ogpu_bit clock,
 enum OGPU_RASTER_CONTROL_STATE
 {
     OGPU_RASTER_CONTROL_IDLE=0,
+    OGPU_RASTER_CONTROL_DONE,
     OGPU_RASTER_CONTROL_SETUP,
     OGPU_RASTER_CONTROL_QUAD_GEN,
     OGPU_RASTER_CONTROL_QUAD_TEST,
@@ -2128,21 +2140,27 @@ static void ogpu_raster_control(ogpu_bit clock,
             {
             default:
             case OGPU_RASTER_CONTROL_IDLE:
-                if(cmd==OGPU_CMD_NOP)
-                {
-                    _state=OGPU_RASTER_CONTROL_IDLE;
-                    *done=1;
-                    *done=0;
-                    *start_raster=0;
-                    *next_quad=0;
-                    break;
-                }
                 if(cmd==OGPU_CMD_RASTER)
                 {
                     _state=OGPU_RASTER_CONTROL_SETUP;
                     *busy=1;
                     *done=0;
                     *start_raster=1;
+                    break;
+                }
+                break;
+
+            case OGPU_RASTER_CONTROL_DONE:
+                if(cmd==OGPU_CMD_PREPARE)
+                {
+                    _state=OGPU_RASTER_CONTROL_IDLE;
+                    *done=0;
+                    *busy=0;
+                    *start_raster=0;
+                    *next_quad=0;
+                    *edge_test=0;
+                    *depth_test=0;
+                    *store_quad=0;
                     break;
                 }
                 break;
@@ -2170,7 +2188,7 @@ static void ogpu_raster_control(ogpu_bit clock,
                 }
                 if(end_tile)
                 {
-                    _state=OGPU_RASTER_CONTROL_IDLE;
+                    _state=OGPU_RASTER_CONTROL_DONE;
                     *done=1;
                     *busy=0;
                     *start_raster=0;
@@ -2191,7 +2209,7 @@ static void ogpu_raster_control(ogpu_bit clock,
                 }
                 if(end_tile)
                 {
-                    _state=OGPU_RASTER_CONTROL_IDLE;
+                    _state=OGPU_RASTER_CONTROL_DONE;
                     *done=1;
                     *busy=0;
                     *start_raster=0;
@@ -2215,7 +2233,7 @@ static void ogpu_raster_control(ogpu_bit clock,
             case OGPU_RASTER_CONTROL_STORE_QUAD:
                 if(end_tile)
                 {
-                    _state=OGPU_RASTER_CONTROL_IDLE;
+                    _state=OGPU_RASTER_CONTROL_DONE;
                     *done=1;
                     *busy=0;
                     *start_raster=0;
@@ -2289,57 +2307,74 @@ ogpu_raster_tri(struct setup_context *setup,
 //                                                    v0[0][0],v0[0][1],v0[0][2],v0[0][3],
 //                                                    v1[0][0],v1[0][1],v1[0][2],v1[0][3],
 //                                                    v2[0][0],v2[0][1],v2[0][2],v2[0][3]);
-    ogpu_bit start_raster=0,next_quad=0,quad_ready=0,end_tile=0,setup_done=0;
-    ogpu_bit edge_ready[]={0,0,0},edge_test=0;
-    ogpu_bit edge_mask0[]={0,0,0,0};
-    ogpu_bit edge_mask1[]={0,0,0,0};
-    ogpu_bit edge_mask2[]={0,0,0,0};
-    ogpu_bit clock=0;
-    ogpu_bit draw_quad=0;
-    ogpu_bit discard_quad=0;
-    ogpu_bit quad_mask[]={0,0,0,0};
-    ogpu_bit depth_ready=0;
-    ogpu_bit depth_test=0;
-    ogpu_bit store_quad=0;
-    ogpu_bit quad_stored=0;
-    ogpu_bit done=0;
-    ogpu_bit busy=0;
-    ogpu_command cmd=OGPU_CMD_RASTER;
-    struct ogpu_edge e0,e1,e2;
-    struct ogpu_box box;
-    struct ogpu_quad quad;
-    struct ogpu_tile tile;
-    struct ogpu_depth_coef coef;
-    struct ogpu_depth_quad depth_quad;
+    static ogpu_bit start_raster=0,next_quad=0,quad_ready=0,end_tile=0,setup_done=0;
+    static ogpu_bit edge_ready[]={0,0,0},edge_test=0;
+    static ogpu_bit edge_mask0[]={0,0,0,0};
+    static ogpu_bit edge_mask1[]={0,0,0,0};
+    static ogpu_bit edge_mask2[]={0,0,0,0};
+    static ogpu_bit clock=0;
+    static ogpu_bit draw_quad=0;
+    static ogpu_bit discard_quad=0;
+    static ogpu_bit quad_mask[]={0,0,0,0};
+    static ogpu_bit depth_ready=0;
+    static ogpu_bit depth_test=0;
+    static ogpu_bit store_quad=0;
+    static ogpu_bit quad_stored=0;
+    static ogpu_bit done=0;
+    static ogpu_bit busy=0;
+    static ogpu_command cmd=OGPU_CMD_RASTER;
+    static struct ogpu_edge e0,e1,e2;
+    static struct ogpu_box box;
+    static struct ogpu_quad quad;
+    static struct ogpu_tile tile;
+    static struct ogpu_depth_coef coef;
+    static struct ogpu_depth_quad depth_quad;
     static struct ogpu_quad_buffer quad_buffer;
-#define OGPU_TILE_SIZE 32 //by now, it's limited to TILE_SIZE in sp_tile_cache.h
-    struct ogpu_quad_buffer __qb[OGPU_TILE_SIZE*OGPU_TILE_SIZE];
+#define OGPU_TILE_SIZE 64 //by now, it's limited to TILE_SIZE in sp_tile_cache.h
+    struct ogpu_quad_buffer_cell __qb[OGPU_TILE_SIZE*OGPU_TILE_SIZE];
 
     ogpu_depth_coef(v0,v1,v2,&coef);
-    tile.x0=0; tile.y0=0; tile.x1=tile.x0+30; tile.y1=tile.y0+30;
+    tile.x0=setup->softpipe->cliprect[viewport_index].minx;
+    tile.y0=setup->softpipe->cliprect[viewport_index].miny;
 
-    quad_buffer.b=&__qb[0];
+    box.x0=setup->softpipe->cliprect[viewport_index].minx;
+    box.y0=setup->softpipe->cliprect[viewport_index].miny;
+    box.x1=setup->softpipe->cliprect[viewport_index].maxx;
+    box.y1=setup->softpipe->cliprect[viewport_index].maxy;
+
+    tile.x1=tile.x0+62; tile.y1=tile.y0+62;
+
+    quad_buffer.b=__qb;
     do//TILE LOOP
     {
-//        cmd=OGPU_CMD_NOP;
-//        clock=1;
-//        ogpu_raster_control(clock,cmd,setup_done,end_tile,quad_ready,depth_ready,quad_stored,
-//                                    draw_quad,discard_quad,
-//                                &start_raster,&next_quad,&edge_test,&depth_test,&store_quad,
-//                                    &busy,&done);
+        clock=0;
         quad_buffer.n=0;
         quad_buffer.tile=tile;
+
+        unsigned _next_raster=1;
 
         //if(ogpu_quad_buffer_alloc(&quad_buffer,tile)<0){ printf("Memory allocation failed\n"); return;}
         do//OGPU LOOP -- behavior algorithm implementation
         {
+            if(_next_raster)
+            {
+                if(!done)
+                {
+                    cmd=OGPU_CMD_RASTER;
+                    _next_raster=0;
+                }
+                else
+                {
+                    cmd=OGPU_CMD_PREPARE;
+                }
+            }
             ogpu_raster_control(clock,cmd,setup_done,end_tile,quad_ready,depth_ready,quad_stored,
                                     draw_quad,discard_quad,
                                 &start_raster,&next_quad,&edge_test,&depth_test,&store_quad,
                                     &busy,&done);
 
             ogpu_setup(clock,start_raster,(const float (*)[2])v0,(const float (*)[2])v1,(const float (*)[2])v2,
-                       &box,&e0,&e1,&e2,&setup_done);
+                       &e0,&e1,&e2,&setup_done);
             ogpu_quad_generator(clock,next_quad,box,tile,
                                 &quad_ready,&end_tile,&quad);
 
@@ -2354,7 +2389,7 @@ ogpu_raster_tri(struct setup_context *setup,
             ogpu_quad_store(clock,&quad_mask,quad,start_raster,store_quad,tile,depth_quad,
                             &quad_stored,&quad_buffer);
             clock^=1;
-        }while(!done);
+        }while(!done || _next_raster);
 
     //    printf("e0\tx0:%d y0:%d\tx1:%d y1:%d\n"
     //           "e1\tx0:%d y0:%d\tx1:%d y1:%d\n"
@@ -2371,6 +2406,7 @@ ogpu_raster_tri(struct setup_context *setup,
         m=quad_buffer.n;
         c=0;
         s=OGPU_SOFT_QUAD_SIZE;
+
         do//MEMORY LOOP -- QUAD BUFFER READING AND SOFTPIPE NEXT STAGE INTERFACING
         {
             if(m<s) s=m;
@@ -2378,6 +2414,7 @@ ogpu_raster_tri(struct setup_context *setup,
             {
                 setup->quad[q].input.x0=quad_buffer.b[c].x;
                 setup->quad[q].input.y0=quad_buffer.b[c].y;
+
                 setup->quad[q].input.layer=layer;
                 setup->quad[q].input.viewport_index=viewport_index;
                 setup->quad[q].input.coverage[0]=0;
@@ -2403,16 +2440,18 @@ ogpu_raster_tri(struct setup_context *setup,
             if(s) pipe->run( pipe, setup->quad_ptrs, s );
             m-=s;
         }while(m);
-    tile.y0+=32;
-    tile.y1=tile.y0+30;
-    if(tile.y0>640)
+    tile.x0+=64;
+    tile.x1=tile.x0+62;
+    if(tile.x0>=setup->softpipe->cliprect[viewport_index].maxx)
     {
-        tile.x0+=32;
-        tile.x1=tile.x0+30;
+        tile.x0=0;
+        tile.x1=tile.x0+62;
+        tile.y0+=64;
+        tile.y1=tile.y0+62;
     }
-    }while(tile.x0<640);
+    }while(tile.y0<setup->softpipe->cliprect[viewport_index].maxy);
 
     //ogpu_quad_buffer_free(&quad_buffer);
-    //sp_setup_tri(setup,v0,v1,v2);
+   //sp_setup_tri(setup,v0,v1,v2);
 }
 //--OPENGPU
