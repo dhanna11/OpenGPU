@@ -1,0 +1,42 @@
+entity work.ogpu_raster_control(raster_control_1) port map(clock=>clock,reset=>reset,
+									-- IN
+									command=>command,
+									setup_done=>setup_done,
+									end_tile=>end_tile,
+									quad_ready=>quad_ready,
+									depth_ready=>depth_ready,
+									quad_stored=>quad_stored,
+									draw_quad=>draw_quad,
+									discard_quad=>discard_quad,
+									-- OUT
+									start_raster=>start_raster,
+									next_quad=>next_quad,
+									edge_test=>edge_test,
+									depth_test=>depth_test,
+									store_quad=>store_quad,
+									busy=>busy,
+									done=>done);
+									
+entity ogpu_raster_control is
+	port(clock: in std_logic;
+		  reset: in std_logic;
+		  setup_done: in std_logic;
+		  end_tile: in std_logic;
+		  quad_ready: in std_logic;
+		  depth_ready: in std_logic;
+		  quad_stored: in std_logic;
+		  draw_quad: in std_logic;
+		  discard_quad: in std_logic;
+		  start_raster: out std_logic;
+		  next_quad: out std_logic;
+		  edge_test: out std_logic;
+		  depth_test: out std_logic;
+		  store_quad: out std_logic;
+		  busy: out std_logic;
+		  done: out std_logic);
+end ogpu_raster_control;
+
+architecture raster_control_1 of ogpu_raster_control is
+begin
+
+end raster_control_1;

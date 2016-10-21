@@ -2021,7 +2021,7 @@ static void ogpu_quad_buffer_free(struct ogpu_quad_buffer *quad_buffer)
 
 static inline float ogpu_float_fix(int32_t x)
 {
-    return (float)(x);
+    return ((float)x)/((long)(1<<31)-2);
 }
 
 static void ogpu_quad_store(ogpu_bit clock,
@@ -2331,7 +2331,7 @@ ogpu_raster_tri(struct setup_context *setup,
     static struct ogpu_depth_quad depth_quad;
     static struct ogpu_quad_buffer quad_buffer;
 #define OGPU_TILE_SIZE 64 //by now, it's limited to TILE_SIZE in sp_tile_cache.h
-    struct ogpu_quad_buffer_cell __qb[OGPU_TILE_SIZE*OGPU_TILE_SIZE];
+    struct ogpu_quad_buffer_cell __qb[OGPU_TILE_SIZE/2*OGPU_TILE_SIZE/2];
 
     ogpu_depth_coef(v0,v1,v2,&coef);
     tile.x0=setup->softpipe->cliprect[viewport_index].minx;
@@ -2423,11 +2423,13 @@ ogpu_raster_tri(struct setup_context *setup,
                 setup->quad[q].input.coverage[3]=0;
                 setup->quad[q].input.facing=setup->facing;
                 setup->quad[q].inout.mask=quad_buffer.b[c].mask;
-                //printf(">>Quad %d: mask %d\n",c,setup->quad[q].inout.mask);
                 setup->quad[q].output.depth[0]=0;//quad_buffer.b[c].depth[0];
                 setup->quad[q].output.depth[1]=0;//quad_buffer.b[c].depth[1];
                 setup->quad[q].output.depth[2]=0;//quad_buffer.b[c].depth[2];
                 setup->quad[q].output.depth[3]=0;//quad_buffer.b[c].depth[3];
+//                printf("D%d\t%f\t%f\n\t%f\t%f\n\n",c,quad_buffer.b[c].depth[0],
+//                       quad_buffer.b[c].depth[1],quad_buffer.b[c].depth[2],
+//                       quad_buffer.b[c].depth[3]);
                 setup->quad[q].output.stencil[0]=0;//quad_buffer.b[c].stencil[0];
                 setup->quad[q].output.stencil[1]=0;//quad_buffer.b[c].stencil[0];
                 setup->quad[q].output.stencil[2]=0;//quad_buffer.b[c].stencil[0];

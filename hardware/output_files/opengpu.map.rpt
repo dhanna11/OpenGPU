@@ -1,0 +1,238 @@
+Analysis & Elaboration report for opengpu
+Fri Oct 21 19:09:10 2016
+Quartus Prime Version 16.0.2 Build 222 07/20/2016 SJ Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Elaboration Summary
+  3. Parallel Compilation
+  4. Analysis & Elaboration Settings
+  5. Analysis & Elaboration Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2016 Altera Corporation. All rights reserved.
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, the Altera Quartus Prime License Agreement,
+the Altera MegaCore Function License Agreement, or other 
+applicable license agreement, including, without limitation, 
+that your use is for the sole purpose of programming logic 
+devices manufactured by Altera and sold by Altera or its 
+authorized distributors.  Please refer to the applicable 
+agreement for further details.
+
+
+
++-----------------------------------------------------------------------------+
+; Analysis & Elaboration Summary                                              ;
++-------------------------------+---------------------------------------------+
+; Analysis & Elaboration Status ; Successful - Fri Oct 21 19:09:10 2016       ;
+; Quartus Prime Version         ; 16.0.2 Build 222 07/20/2016 SJ Lite Edition ;
+; Revision Name                 ; opengpu                                     ;
+; Top-level Entity Name         ; DE1_SOC_golden_top                          ;
+; Family                        ; Cyclone V                                   ;
+; Logic utilization (in ALMs)   ; N/A until Partition Merge                   ;
+; Total registers               ; N/A until Partition Merge                   ;
+; Total pins                    ; N/A until Partition Merge                   ;
+; Total virtual pins            ; N/A until Partition Merge                   ;
+; Total block memory bits       ; N/A until Partition Merge                   ;
+; Total PLLs                    ; N/A until Partition Merge                   ;
+; Total DLLs                    ; N/A until Partition Merge                   ;
++-------------------------------+---------------------------------------------+
+
+
+Parallel compilation was disabled, but you have multiple processors available. Enable parallel compilation to reduce compilation time.
++-------------------------------------+
+; Parallel Compilation                ;
++----------------------------+--------+
+; Processors                 ; Number ;
++----------------------------+--------+
+; Number detected on machine ; 4      ;
+; Maximum allowed            ; 1      ;
++----------------------------+--------+
+
+
++---------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Elaboration Settings                                                                                           ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                                          ; Setting            ; Default Value      ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                                          ; 5CSEMA5F31C6       ;                    ;
+; Top-level entity name                                                           ; DE1_SOC_golden_top ; opengpu            ;
+; Family name                                                                     ; Cyclone V          ; Cyclone V          ;
+; Use smart compilation                                                           ; Off                ; Off                ;
+; Enable parallel Assembler and TimeQuest Timing Analyzer during compilation      ; On                 ; On                 ;
+; Enable compact report table                                                     ; Off                ; Off                ;
+; Restructure Multiplexers                                                        ; Auto               ; Auto               ;
+; MLAB Add Timing Constraints For Mixed-Port Feed-Through Mode Setting Don't Care ; Off                ; Off                ;
+; Create Debugging Nodes for IP Cores                                             ; Off                ; Off                ;
+; Preserve fewer node names                                                       ; On                 ; On                 ;
+; Disable OpenCore Plus hardware evaluation                                       ; Off                ; Off                ;
+; Verilog Version                                                                 ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                                    ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                                        ; Auto               ; Auto               ;
+; Safe State Machine                                                              ; Off                ; Off                ;
+; Extract Verilog State Machines                                                  ; On                 ; On                 ;
+; Extract VHDL State Machines                                                     ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                               ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                                      ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                                  ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                                         ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                                       ; On                 ; On                 ;
+; Parallel Synthesis                                                              ; On                 ; On                 ;
+; DSP Block Balancing                                                             ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                                              ; On                 ; On                 ;
+; Power-Up Don't Care                                                             ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                                    ; Off                ; Off                ;
+; Remove Duplicate Registers                                                      ; On                 ; On                 ;
+; Ignore CARRY Buffers                                                            ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                                          ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                                           ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                                       ; Off                ; Off                ;
+; Ignore LCELL Buffers                                                            ; Off                ; Off                ;
+; Ignore SOFT Buffers                                                             ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                                  ; Off                ; Off                ;
+; Optimization Technique                                                          ; Balanced           ; Balanced           ;
+; Carry Chain Length                                                              ; 70                 ; 70                 ;
+; Auto Carry Chains                                                               ; On                 ; On                 ;
+; Auto Open-Drain Pins                                                            ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                                           ; Off                ; Off                ;
+; Auto ROM Replacement                                                            ; On                 ; On                 ;
+; Auto RAM Replacement                                                            ; On                 ; On                 ;
+; Auto DSP Block Replacement                                                      ; On                 ; On                 ;
+; Auto Shift Register Replacement                                                 ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                                 ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                                   ; On                 ; On                 ;
+; Strict RAM Replacement                                                          ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                               ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                                          ; Off                ; Off                ;
+; Auto Resource Sharing                                                           ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                                              ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                                              ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                                   ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing                             ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                               ; Off                ; Off                ;
+; Timing-Driven Synthesis                                                         ; On                 ; On                 ;
+; Report Parameter Settings                                                       ; On                 ; On                 ;
+; Report Source Assignments                                                       ; On                 ; On                 ;
+; Report Connectivity Checks                                                      ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                                              ; Off                ; Off                ;
+; Synchronization Register Chain Length                                           ; 3                  ; 3                  ;
+; PowerPlay Power Optimization During Synthesis                                   ; Normal compilation ; Normal compilation ;
+; HDL message level                                                               ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                                 ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report                        ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report                              ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report                       ; 100                ; 100                ;
+; Clock MUX Protection                                                            ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                                     ; Off                ; Off                ;
+; Block Design Naming                                                             ; Auto               ; Auto               ;
+; SDC constraint protection                                                       ; Off                ; Off                ;
+; Synthesis Effort                                                                ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal                    ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                                            ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                                              ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                                     ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                                          ; On                 ; On                 ;
+; Synthesis Seed                                                                  ; 1                  ; 1                  ;
+; Automatic Parallel Synthesis                                                    ; On                 ; On                 ;
+; Partial Reconfiguration Bitstream ID                                            ; Off                ; Off                ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+
+
++---------------------------------+
+; Analysis & Elaboration Messages ;
++---------------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Analysis & Elaboration
+    Info: Version 16.0.2 Build 222 07/20/2016 SJ Lite Edition
+    Info: Processing started: Fri Oct 21 19:08:58 2016
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off opengpu -c opengpu --analysis_and_elaboration
+Warning (20028): Parallel compilation is not licensed and has been disabled
+Info (12021): Found 1 design units, including 0 entities, in source file ogpu_data_record_pkg.vhd
+    Info (12022): Found design unit 1: ogpu_data_record_pkg File: /home/fabricio/OpenGPU/hardware/ogpu_data_record_pkg.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file ogpu_structural.vhd
+    Info (12022): Found design unit 1: ogpu_raster_unit-structure_1 File: /home/fabricio/OpenGPU/hardware/ogpu_structural.vhd Line: 21
+    Info (12023): Found entity 1: ogpu_raster_unit File: /home/fabricio/OpenGPU/hardware/ogpu_structural.vhd Line: 8
+Info (12021): Found 2 design units, including 1 entities, in source file ogpu_testbench.vhd
+    Info (12022): Found design unit 1: ogpu_testbench-ogpu_raster_unit_tb1 File: /home/fabricio/OpenGPU/hardware/ogpu_testbench.vhd Line: 6
+    Info (12023): Found entity 1: ogpu_testbench File: /home/fabricio/OpenGPU/hardware/ogpu_testbench.vhd Line: 3
+Info (12021): Found 2 design units, including 1 entities, in source file ogpu_raster_control.vhd
+    Info (12022): Found design unit 1: ogpu_raster_control-raster_control_1 File: /home/fabricio/OpenGPU/hardware/ogpu_raster_control.vhd Line: 26
+    Info (12023): Found entity 1: ogpu_raster_control File: /home/fabricio/OpenGPU/hardware/ogpu_raster_control.vhd Line: 6
+Info (12021): Found 2 design units, including 1 entities, in source file ogpu_quad_buffer.vhd
+    Info (12022): Found design unit 1: ogpu_quad_buffer-test File: /home/fabricio/OpenGPU/hardware/ogpu_quad_buffer.vhd Line: 13
+    Info (12023): Found entity 1: ogpu_quad_buffer File: /home/fabricio/OpenGPU/hardware/ogpu_quad_buffer.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file ogpu_setup.vhd
+    Info (12022): Found design unit 1: ogpu_setup-setup_1 File: /home/fabricio/OpenGPU/hardware/ogpu_setup.vhd Line: 21
+    Info (12023): Found entity 1: ogpu_setup File: /home/fabricio/OpenGPU/hardware/ogpu_setup.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file ogpu_quad_generator.vhd
+    Info (12022): Found design unit 1: ogpu_quad_generator-generator_1 File: /home/fabricio/OpenGPU/hardware/ogpu_quad_generator.vhd Line: 16
+    Info (12023): Found entity 1: ogpu_quad_generator File: /home/fabricio/OpenGPU/hardware/ogpu_quad_generator.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file ogpu_edge_test.vhd
+    Info (12022): Found design unit 1: ogpu_quad_edge_test-edge_test_1 File: /home/fabricio/OpenGPU/hardware/ogpu_edge_test.vhd Line: 15
+    Info (12023): Found entity 1: ogpu_quad_edge_test File: /home/fabricio/OpenGPU/hardware/ogpu_edge_test.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file ogpu_triangle_edge_test.vhd
+    Info (12022): Found design unit 1: ogpu_triangle_edge_test-triangle_test_1 File: /home/fabricio/OpenGPU/hardware/ogpu_triangle_edge_test.vhd Line: 17
+    Info (12023): Found entity 1: ogpu_triangle_edge_test File: /home/fabricio/OpenGPU/hardware/ogpu_triangle_edge_test.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file ogpu_depth_test.vhd
+    Info (12022): Found design unit 1: ogpu_depth_test-depth_test_1 File: /home/fabricio/OpenGPU/hardware/ogpu_depth_test.vhd Line: 15
+    Info (12023): Found entity 1: ogpu_depth_test File: /home/fabricio/OpenGPU/hardware/ogpu_depth_test.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file ogpu_quad_store.vhd
+    Info (12022): Found design unit 1: ogpu_quad_store-quad_store_1 File: /home/fabricio/OpenGPU/hardware/ogpu_quad_store.vhd Line: 18
+    Info (12023): Found entity 1: ogpu_quad_store File: /home/fabricio/OpenGPU/hardware/ogpu_quad_store.vhd Line: 5
+Warning (12125): Using design file DE1_SOC_golden_top.v, which is not specified as a design file for the current project, but contains definitions for 1 design units and 1 entities in project
+    Info (12023): Found entity 1: DE1_SOC_golden_top File: /home/fabricio/OpenGPU/hardware/DE1_SOC_golden_top.v Line: 54
+Info (12127): Elaborating entity "DE1_SOC_golden_top" for the top level hierarchy
+Warning (10034): Output port "DRAM_ADDR" at DE1_SOC_golden_top.v(100) has no driver File: /home/fabricio/OpenGPU/hardware/DE1_SOC_golden_top.v Line: 100
+Warning (10034): Output port "DRAM_BA" at DE1_SOC_golden_top.v(101) has no driver File: /home/fabricio/OpenGPU/hardware/DE1_SOC_golden_top.v Line: 101
+Warning (10034): Output port "HEX0" at DE1_SOC_golden_top.v(133) has no driver File: /home/fabricio/OpenGPU/hardware/DE1_SOC_golden_top.v Line: 133
+Warning (10034): Output port "HEX1" at DE1_SOC_golden_top.v(134) has no driver File: /home/fabricio/OpenGPU/hardware/DE1_SOC_golden_top.v Line: 134
+Warning (10034): Output port "HEX2" at DE1_SOC_golden_top.v(135) has no driver File: /home/fabricio/OpenGPU/hardware/DE1_SOC_golden_top.v Line: 135
+Warning (10034): Output port "HEX3" at DE1_SOC_golden_top.v(136) has no driver File: /home/fabricio/OpenGPU/hardware/DE1_SOC_golden_top.v Line: 136
+Warning (10034): Output port "HEX4" at DE1_SOC_golden_top.v(137) has no driver File: /home/fabricio/OpenGPU/hardware/DE1_SOC_golden_top.v Line: 137
+Warning (10034): Output port "HEX5" at DE1_SOC_golden_top.v(138) has no driver File: /home/fabricio/OpenGPU/hardware/DE1_SOC_golden_top.v Line: 138
+Warning (10034): Output port "LEDR" at DE1_SOC_golden_top.v(210) has no driver File: /home/fabricio/OpenGPU/hardware/DE1_SOC_golden_top.v Line: 210
+Warning (10034): Output port "VGA_B" at DE1_SOC_golden_top.v(237) has no driver File: /home/fabricio/OpenGPU/hardware/DE1_SOC_golden_top.v Line: 237
+Warning (10034): Output port "VGA_G" at DE1_SOC_golden_top.v(240) has no driver File: /home/fabricio/OpenGPU/hardware/DE1_SOC_golden_top.v Line: 240
+Warning (10034): Output port "VGA_R" at DE1_SOC_golden_top.v(242) has no driver File: /home/fabricio/OpenGPU/hardware/DE1_SOC_golden_top.v Line: 242
+Warning (10034): Output port "ADC_CONVST" at DE1_SOC_golden_top.v(59) has no driver File: /home/fabricio/OpenGPU/hardware/DE1_SOC_golden_top.v Line: 59
+Warning (10034): Output port "ADC_DIN" at DE1_SOC_golden_top.v(60) has no driver File: /home/fabricio/OpenGPU/hardware/DE1_SOC_golden_top.v Line: 60
+Warning (10034): Output port "ADC_SCLK" at DE1_SOC_golden_top.v(62) has no driver File: /home/fabricio/OpenGPU/hardware/DE1_SOC_golden_top.v Line: 62
+Warning (10034): Output port "AUD_DACDAT" at DE1_SOC_golden_top.v(72) has no driver File: /home/fabricio/OpenGPU/hardware/DE1_SOC_golden_top.v Line: 72
+Warning (10034): Output port "AUD_XCK" at DE1_SOC_golden_top.v(74) has no driver File: /home/fabricio/OpenGPU/hardware/DE1_SOC_golden_top.v Line: 74
+Warning (10034): Output port "DRAM_CAS_N" at DE1_SOC_golden_top.v(102) has no driver File: /home/fabricio/OpenGPU/hardware/DE1_SOC_golden_top.v Line: 102
+Warning (10034): Output port "DRAM_CKE" at DE1_SOC_golden_top.v(103) has no driver File: /home/fabricio/OpenGPU/hardware/DE1_SOC_golden_top.v Line: 103
+Warning (10034): Output port "DRAM_CLK" at DE1_SOC_golden_top.v(104) has no driver File: /home/fabricio/OpenGPU/hardware/DE1_SOC_golden_top.v Line: 104
+Warning (10034): Output port "DRAM_CS_N" at DE1_SOC_golden_top.v(105) has no driver File: /home/fabricio/OpenGPU/hardware/DE1_SOC_golden_top.v Line: 105
+Warning (10034): Output port "DRAM_LDQM" at DE1_SOC_golden_top.v(107) has no driver File: /home/fabricio/OpenGPU/hardware/DE1_SOC_golden_top.v Line: 107
+Warning (10034): Output port "DRAM_RAS_N" at DE1_SOC_golden_top.v(108) has no driver File: /home/fabricio/OpenGPU/hardware/DE1_SOC_golden_top.v Line: 108
+Warning (10034): Output port "DRAM_UDQM" at DE1_SOC_golden_top.v(109) has no driver File: /home/fabricio/OpenGPU/hardware/DE1_SOC_golden_top.v Line: 109
+Warning (10034): Output port "DRAM_WE_N" at DE1_SOC_golden_top.v(110) has no driver File: /home/fabricio/OpenGPU/hardware/DE1_SOC_golden_top.v Line: 110
+Warning (10034): Output port "FAN_CTRL" at DE1_SOC_golden_top.v(115) has no driver File: /home/fabricio/OpenGPU/hardware/DE1_SOC_golden_top.v Line: 115
+Warning (10034): Output port "FPGA_I2C_SCLK" at DE1_SOC_golden_top.v(120) has no driver File: /home/fabricio/OpenGPU/hardware/DE1_SOC_golden_top.v Line: 120
+Warning (10034): Output port "IRDA_TXD" at DE1_SOC_golden_top.v(200) has no driver File: /home/fabricio/OpenGPU/hardware/DE1_SOC_golden_top.v Line: 200
+Warning (10034): Output port "TD_RESET_N" at DE1_SOC_golden_top.v(231) has no driver File: /home/fabricio/OpenGPU/hardware/DE1_SOC_golden_top.v Line: 231
+Warning (10034): Output port "VGA_BLANK_N" at DE1_SOC_golden_top.v(238) has no driver File: /home/fabricio/OpenGPU/hardware/DE1_SOC_golden_top.v Line: 238
+Warning (10034): Output port "VGA_CLK" at DE1_SOC_golden_top.v(239) has no driver File: /home/fabricio/OpenGPU/hardware/DE1_SOC_golden_top.v Line: 239
+Warning (10034): Output port "VGA_HS" at DE1_SOC_golden_top.v(241) has no driver File: /home/fabricio/OpenGPU/hardware/DE1_SOC_golden_top.v Line: 241
+Warning (10034): Output port "VGA_SYNC_N" at DE1_SOC_golden_top.v(243) has no driver File: /home/fabricio/OpenGPU/hardware/DE1_SOC_golden_top.v Line: 243
+Warning (10034): Output port "VGA_VS" at DE1_SOC_golden_top.v(246) has no driver File: /home/fabricio/OpenGPU/hardware/DE1_SOC_golden_top.v Line: 246
+Info: Quartus Prime Analysis & Elaboration was successful. 0 errors, 36 warnings
+    Info: Peak virtual memory: 1609 megabytes
+    Info: Processing ended: Fri Oct 21 19:09:10 2016
+    Info: Elapsed time: 00:00:12
+    Info: Total CPU time (on all processors): 00:00:25
+
+

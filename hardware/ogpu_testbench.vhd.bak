@@ -1,0 +1,8 @@
+-- OpenGPU Testbench --
+
+entity ogpu_testbench is
+end ogpu_testbench;
+
+architecture ogpu_arch_tb1 of ogpu_testbench is
+begin
+end;

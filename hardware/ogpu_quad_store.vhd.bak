@@ -1,0 +1,31 @@
+library ieee;
+use ieee.std_logic_1164.all;
+use work.ogpu_data_record_pkg.all;
+
+entity ogpu_quad_store is
+	port(clock: in std_logic;
+		  reset: in std_logic;
+		  quad_mask: in std_logic_vector(0 to 3);
+		  quad: in ogpu_quad;
+		  depth_quad: in ogpu_depth_quad;
+		  start_raster: in std_logic;
+		  store_quad: in std_logic;
+		  store_quad_data: out std_logic;
+		  quad_stored: out std_logic;
+		  quad_data: out ogpu_quad_data);
+end ogpu_quad_store;
+
+architecture quad_store_1 of ogpu_quad_store is
+begin
+end quad_store_1;
+ogpu_quad_store(quad_store_1) port map(
+									-- IN
+									clock=>clock,reset=>reset,
+									quad_mask=>quad_mask,quad=>quad,tile=>tile,
+									depth_quad=>depth_quad,
+									start_raster=>start_raster,
+									store_quad=>store_quad,
+									-- OUT
+									store_quad_data=>store_quad_data,
+									quad_data=>quad_data,
+									quad_stored=>quad_stored);

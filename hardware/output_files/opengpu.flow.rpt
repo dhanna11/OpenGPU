@@ -1,0 +1,116 @@
+Flow report for opengpu
+Fri Oct 21 19:09:10 2016
+Quartus Prime Version 16.0.2 Build 222 07/20/2016 SJ Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Flow Summary
+  3. Flow Settings
+  4. Flow Non-Default Global Settings
+  5. Flow Elapsed Time
+  6. Flow OS Summary
+  7. Flow Log
+  8. Flow Messages
+  9. Flow Suppressed Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2016 Altera Corporation. All rights reserved.
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, the Altera Quartus Prime License Agreement,
+the Altera MegaCore Function License Agreement, or other 
+applicable license agreement, including, without limitation, 
+that your use is for the sole purpose of programming logic 
+devices manufactured by Altera and sold by Altera or its 
+authorized distributors.  Please refer to the applicable 
+agreement for further details.
+
+
+
++---------------------------------------------------------------------------+
+; Flow Summary                                                              ;
++-----------------------------+---------------------------------------------+
+; Flow Status                 ; Successful - Fri Oct 21 19:09:10 2016       ;
+; Quartus Prime Version       ; 16.0.2 Build 222 07/20/2016 SJ Lite Edition ;
+; Revision Name               ; opengpu                                     ;
+; Top-level Entity Name       ; DE1_SOC_golden_top                          ;
+; Family                      ; Cyclone V                                   ;
+; Device                      ; 5CSEMA5F31C6                                ;
+; Timing Models               ; Final                                       ;
+; Logic utilization (in ALMs) ; N/A until Partition Merge                   ;
+; Total registers             ; N/A until Partition Merge                   ;
+; Total pins                  ; N/A until Partition Merge                   ;
+; Total virtual pins          ; N/A until Partition Merge                   ;
+; Total block memory bits     ; N/A until Partition Merge                   ;
+; Total PLLs                  ; N/A until Partition Merge                   ;
+; Total DLLs                  ; N/A until Partition Merge                   ;
++-----------------------------+---------------------------------------------+
+
+
++-----------------------------------------+
+; Flow Settings                           ;
++-------------------+---------------------+
+; Option            ; Setting             ;
++-------------------+---------------------+
+; Start date & time ; 10/21/2016 19:08:59 ;
+; Main task         ; Compilation         ;
+; Revision Name     ; opengpu             ;
++-------------------+---------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------+
+; Flow Non-Default Global Settings                                                                                           ;
++-------------------------------------+--------------------------------+---------------+--------------------+----------------+
+; Assignment Name                     ; Value                          ; Default Value ; Entity Name        ; Section Id     ;
++-------------------------------------+--------------------------------+---------------+--------------------+----------------+
+; COMPILER_SIGNATURE_ID               ; 92378948106942.147708413927232 ; --            ; --                 ; --             ;
+; EDA_OUTPUT_DATA_FORMAT              ; Vhdl                           ; --            ; --                 ; eda_simulation ;
+; EDA_SIMULATION_TOOL                 ; ModelSim-Altera (VHDL)         ; <None>        ; --                 ; --             ;
+; EDA_TIME_SCALE                      ; 1 ps                           ; --            ; --                 ; eda_simulation ;
+; MAX_CORE_JUNCTION_TEMP              ; 85                             ; --            ; --                 ; --             ;
+; MIN_CORE_JUNCTION_TEMP              ; 0                              ; --            ; --                 ; --             ;
+; PARTITION_COLOR                     ; 16764057                       ; --            ; DE1_SOC_golden_top ; Top            ;
+; PARTITION_FITTER_PRESERVATION_LEVEL ; PLACEMENT_AND_ROUTING          ; --            ; DE1_SOC_golden_top ; Top            ;
+; PARTITION_NETLIST_TYPE              ; SOURCE                         ; --            ; DE1_SOC_golden_top ; Top            ;
+; PROJECT_OUTPUT_DIRECTORY            ; output_files                   ; --            ; --                 ; --             ;
+; TOP_LEVEL_ENTITY                    ; DE1_SOC_golden_top             ; opengpu       ; --                 ; --             ;
++-------------------------------------+--------------------------------+---------------+--------------------+----------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------+
+; Flow Elapsed Time                                                                                                          ;
++------------------------+--------------+-------------------------+---------------------+------------------------------------+
+; Module Name            ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
++------------------------+--------------+-------------------------+---------------------+------------------------------------+
+; Analysis & Elaboration ; 00:00:12     ; 1.0                     ; 1609 MB             ; 00:00:25                           ;
+; Total                  ; 00:00:12     ; --                      ; --                  ; 00:00:25                           ;
++------------------------+--------------+-------------------------+---------------------+------------------------------------+
+
+
++--------------------------------------------------------------------------------------------------+
+; Flow OS Summary                                                                                  ;
++------------------------+------------------+------------------+------------------+----------------+
+; Module Name            ; Machine Hostname ; OS Name          ; OS Version       ; Processor type ;
++------------------------+------------------+------------------+------------------+----------------+
+; Analysis & Elaboration ; fapc             ; Debian GNU/Linux ; Debian GNU/Linux ; x86_64         ;
++------------------------+------------------+------------------+------------------+----------------+
+
+
+------------
+; Flow Log ;
+------------
+quartus_map --read_settings_files=on --write_settings_files=off opengpu -c opengpu --analysis_and_elaboration
+
+
+
