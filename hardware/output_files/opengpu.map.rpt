@@ -1,5 +1,5 @@
-Analysis & Elaboration report for opengpu
-Fri Oct 21 19:09:10 2016
+Analysis & Synthesis report for opengpu
+Mon Oct 31 14:07:18 2016
 Quartus Prime Version 16.0.2 Build 222 07/20/2016 SJ Lite Edition
 
 
@@ -7,10 +7,19 @@ Quartus Prime Version 16.0.2 Build 222 07/20/2016 SJ Lite Edition
 ; Table of Contents ;
 ---------------------
   1. Legal Notice
-  2. Analysis & Elaboration Summary
-  3. Parallel Compilation
-  4. Analysis & Elaboration Settings
-  5. Analysis & Elaboration Messages
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. Registers Removed During Synthesis
+  9. Removed Registers Triggering Further Register Optimizations
+ 10. General Register Statistics
+ 11. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 12. Post-Synthesis Netlist Statistics for Top Partition
+ 13. Elapsed Time Per Partition
+ 14. Analysis & Synthesis Messages
 
 
 
@@ -34,22 +43,115 @@ agreement for further details.
 
 
 
-+-----------------------------------------------------------------------------+
-; Analysis & Elaboration Summary                                              ;
-+-------------------------------+---------------------------------------------+
-; Analysis & Elaboration Status ; Successful - Fri Oct 21 19:09:10 2016       ;
-; Quartus Prime Version         ; 16.0.2 Build 222 07/20/2016 SJ Lite Edition ;
-; Revision Name                 ; opengpu                                     ;
-; Top-level Entity Name         ; DE1_SOC_golden_top                          ;
-; Family                        ; Cyclone V                                   ;
-; Logic utilization (in ALMs)   ; N/A until Partition Merge                   ;
-; Total registers               ; N/A until Partition Merge                   ;
-; Total pins                    ; N/A until Partition Merge                   ;
-; Total virtual pins            ; N/A until Partition Merge                   ;
-; Total block memory bits       ; N/A until Partition Merge                   ;
-; Total PLLs                    ; N/A until Partition Merge                   ;
-; Total DLLs                    ; N/A until Partition Merge                   ;
-+-------------------------------+---------------------------------------------+
++-------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                  ;
++---------------------------------+---------------------------------------------+
+; Analysis & Synthesis Status     ; Successful - Mon Oct 31 14:07:18 2016       ;
+; Quartus Prime Version           ; 16.0.2 Build 222 07/20/2016 SJ Lite Edition ;
+; Revision Name                   ; opengpu                                     ;
+; Top-level Entity Name           ; ogpu_quad_generator                         ;
+; Family                          ; Cyclone V                                   ;
+; Logic utilization (in ALMs)     ; N/A                                         ;
+; Total registers                 ; 127                                         ;
+; Total pins                      ; 261                                         ;
+; Total virtual pins              ; 0                                           ;
+; Total block memory bits         ; 0                                           ;
+; Total DSP Blocks                ; 0                                           ;
+; Total HSSI RX PCSs              ; 0                                           ;
+; Total HSSI PMA RX Deserializers ; 0                                           ;
+; Total HSSI TX PCSs              ; 0                                           ;
+; Total HSSI PMA TX Serializers   ; 0                                           ;
+; Total PLLs                      ; 0                                           ;
+; Total DLLs                      ; 0                                           ;
++---------------------------------+---------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                              ;
++---------------------------------------------------------------------------------+---------------------+--------------------+
+; Option                                                                          ; Setting             ; Default Value      ;
++---------------------------------------------------------------------------------+---------------------+--------------------+
+; Device                                                                          ; 5CSEMA5F31C6        ;                    ;
+; Top-level entity name                                                           ; ogpu_quad_generator ; opengpu            ;
+; Family name                                                                     ; Cyclone V           ; Cyclone V          ;
+; Use smart compilation                                                           ; Off                 ; Off                ;
+; Enable parallel Assembler and TimeQuest Timing Analyzer during compilation      ; On                  ; On                 ;
+; Enable compact report table                                                     ; Off                 ; Off                ;
+; Restructure Multiplexers                                                        ; Auto                ; Auto               ;
+; MLAB Add Timing Constraints For Mixed-Port Feed-Through Mode Setting Don't Care ; Off                 ; Off                ;
+; Create Debugging Nodes for IP Cores                                             ; Off                 ; Off                ;
+; Preserve fewer node names                                                       ; On                  ; On                 ;
+; Disable OpenCore Plus hardware evaluation                                       ; Off                 ; Off                ;
+; Verilog Version                                                                 ; Verilog_2001        ; Verilog_2001       ;
+; VHDL Version                                                                    ; VHDL_1993           ; VHDL_1993          ;
+; State Machine Processing                                                        ; Auto                ; Auto               ;
+; Safe State Machine                                                              ; Off                 ; Off                ;
+; Extract Verilog State Machines                                                  ; On                  ; On                 ;
+; Extract VHDL State Machines                                                     ; On                  ; On                 ;
+; Ignore Verilog initial constructs                                               ; Off                 ; Off                ;
+; Iteration limit for constant Verilog loops                                      ; 5000                ; 5000               ;
+; Iteration limit for non-constant Verilog loops                                  ; 250                 ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                                         ; On                  ; On                 ;
+; Infer RAMs from Raw Logic                                                       ; On                  ; On                 ;
+; Parallel Synthesis                                                              ; On                  ; On                 ;
+; DSP Block Balancing                                                             ; Auto                ; Auto               ;
+; NOT Gate Push-Back                                                              ; On                  ; On                 ;
+; Power-Up Don't Care                                                             ; On                  ; On                 ;
+; Remove Redundant Logic Cells                                                    ; Off                 ; Off                ;
+; Remove Duplicate Registers                                                      ; On                  ; On                 ;
+; Ignore CARRY Buffers                                                            ; Off                 ; Off                ;
+; Ignore CASCADE Buffers                                                          ; Off                 ; Off                ;
+; Ignore GLOBAL Buffers                                                           ; Off                 ; Off                ;
+; Ignore ROW GLOBAL Buffers                                                       ; Off                 ; Off                ;
+; Ignore LCELL Buffers                                                            ; Off                 ; Off                ;
+; Ignore SOFT Buffers                                                             ; On                  ; On                 ;
+; Limit AHDL Integers to 32 Bits                                                  ; Off                 ; Off                ;
+; Optimization Technique                                                          ; Balanced            ; Balanced           ;
+; Carry Chain Length                                                              ; 70                  ; 70                 ;
+; Auto Carry Chains                                                               ; On                  ; On                 ;
+; Auto Open-Drain Pins                                                            ; On                  ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                                           ; Off                 ; Off                ;
+; Auto ROM Replacement                                                            ; On                  ; On                 ;
+; Auto RAM Replacement                                                            ; On                  ; On                 ;
+; Auto DSP Block Replacement                                                      ; On                  ; On                 ;
+; Auto Shift Register Replacement                                                 ; Auto                ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                                 ; Auto                ; Auto               ;
+; Auto Clock Enable Replacement                                                   ; On                  ; On                 ;
+; Strict RAM Replacement                                                          ; Off                 ; Off                ;
+; Allow Synchronous Control Signals                                               ; On                  ; On                 ;
+; Force Use of Synchronous Clear Signals                                          ; Off                 ; Off                ;
+; Auto Resource Sharing                                                           ; Off                 ; Off                ;
+; Allow Any RAM Size For Recognition                                              ; Off                 ; Off                ;
+; Allow Any ROM Size For Recognition                                              ; Off                 ; Off                ;
+; Allow Any Shift Register Size For Recognition                                   ; Off                 ; Off                ;
+; Use LogicLock Constraints during Resource Balancing                             ; On                  ; On                 ;
+; Ignore translate_off and synthesis_off directives                               ; Off                 ; Off                ;
+; Timing-Driven Synthesis                                                         ; On                  ; On                 ;
+; Report Parameter Settings                                                       ; On                  ; On                 ;
+; Report Source Assignments                                                       ; On                  ; On                 ;
+; Report Connectivity Checks                                                      ; On                  ; On                 ;
+; Ignore Maximum Fan-Out Assignments                                              ; Off                 ; Off                ;
+; Synchronization Register Chain Length                                           ; 3                   ; 3                  ;
+; PowerPlay Power Optimization During Synthesis                                   ; Normal compilation  ; Normal compilation ;
+; HDL message level                                                               ; Level2              ; Level2             ;
+; Suppress Register Optimization Related Messages                                 ; Off                 ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report                        ; 5000                ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report                              ; 5000                ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report                       ; 100                 ; 100                ;
+; Clock MUX Protection                                                            ; On                  ; On                 ;
+; Auto Gated Clock Conversion                                                     ; Off                 ; Off                ;
+; Block Design Naming                                                             ; Auto                ; Auto               ;
+; SDC constraint protection                                                       ; Off                 ; Off                ;
+; Synthesis Effort                                                                ; Auto                ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal                    ; On                  ; On                 ;
+; Pre-Mapping Resynthesis Optimization                                            ; Off                 ; Off                ;
+; Analysis & Synthesis Message Level                                              ; Medium              ; Medium             ;
+; Disable Register Merging Across Hierarchies                                     ; Auto                ; Auto               ;
+; Resource Aware Inference For Block RAM                                          ; On                  ; On                 ;
+; Synthesis Seed                                                                  ; 1                   ; 1                  ;
+; Automatic Parallel Synthesis                                                    ; On                  ; On                 ;
+; Partial Reconfiguration Bitstream ID                                            ; Off                 ; Off                ;
++---------------------------------------------------------------------------------+---------------------+--------------------+
 
 
 Parallel compilation was disabled, but you have multiple processors available. Enable parallel compilation to reduce compilation time.
@@ -63,111 +165,235 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +----------------------------+--------+
 
 
-+---------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Elaboration Settings                                                                                           ;
-+---------------------------------------------------------------------------------+--------------------+--------------------+
-; Option                                                                          ; Setting            ; Default Value      ;
-+---------------------------------------------------------------------------------+--------------------+--------------------+
-; Device                                                                          ; 5CSEMA5F31C6       ;                    ;
-; Top-level entity name                                                           ; DE1_SOC_golden_top ; opengpu            ;
-; Family name                                                                     ; Cyclone V          ; Cyclone V          ;
-; Use smart compilation                                                           ; Off                ; Off                ;
-; Enable parallel Assembler and TimeQuest Timing Analyzer during compilation      ; On                 ; On                 ;
-; Enable compact report table                                                     ; Off                ; Off                ;
-; Restructure Multiplexers                                                        ; Auto               ; Auto               ;
-; MLAB Add Timing Constraints For Mixed-Port Feed-Through Mode Setting Don't Care ; Off                ; Off                ;
-; Create Debugging Nodes for IP Cores                                             ; Off                ; Off                ;
-; Preserve fewer node names                                                       ; On                 ; On                 ;
-; Disable OpenCore Plus hardware evaluation                                       ; Off                ; Off                ;
-; Verilog Version                                                                 ; Verilog_2001       ; Verilog_2001       ;
-; VHDL Version                                                                    ; VHDL_1993          ; VHDL_1993          ;
-; State Machine Processing                                                        ; Auto               ; Auto               ;
-; Safe State Machine                                                              ; Off                ; Off                ;
-; Extract Verilog State Machines                                                  ; On                 ; On                 ;
-; Extract VHDL State Machines                                                     ; On                 ; On                 ;
-; Ignore Verilog initial constructs                                               ; Off                ; Off                ;
-; Iteration limit for constant Verilog loops                                      ; 5000               ; 5000               ;
-; Iteration limit for non-constant Verilog loops                                  ; 250                ; 250                ;
-; Add Pass-Through Logic to Inferred RAMs                                         ; On                 ; On                 ;
-; Infer RAMs from Raw Logic                                                       ; On                 ; On                 ;
-; Parallel Synthesis                                                              ; On                 ; On                 ;
-; DSP Block Balancing                                                             ; Auto               ; Auto               ;
-; NOT Gate Push-Back                                                              ; On                 ; On                 ;
-; Power-Up Don't Care                                                             ; On                 ; On                 ;
-; Remove Redundant Logic Cells                                                    ; Off                ; Off                ;
-; Remove Duplicate Registers                                                      ; On                 ; On                 ;
-; Ignore CARRY Buffers                                                            ; Off                ; Off                ;
-; Ignore CASCADE Buffers                                                          ; Off                ; Off                ;
-; Ignore GLOBAL Buffers                                                           ; Off                ; Off                ;
-; Ignore ROW GLOBAL Buffers                                                       ; Off                ; Off                ;
-; Ignore LCELL Buffers                                                            ; Off                ; Off                ;
-; Ignore SOFT Buffers                                                             ; On                 ; On                 ;
-; Limit AHDL Integers to 32 Bits                                                  ; Off                ; Off                ;
-; Optimization Technique                                                          ; Balanced           ; Balanced           ;
-; Carry Chain Length                                                              ; 70                 ; 70                 ;
-; Auto Carry Chains                                                               ; On                 ; On                 ;
-; Auto Open-Drain Pins                                                            ; On                 ; On                 ;
-; Perform WYSIWYG Primitive Resynthesis                                           ; Off                ; Off                ;
-; Auto ROM Replacement                                                            ; On                 ; On                 ;
-; Auto RAM Replacement                                                            ; On                 ; On                 ;
-; Auto DSP Block Replacement                                                      ; On                 ; On                 ;
-; Auto Shift Register Replacement                                                 ; Auto               ; Auto               ;
-; Allow Shift Register Merging across Hierarchies                                 ; Auto               ; Auto               ;
-; Auto Clock Enable Replacement                                                   ; On                 ; On                 ;
-; Strict RAM Replacement                                                          ; Off                ; Off                ;
-; Allow Synchronous Control Signals                                               ; On                 ; On                 ;
-; Force Use of Synchronous Clear Signals                                          ; Off                ; Off                ;
-; Auto Resource Sharing                                                           ; Off                ; Off                ;
-; Allow Any RAM Size For Recognition                                              ; Off                ; Off                ;
-; Allow Any ROM Size For Recognition                                              ; Off                ; Off                ;
-; Allow Any Shift Register Size For Recognition                                   ; Off                ; Off                ;
-; Use LogicLock Constraints during Resource Balancing                             ; On                 ; On                 ;
-; Ignore translate_off and synthesis_off directives                               ; Off                ; Off                ;
-; Timing-Driven Synthesis                                                         ; On                 ; On                 ;
-; Report Parameter Settings                                                       ; On                 ; On                 ;
-; Report Source Assignments                                                       ; On                 ; On                 ;
-; Report Connectivity Checks                                                      ; On                 ; On                 ;
-; Ignore Maximum Fan-Out Assignments                                              ; Off                ; Off                ;
-; Synchronization Register Chain Length                                           ; 3                  ; 3                  ;
-; PowerPlay Power Optimization During Synthesis                                   ; Normal compilation ; Normal compilation ;
-; HDL message level                                                               ; Level2             ; Level2             ;
-; Suppress Register Optimization Related Messages                                 ; Off                ; Off                ;
-; Number of Removed Registers Reported in Synthesis Report                        ; 5000               ; 5000               ;
-; Number of Swept Nodes Reported in Synthesis Report                              ; 5000               ; 5000               ;
-; Number of Inverted Registers Reported in Synthesis Report                       ; 100                ; 100                ;
-; Clock MUX Protection                                                            ; On                 ; On                 ;
-; Auto Gated Clock Conversion                                                     ; Off                ; Off                ;
-; Block Design Naming                                                             ; Auto               ; Auto               ;
-; SDC constraint protection                                                       ; Off                ; Off                ;
-; Synthesis Effort                                                                ; Auto               ; Auto               ;
-; Shift Register Replacement - Allow Asynchronous Clear Signal                    ; On                 ; On                 ;
-; Pre-Mapping Resynthesis Optimization                                            ; Off                ; Off                ;
-; Analysis & Synthesis Message Level                                              ; Medium             ; Medium             ;
-; Disable Register Merging Across Hierarchies                                     ; Auto               ; Auto               ;
-; Resource Aware Inference For Block RAM                                          ; On                 ; On                 ;
-; Synthesis Seed                                                                  ; 1                  ; 1                  ;
-; Automatic Parallel Synthesis                                                    ; On                 ; On                 ;
-; Partial Reconfiguration Bitstream ID                                            ; Off                ; Off                ;
-+---------------------------------------------------------------------------------+--------------------+--------------------+
++-------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                    ;
++----------------------------------+-----------------+-----------------+----------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type       ; File Name with Absolute Path                             ; Library ;
++----------------------------------+-----------------+-----------------+----------------------------------------------------------+---------+
+; ogpu_data_record_pkg.vhd         ; yes             ; User VHDL File  ; /home/fabricio/OpenGPU/hardware/ogpu_data_record_pkg.vhd ;         ;
+; ogpu_quad_generator.vhd          ; yes             ; User VHDL File  ; /home/fabricio/OpenGPU/hardware/ogpu_quad_generator.vhd  ;         ;
++----------------------------------+-----------------+-----------------+----------------------------------------------------------+---------+
 
 
-+---------------------------------+
-; Analysis & Elaboration Messages ;
-+---------------------------------+
++-----------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary               ;
++---------------------------------------------+-------------+
+; Resource                                    ; Usage       ;
++---------------------------------------------+-------------+
+; Estimate of Logic utilization (ALMs needed) ; 259         ;
+;                                             ;             ;
+; Combinational ALUT usage for logic          ; 380         ;
+;     -- 7 input functions                    ; 0           ;
+;     -- 6 input functions                    ; 136         ;
+;     -- 5 input functions                    ; 20          ;
+;     -- 4 input functions                    ; 130         ;
+;     -- <=3 input functions                  ; 94          ;
+;                                             ;             ;
+; Dedicated logic registers                   ; 127         ;
+;                                             ;             ;
+; I/O pins                                    ; 261         ;
+;                                             ;             ;
+; Total DSP Blocks                            ; 0           ;
+;                                             ;             ;
+; Maximum fan-out node                        ; r.next_quad ;
+; Maximum fan-out                             ; 175         ;
+; Total fan-out                               ; 2542        ;
+; Average fan-out                             ; 2.47        ;
++---------------------------------------------+-------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                              ;
++----------------------------+-------------------+--------------+-------------------+------------+------+--------------+----------------------+---------------------+--------------+
+; Compilation Hierarchy Node ; LC Combinationals ; LC Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name  ; Entity Name         ; Library Name ;
++----------------------------+-------------------+--------------+-------------------+------------+------+--------------+----------------------+---------------------+--------------+
+; |ogpu_quad_generator       ; 380 (380)         ; 127 (127)    ; 0                 ; 0          ; 261  ; 0            ; |ogpu_quad_generator ; ogpu_quad_generator ; work         ;
++----------------------------+-------------------+--------------+-------------------+------------+------+--------------+----------------------+---------------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++---------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                              ;
++----------------------------------------+----------------------------------------+
+; Register name                          ; Reason for Removal                     ;
++----------------------------------------+----------------------------------------+
+; r.quad.y3[0]                           ; Merged with r.quad.y2[0]               ;
+; r.x0[0]                                ; Merged with r.i[0]                     ;
+; r.quad.y3[1]                           ; Merged with r.quad.y2[1]               ;
+; r.quad.y3[2]                           ; Merged with r.quad.y2[2]               ;
+; r.quad.y3[3]                           ; Merged with r.quad.y2[3]               ;
+; r.quad.y3[4]                           ; Merged with r.quad.y2[4]               ;
+; r.quad.y3[5]                           ; Merged with r.quad.y2[5]               ;
+; r.quad.y3[6]                           ; Merged with r.quad.y2[6]               ;
+; r.quad.y3[7]                           ; Merged with r.quad.y2[7]               ;
+; r.quad.y3[8]                           ; Merged with r.quad.y2[8]               ;
+; r.quad.y3[9]                           ; Merged with r.quad.y2[9]               ;
+; r.quad.y3[10]                          ; Merged with r.quad.y2[10]              ;
+; r.quad.y3[11]                          ; Merged with r.quad.y2[11]              ;
+; r.quad.y3[12]                          ; Merged with r.quad.y2[12]              ;
+; r.quad.y3[13]                          ; Merged with r.quad.y2[13]              ;
+; r.quad.y3[14]                          ; Merged with r.quad.y2[14]              ;
+; r.quad.y3[15]                          ; Merged with r.quad.y2[15]              ;
+; r.quad.x3[0]                           ; Merged with r.quad.x1[0]               ;
+; r.quad.x3[1]                           ; Merged with r.quad.x1[1]               ;
+; r.quad.x3[2]                           ; Merged with r.quad.x1[2]               ;
+; r.quad.x3[3]                           ; Merged with r.quad.x1[3]               ;
+; r.quad.x3[4]                           ; Merged with r.quad.x1[4]               ;
+; r.quad.x3[5]                           ; Merged with r.quad.x1[5]               ;
+; r.quad.x3[6]                           ; Merged with r.quad.x1[6]               ;
+; r.quad.x3[7]                           ; Merged with r.quad.x1[7]               ;
+; r.quad.x3[8]                           ; Merged with r.quad.x1[8]               ;
+; r.quad.x3[9]                           ; Merged with r.quad.x1[9]               ;
+; r.quad.x3[10]                          ; Merged with r.quad.x1[10]              ;
+; r.quad.x3[11]                          ; Merged with r.quad.x1[11]              ;
+; r.quad.x3[12]                          ; Merged with r.quad.x1[12]              ;
+; r.quad.x3[13]                          ; Merged with r.quad.x1[13]              ;
+; r.quad.x3[14]                          ; Merged with r.quad.x1[14]              ;
+; r.quad.x3[15]                          ; Merged with r.quad.x1[15]              ;
+; r.quad.x2[0]                           ; Merged with r.quad.x0[0]               ;
+; r.quad.x2[1]                           ; Merged with r.quad.x0[1]               ;
+; r.quad.x2[2]                           ; Merged with r.quad.x0[2]               ;
+; r.quad.x2[3]                           ; Merged with r.quad.x0[3]               ;
+; r.quad.x2[4]                           ; Merged with r.quad.x0[4]               ;
+; r.quad.x2[5]                           ; Merged with r.quad.x0[5]               ;
+; r.quad.x2[6]                           ; Merged with r.quad.x0[6]               ;
+; r.quad.x2[7]                           ; Merged with r.quad.x0[7]               ;
+; r.quad.x2[8]                           ; Merged with r.quad.x0[8]               ;
+; r.quad.x2[9]                           ; Merged with r.quad.x0[9]               ;
+; r.quad.x2[10]                          ; Merged with r.quad.x0[10]              ;
+; r.quad.x2[11]                          ; Merged with r.quad.x0[11]              ;
+; r.quad.x2[12]                          ; Merged with r.quad.x0[12]              ;
+; r.quad.x2[13]                          ; Merged with r.quad.x0[13]              ;
+; r.quad.x2[14]                          ; Merged with r.quad.x0[14]              ;
+; r.quad.x2[15]                          ; Merged with r.quad.x0[15]              ;
+; r.quad.y1[0]                           ; Merged with r.quad.y0[0]               ;
+; r.quad.y1[1]                           ; Merged with r.quad.y0[1]               ;
+; r.quad.y1[2]                           ; Merged with r.quad.y0[2]               ;
+; r.quad.y1[3]                           ; Merged with r.quad.y0[3]               ;
+; r.quad.y1[4]                           ; Merged with r.quad.y0[4]               ;
+; r.quad.y1[5]                           ; Merged with r.quad.y0[5]               ;
+; r.quad.y1[6]                           ; Merged with r.quad.y0[6]               ;
+; r.quad.y1[7]                           ; Merged with r.quad.y0[7]               ;
+; r.quad.y1[8]                           ; Merged with r.quad.y0[8]               ;
+; r.quad.y1[9]                           ; Merged with r.quad.y0[9]               ;
+; r.quad.y1[10]                          ; Merged with r.quad.y0[10]              ;
+; r.quad.y1[11]                          ; Merged with r.quad.y0[11]              ;
+; r.quad.y1[12]                          ; Merged with r.quad.y0[12]              ;
+; r.quad.y1[13]                          ; Merged with r.quad.y0[13]              ;
+; r.quad.y1[14]                          ; Merged with r.quad.y0[14]              ;
+; r.quad.y1[15]                          ; Merged with r.quad.y0[15]              ;
+; r.i[0]                                 ; Stuck at GND due to stuck port data_in ;
+; r.quad.y0[0]                           ; Stuck at GND due to stuck port data_in ;
+; r.quad.y2[0]                           ; Stuck at VCC due to stuck port data_in ;
+; r.y1[0]                                ; Lost fanout                            ;
+; r.quad.y2[1]                           ; Merged with r.quad.y0[1]               ;
+; r.quad.y2[2]                           ; Merged with r.quad.y0[2]               ;
+; r.quad.y2[3]                           ; Merged with r.quad.y0[3]               ;
+; r.quad.y2[4]                           ; Merged with r.quad.y0[4]               ;
+; r.quad.y2[5]                           ; Merged with r.quad.y0[5]               ;
+; r.quad.y2[6]                           ; Merged with r.quad.y0[6]               ;
+; r.quad.y2[7]                           ; Merged with r.quad.y0[7]               ;
+; r.quad.y2[8]                           ; Merged with r.quad.y0[8]               ;
+; r.quad.y2[9]                           ; Merged with r.quad.y0[9]               ;
+; r.quad.y2[10]                          ; Merged with r.quad.y0[10]              ;
+; r.quad.y2[11]                          ; Merged with r.quad.y0[11]              ;
+; r.quad.y2[12]                          ; Merged with r.quad.y0[12]              ;
+; r.quad.y2[13]                          ; Merged with r.quad.y0[13]              ;
+; r.quad.y2[14]                          ; Merged with r.quad.y0[14]              ;
+; r.quad.y2[15]                          ; Merged with r.quad.y0[15]              ;
+; Total Number of Removed Registers = 84 ;                                        ;
++----------------------------------------+----------------------------------------+
+
+
++------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                        ;
++---------------+---------------------------+----------------------------------------+
+; Register name ; Reason for Removal        ; Registers Removed due to This Register ;
++---------------+---------------------------+----------------------------------------+
+; r.i[0]        ; Stuck at GND              ; r.quad.y0[0]                           ;
+;               ; due to stuck port data_in ;                                        ;
++---------------+---------------------------+----------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 127   ;
+; Number of registers using Synchronous Clear  ; 0     ;
+; Number of registers using Synchronous Load   ; 30    ;
+; Number of registers using Asynchronous Clear ; 0     ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 126   ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                           ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
+; 3:1                ; 15 bits   ; 30 LEs        ; 30 LEs               ; 0 LEs                  ; No         ; |ogpu_quad_generator|v     ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; No         ; |ogpu_quad_generator|v     ;
+; 3:1                ; 15 bits   ; 30 LEs        ; 30 LEs               ; 0 LEs                  ; No         ; |ogpu_quad_generator|v     ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
+
+
++-----------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Top Partition ;
++-----------------------+-----------------------------+
+; Type                  ; Count                       ;
++-----------------------+-----------------------------+
+; arriav_ff             ; 127                         ;
+;     ENA               ; 96                          ;
+;     ENA SLD           ; 30                          ;
+;     plain             ; 1                           ;
+; arriav_lcell_comb     ; 382                         ;
+;     arith             ; 46                          ;
+;         4 data inputs ; 46                          ;
+;     normal            ; 336                         ;
+;         0 data inputs ; 2                           ;
+;         2 data inputs ; 46                          ;
+;         3 data inputs ; 48                          ;
+;         4 data inputs ; 84                          ;
+;         5 data inputs ; 20                          ;
+;         6 data inputs ; 136                         ;
+; boundary_port         ; 261                         ;
+;                       ;                             ;
+; Max LUT depth         ; 10.30                       ;
+; Average LUT depth     ; 7.80                        ;
++-----------------------+-----------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:01     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
 Info: *******************************************************************
-Info: Running Quartus Prime Analysis & Elaboration
+Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 16.0.2 Build 222 07/20/2016 SJ Lite Edition
-    Info: Processing started: Fri Oct 21 19:08:58 2016
-Info: Command: quartus_map --read_settings_files=on --write_settings_files=off opengpu -c opengpu --analysis_and_elaboration
+    Info: Processing started: Mon Oct 31 14:07:06 2016
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off opengpu -c opengpu
 Warning (20028): Parallel compilation is not licensed and has been disabled
+Info (12021): Found 2 design units, including 1 entities, in source file ogpu_raster_unit.vhd
+    Info (12022): Found design unit 1: ogpu_raster_unit-structure_1 File: /home/fabricio/OpenGPU/hardware/ogpu_raster_unit.vhd Line: 21
+    Info (12023): Found entity 1: ogpu_raster_unit File: /home/fabricio/OpenGPU/hardware/ogpu_raster_unit.vhd Line: 8
 Info (12021): Found 1 design units, including 0 entities, in source file ogpu_data_record_pkg.vhd
     Info (12022): Found design unit 1: ogpu_data_record_pkg File: /home/fabricio/OpenGPU/hardware/ogpu_data_record_pkg.vhd Line: 5
-Info (12021): Found 2 design units, including 1 entities, in source file ogpu_structural.vhd
-    Info (12022): Found design unit 1: ogpu_raster_unit-structure_1 File: /home/fabricio/OpenGPU/hardware/ogpu_structural.vhd Line: 21
-    Info (12023): Found entity 1: ogpu_raster_unit File: /home/fabricio/OpenGPU/hardware/ogpu_structural.vhd Line: 8
-Info (12021): Found 2 design units, including 1 entities, in source file ogpu_testbench.vhd
-    Info (12022): Found design unit 1: ogpu_testbench-ogpu_raster_unit_tb1 File: /home/fabricio/OpenGPU/hardware/ogpu_testbench.vhd Line: 6
-    Info (12023): Found entity 1: ogpu_testbench File: /home/fabricio/OpenGPU/hardware/ogpu_testbench.vhd Line: 3
+Info (12021): Found 3 design units, including 1 entities, in source file ogpu_testbench.vhd
+    Info (12022): Found design unit 1: ogpu_testbench-ogpu_raster_unit_tb1 File: /home/fabricio/OpenGPU/hardware/ogpu_testbench.vhd Line: 11
+    Info (12022): Found design unit 2: ogpu_testbench-ogpu_quad_generator_tb1 File: /home/fabricio/OpenGPU/hardware/ogpu_testbench.vhd Line: 15
+    Info (12023): Found entity 1: ogpu_testbench File: /home/fabricio/OpenGPU/hardware/ogpu_testbench.vhd Line: 8
 Info (12021): Found 2 design units, including 1 entities, in source file ogpu_raster_control.vhd
     Info (12022): Found design unit 1: ogpu_raster_control-raster_control_1 File: /home/fabricio/OpenGPU/hardware/ogpu_raster_control.vhd Line: 26
     Info (12023): Found entity 1: ogpu_raster_control File: /home/fabricio/OpenGPU/hardware/ogpu_raster_control.vhd Line: 6
@@ -175,11 +401,11 @@ Info (12021): Found 2 design units, including 1 entities, in source file ogpu_qu
     Info (12022): Found design unit 1: ogpu_quad_buffer-test File: /home/fabricio/OpenGPU/hardware/ogpu_quad_buffer.vhd Line: 13
     Info (12023): Found entity 1: ogpu_quad_buffer File: /home/fabricio/OpenGPU/hardware/ogpu_quad_buffer.vhd Line: 5
 Info (12021): Found 2 design units, including 1 entities, in source file ogpu_setup.vhd
-    Info (12022): Found design unit 1: ogpu_setup-setup_1 File: /home/fabricio/OpenGPU/hardware/ogpu_setup.vhd Line: 21
+    Info (12022): Found design unit 1: ogpu_setup-setup_1 File: /home/fabricio/OpenGPU/hardware/ogpu_setup.vhd Line: 12
     Info (12023): Found entity 1: ogpu_setup File: /home/fabricio/OpenGPU/hardware/ogpu_setup.vhd Line: 5
 Info (12021): Found 2 design units, including 1 entities, in source file ogpu_quad_generator.vhd
-    Info (12022): Found design unit 1: ogpu_quad_generator-generator_1 File: /home/fabricio/OpenGPU/hardware/ogpu_quad_generator.vhd Line: 16
-    Info (12023): Found entity 1: ogpu_quad_generator File: /home/fabricio/OpenGPU/hardware/ogpu_quad_generator.vhd Line: 5
+    Info (12022): Found design unit 1: ogpu_quad_generator-generator_1 File: /home/fabricio/OpenGPU/hardware/ogpu_quad_generator.vhd Line: 13
+    Info (12023): Found entity 1: ogpu_quad_generator File: /home/fabricio/OpenGPU/hardware/ogpu_quad_generator.vhd Line: 6
 Info (12021): Found 2 design units, including 1 entities, in source file ogpu_edge_test.vhd
     Info (12022): Found design unit 1: ogpu_quad_edge_test-edge_test_1 File: /home/fabricio/OpenGPU/hardware/ogpu_edge_test.vhd Line: 15
     Info (12023): Found entity 1: ogpu_quad_edge_test File: /home/fabricio/OpenGPU/hardware/ogpu_edge_test.vhd Line: 5
@@ -192,47 +418,24 @@ Info (12021): Found 2 design units, including 1 entities, in source file ogpu_de
 Info (12021): Found 2 design units, including 1 entities, in source file ogpu_quad_store.vhd
     Info (12022): Found design unit 1: ogpu_quad_store-quad_store_1 File: /home/fabricio/OpenGPU/hardware/ogpu_quad_store.vhd Line: 18
     Info (12023): Found entity 1: ogpu_quad_store File: /home/fabricio/OpenGPU/hardware/ogpu_quad_store.vhd Line: 5
-Warning (12125): Using design file DE1_SOC_golden_top.v, which is not specified as a design file for the current project, but contains definitions for 1 design units and 1 entities in project
-    Info (12023): Found entity 1: DE1_SOC_golden_top File: /home/fabricio/OpenGPU/hardware/DE1_SOC_golden_top.v Line: 54
-Info (12127): Elaborating entity "DE1_SOC_golden_top" for the top level hierarchy
-Warning (10034): Output port "DRAM_ADDR" at DE1_SOC_golden_top.v(100) has no driver File: /home/fabricio/OpenGPU/hardware/DE1_SOC_golden_top.v Line: 100
-Warning (10034): Output port "DRAM_BA" at DE1_SOC_golden_top.v(101) has no driver File: /home/fabricio/OpenGPU/hardware/DE1_SOC_golden_top.v Line: 101
-Warning (10034): Output port "HEX0" at DE1_SOC_golden_top.v(133) has no driver File: /home/fabricio/OpenGPU/hardware/DE1_SOC_golden_top.v Line: 133
-Warning (10034): Output port "HEX1" at DE1_SOC_golden_top.v(134) has no driver File: /home/fabricio/OpenGPU/hardware/DE1_SOC_golden_top.v Line: 134
-Warning (10034): Output port "HEX2" at DE1_SOC_golden_top.v(135) has no driver File: /home/fabricio/OpenGPU/hardware/DE1_SOC_golden_top.v Line: 135
-Warning (10034): Output port "HEX3" at DE1_SOC_golden_top.v(136) has no driver File: /home/fabricio/OpenGPU/hardware/DE1_SOC_golden_top.v Line: 136
-Warning (10034): Output port "HEX4" at DE1_SOC_golden_top.v(137) has no driver File: /home/fabricio/OpenGPU/hardware/DE1_SOC_golden_top.v Line: 137
-Warning (10034): Output port "HEX5" at DE1_SOC_golden_top.v(138) has no driver File: /home/fabricio/OpenGPU/hardware/DE1_SOC_golden_top.v Line: 138
-Warning (10034): Output port "LEDR" at DE1_SOC_golden_top.v(210) has no driver File: /home/fabricio/OpenGPU/hardware/DE1_SOC_golden_top.v Line: 210
-Warning (10034): Output port "VGA_B" at DE1_SOC_golden_top.v(237) has no driver File: /home/fabricio/OpenGPU/hardware/DE1_SOC_golden_top.v Line: 237
-Warning (10034): Output port "VGA_G" at DE1_SOC_golden_top.v(240) has no driver File: /home/fabricio/OpenGPU/hardware/DE1_SOC_golden_top.v Line: 240
-Warning (10034): Output port "VGA_R" at DE1_SOC_golden_top.v(242) has no driver File: /home/fabricio/OpenGPU/hardware/DE1_SOC_golden_top.v Line: 242
-Warning (10034): Output port "ADC_CONVST" at DE1_SOC_golden_top.v(59) has no driver File: /home/fabricio/OpenGPU/hardware/DE1_SOC_golden_top.v Line: 59
-Warning (10034): Output port "ADC_DIN" at DE1_SOC_golden_top.v(60) has no driver File: /home/fabricio/OpenGPU/hardware/DE1_SOC_golden_top.v Line: 60
-Warning (10034): Output port "ADC_SCLK" at DE1_SOC_golden_top.v(62) has no driver File: /home/fabricio/OpenGPU/hardware/DE1_SOC_golden_top.v Line: 62
-Warning (10034): Output port "AUD_DACDAT" at DE1_SOC_golden_top.v(72) has no driver File: /home/fabricio/OpenGPU/hardware/DE1_SOC_golden_top.v Line: 72
-Warning (10034): Output port "AUD_XCK" at DE1_SOC_golden_top.v(74) has no driver File: /home/fabricio/OpenGPU/hardware/DE1_SOC_golden_top.v Line: 74
-Warning (10034): Output port "DRAM_CAS_N" at DE1_SOC_golden_top.v(102) has no driver File: /home/fabricio/OpenGPU/hardware/DE1_SOC_golden_top.v Line: 102
-Warning (10034): Output port "DRAM_CKE" at DE1_SOC_golden_top.v(103) has no driver File: /home/fabricio/OpenGPU/hardware/DE1_SOC_golden_top.v Line: 103
-Warning (10034): Output port "DRAM_CLK" at DE1_SOC_golden_top.v(104) has no driver File: /home/fabricio/OpenGPU/hardware/DE1_SOC_golden_top.v Line: 104
-Warning (10034): Output port "DRAM_CS_N" at DE1_SOC_golden_top.v(105) has no driver File: /home/fabricio/OpenGPU/hardware/DE1_SOC_golden_top.v Line: 105
-Warning (10034): Output port "DRAM_LDQM" at DE1_SOC_golden_top.v(107) has no driver File: /home/fabricio/OpenGPU/hardware/DE1_SOC_golden_top.v Line: 107
-Warning (10034): Output port "DRAM_RAS_N" at DE1_SOC_golden_top.v(108) has no driver File: /home/fabricio/OpenGPU/hardware/DE1_SOC_golden_top.v Line: 108
-Warning (10034): Output port "DRAM_UDQM" at DE1_SOC_golden_top.v(109) has no driver File: /home/fabricio/OpenGPU/hardware/DE1_SOC_golden_top.v Line: 109
-Warning (10034): Output port "DRAM_WE_N" at DE1_SOC_golden_top.v(110) has no driver File: /home/fabricio/OpenGPU/hardware/DE1_SOC_golden_top.v Line: 110
-Warning (10034): Output port "FAN_CTRL" at DE1_SOC_golden_top.v(115) has no driver File: /home/fabricio/OpenGPU/hardware/DE1_SOC_golden_top.v Line: 115
-Warning (10034): Output port "FPGA_I2C_SCLK" at DE1_SOC_golden_top.v(120) has no driver File: /home/fabricio/OpenGPU/hardware/DE1_SOC_golden_top.v Line: 120
-Warning (10034): Output port "IRDA_TXD" at DE1_SOC_golden_top.v(200) has no driver File: /home/fabricio/OpenGPU/hardware/DE1_SOC_golden_top.v Line: 200
-Warning (10034): Output port "TD_RESET_N" at DE1_SOC_golden_top.v(231) has no driver File: /home/fabricio/OpenGPU/hardware/DE1_SOC_golden_top.v Line: 231
-Warning (10034): Output port "VGA_BLANK_N" at DE1_SOC_golden_top.v(238) has no driver File: /home/fabricio/OpenGPU/hardware/DE1_SOC_golden_top.v Line: 238
-Warning (10034): Output port "VGA_CLK" at DE1_SOC_golden_top.v(239) has no driver File: /home/fabricio/OpenGPU/hardware/DE1_SOC_golden_top.v Line: 239
-Warning (10034): Output port "VGA_HS" at DE1_SOC_golden_top.v(241) has no driver File: /home/fabricio/OpenGPU/hardware/DE1_SOC_golden_top.v Line: 241
-Warning (10034): Output port "VGA_SYNC_N" at DE1_SOC_golden_top.v(243) has no driver File: /home/fabricio/OpenGPU/hardware/DE1_SOC_golden_top.v Line: 243
-Warning (10034): Output port "VGA_VS" at DE1_SOC_golden_top.v(246) has no driver File: /home/fabricio/OpenGPU/hardware/DE1_SOC_golden_top.v Line: 246
-Info: Quartus Prime Analysis & Elaboration was successful. 0 errors, 36 warnings
-    Info: Peak virtual memory: 1609 megabytes
-    Info: Processing ended: Fri Oct 21 19:09:10 2016
+Info (12127): Elaborating entity "ogpu_quad_generator" for the top level hierarchy
+Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "q.quad.y3[0]" is stuck at VCC File: /home/fabricio/OpenGPU/hardware/ogpu_quad_generator.vhd Line: 10
+    Warning (13410): Pin "q.quad.y2[0]" is stuck at VCC File: /home/fabricio/OpenGPU/hardware/ogpu_quad_generator.vhd Line: 10
+    Warning (13410): Pin "q.quad.y1[0]" is stuck at GND File: /home/fabricio/OpenGPU/hardware/ogpu_quad_generator.vhd Line: 10
+    Warning (13410): Pin "q.quad.y0[0]" is stuck at GND File: /home/fabricio/OpenGPU/hardware/ogpu_quad_generator.vhd Line: 10
+Info (286030): Timing-Driven Synthesis is running
+Info (17049): 1 registers lost all their fanouts during netlist optimizations.
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Info (21057): Implemented 765 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 131 input pins
+    Info (21059): Implemented 130 output pins
+    Info (21061): Implemented 504 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 6 warnings
+    Info: Peak virtual memory: 1309 megabytes
+    Info: Processing ended: Mon Oct 31 14:07:18 2016
     Info: Elapsed time: 00:00:12
-    Info: Total CPU time (on all processors): 00:00:25
+    Info: Total CPU time (on all processors): 00:00:26
 
 

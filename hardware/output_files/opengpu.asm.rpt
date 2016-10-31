@@ -1,5 +1,5 @@
 Assembler report for opengpu
-Fri Oct 21 18:51:00 2016
+Mon Oct 31 13:14:43 2016
 Quartus Prime Version 16.0.2 Build 222 07/20/2016 SJ Lite Edition
 
 
@@ -38,9 +38,9 @@ agreement for further details.
 +---------------------------------------------------------------+
 ; Assembler Summary                                             ;
 +-----------------------+---------------------------------------+
-; Assembler Status      ; Successful - Fri Oct 21 18:51:00 2016 ;
+; Assembler Status      ; Successful - Mon Oct 31 13:14:43 2016 ;
 ; Revision Name         ; opengpu                               ;
-; Top-level Entity Name ; DE1_SOC_golden_top                    ;
+; Top-level Entity Name ; ogpu_quad_generator                   ;
 ; Family                ; Cyclone V                             ;
 ; Device                ; 5CSEMA5F31C6                          ;
 +-----------------------+---------------------------------------+
@@ -68,8 +68,8 @@ agreement for further details.
 ; Option         ; Setting              ;
 +----------------+----------------------+
 ; Device         ; 5CSEMA5F31C6         ;
-; JTAG usercode  ; 0x00B06309           ;
-; Checksum       ; 0x00B06309           ;
+; JTAG usercode  ; 0x00B99D45           ;
+; Checksum       ; 0x00B99D45           ;
 +----------------+----------------------+
 
 
@@ -79,13 +79,12 @@ agreement for further details.
 Info: *******************************************************************
 Info: Running Quartus Prime Assembler
     Info: Version 16.0.2 Build 222 07/20/2016 SJ Lite Edition
-    Info: Processing started: Fri Oct 21 18:50:52 2016
+    Info: Processing started: Mon Oct 31 13:14:35 2016
 Info: Command: quartus_asm --read_settings_files=off --write_settings_files=off opengpu -c opengpu
-Info (125069): Default assignment values were changed in the current version of the Quartus Prime software -- changes to default assignments values are contained in file /opt/altera/16.0/quartus/linux64/assignment_defaults.qdf
 Info (115030): Assembler is generating device programming files
 Info: Quartus Prime Assembler was successful. 0 errors, 0 warnings
-    Info: Peak virtual memory: 1208 megabytes
-    Info: Processing ended: Fri Oct 21 18:51:00 2016
+    Info: Peak virtual memory: 1217 megabytes
+    Info: Processing ended: Mon Oct 31 13:14:43 2016
     Info: Elapsed time: 00:00:08
     Info: Total CPU time (on all processors): 00:00:07
 

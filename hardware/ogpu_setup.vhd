@@ -5,29 +5,56 @@ use work.ogpu_data_record_pkg.all;
 entity ogpu_setup is
 	port(clock: in std_logic;
 		  reset: in std_logic;
-		  vx0: in ogpu_float;
-		  vy0: in ogpu_float;
-		  vx1: in ogpu_float;
-		  vy1: in ogpu_float;
-		  vx2: in ogpu_float;
-		  vy2: in ogpu_float;
-		  start_raster: in std_logic;
-		  setup_done: out std_logic :='0';
-		  e0: out ogpu_edge;
-		  e1: out ogpu_edge;
-		  e2: out ogpu_edge);
+		  d:	in ogpu_setup_in_type;
+		  q:	out ogpu_setup_out_type);
 end ogpu_setup;
 
 architecture setup_1 of ogpu_setup is
+	type reg_type is record
+		start_raster: std_logic;
+		setup_done: std_logic;
+		e0: ogpu_edge;
+		e1: ogpu_edge;
+		e2: ogpu_edge;
+	end record;
+	signal r,rin	:	reg_type;
 begin
-	process(clock)
+comb: process(reset,d,r)
+	variable v : reg_type;
 	begin
-		if clock'event and clock='1' then
-			if reset='1' then
-				setup_done<='0';
-			else
-				
-			end if;
+		v.start_raster := d.start_raster;
+		v.setup_done := '0';
+		
+		v.e0.x0 := d.vx0.int;
+		v.e0.y0 := d.vy0.int;
+		v.e0.x1 := d.vx1.int;
+		v.e0.y1 := d.vy1.int;
+		
+		v.e1.x0 := d.vx1.int;
+		v.e1.y0 := d.vy1.int;
+		v.e1.x1 := d.vx2.int;
+		v.e1.y1 := d.vy2.int;
+		
+		v.e2.x0 := d.vx2.int;
+		v.e2.y0 := d.vy2.int;
+		v.e2.x1 := d.vx0.int;
+		v.e2.y1 := d.vy0.int;
+		
+		if r.start_raster = '1' then v.setup_done := '1'; end if;
+		if reset='1' then v.setup_done := '0'; end if;
+		
+		rin <= v;		-- drive register inputs
+		
+		q.setup_done <= r.setup_done;  -- drive module outputs
+		q.e0 <= r.e0;
+		q.e1 <= r.e1;
+		q.e2 <= r.e2;
+	end process;
+	
+seq: process(clock)
+	begin
+		if rising_edge(clock) then
+			r <= rin;
 		end if;
 	end process;
 end setup_1;

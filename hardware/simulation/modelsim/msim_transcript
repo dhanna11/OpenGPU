@@ -1,0 +1,820 @@
+# do opengpu_run_msim_rtl_vhdl.do
+# if {[file exists rtl_work]} {
+# 	vdel -lib rtl_work -all
+# }
+# vlib rtl_work
+# vmap work rtl_work
+# Model Technology ModelSim ALTERA vmap 10.4d Lib Mapping Utility 2015.12 Dec 30 2015
+# vmap work rtl_work 
+# Copying /opt/altera/16.0/modelsim_ase/linuxaloem/../modelsim.ini to modelsim.ini
+# Modifying modelsim.ini
+# 
+# vcom -93 -work work {/home/fabricio/OpenGPU/hardware/ogpu_data_record_pkg.vhd}
+# Model Technology ModelSim ALTERA vcom 10.4d Compiler 2015.12 Dec 30 2015
+# Start time: 15:31:46 on Oct 31,2016
+# vcom -reportprogress 300 -93 -work work /home/fabricio/OpenGPU/hardware/ogpu_data_record_pkg.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling package ogpu_data_record_pkg
+# End time: 15:31:46 on Oct 31,2016, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vcom -93 -work work {/home/fabricio/OpenGPU/hardware/ogpu_quad_generator.vhd}
+# Model Technology ModelSim ALTERA vcom 10.4d Compiler 2015.12 Dec 30 2015
+# Start time: 15:31:46 on Oct 31,2016
+# vcom -reportprogress 300 -93 -work work /home/fabricio/OpenGPU/hardware/ogpu_quad_generator.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package ogpu_data_record_pkg
+# -- Compiling entity ogpu_quad_generator
+# -- Compiling architecture generator_1 of ogpu_quad_generator
+# End time: 15:31:46 on Oct 31,2016, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# 
+# vcom -93 -work work {/home/fabricio/OpenGPU/hardware/ogpu_testbench.vhd}
+# Model Technology ModelSim ALTERA vcom 10.4d Compiler 2015.12 Dec 30 2015
+# Start time: 15:31:46 on Oct 31,2016
+# vcom -reportprogress 300 -93 -work work /home/fabricio/OpenGPU/hardware/ogpu_testbench.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package ogpu_data_record_pkg
+# -- Compiling entity ogpu_testbench
+# -- Compiling architecture ogpu_raster_unit_tb1 of ogpu_testbench
+# -- Compiling architecture ogpu_quad_generator_tb1 of ogpu_testbench
+# -- Loading entity ogpu_testbench
+# -- Loading entity ogpu_quad_generator
+# End time: 15:31:46 on Oct 31,2016, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# 
+# vsim -t 1ps -L altera -L lpm -L sgate -L altera_mf -L altera_lnsim -L cyclonev -L rtl_work -L work -voptargs="+acc"  ogpu_testbench
+# vsim -t 1ps -L altera -L lpm -L sgate -L altera_mf -L altera_lnsim -L cyclonev -L rtl_work -L work -voptargs=""+acc"" ogpu_testbench 
+# Start time: 15:31:46 on Oct 31,2016
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.ogpu_data_record_pkg
+# Loading work.ogpu_testbench(ogpu_quad_generator_tb1)
+# Loading work.ogpu_quad_generator(generator_1)
+# 
+# add wave *
+# view structure
+# .main_pane.structure.interior.cs.body.struct
+# view signals
+# .main_pane.objects.interior.cs.body.tree
+# run 500 ns
+# ** Warning: (vsim-3116) Problem reading symbols from linux-gate.so.1 : can not open ELF file.
+# ** Warning: NUMERIC_STD.">": metavalue detected, returning FALSE
+#    Time: 20 ns  Iteration: 2  Instance: /ogpu_testbench/QG1
+# ** Warning: NUMERIC_STD.">": metavalue detected, returning FALSE
+#    Time: 40 ns  Iteration: 2  Instance: /ogpu_testbench/QG1
+# ** Warning: NUMERIC_STD.">": metavalue detected, returning FALSE
+#    Time: 60 ns  Iteration: 2  Instance: /ogpu_testbench/QG1
+# ** Warning: NUMERIC_STD.">": metavalue detected, returning FALSE
+#    Time: 100 ns  Iteration: 1  Instance: /ogpu_testbench/QG1
+# ** Warning: NUMERIC_STD.">": metavalue detected, returning FALSE
+#    Time: 100 ns  Iteration: 3  Instance: /ogpu_testbench/QG1
+# ** Warning: NUMERIC_STD.">": metavalue detected, returning FALSE
+#    Time: 160 ns  Iteration: 2  Instance: /ogpu_testbench/QG1
+# ** Warning: NUMERIC_STD.">": metavalue detected, returning FALSE
+#    Time: 160 ns  Iteration: 4  Instance: /ogpu_testbench/QG1
+# ** Warning: NUMERIC_STD.">": metavalue detected, returning FALSE
+#    Time: 220 ns  Iteration: 2  Instance: /ogpu_testbench/QG1
+# ** Warning: NUMERIC_STD.">": metavalue detected, returning FALSE
+#    Time: 220 ns  Iteration: 4  Instance: /ogpu_testbench/QG1
+# ** Warning: NUMERIC_STD.">": metavalue detected, returning FALSE
+#    Time: 280 ns  Iteration: 2  Instance: /ogpu_testbench/QG1
+# ** Warning: NUMERIC_STD.">": metavalue detected, returning FALSE
+#    Time: 280 ns  Iteration: 4  Instance: /ogpu_testbench/QG1
+# ** Warning: NUMERIC_STD.">": metavalue detected, returning FALSE
+#    Time: 300 ns  Iteration: 1  Instance: /ogpu_testbench/QG1
+# ** Warning: NUMERIC_STD.">": metavalue detected, returning FALSE
+#    Time: 340 ns  Iteration: 2  Instance: /ogpu_testbench/QG1
+# ** Warning: NUMERIC_STD.">": metavalue detected, returning FALSE
+#    Time: 340 ns  Iteration: 4  Instance: /ogpu_testbench/QG1
+# ** Warning: NUMERIC_STD.">": metavalue detected, returning FALSE
+#    Time: 400 ns  Iteration: 2  Instance: /ogpu_testbench/QG1
+# ** Warning: NUMERIC_STD.">": metavalue detected, returning FALSE
+#    Time: 400 ns  Iteration: 4  Instance: /ogpu_testbench/QG1
+# ** Warning: NUMERIC_STD.">": metavalue detected, returning FALSE
+#    Time: 460 ns  Iteration: 2  Instance: /ogpu_testbench/QG1
+# ** Warning: NUMERIC_STD.">": metavalue detected, returning FALSE
+#    Time: 460 ns  Iteration: 4  Instance: /ogpu_testbench/QG1
+# 
+# stdin: <EOF>
+do opengpu_run_msim_rtl_vhdl.do
+# if {[file exists rtl_work]} {
+# 	vdel -lib rtl_work -all
+# }
+# vlib rtl_work
+# vmap work rtl_work
+# Model Technology ModelSim ALTERA vmap 10.4d Lib Mapping Utility 2015.12 Dec 30 2015
+# vmap work rtl_work 
+# Modifying modelsim.ini
+# 
+# vcom -93 -work work {/home/fabricio/OpenGPU/hardware/ogpu_data_record_pkg.vhd}
+# Model Technology ModelSim ALTERA vcom 10.4d Compiler 2015.12 Dec 30 2015
+# Start time: 15:33:50 on Oct 31,2016
+# vcom -reportprogress 300 -93 -work work /home/fabricio/OpenGPU/hardware/ogpu_data_record_pkg.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling package ogpu_data_record_pkg
+# End time: 15:33:50 on Oct 31,2016, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vcom -93 -work work {/home/fabricio/OpenGPU/hardware/ogpu_quad_generator.vhd}
+# Model Technology ModelSim ALTERA vcom 10.4d Compiler 2015.12 Dec 30 2015
+# Start time: 15:33:50 on Oct 31,2016
+# vcom -reportprogress 300 -93 -work work /home/fabricio/OpenGPU/hardware/ogpu_quad_generator.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package ogpu_data_record_pkg
+# -- Compiling entity ogpu_quad_generator
+# -- Compiling architecture generator_1 of ogpu_quad_generator
+# End time: 15:33:50 on Oct 31,2016, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# 
+# vcom -93 -work work {/home/fabricio/OpenGPU/hardware/ogpu_testbench.vhd}
+# Model Technology ModelSim ALTERA vcom 10.4d Compiler 2015.12 Dec 30 2015
+# Start time: 15:33:50 on Oct 31,2016
+# vcom -reportprogress 300 -93 -work work /home/fabricio/OpenGPU/hardware/ogpu_testbench.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package ogpu_data_record_pkg
+# -- Compiling entity ogpu_testbench
+# -- Compiling architecture ogpu_raster_unit_tb1 of ogpu_testbench
+# -- Compiling architecture ogpu_quad_generator_tb1 of ogpu_testbench
+# -- Loading entity ogpu_testbench
+# -- Loading entity ogpu_quad_generator
+# End time: 15:33:50 on Oct 31,2016, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# 
+# vsim -t 1ps -L altera -L lpm -L sgate -L altera_mf -L altera_lnsim -L cyclonev -L rtl_work -L work -voptargs="+acc"  ogpu_testbench
+# End time: 15:33:50 on Oct 31,2016, Elapsed time: 0:02:04
+# Errors: 0, Warnings: 19
+# vsim -t 1ps -L altera -L lpm -L sgate -L altera_mf -L altera_lnsim -L cyclonev -L rtl_work -L work -voptargs=""+acc"" ogpu_testbench 
+# Start time: 15:33:50 on Oct 31,2016
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.ogpu_data_record_pkg
+# Loading work.ogpu_testbench(ogpu_quad_generator_tb1)
+# Loading work.ogpu_quad_generator(generator_1)
+# 
+# add wave *
+# view structure
+# .main_pane.structure.interior.cs.body.struct
+# view signals
+# .main_pane.objects.interior.cs.body.tree
+# run 500 ns
+# ** Warning: (vsim-3116) Problem reading symbols from linux-gate.so.1 : can not open ELF file.
+# ** Warning: NUMERIC_STD.">": metavalue detected, returning FALSE
+#    Time: 20 ns  Iteration: 2  Instance: /ogpu_testbench/QG1
+# ** Warning: NUMERIC_STD.">": metavalue detected, returning FALSE
+#    Time: 40 ns  Iteration: 2  Instance: /ogpu_testbench/QG1
+# ** Warning: NUMERIC_STD.">": metavalue detected, returning FALSE
+#    Time: 60 ns  Iteration: 2  Instance: /ogpu_testbench/QG1
+# ** Warning: NUMERIC_STD.">": metavalue detected, returning FALSE
+#    Time: 100 ns  Iteration: 1  Instance: /ogpu_testbench/QG1
+# ** Warning: NUMERIC_STD.">": metavalue detected, returning FALSE
+#    Time: 100 ns  Iteration: 3  Instance: /ogpu_testbench/QG1
+# ** Warning: NUMERIC_STD.">": metavalue detected, returning FALSE
+#    Time: 160 ns  Iteration: 2  Instance: /ogpu_testbench/QG1
+# ** Warning: NUMERIC_STD.">": metavalue detected, returning FALSE
+#    Time: 160 ns  Iteration: 4  Instance: /ogpu_testbench/QG1
+# ** Warning: NUMERIC_STD.">": metavalue detected, returning FALSE
+#    Time: 220 ns  Iteration: 2  Instance: /ogpu_testbench/QG1
+# ** Warning: NUMERIC_STD.">": metavalue detected, returning FALSE
+#    Time: 220 ns  Iteration: 4  Instance: /ogpu_testbench/QG1
+# ** Warning: NUMERIC_STD.">": metavalue detected, returning FALSE
+#    Time: 280 ns  Iteration: 2  Instance: /ogpu_testbench/QG1
+# ** Warning: NUMERIC_STD.">": metavalue detected, returning FALSE
+#    Time: 280 ns  Iteration: 4  Instance: /ogpu_testbench/QG1
+# ** Warning: NUMERIC_STD.">": metavalue detected, returning FALSE
+#    Time: 340 ns  Iteration: 2  Instance: /ogpu_testbench/QG1
+# ** Warning: NUMERIC_STD.">": metavalue detected, returning FALSE
+#    Time: 340 ns  Iteration: 4  Instance: /ogpu_testbench/QG1
+# ** Warning: NUMERIC_STD.">": metavalue detected, returning FALSE
+#    Time: 400 ns  Iteration: 2  Instance: /ogpu_testbench/QG1
+# ** Warning: NUMERIC_STD.">": metavalue detected, returning FALSE
+#    Time: 400 ns  Iteration: 4  Instance: /ogpu_testbench/QG1
+# ** Warning: NUMERIC_STD.">": metavalue detected, returning FALSE
+#    Time: 460 ns  Iteration: 2  Instance: /ogpu_testbench/QG1
+# ** Warning: NUMERIC_STD.">": metavalue detected, returning FALSE
+#    Time: 460 ns  Iteration: 4  Instance: /ogpu_testbench/QG1
+do opengpu_run_msim_rtl_vhdl.do
+# if {[file exists rtl_work]} {
+# 	vdel -lib rtl_work -all
+# }
+# vlib rtl_work
+# vmap work rtl_work
+# Model Technology ModelSim ALTERA vmap 10.4d Lib Mapping Utility 2015.12 Dec 30 2015
+# vmap work rtl_work 
+# Modifying modelsim.ini
+# 
+# vcom -93 -work work {/home/fabricio/OpenGPU/hardware/ogpu_data_record_pkg.vhd}
+# Model Technology ModelSim ALTERA vcom 10.4d Compiler 2015.12 Dec 30 2015
+# Start time: 15:35:07 on Oct 31,2016
+# vcom -reportprogress 300 -93 -work work /home/fabricio/OpenGPU/hardware/ogpu_data_record_pkg.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling package ogpu_data_record_pkg
+# End time: 15:35:07 on Oct 31,2016, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vcom -93 -work work {/home/fabricio/OpenGPU/hardware/ogpu_quad_generator.vhd}
+# Model Technology ModelSim ALTERA vcom 10.4d Compiler 2015.12 Dec 30 2015
+# Start time: 15:35:08 on Oct 31,2016
+# vcom -reportprogress 300 -93 -work work /home/fabricio/OpenGPU/hardware/ogpu_quad_generator.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package ogpu_data_record_pkg
+# -- Compiling entity ogpu_quad_generator
+# -- Compiling architecture generator_1 of ogpu_quad_generator
+# End time: 15:35:08 on Oct 31,2016, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# 
+# vcom -93 -work work {/home/fabricio/OpenGPU/hardware/ogpu_testbench.vhd}
+# Model Technology ModelSim ALTERA vcom 10.4d Compiler 2015.12 Dec 30 2015
+# Start time: 15:35:08 on Oct 31,2016
+# vcom -reportprogress 300 -93 -work work /home/fabricio/OpenGPU/hardware/ogpu_testbench.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package ogpu_data_record_pkg
+# -- Compiling entity ogpu_testbench
+# -- Compiling architecture ogpu_raster_unit_tb1 of ogpu_testbench
+# -- Compiling architecture ogpu_quad_generator_tb1 of ogpu_testbench
+# -- Loading entity ogpu_testbench
+# -- Loading entity ogpu_quad_generator
+# End time: 15:35:08 on Oct 31,2016, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# 
+# vsim -t 1ps -L altera -L lpm -L sgate -L altera_mf -L altera_lnsim -L cyclonev -L rtl_work -L work -voptargs="+acc"  ogpu_testbench
+# End time: 15:35:08 on Oct 31,2016, Elapsed time: 0:01:18
+# Errors: 0, Warnings: 18
+# vsim -t 1ps -L altera -L lpm -L sgate -L altera_mf -L altera_lnsim -L cyclonev -L rtl_work -L work -voptargs=""+acc"" ogpu_testbench 
+# Start time: 15:35:08 on Oct 31,2016
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.ogpu_data_record_pkg
+# Loading work.ogpu_testbench(ogpu_quad_generator_tb1)
+# Loading work.ogpu_quad_generator(generator_1)
+# 
+# add wave *
+# view structure
+# .main_pane.structure.interior.cs.body.struct
+# view signals
+# .main_pane.objects.interior.cs.body.tree
+# run 500 ns
+# ** Warning: (vsim-3116) Problem reading symbols from linux-gate.so.1 : can not open ELF file.
+do opengpu_run_msim_rtl_vhdl.do
+# if {[file exists rtl_work]} {
+# 	vdel -lib rtl_work -all
+# }
+# vlib rtl_work
+# vmap work rtl_work
+# Model Technology ModelSim ALTERA vmap 10.4d Lib Mapping Utility 2015.12 Dec 30 2015
+# vmap work rtl_work 
+# Modifying modelsim.ini
+# 
+# vcom -93 -work work {/home/fabricio/OpenGPU/hardware/ogpu_data_record_pkg.vhd}
+# Model Technology ModelSim ALTERA vcom 10.4d Compiler 2015.12 Dec 30 2015
+# Start time: 15:35:51 on Oct 31,2016
+# vcom -reportprogress 300 -93 -work work /home/fabricio/OpenGPU/hardware/ogpu_data_record_pkg.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling package ogpu_data_record_pkg
+# End time: 15:35:51 on Oct 31,2016, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vcom -93 -work work {/home/fabricio/OpenGPU/hardware/ogpu_quad_generator.vhd}
+# Model Technology ModelSim ALTERA vcom 10.4d Compiler 2015.12 Dec 30 2015
+# Start time: 15:35:51 on Oct 31,2016
+# vcom -reportprogress 300 -93 -work work /home/fabricio/OpenGPU/hardware/ogpu_quad_generator.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package ogpu_data_record_pkg
+# -- Compiling entity ogpu_quad_generator
+# -- Compiling architecture generator_1 of ogpu_quad_generator
+# End time: 15:35:52 on Oct 31,2016, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# 
+# vcom -93 -work work {/home/fabricio/OpenGPU/hardware/ogpu_testbench.vhd}
+# Model Technology ModelSim ALTERA vcom 10.4d Compiler 2015.12 Dec 30 2015
+# Start time: 15:35:52 on Oct 31,2016
+# vcom -reportprogress 300 -93 -work work /home/fabricio/OpenGPU/hardware/ogpu_testbench.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package ogpu_data_record_pkg
+# -- Compiling entity ogpu_testbench
+# -- Compiling architecture ogpu_raster_unit_tb1 of ogpu_testbench
+# -- Compiling architecture ogpu_quad_generator_tb1 of ogpu_testbench
+# -- Loading entity ogpu_testbench
+# -- Loading entity ogpu_quad_generator
+# End time: 15:35:52 on Oct 31,2016, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# 
+# vsim -t 1ps -L altera -L lpm -L sgate -L altera_mf -L altera_lnsim -L cyclonev -L rtl_work -L work -voptargs="+acc"  ogpu_testbench
+# End time: 15:35:52 on Oct 31,2016, Elapsed time: 0:00:44
+# Errors: 0, Warnings: 1
+# vsim -t 1ps -L altera -L lpm -L sgate -L altera_mf -L altera_lnsim -L cyclonev -L rtl_work -L work -voptargs=""+acc"" ogpu_testbench 
+# Start time: 15:35:52 on Oct 31,2016
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.ogpu_data_record_pkg
+# Loading work.ogpu_testbench(ogpu_quad_generator_tb1)
+# Loading work.ogpu_quad_generator(generator_1)
+# 
+# add wave *
+# view structure
+# .main_pane.structure.interior.cs.body.struct
+# view signals
+# .main_pane.objects.interior.cs.body.tree
+# run 500 ns
+# ** Warning: (vsim-3116) Problem reading symbols from linux-gate.so.1 : can not open ELF file.
+# ** Warning: NUMERIC_STD.">": metavalue detected, returning FALSE
+#    Time: 20 ns  Iteration: 2  Instance: /ogpu_testbench/QG1
+# ** Warning: NUMERIC_STD.">": metavalue detected, returning FALSE
+#    Time: 40 ns  Iteration: 2  Instance: /ogpu_testbench/QG1
+# ** Warning: NUMERIC_STD.">": metavalue detected, returning FALSE
+#    Time: 60 ns  Iteration: 2  Instance: /ogpu_testbench/QG1
+# ** Warning: NUMERIC_STD.">": metavalue detected, returning FALSE
+#    Time: 100 ns  Iteration: 1  Instance: /ogpu_testbench/QG1
+# ** Warning: NUMERIC_STD.">": metavalue detected, returning FALSE
+#    Time: 100 ns  Iteration: 3  Instance: /ogpu_testbench/QG1
+# ** Warning: NUMERIC_STD.">": metavalue detected, returning FALSE
+#    Time: 160 ns  Iteration: 2  Instance: /ogpu_testbench/QG1
+# ** Warning: NUMERIC_STD.">": metavalue detected, returning FALSE
+#    Time: 160 ns  Iteration: 4  Instance: /ogpu_testbench/QG1
+# ** Warning: NUMERIC_STD.">": metavalue detected, returning FALSE
+#    Time: 220 ns  Iteration: 2  Instance: /ogpu_testbench/QG1
+# ** Warning: NUMERIC_STD.">": metavalue detected, returning FALSE
+#    Time: 220 ns  Iteration: 4  Instance: /ogpu_testbench/QG1
+# ** Warning: NUMERIC_STD.">": metavalue detected, returning FALSE
+#    Time: 280 ns  Iteration: 2  Instance: /ogpu_testbench/QG1
+# ** Warning: NUMERIC_STD.">": metavalue detected, returning FALSE
+#    Time: 280 ns  Iteration: 4  Instance: /ogpu_testbench/QG1
+# ** Warning: NUMERIC_STD.">": metavalue detected, returning FALSE
+#    Time: 340 ns  Iteration: 2  Instance: /ogpu_testbench/QG1
+# ** Warning: NUMERIC_STD.">": metavalue detected, returning FALSE
+#    Time: 340 ns  Iteration: 4  Instance: /ogpu_testbench/QG1
+# ** Warning: NUMERIC_STD.">": metavalue detected, returning FALSE
+#    Time: 400 ns  Iteration: 2  Instance: /ogpu_testbench/QG1
+# ** Warning: NUMERIC_STD.">": metavalue detected, returning FALSE
+#    Time: 400 ns  Iteration: 4  Instance: /ogpu_testbench/QG1
+# ** Warning: NUMERIC_STD.">": metavalue detected, returning FALSE
+#    Time: 460 ns  Iteration: 2  Instance: /ogpu_testbench/QG1
+# ** Warning: NUMERIC_STD.">": metavalue detected, returning FALSE
+#    Time: 460 ns  Iteration: 4  Instance: /ogpu_testbench/QG1
+do opengpu_run_msim_rtl_vhdl.do
+# if {[file exists rtl_work]} {
+# 	vdel -lib rtl_work -all
+# }
+# vlib rtl_work
+# vmap work rtl_work
+# Model Technology ModelSim ALTERA vmap 10.4d Lib Mapping Utility 2015.12 Dec 30 2015
+# vmap work rtl_work 
+# Modifying modelsim.ini
+# 
+# vcom -93 -work work {/home/fabricio/OpenGPU/hardware/ogpu_data_record_pkg.vhd}
+# Model Technology ModelSim ALTERA vcom 10.4d Compiler 2015.12 Dec 30 2015
+# Start time: 15:36:36 on Oct 31,2016
+# vcom -reportprogress 300 -93 -work work /home/fabricio/OpenGPU/hardware/ogpu_data_record_pkg.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling package ogpu_data_record_pkg
+# End time: 15:36:36 on Oct 31,2016, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vcom -93 -work work {/home/fabricio/OpenGPU/hardware/ogpu_quad_generator.vhd}
+# Model Technology ModelSim ALTERA vcom 10.4d Compiler 2015.12 Dec 30 2015
+# Start time: 15:36:36 on Oct 31,2016
+# vcom -reportprogress 300 -93 -work work /home/fabricio/OpenGPU/hardware/ogpu_quad_generator.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package ogpu_data_record_pkg
+# -- Compiling entity ogpu_quad_generator
+# -- Compiling architecture generator_1 of ogpu_quad_generator
+# End time: 15:36:36 on Oct 31,2016, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# 
+# vcom -93 -work work {/home/fabricio/OpenGPU/hardware/ogpu_testbench.vhd}
+# Model Technology ModelSim ALTERA vcom 10.4d Compiler 2015.12 Dec 30 2015
+# Start time: 15:36:36 on Oct 31,2016
+# vcom -reportprogress 300 -93 -work work /home/fabricio/OpenGPU/hardware/ogpu_testbench.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package ogpu_data_record_pkg
+# -- Compiling entity ogpu_testbench
+# -- Compiling architecture ogpu_raster_unit_tb1 of ogpu_testbench
+# -- Compiling architecture ogpu_quad_generator_tb1 of ogpu_testbench
+# -- Loading entity ogpu_testbench
+# -- Loading entity ogpu_quad_generator
+# End time: 15:36:36 on Oct 31,2016, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# 
+# vsim -t 1ps -L altera -L lpm -L sgate -L altera_mf -L altera_lnsim -L cyclonev -L rtl_work -L work -voptargs="+acc"  ogpu_testbench
+# End time: 15:36:37 on Oct 31,2016, Elapsed time: 0:00:45
+# Errors: 0, Warnings: 18
+# vsim -t 1ps -L altera -L lpm -L sgate -L altera_mf -L altera_lnsim -L cyclonev -L rtl_work -L work -voptargs=""+acc"" ogpu_testbench 
+# Start time: 15:36:37 on Oct 31,2016
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.ogpu_data_record_pkg
+# Loading work.ogpu_testbench(ogpu_quad_generator_tb1)
+# Loading work.ogpu_quad_generator(generator_1)
+# 
+# add wave *
+# view structure
+# .main_pane.structure.interior.cs.body.struct
+# view signals
+# .main_pane.objects.interior.cs.body.tree
+# run 500 ns
+# ** Warning: (vsim-3116) Problem reading symbols from linux-gate.so.1 : can not open ELF file.
+# ** Warning: NUMERIC_STD.">": metavalue detected, returning FALSE
+#    Time: 20 ns  Iteration: 2  Instance: /ogpu_testbench/QG1
+# ** Warning: NUMERIC_STD.">": metavalue detected, returning FALSE
+#    Time: 20 ns  Iteration: 4  Instance: /ogpu_testbench/QG1
+# ** Warning: NUMERIC_STD.">": metavalue detected, returning FALSE
+#    Time: 120 ns  Iteration: 2  Instance: /ogpu_testbench/QG1
+# ** Warning: NUMERIC_STD.">": metavalue detected, returning FALSE
+#    Time: 120 ns  Iteration: 4  Instance: /ogpu_testbench/QG1
+# ** Warning: NUMERIC_STD.">": metavalue detected, returning FALSE
+#    Time: 220 ns  Iteration: 2  Instance: /ogpu_testbench/QG1
+# ** Warning: NUMERIC_STD.">": metavalue detected, returning FALSE
+#    Time: 220 ns  Iteration: 4  Instance: /ogpu_testbench/QG1
+# ** Warning: NUMERIC_STD.">": metavalue detected, returning FALSE
+#    Time: 320 ns  Iteration: 2  Instance: /ogpu_testbench/QG1
+# ** Warning: NUMERIC_STD.">": metavalue detected, returning FALSE
+#    Time: 320 ns  Iteration: 4  Instance: /ogpu_testbench/QG1
+# ** Warning: NUMERIC_STD.">": metavalue detected, returning FALSE
+#    Time: 420 ns  Iteration: 2  Instance: /ogpu_testbench/QG1
+# ** Warning: NUMERIC_STD.">": metavalue detected, returning FALSE
+#    Time: 420 ns  Iteration: 4  Instance: /ogpu_testbench/QG1
+do opengpu_run_msim_rtl_vhdl.do
+# if {[file exists rtl_work]} {
+# 	vdel -lib rtl_work -all
+# }
+# vlib rtl_work
+# vmap work rtl_work
+# Model Technology ModelSim ALTERA vmap 10.4d Lib Mapping Utility 2015.12 Dec 30 2015
+# vmap work rtl_work 
+# Modifying modelsim.ini
+# 
+# vcom -93 -work work {/home/fabricio/OpenGPU/hardware/ogpu_data_record_pkg.vhd}
+# Model Technology ModelSim ALTERA vcom 10.4d Compiler 2015.12 Dec 30 2015
+# Start time: 15:37:52 on Oct 31,2016
+# vcom -reportprogress 300 -93 -work work /home/fabricio/OpenGPU/hardware/ogpu_data_record_pkg.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling package ogpu_data_record_pkg
+# End time: 15:37:52 on Oct 31,2016, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vcom -93 -work work {/home/fabricio/OpenGPU/hardware/ogpu_quad_generator.vhd}
+# Model Technology ModelSim ALTERA vcom 10.4d Compiler 2015.12 Dec 30 2015
+# Start time: 15:37:52 on Oct 31,2016
+# vcom -reportprogress 300 -93 -work work /home/fabricio/OpenGPU/hardware/ogpu_quad_generator.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package ogpu_data_record_pkg
+# -- Compiling entity ogpu_quad_generator
+# -- Compiling architecture generator_1 of ogpu_quad_generator
+# End time: 15:37:52 on Oct 31,2016, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# 
+# vcom -93 -work work {/home/fabricio/OpenGPU/hardware/ogpu_testbench.vhd}
+# Model Technology ModelSim ALTERA vcom 10.4d Compiler 2015.12 Dec 30 2015
+# Start time: 15:37:52 on Oct 31,2016
+# vcom -reportprogress 300 -93 -work work /home/fabricio/OpenGPU/hardware/ogpu_testbench.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package ogpu_data_record_pkg
+# -- Compiling entity ogpu_testbench
+# -- Compiling architecture ogpu_raster_unit_tb1 of ogpu_testbench
+# -- Compiling architecture ogpu_quad_generator_tb1 of ogpu_testbench
+# -- Loading entity ogpu_testbench
+# -- Loading entity ogpu_quad_generator
+# End time: 15:37:52 on Oct 31,2016, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# 
+# vsim -t 1ps -L altera -L lpm -L sgate -L altera_mf -L altera_lnsim -L cyclonev -L rtl_work -L work -voptargs="+acc"  ogpu_testbench
+# End time: 15:37:53 on Oct 31,2016, Elapsed time: 0:01:16
+# Errors: 0, Warnings: 11
+# vsim -t 1ps -L altera -L lpm -L sgate -L altera_mf -L altera_lnsim -L cyclonev -L rtl_work -L work -voptargs=""+acc"" ogpu_testbench 
+# Start time: 15:37:53 on Oct 31,2016
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.ogpu_data_record_pkg
+# Loading work.ogpu_testbench(ogpu_quad_generator_tb1)
+# Loading work.ogpu_quad_generator(generator_1)
+# 
+# add wave *
+# view structure
+# .main_pane.structure.interior.cs.body.struct
+# view signals
+# .main_pane.objects.interior.cs.body.tree
+# run 500 ns
+# ** Warning: (vsim-3116) Problem reading symbols from linux-gate.so.1 : can not open ELF file.
+# ** Warning: NUMERIC_STD.">": metavalue detected, returning FALSE
+#    Time: 20 ns  Iteration: 2  Instance: /ogpu_testbench/QG1
+# ** Warning: NUMERIC_STD.">": metavalue detected, returning FALSE
+#    Time: 40 ns  Iteration: 2  Instance: /ogpu_testbench/QG1
+# ** Warning: NUMERIC_STD.">": metavalue detected, returning FALSE
+#    Time: 60 ns  Iteration: 2  Instance: /ogpu_testbench/QG1
+# ** Warning: NUMERIC_STD.">": metavalue detected, returning FALSE
+#    Time: 100 ns  Iteration: 1  Instance: /ogpu_testbench/QG1
+# ** Warning: NUMERIC_STD.">": metavalue detected, returning FALSE
+#    Time: 100 ns  Iteration: 3  Instance: /ogpu_testbench/QG1
+# ** Warning: NUMERIC_STD.">": metavalue detected, returning FALSE
+#    Time: 200 ns  Iteration: 2  Instance: /ogpu_testbench/QG1
+# ** Warning: NUMERIC_STD.">": metavalue detected, returning FALSE
+#    Time: 200 ns  Iteration: 4  Instance: /ogpu_testbench/QG1
+# ** Warning: NUMERIC_STD.">": metavalue detected, returning FALSE
+#    Time: 300 ns  Iteration: 2  Instance: /ogpu_testbench/QG1
+# ** Warning: NUMERIC_STD.">": metavalue detected, returning FALSE
+#    Time: 300 ns  Iteration: 4  Instance: /ogpu_testbench/QG1
+# ** Warning: NUMERIC_STD.">": metavalue detected, returning FALSE
+#    Time: 400 ns  Iteration: 2  Instance: /ogpu_testbench/QG1
+# ** Warning: NUMERIC_STD.">": metavalue detected, returning FALSE
+#    Time: 400 ns  Iteration: 4  Instance: /ogpu_testbench/QG1
+# ** Warning: NUMERIC_STD.">": metavalue detected, returning FALSE
+#    Time: 500 ns  Iteration: 2  Instance: /ogpu_testbench/QG1
+# ** Warning: NUMERIC_STD.">": metavalue detected, returning FALSE
+#    Time: 500 ns  Iteration: 4  Instance: /ogpu_testbench/QG1
+do opengpu_run_msim_rtl_vhdl.do
+# if {[file exists rtl_work]} {
+# 	vdel -lib rtl_work -all
+# }
+# vlib rtl_work
+# vmap work rtl_work
+# Model Technology ModelSim ALTERA vmap 10.4d Lib Mapping Utility 2015.12 Dec 30 2015
+# vmap work rtl_work 
+# Modifying modelsim.ini
+# 
+# vcom -93 -work work {/home/fabricio/OpenGPU/hardware/ogpu_data_record_pkg.vhd}
+# Model Technology ModelSim ALTERA vcom 10.4d Compiler 2015.12 Dec 30 2015
+# Start time: 15:39:00 on Oct 31,2016
+# vcom -reportprogress 300 -93 -work work /home/fabricio/OpenGPU/hardware/ogpu_data_record_pkg.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling package ogpu_data_record_pkg
+# End time: 15:39:00 on Oct 31,2016, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vcom -93 -work work {/home/fabricio/OpenGPU/hardware/ogpu_quad_generator.vhd}
+# Model Technology ModelSim ALTERA vcom 10.4d Compiler 2015.12 Dec 30 2015
+# Start time: 15:39:00 on Oct 31,2016
+# vcom -reportprogress 300 -93 -work work /home/fabricio/OpenGPU/hardware/ogpu_quad_generator.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package ogpu_data_record_pkg
+# -- Compiling entity ogpu_quad_generator
+# -- Compiling architecture generator_1 of ogpu_quad_generator
+# End time: 15:39:00 on Oct 31,2016, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# 
+# vcom -93 -work work {/home/fabricio/OpenGPU/hardware/ogpu_testbench.vhd}
+# Model Technology ModelSim ALTERA vcom 10.4d Compiler 2015.12 Dec 30 2015
+# Start time: 15:39:00 on Oct 31,2016
+# vcom -reportprogress 300 -93 -work work /home/fabricio/OpenGPU/hardware/ogpu_testbench.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package ogpu_data_record_pkg
+# -- Compiling entity ogpu_testbench
+# -- Compiling architecture ogpu_raster_unit_tb1 of ogpu_testbench
+# -- Compiling architecture ogpu_quad_generator_tb1 of ogpu_testbench
+# -- Loading entity ogpu_testbench
+# -- Loading entity ogpu_quad_generator
+# End time: 15:39:00 on Oct 31,2016, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# 
+# vsim -t 1ps -L altera -L lpm -L sgate -L altera_mf -L altera_lnsim -L cyclonev -L rtl_work -L work -voptargs="+acc"  ogpu_testbench
+# End time: 15:39:00 on Oct 31,2016, Elapsed time: 0:01:07
+# Errors: 0, Warnings: 14
+# vsim -t 1ps -L altera -L lpm -L sgate -L altera_mf -L altera_lnsim -L cyclonev -L rtl_work -L work -voptargs=""+acc"" ogpu_testbench 
+# Start time: 15:39:00 on Oct 31,2016
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.ogpu_data_record_pkg
+# Loading work.ogpu_testbench(ogpu_quad_generator_tb1)
+# Loading work.ogpu_quad_generator(generator_1)
+# 
+# add wave *
+# view structure
+# .main_pane.structure.interior.cs.body.struct
+# view signals
+# .main_pane.objects.interior.cs.body.tree
+# run 500 ns
+# ** Warning: (vsim-3116) Problem reading symbols from linux-gate.so.1 : can not open ELF file.
+run
+run
+run
+run
+run
+run
+do opengpu_run_msim_rtl_vhdl.do
+# if {[file exists rtl_work]} {
+# 	vdel -lib rtl_work -all
+# }
+# vlib rtl_work
+# vmap work rtl_work
+# Model Technology ModelSim ALTERA vmap 10.4d Lib Mapping Utility 2015.12 Dec 30 2015
+# vmap work rtl_work 
+# Modifying modelsim.ini
+# 
+# vcom -93 -work work {/home/fabricio/OpenGPU/hardware/ogpu_data_record_pkg.vhd}
+# Model Technology ModelSim ALTERA vcom 10.4d Compiler 2015.12 Dec 30 2015
+# Start time: 15:46:53 on Oct 31,2016
+# vcom -reportprogress 300 -93 -work work /home/fabricio/OpenGPU/hardware/ogpu_data_record_pkg.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling package ogpu_data_record_pkg
+# End time: 15:46:53 on Oct 31,2016, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vcom -93 -work work {/home/fabricio/OpenGPU/hardware/ogpu_quad_generator.vhd}
+# Model Technology ModelSim ALTERA vcom 10.4d Compiler 2015.12 Dec 30 2015
+# Start time: 15:46:53 on Oct 31,2016
+# vcom -reportprogress 300 -93 -work work /home/fabricio/OpenGPU/hardware/ogpu_quad_generator.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package ogpu_data_record_pkg
+# -- Compiling entity ogpu_quad_generator
+# -- Compiling architecture generator_1 of ogpu_quad_generator
+# End time: 15:46:53 on Oct 31,2016, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# 
+# vcom -93 -work work {/home/fabricio/OpenGPU/hardware/ogpu_testbench.vhd}
+# Model Technology ModelSim ALTERA vcom 10.4d Compiler 2015.12 Dec 30 2015
+# Start time: 15:46:53 on Oct 31,2016
+# vcom -reportprogress 300 -93 -work work /home/fabricio/OpenGPU/hardware/ogpu_testbench.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package ogpu_data_record_pkg
+# -- Compiling entity ogpu_testbench
+# -- Compiling architecture ogpu_raster_unit_tb1 of ogpu_testbench
+# -- Compiling architecture ogpu_quad_generator_tb1 of ogpu_testbench
+# -- Loading entity ogpu_testbench
+# -- Loading entity ogpu_quad_generator
+# End time: 15:46:54 on Oct 31,2016, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# 
+# vsim -t 1ps -L altera -L lpm -L sgate -L altera_mf -L altera_lnsim -L cyclonev -L rtl_work -L work -voptargs="+acc"  ogpu_testbench
+# End time: 15:46:54 on Oct 31,2016, Elapsed time: 0:07:54
+# Errors: 0, Warnings: 1
+# vsim -t 1ps -L altera -L lpm -L sgate -L altera_mf -L altera_lnsim -L cyclonev -L rtl_work -L work -voptargs=""+acc"" ogpu_testbench 
+# Start time: 15:46:54 on Oct 31,2016
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.ogpu_data_record_pkg
+# Loading work.ogpu_testbench(ogpu_quad_generator_tb1)
+# Loading work.ogpu_quad_generator(generator_1)
+# 
+# add wave *
+# view structure
+# .main_pane.structure.interior.cs.body.struct
+# view signals
+# .main_pane.objects.interior.cs.body.tree
+# run 500 ns
+# ** Warning: (vsim-3116) Problem reading symbols from linux-gate.so.1 : can not open ELF file.
+do opengpu_run_msim_rtl_vhdl.do
+# if {[file exists rtl_work]} {
+# 	vdel -lib rtl_work -all
+# }
+# vlib rtl_work
+# vmap work rtl_work
+# Model Technology ModelSim ALTERA vmap 10.4d Lib Mapping Utility 2015.12 Dec 30 2015
+# vmap work rtl_work 
+# Modifying modelsim.ini
+# 
+# vcom -93 -work work {/home/fabricio/OpenGPU/hardware/ogpu_data_record_pkg.vhd}
+# Model Technology ModelSim ALTERA vcom 10.4d Compiler 2015.12 Dec 30 2015
+# Start time: 15:47:39 on Oct 31,2016
+# vcom -reportprogress 300 -93 -work work /home/fabricio/OpenGPU/hardware/ogpu_data_record_pkg.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling package ogpu_data_record_pkg
+# End time: 15:47:39 on Oct 31,2016, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vcom -93 -work work {/home/fabricio/OpenGPU/hardware/ogpu_quad_generator.vhd}
+# Model Technology ModelSim ALTERA vcom 10.4d Compiler 2015.12 Dec 30 2015
+# Start time: 15:47:39 on Oct 31,2016
+# vcom -reportprogress 300 -93 -work work /home/fabricio/OpenGPU/hardware/ogpu_quad_generator.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package ogpu_data_record_pkg
+# -- Compiling entity ogpu_quad_generator
+# -- Compiling architecture generator_1 of ogpu_quad_generator
+# End time: 15:47:39 on Oct 31,2016, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# 
+# vcom -93 -work work {/home/fabricio/OpenGPU/hardware/ogpu_testbench.vhd}
+# Model Technology ModelSim ALTERA vcom 10.4d Compiler 2015.12 Dec 30 2015
+# Start time: 15:47:39 on Oct 31,2016
+# vcom -reportprogress 300 -93 -work work /home/fabricio/OpenGPU/hardware/ogpu_testbench.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package ogpu_data_record_pkg
+# -- Compiling entity ogpu_testbench
+# -- Compiling architecture ogpu_raster_unit_tb1 of ogpu_testbench
+# -- Compiling architecture ogpu_quad_generator_tb1 of ogpu_testbench
+# -- Loading entity ogpu_testbench
+# -- Loading entity ogpu_quad_generator
+# End time: 15:47:39 on Oct 31,2016, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# 
+# vsim -t 1ps -L altera -L lpm -L sgate -L altera_mf -L altera_lnsim -L cyclonev -L rtl_work -L work -voptargs="+acc"  ogpu_testbench
+# End time: 15:47:40 on Oct 31,2016, Elapsed time: 0:00:46
+# Errors: 0, Warnings: 1
+# vsim -t 1ps -L altera -L lpm -L sgate -L altera_mf -L altera_lnsim -L cyclonev -L rtl_work -L work -voptargs=""+acc"" ogpu_testbench 
+# Start time: 15:47:40 on Oct 31,2016
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.ogpu_data_record_pkg
+# Loading work.ogpu_testbench(ogpu_quad_generator_tb1)
+# Loading work.ogpu_quad_generator(generator_1)
+# 
+# add wave *
+# view structure
+# .main_pane.structure.interior.cs.body.struct
+# view signals
+# .main_pane.objects.interior.cs.body.tree
+# run 500 ns
+# ** Warning: (vsim-3116) Problem reading symbols from linux-gate.so.1 : can not open ELF file.
+run
+run
+run
+# Add Signal sim:/ogpu_testbench/end_tile
+when -label sim:/ogpu_testbench/end_tile sim:/ogpu_testbench/end_tile {echo {Break on sim:/ogpu_testbench/end_tile} ; stop}
+run -continue
+run -all
+# Break on sim:/ogpu_testbench/end_tile
+# Simulation stop requested.
+run
+# Break on sim:/ogpu_testbench/end_tile
+# Simulation stop requested.
+run
+# End time: 16:00:15 on Oct 31,2016, Elapsed time: 0:12:35
+# Errors: 0, Warnings: 1
