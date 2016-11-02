@@ -1,11 +1,11 @@
-Analysis & Synthesis Status : Successful - Mon Oct 31 14:07:18 2016
+Analysis & Synthesis Status : Successful - Wed Nov  2 19:35:56 2016
 Quartus Prime Version : 16.0.2 Build 222 07/20/2016 SJ Lite Edition
 Revision Name : opengpu
-Top-level Entity Name : ogpu_quad_generator
+Top-level Entity Name : ogpu_setup
 Family : Cyclone V
 Logic utilization (in ALMs) : N/A
-Total registers : 127
-Total pins : 261
+Total registers : 0
+Total pins : 292
 Total virtual pins : 0
 Total block memory bits : 0
 Total DSP Blocks : 0

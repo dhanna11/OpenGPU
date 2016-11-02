@@ -1,5 +1,5 @@
 Flow report for opengpu
-Mon Oct 31 14:07:18 2016
+Wed Nov  2 19:35:56 2016
 Quartus Prime Version 16.0.2 Build 222 07/20/2016 SJ Lite Edition
 
 
@@ -41,16 +41,16 @@ agreement for further details.
 +-------------------------------------------------------------------------------+
 ; Flow Summary                                                                  ;
 +---------------------------------+---------------------------------------------+
-; Flow Status                     ; Successful - Mon Oct 31 14:07:18 2016       ;
+; Flow Status                     ; Successful - Wed Nov  2 19:35:56 2016       ;
 ; Quartus Prime Version           ; 16.0.2 Build 222 07/20/2016 SJ Lite Edition ;
 ; Revision Name                   ; opengpu                                     ;
-; Top-level Entity Name           ; ogpu_quad_generator                         ;
+; Top-level Entity Name           ; ogpu_setup                                  ;
 ; Family                          ; Cyclone V                                   ;
 ; Device                          ; 5CSEMA5F31C6                                ;
 ; Timing Models                   ; Final                                       ;
 ; Logic utilization (in ALMs)     ; N/A                                         ;
-; Total registers                 ; 127                                         ;
-; Total pins                      ; 261                                         ;
+; Total registers                 ; 0                                           ;
+; Total pins                      ; 292                                         ;
 ; Total virtual pins              ; 0                                           ;
 ; Total block memory bits         ; 0                                           ;
 ; Total DSP Blocks                ; 0                                           ;
@@ -68,38 +68,43 @@ agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 10/31/2016 14:07:07 ;
+; Start date & time ; 11/02/2016 19:35:44 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; opengpu             ;
 +-------------------+---------------------+
 
 
-+----------------------------------------------------------------------------------------------------------------------------------------------+
-; Flow Non-Default Global Settings                                                                                                             ;
-+--------------------------------------+---------------------------------------+---------------+---------------------+-------------------------+
-; Assignment Name                      ; Value                                 ; Default Value ; Entity Name         ; Section Id              ;
-+--------------------------------------+---------------------------------------+---------------+---------------------+-------------------------+
-; COMPILER_SIGNATURE_ID                ; 92378948106942.147793002605187        ; --            ; --                  ; --                      ;
-; EDA_DESIGN_INSTANCE_NAME             ; NA                                    ; --            ; --                  ; ogpu_quad_generator_tb1 ;
-; EDA_NATIVELINK_SIMULATION_TEST_BENCH ; ogpu_quad_generator_tb1               ; --            ; --                  ; eda_simulation          ;
-; EDA_OUTPUT_DATA_FORMAT               ; Vhdl                                  ; --            ; --                  ; eda_simulation          ;
-; EDA_SIMULATION_TOOL                  ; ModelSim-Altera (VHDL)                ; <None>        ; --                  ; --                      ;
-; EDA_TEST_BENCH_ENABLE_STATUS         ; TEST_BENCH_MODE                       ; --            ; --                  ; eda_simulation          ;
-; EDA_TEST_BENCH_FILE                  ; ogpu_testbench.vhd                    ; --            ; --                  ; ogpu_quad_generator_tb1 ;
-; EDA_TEST_BENCH_MODULE_NAME           ; ogpu_testbench                        ; --            ; --                  ; ogpu_quad_generator_tb1 ;
-; EDA_TEST_BENCH_NAME                  ; ogpu_quad_generator_tb1               ; --            ; --                  ; eda_simulation          ;
-; EDA_TEST_BENCH_RUN_SIM_FOR           ; 500 ns                                ; --            ; --                  ; ogpu_quad_generator_tb1 ;
-; EDA_TIME_SCALE                       ; 1 ps                                  ; --            ; --                  ; eda_simulation          ;
-; MAX_CORE_JUNCTION_TEMP               ; 85                                    ; --            ; --                  ; --                      ;
-; MIN_CORE_JUNCTION_TEMP               ; 0                                     ; --            ; --                  ; --                      ;
-; PARTITION_COLOR                      ; 16764057                              ; --            ; ogpu_quad_generator ; Top                     ;
-; PARTITION_FITTER_PRESERVATION_LEVEL  ; PLACEMENT_AND_ROUTING                 ; --            ; ogpu_quad_generator ; Top                     ;
-; PARTITION_NETLIST_TYPE               ; SOURCE                                ; --            ; ogpu_quad_generator ; Top                     ;
-; POWER_BOARD_THERMAL_MODEL            ; None (CONSERVATIVE)                   ; --            ; --                  ; --                      ;
-; POWER_PRESET_COOLING_SOLUTION        ; 23 MM HEAT SINK WITH 200 LFPM AIRFLOW ; --            ; --                  ; --                      ;
-; PROJECT_OUTPUT_DIRECTORY             ; output_files                          ; --            ; --                  ; --                      ;
-; TOP_LEVEL_ENTITY                     ; ogpu_quad_generator                   ; opengpu       ; --                  ; --                      ;
-+--------------------------------------+---------------------------------------+---------------+---------------------+-------------------------+
++--------------------------------------------------------------------------------------------------------------------------------------+
+; Flow Non-Default Global Settings                                                                                                     ;
++--------------------------------------+---------------------------------------+---------------+-------------+-------------------------+
+; Assignment Name                      ; Value                                 ; Default Value ; Entity Name ; Section Id              ;
++--------------------------------------+---------------------------------------+---------------+-------------+-------------------------+
+; COMPILER_SIGNATURE_ID                ; 92378948106942.147812254428309        ; --            ; --          ; --                      ;
+; EDA_DESIGN_INSTANCE_NAME             ; NA                                    ; --            ; --          ; ogpu_quad_generator_tb1 ;
+; EDA_DESIGN_INSTANCE_NAME             ; NA                                    ; --            ; --          ; ogpu_setup_tb1          ;
+; EDA_NATIVELINK_SIMULATION_TEST_BENCH ; ogpu_setup_tb1                        ; --            ; --          ; eda_simulation          ;
+; EDA_OUTPUT_DATA_FORMAT               ; Vhdl                                  ; --            ; --          ; eda_simulation          ;
+; EDA_SIMULATION_TOOL                  ; ModelSim-Altera (VHDL)                ; <None>        ; --          ; --                      ;
+; EDA_TEST_BENCH_ENABLE_STATUS         ; TEST_BENCH_MODE                       ; --            ; --          ; eda_simulation          ;
+; EDA_TEST_BENCH_FILE                  ; ogpu_quad_generator_testbench.vhd     ; --            ; --          ; ogpu_quad_generator_tb1 ;
+; EDA_TEST_BENCH_FILE                  ; ogpu_setup_testbench.vhd              ; --            ; --          ; ogpu_setup_tb1          ;
+; EDA_TEST_BENCH_MODULE_NAME           ; ogpu_quad_generator_testbench         ; --            ; --          ; ogpu_quad_generator_tb1 ;
+; EDA_TEST_BENCH_MODULE_NAME           ; ogpu_setup_testbench                  ; --            ; --          ; ogpu_setup_tb1          ;
+; EDA_TEST_BENCH_NAME                  ; ogpu_quad_generator_tb1               ; --            ; --          ; eda_simulation          ;
+; EDA_TEST_BENCH_NAME                  ; ogpu_setup_tb1                        ; --            ; --          ; eda_simulation          ;
+; EDA_TEST_BENCH_RUN_SIM_FOR           ; 500 ns                                ; --            ; --          ; ogpu_quad_generator_tb1 ;
+; EDA_TEST_BENCH_RUN_SIM_FOR           ; 500 ns                                ; --            ; --          ; ogpu_setup_tb1          ;
+; EDA_TIME_SCALE                       ; 1 ps                                  ; --            ; --          ; eda_simulation          ;
+; MAX_CORE_JUNCTION_TEMP               ; 85                                    ; --            ; --          ; --                      ;
+; MIN_CORE_JUNCTION_TEMP               ; 0                                     ; --            ; --          ; --                      ;
+; PARTITION_COLOR                      ; 16764057                              ; --            ; ogpu_setup  ; Top                     ;
+; PARTITION_FITTER_PRESERVATION_LEVEL  ; PLACEMENT_AND_ROUTING                 ; --            ; ogpu_setup  ; Top                     ;
+; PARTITION_NETLIST_TYPE               ; SOURCE                                ; --            ; ogpu_setup  ; Top                     ;
+; POWER_BOARD_THERMAL_MODEL            ; None (CONSERVATIVE)                   ; --            ; --          ; --                      ;
+; POWER_PRESET_COOLING_SOLUTION        ; 23 MM HEAT SINK WITH 200 LFPM AIRFLOW ; --            ; --          ; --                      ;
+; PROJECT_OUTPUT_DIRECTORY             ; output_files                          ; --            ; --          ; --                      ;
+; TOP_LEVEL_ENTITY                     ; ogpu_setup                            ; opengpu       ; --          ; --                      ;
++--------------------------------------+---------------------------------------+---------------+-------------+-------------------------+
 
 
 +--------------------------------------------------------------------------------------------------------------------------+
@@ -107,7 +112,7 @@ agreement for further details.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:00:12     ; 1.0                     ; 1302 MB             ; 00:00:25                           ;
+; Analysis & Synthesis ; 00:00:12     ; 1.0                     ; 1303 MB             ; 00:00:25                           ;
 ; Total                ; 00:00:12     ; --                      ; --                  ; 00:00:25                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 

@@ -4,10 +4,6 @@ use ieee.numeric_std.all;
 
 package ogpu_data_record_pkg is
 
-constant OGPU_CMD_NOP : unsigned(31 downto 0) := (others=>'0');
-constant OGPU_CMD_PREPARE : unsigned(31 downto 0) := X"000000A5";
-constant OGPU_CMD_RASTER : unsigned(31 downto 0) := X"000000AA";
-
 type ogpu_float is
 record
 -- TODO: implement float point conversion to fix notation
@@ -93,6 +89,100 @@ record
 	end_tile: std_logic;
 	quad_ready: std_logic;
 	quad: ogpu_quad;
+end record;
+
+type ogpu_quad_edge_test_in_type is
+record
+	edge_test: std_logic;
+	quad:  ogpu_quad;
+	e:  ogpu_edge;
+end record;
+
+type ogpu_quad_edge_test_out_type is
+record
+	edge_ready:  std_logic;
+	edge_mask:   std_logic_vector(0 to 3);
+end record;
+
+type ogpu_triangle_edge_test_in_type is
+record
+	edge_ready: std_logic_vector(0 to 2);
+	edge_mask0: std_logic_vector(0 to 3);
+	edge_mask1: std_logic_vector(0 to 3);
+	edge_mask2: std_logic_vector(0 to 3);
+end record;
+
+type ogpu_triangle_edge_test_out_type is
+record
+	draw_quad: std_logic;
+	discard_quad: std_logic;
+	quad_mask: std_logic_vector(0 to 3);
+end record;
+
+type ogpu_depth_test_in_type is
+record
+	depth_coef: ogpu_depth_coefficients;
+	quad: ogpu_quad;
+	depth_test: std_logic;
+end record;
+
+type ogpu_depth_test_out_type is
+record
+	depth_ready: std_logic;
+	depth_quad: ogpu_depth_quad;
+end record;
+
+type ogpu_quad_store_in_type is
+record
+	quad_mask: std_logic_vector(0 to 3);
+	quad: ogpu_quad;
+	depth_quad: ogpu_depth_quad;
+	start_raster: std_logic;
+	store_quad: std_logic;
+end record;
+
+type ogpu_quad_store_out_type is
+record
+	store_quad_data: std_logic;
+	quad_stored: std_logic;
+	quad_data: ogpu_quad_data;
+end record;
+
+type ogpu_quad_buffer_in_type is
+record
+	store: std_logic;
+	addr: std_logic_vector(63 downto 0);
+	data: ogpu_quad_data;
+end record;
+
+type ogpu_command is
+	(OGPU_CMD_NOP,OGPU_CMD_PREPARE,OGPU_CMD_RASTER);
+attribute OGPU_CMD_ENUM_ENCODING: string;
+attribute OGPU_CMD_ENUM_ENCODING of ogpu_command : type is
+	"00 A5 AA";
+	--"00000000 10100101 10101010";
+
+type ogpu_raster_control_in_type is
+record
+	command: ogpu_command;
+	setup_done: std_logic;
+	end_tile: std_logic;
+	quad_ready: std_logic;
+	depth_ready: std_logic;
+	quad_stored: std_logic;
+	draw_quad: std_logic;
+	discard_quad: std_logic;
+end record;
+
+type ogpu_raster_control_out_type is
+record
+	start_raster: std_logic;
+	next_quad: std_logic;
+	edge_test: std_logic;
+	depth_test: std_logic;
+	store_quad: std_logic;
+	busy: std_logic;
+	done: std_logic;
 end record;
 
 end package ogpu_data_record_pkg;

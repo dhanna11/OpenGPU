@@ -92,19 +92,18 @@ comb: process(reset,d,r)
 			v.quad_ready := '0';
 		end if;
 		
+		if reset = '1' then
+			v.quad_ready := '0';
+			v.end_tile := '0';
+			v.generate_quads := '0';
+		end if;
+		
 		rin <= v;		-- drive register inputs
 		
 		q.quad_ready <= v.quad_ready;  -- drive module outputs
 		q.end_tile <= v.end_tile;
 		q.quad <= v.quad;
 		
-		if reset = '1' then
-			q.quad_ready <= '0';
-			q.end_tile <= '0';
-			rin.end_tile <= '0';
-			rin.quad_ready <= '0';
-			rin.generate_quads <= '0';
-		end if;
 	end process;
 	
 seq: process(clock)

@@ -8,7 +8,7 @@ use work.ogpu_data_record_pkg.all;
 entity ogpu_raster_unit is
 	port(clock:					in std_logic;
 		  reset:					in std_logic;
-		  command:				in ogpu_command;
+		  command:				in unsigned(31 downto 0);
 		  v0,v1,v2:				in ogpu_vertex;
 		  clip_rect:			in ogpu_box;
 		  tile:					in ogpu_tile;
@@ -50,28 +50,24 @@ begin
 -- CONTROL
 RC1:  entity work.ogpu_raster_control(raster_control_1) port map(clock=>clock,reset=>reset,
 									-- IN
-									d.command=>command,
-									d.setup_done=>setup_done,
-									d.end_tile=>end_tile,
-									d.quad_ready=>quad_ready,
-									d.depth_ready=>depth_ready,
-									d.quad_stored=>quad_stored,
-									d.draw_quad=>draw_quad,
-									d.discard_quad=>discard_quad,
+									command=>command,
+									setup_done=>setup_done,
+									end_tile=>end_tile,
+									quad_ready=>quad_ready,
+									depth_ready=>depth_ready,
+									quad_stored=>quad_stored,
+									draw_quad=>draw_quad,
+									discard_quad=>discard_quad,
 									-- OUT
-									q.start_raster=>start_raster,
-									q.next_quad=>next_quad,
-									q.edge_test=>edge_test,
-									q.depth_test=>depth_test,
-									q.store_quad=>store_quad,
-									q.busy=>busy,
-									q.done=>done);
+									start_raster=>start_raster,
+									next_quad=>next_quad,
+									edge_test=>edge_test,
+									depth_test=>depth_test,
+									store_quad=>store_quad,
+									busy=>busy,
+									done=>done);
 -- DATAPATH
-QB1:  entity work.ogpu_quad_buffer(test) port map(clock=>clock,reset=>reset,
-				--IN
-				d.store=>store_quad_data,
-				d.addr=>buffer_pointer,
-				d.data=>quad_data);
+QB1:  entity work.ogpu_quad_buffer(test) port map(clock=>clock,reset=>reset,store=>store_quad_data,addr=>buffer_pointer,data=>quad_data); --IN
 ST1:  entity work.ogpu_setup(setup_1) port map(-- IN
 															  clock=>clock,reset=>reset,
 															  d.vx0=>v0.x,d.vy0=>v0.y,
@@ -91,53 +87,53 @@ QG1:  entity work.ogpu_quad_generator(generator_1) port map(
 ET1:  entity work.ogpu_quad_edge_test(edge_test_1) port map(
 									-- IN
 									clock=>clock,reset=>reset,
-									d.edge_test=>edge_test,d.e=>e0,
-									d.quad=>quad,
+									edge_test=>edge_test,edge=>e0,
+									quad=>quad,
 									-- OUT
-									q.edge_ready=>edge_ready(0),
-									q.edge_mask=>edge_mask0);
+									edge_ready=>edge_ready(0),
+									edge_mask=>edge_mask0);
 ET2:  entity work.ogpu_quad_edge_test(edge_test_1) port map(
 									-- IN
 									clock=>clock,reset=>reset,
-									d.edge_test=>edge_test,d.e=>e1,
-									d.quad=>quad,
+									edge_test=>edge_test,edge=>e1,
+									quad=>quad,
 									-- OUT
-									q.edge_ready=>edge_ready(1),
-									q.edge_mask=>edge_mask1);
+									edge_ready=>edge_ready(1),
+									edge_mask=>edge_mask1);
 ET3:  entity work.ogpu_quad_edge_test(edge_test_1) port map(
 									-- IN
 									clock=>clock,reset=>reset,
-									d.edge_test=>edge_test,d.e=>e2,
-									d.quad=>quad,
+									edge_test=>edge_test,edge=>e2,
+									quad=>quad,
 									-- OUT
-									q.edge_ready=>edge_ready(2),
-									q.edge_mask=>edge_mask2);
+									edge_ready=>edge_ready(2),
+									edge_mask=>edge_mask2);
 TE1:  entity work.ogpu_triangle_edge_test(triangle_test_1) port map(
 									-- IN
 									clock=>clock,reset=>reset,
-									d.edge_ready=>edge_ready,
-									d.edge_mask0=>edge_mask0,d.edge_mask1=>edge_mask1,d.edge_mask2=>edge_mask2,
+									edge_ready=>edge_ready,
+									edge_mask0=>edge_mask0,edge_mask1=>edge_mask1,edge_mask2=>edge_mask2,
 									-- OUT
-									q.draw_quad=>draw_quad,q.discard_quad=>discard_quad,
-									q.quad_mask=>quad_mask);
+									draw_quad=>draw_quad,discard_quad=>discard_quad,
+									quad_mask=>quad_mask);
 DT1:  entity work.ogpu_depth_test(depth_test_1) port map(
 									-- IN
 									clock=>clock,reset=>reset,
-									d.depth_coef=>depth_coef,
-									d.quad=>quad,
-									d.depth_test=>depth_test,
+									depth_coef=>depth_coef,
+									quad=>quad,
+									depth_test=>depth_test,
 									-- OUT
-									q.depth_ready=>depth_ready,
-									q.depth_quad=>depth_quad);
+									depth_ready=>depth_ready,
+									depth_quad=>depth_quad);
 QS1:  entity work.ogpu_quad_store(quad_store_1) port map(
 									-- IN
 									clock=>clock,reset=>reset,
-									d.quad_mask=>quad_mask,d.quad=>quad,
-									d.depth_quad=>depth_quad,
-									d.start_raster=>start_raster,
-									d.store_quad=>store_quad,
+									quad_mask=>quad_mask,quad=>quad,
+									depth_quad=>depth_quad,
+									start_raster=>start_raster,
+									store_quad=>store_quad,
 									-- OUT
-									q.store_quad_data=>store_quad_data,
-									q.quad_data=>quad_data,
-									q.quad_stored=>quad_stored);
+									store_quad_data=>store_quad_data,
+									quad_data=>quad_data,
+									quad_stored=>quad_stored);
 end structure_1;

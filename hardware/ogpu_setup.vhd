@@ -22,6 +22,8 @@ begin
 comb: process(reset,d,r)
 	variable v : reg_type;
 	begin
+		v := r;
+		
 		v.start_raster := d.start_raster;
 		v.setup_done := '0';
 		
@@ -40,15 +42,15 @@ comb: process(reset,d,r)
 		v.e2.x1 := d.vx0.int;
 		v.e2.y1 := d.vy0.int;
 		
-		if r.start_raster = '1' then v.setup_done := '1'; end if;
+		if d.start_raster = '1' then v.setup_done := '1'; end if;
 		if reset='1' then v.setup_done := '0'; end if;
 		
 		rin <= v;		-- drive register inputs
 		
-		q.setup_done <= r.setup_done;  -- drive module outputs
-		q.e0 <= r.e0;
-		q.e1 <= r.e1;
-		q.e2 <= r.e2;
+		q.setup_done <= v.setup_done;  -- drive module outputs
+		q.e0 <= v.e0;
+		q.e1 <= v.e1;
+		q.e2 <= v.e2;
 	end process;
 	
 seq: process(clock)

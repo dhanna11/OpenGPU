@@ -4,1019 +4,1159 @@
 			"name" : "Top",
 			"pins" : [
 				{
-					"name" : "q.quad.y3[1]",
+					"name" : "q.e2.y1[0]",
 					"strict" : false
 				},
 				{
-					"name" : "q.quad.y3[2]",
+					"name" : "q.e2.y1[1]",
 					"strict" : false
 				},
 				{
-					"name" : "q.quad.y3[3]",
+					"name" : "q.e2.y1[2]",
 					"strict" : false
 				},
 				{
-					"name" : "q.quad.y3[4]",
+					"name" : "q.e2.y1[3]",
 					"strict" : false
 				},
 				{
-					"name" : "q.quad.y3[5]",
+					"name" : "q.e2.y1[4]",
 					"strict" : false
 				},
 				{
-					"name" : "q.quad.y3[6]",
+					"name" : "q.e2.y1[5]",
 					"strict" : false
 				},
 				{
-					"name" : "q.quad.y3[7]",
+					"name" : "q.e2.y1[6]",
 					"strict" : false
 				},
 				{
-					"name" : "q.quad.y3[8]",
+					"name" : "q.e2.y1[7]",
 					"strict" : false
 				},
 				{
-					"name" : "q.quad.y3[9]",
+					"name" : "q.e2.y1[8]",
 					"strict" : false
 				},
 				{
-					"name" : "q.quad.y3[10]",
+					"name" : "q.e2.y1[9]",
 					"strict" : false
 				},
 				{
-					"name" : "q.quad.y3[11]",
+					"name" : "q.e2.y1[10]",
 					"strict" : false
 				},
 				{
-					"name" : "q.quad.y3[12]",
+					"name" : "q.e2.y1[11]",
 					"strict" : false
 				},
 				{
-					"name" : "q.quad.y3[13]",
+					"name" : "q.e2.y1[12]",
 					"strict" : false
 				},
 				{
-					"name" : "q.quad.y3[14]",
+					"name" : "q.e2.y1[13]",
 					"strict" : false
 				},
 				{
-					"name" : "q.quad.y3[15]",
+					"name" : "q.e2.y1[14]",
 					"strict" : false
 				},
 				{
-					"name" : "q.quad.x3[0]",
+					"name" : "q.e2.y1[15]",
 					"strict" : false
 				},
 				{
-					"name" : "q.quad.x3[1]",
+					"name" : "q.e2.x1[0]",
 					"strict" : false
 				},
 				{
-					"name" : "q.quad.x3[2]",
+					"name" : "q.e2.x1[1]",
 					"strict" : false
 				},
 				{
-					"name" : "q.quad.x3[3]",
+					"name" : "q.e2.x1[2]",
 					"strict" : false
 				},
 				{
-					"name" : "q.quad.x3[4]",
+					"name" : "q.e2.x1[3]",
 					"strict" : false
 				},
 				{
-					"name" : "q.quad.x3[5]",
+					"name" : "q.e2.x1[4]",
 					"strict" : false
 				},
 				{
-					"name" : "q.quad.x3[6]",
+					"name" : "q.e2.x1[5]",
 					"strict" : false
 				},
 				{
-					"name" : "q.quad.x3[7]",
+					"name" : "q.e2.x1[6]",
 					"strict" : false
 				},
 				{
-					"name" : "q.quad.x3[8]",
+					"name" : "q.e2.x1[7]",
 					"strict" : false
 				},
 				{
-					"name" : "q.quad.x3[9]",
+					"name" : "q.e2.x1[8]",
 					"strict" : false
 				},
 				{
-					"name" : "q.quad.x3[10]",
+					"name" : "q.e2.x1[9]",
 					"strict" : false
 				},
 				{
-					"name" : "q.quad.x3[11]",
+					"name" : "q.e2.x1[10]",
 					"strict" : false
 				},
 				{
-					"name" : "q.quad.x3[12]",
+					"name" : "q.e2.x1[11]",
 					"strict" : false
 				},
 				{
-					"name" : "q.quad.x3[13]",
+					"name" : "q.e2.x1[12]",
 					"strict" : false
 				},
 				{
-					"name" : "q.quad.x3[14]",
+					"name" : "q.e2.x1[13]",
 					"strict" : false
 				},
 				{
-					"name" : "q.quad.x3[15]",
+					"name" : "q.e2.x1[14]",
 					"strict" : false
 				},
 				{
-					"name" : "q.quad.y2[1]",
+					"name" : "q.e2.x1[15]",
 					"strict" : false
 				},
 				{
-					"name" : "q.quad.y2[2]",
+					"name" : "q.e2.y0[0]",
 					"strict" : false
 				},
 				{
-					"name" : "q.quad.y2[3]",
+					"name" : "q.e2.y0[1]",
 					"strict" : false
 				},
 				{
-					"name" : "q.quad.y2[4]",
+					"name" : "q.e2.y0[2]",
 					"strict" : false
 				},
 				{
-					"name" : "q.quad.y2[5]",
+					"name" : "q.e2.y0[3]",
 					"strict" : false
 				},
 				{
-					"name" : "q.quad.y2[6]",
+					"name" : "q.e2.y0[4]",
 					"strict" : false
 				},
 				{
-					"name" : "q.quad.y2[7]",
+					"name" : "q.e2.y0[5]",
 					"strict" : false
 				},
 				{
-					"name" : "q.quad.y2[8]",
+					"name" : "q.e2.y0[6]",
 					"strict" : false
 				},
 				{
-					"name" : "q.quad.y2[9]",
+					"name" : "q.e2.y0[7]",
 					"strict" : false
 				},
 				{
-					"name" : "q.quad.y2[10]",
+					"name" : "q.e2.y0[8]",
 					"strict" : false
 				},
 				{
-					"name" : "q.quad.y2[11]",
+					"name" : "q.e2.y0[9]",
 					"strict" : false
 				},
 				{
-					"name" : "q.quad.y2[12]",
+					"name" : "q.e2.y0[10]",
 					"strict" : false
 				},
 				{
-					"name" : "q.quad.y2[13]",
+					"name" : "q.e2.y0[11]",
 					"strict" : false
 				},
 				{
-					"name" : "q.quad.y2[14]",
+					"name" : "q.e2.y0[12]",
 					"strict" : false
 				},
 				{
-					"name" : "q.quad.y2[15]",
+					"name" : "q.e2.y0[13]",
 					"strict" : false
 				},
 				{
-					"name" : "q.quad.x2[0]",
+					"name" : "q.e2.y0[14]",
 					"strict" : false
 				},
 				{
-					"name" : "q.quad.x2[1]",
+					"name" : "q.e2.y0[15]",
 					"strict" : false
 				},
 				{
-					"name" : "q.quad.x2[2]",
+					"name" : "q.e2.x0[0]",
 					"strict" : false
 				},
 				{
-					"name" : "q.quad.x2[3]",
+					"name" : "q.e2.x0[1]",
 					"strict" : false
 				},
 				{
-					"name" : "q.quad.x2[4]",
+					"name" : "q.e2.x0[2]",
 					"strict" : false
 				},
 				{
-					"name" : "q.quad.x2[5]",
+					"name" : "q.e2.x0[3]",
 					"strict" : false
 				},
 				{
-					"name" : "q.quad.x2[6]",
+					"name" : "q.e2.x0[4]",
 					"strict" : false
 				},
 				{
-					"name" : "q.quad.x2[7]",
+					"name" : "q.e2.x0[5]",
 					"strict" : false
 				},
 				{
-					"name" : "q.quad.x2[8]",
+					"name" : "q.e2.x0[6]",
 					"strict" : false
 				},
 				{
-					"name" : "q.quad.x2[9]",
+					"name" : "q.e2.x0[7]",
 					"strict" : false
 				},
 				{
-					"name" : "q.quad.x2[10]",
+					"name" : "q.e2.x0[8]",
 					"strict" : false
 				},
 				{
-					"name" : "q.quad.x2[11]",
+					"name" : "q.e2.x0[9]",
 					"strict" : false
 				},
 				{
-					"name" : "q.quad.x2[12]",
+					"name" : "q.e2.x0[10]",
 					"strict" : false
 				},
 				{
-					"name" : "q.quad.x2[13]",
+					"name" : "q.e2.x0[11]",
 					"strict" : false
 				},
 				{
-					"name" : "q.quad.x2[14]",
+					"name" : "q.e2.x0[12]",
 					"strict" : false
 				},
 				{
-					"name" : "q.quad.x2[15]",
+					"name" : "q.e2.x0[13]",
 					"strict" : false
 				},
 				{
-					"name" : "q.quad.y1[1]",
+					"name" : "q.e2.x0[14]",
 					"strict" : false
 				},
 				{
-					"name" : "q.quad.y1[2]",
+					"name" : "q.e2.x0[15]",
 					"strict" : false
 				},
 				{
-					"name" : "q.quad.y1[3]",
+					"name" : "q.e1.y1[0]",
 					"strict" : false
 				},
 				{
-					"name" : "q.quad.y1[4]",
+					"name" : "q.e1.y1[1]",
 					"strict" : false
 				},
 				{
-					"name" : "q.quad.y1[5]",
+					"name" : "q.e1.y1[2]",
 					"strict" : false
 				},
 				{
-					"name" : "q.quad.y1[6]",
+					"name" : "q.e1.y1[3]",
 					"strict" : false
 				},
 				{
-					"name" : "q.quad.y1[7]",
+					"name" : "q.e1.y1[4]",
 					"strict" : false
 				},
 				{
-					"name" : "q.quad.y1[8]",
+					"name" : "q.e1.y1[5]",
 					"strict" : false
 				},
 				{
-					"name" : "q.quad.y1[9]",
+					"name" : "q.e1.y1[6]",
 					"strict" : false
 				},
 				{
-					"name" : "q.quad.y1[10]",
+					"name" : "q.e1.y1[7]",
 					"strict" : false
 				},
 				{
-					"name" : "q.quad.y1[11]",
+					"name" : "q.e1.y1[8]",
 					"strict" : false
 				},
 				{
-					"name" : "q.quad.y1[12]",
+					"name" : "q.e1.y1[9]",
 					"strict" : false
 				},
 				{
-					"name" : "q.quad.y1[13]",
+					"name" : "q.e1.y1[10]",
 					"strict" : false
 				},
 				{
-					"name" : "q.quad.y1[14]",
+					"name" : "q.e1.y1[11]",
 					"strict" : false
 				},
 				{
-					"name" : "q.quad.y1[15]",
+					"name" : "q.e1.y1[12]",
 					"strict" : false
 				},
 				{
-					"name" : "q.quad.x1[0]",
+					"name" : "q.e1.y1[13]",
 					"strict" : false
 				},
 				{
-					"name" : "q.quad.x1[1]",
+					"name" : "q.e1.y1[14]",
 					"strict" : false
 				},
 				{
-					"name" : "q.quad.x1[2]",
+					"name" : "q.e1.y1[15]",
 					"strict" : false
 				},
 				{
-					"name" : "q.quad.x1[3]",
+					"name" : "q.e1.x1[0]",
 					"strict" : false
 				},
 				{
-					"name" : "q.quad.x1[4]",
+					"name" : "q.e1.x1[1]",
 					"strict" : false
 				},
 				{
-					"name" : "q.quad.x1[5]",
+					"name" : "q.e1.x1[2]",
 					"strict" : false
 				},
 				{
-					"name" : "q.quad.x1[6]",
+					"name" : "q.e1.x1[3]",
 					"strict" : false
 				},
 				{
-					"name" : "q.quad.x1[7]",
+					"name" : "q.e1.x1[4]",
 					"strict" : false
 				},
 				{
-					"name" : "q.quad.x1[8]",
+					"name" : "q.e1.x1[5]",
 					"strict" : false
 				},
 				{
-					"name" : "q.quad.x1[9]",
+					"name" : "q.e1.x1[6]",
 					"strict" : false
 				},
 				{
-					"name" : "q.quad.x1[10]",
+					"name" : "q.e1.x1[7]",
 					"strict" : false
 				},
 				{
-					"name" : "q.quad.x1[11]",
+					"name" : "q.e1.x1[8]",
 					"strict" : false
 				},
 				{
-					"name" : "q.quad.x1[12]",
+					"name" : "q.e1.x1[9]",
 					"strict" : false
 				},
 				{
-					"name" : "q.quad.x1[13]",
+					"name" : "q.e1.x1[10]",
 					"strict" : false
 				},
 				{
-					"name" : "q.quad.x1[14]",
+					"name" : "q.e1.x1[11]",
 					"strict" : false
 				},
 				{
-					"name" : "q.quad.x1[15]",
+					"name" : "q.e1.x1[12]",
 					"strict" : false
 				},
 				{
-					"name" : "q.quad.y0[1]",
+					"name" : "q.e1.x1[13]",
 					"strict" : false
 				},
 				{
-					"name" : "q.quad.y0[2]",
+					"name" : "q.e1.x1[14]",
 					"strict" : false
 				},
 				{
-					"name" : "q.quad.y0[3]",
+					"name" : "q.e1.x1[15]",
 					"strict" : false
 				},
 				{
-					"name" : "q.quad.y0[4]",
+					"name" : "q.e1.y0[0]",
 					"strict" : false
 				},
 				{
-					"name" : "q.quad.y0[5]",
+					"name" : "q.e1.y0[1]",
 					"strict" : false
 				},
 				{
-					"name" : "q.quad.y0[6]",
+					"name" : "q.e1.y0[2]",
 					"strict" : false
 				},
 				{
-					"name" : "q.quad.y0[7]",
+					"name" : "q.e1.y0[3]",
 					"strict" : false
 				},
 				{
-					"name" : "q.quad.y0[8]",
+					"name" : "q.e1.y0[4]",
 					"strict" : false
 				},
 				{
-					"name" : "q.quad.y0[9]",
+					"name" : "q.e1.y0[5]",
 					"strict" : false
 				},
 				{
-					"name" : "q.quad.y0[10]",
+					"name" : "q.e1.y0[6]",
 					"strict" : false
 				},
 				{
-					"name" : "q.quad.y0[11]",
+					"name" : "q.e1.y0[7]",
 					"strict" : false
 				},
 				{
-					"name" : "q.quad.y0[12]",
+					"name" : "q.e1.y0[8]",
 					"strict" : false
 				},
 				{
-					"name" : "q.quad.y0[13]",
+					"name" : "q.e1.y0[9]",
 					"strict" : false
 				},
 				{
-					"name" : "q.quad.y0[14]",
+					"name" : "q.e1.y0[10]",
 					"strict" : false
 				},
 				{
-					"name" : "q.quad.y0[15]",
+					"name" : "q.e1.y0[11]",
 					"strict" : false
 				},
 				{
-					"name" : "q.quad.x0[0]",
+					"name" : "q.e1.y0[12]",
 					"strict" : false
 				},
 				{
-					"name" : "q.quad.x0[1]",
+					"name" : "q.e1.y0[13]",
 					"strict" : false
 				},
 				{
-					"name" : "q.quad.x0[2]",
+					"name" : "q.e1.y0[14]",
 					"strict" : false
 				},
 				{
-					"name" : "q.quad.x0[3]",
+					"name" : "q.e1.y0[15]",
 					"strict" : false
 				},
 				{
-					"name" : "q.quad.x0[4]",
+					"name" : "q.e1.x0[0]",
 					"strict" : false
 				},
 				{
-					"name" : "q.quad.x0[5]",
+					"name" : "q.e1.x0[1]",
 					"strict" : false
 				},
 				{
-					"name" : "q.quad.x0[6]",
+					"name" : "q.e1.x0[2]",
 					"strict" : false
 				},
 				{
-					"name" : "q.quad.x0[7]",
+					"name" : "q.e1.x0[3]",
 					"strict" : false
 				},
 				{
-					"name" : "q.quad.x0[8]",
+					"name" : "q.e1.x0[4]",
 					"strict" : false
 				},
 				{
-					"name" : "q.quad.x0[9]",
+					"name" : "q.e1.x0[5]",
 					"strict" : false
 				},
 				{
-					"name" : "q.quad.x0[10]",
+					"name" : "q.e1.x0[6]",
 					"strict" : false
 				},
 				{
-					"name" : "q.quad.x0[11]",
+					"name" : "q.e1.x0[7]",
 					"strict" : false
 				},
 				{
-					"name" : "q.quad.x0[12]",
+					"name" : "q.e1.x0[8]",
 					"strict" : false
 				},
 				{
-					"name" : "q.quad.x0[13]",
+					"name" : "q.e1.x0[9]",
 					"strict" : false
 				},
 				{
-					"name" : "q.quad.x0[14]",
+					"name" : "q.e1.x0[10]",
 					"strict" : false
 				},
 				{
-					"name" : "q.quad.x0[15]",
+					"name" : "q.e1.x0[11]",
 					"strict" : false
 				},
 				{
-					"name" : "q.quad_ready",
+					"name" : "q.e1.x0[12]",
 					"strict" : false
 				},
 				{
-					"name" : "q.end_tile",
+					"name" : "q.e1.x0[13]",
 					"strict" : false
 				},
 				{
-					"name" : "d.tile.x1[15]",
+					"name" : "q.e1.x0[14]",
 					"strict" : false
 				},
 				{
-					"name" : "d.clip_rect.x0[15]",
+					"name" : "q.e1.x0[15]",
 					"strict" : false
 				},
 				{
-					"name" : "d.tile.x1[7]",
+					"name" : "q.e0.y1[0]",
 					"strict" : false
 				},
 				{
-					"name" : "d.clip_rect.x0[7]",
+					"name" : "q.e0.y1[1]",
 					"strict" : false
 				},
 				{
-					"name" : "d.tile.x1[6]",
+					"name" : "q.e0.y1[2]",
 					"strict" : false
 				},
 				{
-					"name" : "d.clip_rect.x0[6]",
+					"name" : "q.e0.y1[3]",
 					"strict" : false
 				},
 				{
-					"name" : "d.tile.x1[5]",
+					"name" : "q.e0.y1[4]",
 					"strict" : false
 				},
 				{
-					"name" : "d.clip_rect.x0[5]",
+					"name" : "q.e0.y1[5]",
 					"strict" : false
 				},
 				{
-					"name" : "d.tile.x1[4]",
+					"name" : "q.e0.y1[6]",
 					"strict" : false
 				},
 				{
-					"name" : "d.clip_rect.x0[4]",
+					"name" : "q.e0.y1[7]",
 					"strict" : false
 				},
 				{
-					"name" : "d.tile.x1[1]",
+					"name" : "q.e0.y1[8]",
 					"strict" : false
 				},
 				{
-					"name" : "d.clip_rect.x0[1]",
+					"name" : "q.e0.y1[9]",
 					"strict" : false
 				},
 				{
-					"name" : "d.tile.x1[0]",
+					"name" : "q.e0.y1[10]",
 					"strict" : false
 				},
 				{
-					"name" : "d.clip_rect.x0[0]",
+					"name" : "q.e0.y1[11]",
 					"strict" : false
 				},
 				{
-					"name" : "d.tile.x1[3]",
+					"name" : "q.e0.y1[12]",
 					"strict" : false
 				},
 				{
-					"name" : "d.clip_rect.x0[3]",
+					"name" : "q.e0.y1[13]",
 					"strict" : false
 				},
 				{
-					"name" : "d.tile.x1[2]",
+					"name" : "q.e0.y1[14]",
 					"strict" : false
 				},
 				{
-					"name" : "d.clip_rect.x0[2]",
+					"name" : "q.e0.y1[15]",
 					"strict" : false
 				},
 				{
-					"name" : "d.tile.x1[14]",
+					"name" : "q.e0.x1[0]",
 					"strict" : false
 				},
 				{
-					"name" : "d.clip_rect.x0[14]",
+					"name" : "q.e0.x1[1]",
 					"strict" : false
 				},
 				{
-					"name" : "d.tile.x1[13]",
+					"name" : "q.e0.x1[2]",
 					"strict" : false
 				},
 				{
-					"name" : "d.clip_rect.x0[13]",
+					"name" : "q.e0.x1[3]",
 					"strict" : false
 				},
 				{
-					"name" : "d.tile.x1[12]",
+					"name" : "q.e0.x1[4]",
 					"strict" : false
 				},
 				{
-					"name" : "d.clip_rect.x0[12]",
+					"name" : "q.e0.x1[5]",
 					"strict" : false
 				},
 				{
-					"name" : "d.tile.x1[11]",
+					"name" : "q.e0.x1[6]",
 					"strict" : false
 				},
 				{
-					"name" : "d.clip_rect.x0[11]",
+					"name" : "q.e0.x1[7]",
 					"strict" : false
 				},
 				{
-					"name" : "d.tile.x1[9]",
+					"name" : "q.e0.x1[8]",
 					"strict" : false
 				},
 				{
-					"name" : "d.clip_rect.x0[9]",
+					"name" : "q.e0.x1[9]",
 					"strict" : false
 				},
 				{
-					"name" : "d.tile.x1[10]",
+					"name" : "q.e0.x1[10]",
 					"strict" : false
 				},
 				{
-					"name" : "d.clip_rect.x0[10]",
+					"name" : "q.e0.x1[11]",
 					"strict" : false
 				},
 				{
-					"name" : "d.tile.x1[8]",
+					"name" : "q.e0.x1[12]",
 					"strict" : false
 				},
 				{
-					"name" : "d.clip_rect.x0[8]",
+					"name" : "q.e0.x1[13]",
 					"strict" : false
 				},
 				{
-					"name" : "d.tile.x0[15]",
+					"name" : "q.e0.x1[14]",
 					"strict" : false
 				},
 				{
-					"name" : "d.clip_rect.x1[15]",
+					"name" : "q.e0.x1[15]",
 					"strict" : false
 				},
 				{
-					"name" : "d.tile.x0[7]",
+					"name" : "q.e0.y0[0]",
 					"strict" : false
 				},
 				{
-					"name" : "d.clip_rect.x1[7]",
+					"name" : "q.e0.y0[1]",
 					"strict" : false
 				},
 				{
-					"name" : "d.tile.x0[6]",
+					"name" : "q.e0.y0[2]",
 					"strict" : false
 				},
 				{
-					"name" : "d.clip_rect.x1[6]",
+					"name" : "q.e0.y0[3]",
 					"strict" : false
 				},
 				{
-					"name" : "d.tile.x0[5]",
+					"name" : "q.e0.y0[4]",
 					"strict" : false
 				},
 				{
-					"name" : "d.clip_rect.x1[5]",
+					"name" : "q.e0.y0[5]",
 					"strict" : false
 				},
 				{
-					"name" : "d.tile.x0[4]",
+					"name" : "q.e0.y0[6]",
 					"strict" : false
 				},
 				{
-					"name" : "d.clip_rect.x1[4]",
+					"name" : "q.e0.y0[7]",
 					"strict" : false
 				},
 				{
-					"name" : "d.tile.x0[1]",
+					"name" : "q.e0.y0[8]",
 					"strict" : false
 				},
 				{
-					"name" : "d.clip_rect.x1[1]",
+					"name" : "q.e0.y0[9]",
 					"strict" : false
 				},
 				{
-					"name" : "d.tile.x0[0]",
+					"name" : "q.e0.y0[10]",
 					"strict" : false
 				},
 				{
-					"name" : "d.clip_rect.x1[0]",
+					"name" : "q.e0.y0[11]",
 					"strict" : false
 				},
 				{
-					"name" : "d.tile.x0[3]",
+					"name" : "q.e0.y0[12]",
 					"strict" : false
 				},
 				{
-					"name" : "d.clip_rect.x1[3]",
+					"name" : "q.e0.y0[13]",
 					"strict" : false
 				},
 				{
-					"name" : "d.tile.x0[2]",
+					"name" : "q.e0.y0[14]",
 					"strict" : false
 				},
 				{
-					"name" : "d.clip_rect.x1[2]",
+					"name" : "q.e0.y0[15]",
 					"strict" : false
 				},
 				{
-					"name" : "d.tile.x0[14]",
+					"name" : "q.e0.x0[0]",
 					"strict" : false
 				},
 				{
-					"name" : "d.clip_rect.x1[14]",
+					"name" : "q.e0.x0[1]",
 					"strict" : false
 				},
 				{
-					"name" : "d.tile.x0[13]",
+					"name" : "q.e0.x0[2]",
 					"strict" : false
 				},
 				{
-					"name" : "d.clip_rect.x1[13]",
+					"name" : "q.e0.x0[3]",
 					"strict" : false
 				},
 				{
-					"name" : "d.tile.x0[12]",
+					"name" : "q.e0.x0[4]",
 					"strict" : false
 				},
 				{
-					"name" : "d.clip_rect.x1[12]",
+					"name" : "q.e0.x0[5]",
 					"strict" : false
 				},
 				{
-					"name" : "d.tile.x0[11]",
+					"name" : "q.e0.x0[6]",
 					"strict" : false
 				},
 				{
-					"name" : "d.clip_rect.x1[11]",
+					"name" : "q.e0.x0[7]",
 					"strict" : false
 				},
 				{
-					"name" : "d.tile.x0[9]",
+					"name" : "q.e0.x0[8]",
 					"strict" : false
 				},
 				{
-					"name" : "d.clip_rect.x1[9]",
+					"name" : "q.e0.x0[9]",
 					"strict" : false
 				},
 				{
-					"name" : "d.tile.x0[10]",
+					"name" : "q.e0.x0[10]",
 					"strict" : false
 				},
 				{
-					"name" : "d.clip_rect.x1[10]",
+					"name" : "q.e0.x0[11]",
 					"strict" : false
 				},
 				{
-					"name" : "d.tile.x0[8]",
+					"name" : "q.e0.x0[12]",
 					"strict" : false
 				},
 				{
-					"name" : "d.clip_rect.x1[8]",
+					"name" : "q.e0.x0[13]",
 					"strict" : false
 				},
 				{
-					"name" : "d.tile.y1[15]",
+					"name" : "q.e0.x0[14]",
 					"strict" : false
 				},
 				{
-					"name" : "d.clip_rect.y0[15]",
+					"name" : "q.e0.x0[15]",
 					"strict" : false
 				},
 				{
-					"name" : "d.tile.y1[7]",
+					"name" : "q.setup_done",
 					"strict" : false
 				},
 				{
-					"name" : "d.clip_rect.y0[7]",
+					"name" : "d.vy0.int[0]",
 					"strict" : false
 				},
 				{
-					"name" : "d.tile.y1[6]",
+					"name" : "d.vy0.int[1]",
 					"strict" : false
 				},
 				{
-					"name" : "d.clip_rect.y0[6]",
+					"name" : "d.vy0.int[2]",
 					"strict" : false
 				},
 				{
-					"name" : "d.tile.y1[5]",
+					"name" : "d.vy0.int[3]",
 					"strict" : false
 				},
 				{
-					"name" : "d.clip_rect.y0[5]",
+					"name" : "d.vy0.int[4]",
 					"strict" : false
 				},
 				{
-					"name" : "d.tile.y1[4]",
+					"name" : "d.vy0.int[5]",
 					"strict" : false
 				},
 				{
-					"name" : "d.clip_rect.y0[4]",
+					"name" : "d.vy0.int[6]",
 					"strict" : false
 				},
 				{
-					"name" : "d.tile.y1[1]",
+					"name" : "d.vy0.int[7]",
 					"strict" : false
 				},
 				{
-					"name" : "d.clip_rect.y0[1]",
+					"name" : "d.vy0.int[8]",
 					"strict" : false
 				},
 				{
-					"name" : "d.tile.y1[0]",
+					"name" : "d.vy0.int[9]",
 					"strict" : false
 				},
 				{
-					"name" : "d.clip_rect.y0[0]",
+					"name" : "d.vy0.int[10]",
 					"strict" : false
 				},
 				{
-					"name" : "d.tile.y1[3]",
+					"name" : "d.vy0.int[11]",
 					"strict" : false
 				},
 				{
-					"name" : "d.clip_rect.y0[3]",
+					"name" : "d.vy0.int[12]",
 					"strict" : false
 				},
 				{
-					"name" : "d.tile.y1[2]",
+					"name" : "d.vy0.int[13]",
 					"strict" : false
 				},
 				{
-					"name" : "d.clip_rect.y0[2]",
+					"name" : "d.vy0.int[14]",
 					"strict" : false
 				},
 				{
-					"name" : "d.tile.y1[14]",
+					"name" : "d.vy0.int[15]",
 					"strict" : false
 				},
 				{
-					"name" : "d.clip_rect.y0[14]",
+					"name" : "d.vx0.int[0]",
 					"strict" : false
 				},
 				{
-					"name" : "d.tile.y1[13]",
+					"name" : "d.vx0.int[1]",
 					"strict" : false
 				},
 				{
-					"name" : "d.clip_rect.y0[13]",
+					"name" : "d.vx0.int[2]",
 					"strict" : false
 				},
 				{
-					"name" : "d.tile.y1[12]",
+					"name" : "d.vx0.int[3]",
 					"strict" : false
 				},
 				{
-					"name" : "d.clip_rect.y0[12]",
+					"name" : "d.vx0.int[4]",
 					"strict" : false
 				},
 				{
-					"name" : "d.tile.y1[11]",
+					"name" : "d.vx0.int[5]",
 					"strict" : false
 				},
 				{
-					"name" : "d.clip_rect.y0[11]",
+					"name" : "d.vx0.int[6]",
 					"strict" : false
 				},
 				{
-					"name" : "d.tile.y1[9]",
+					"name" : "d.vx0.int[7]",
 					"strict" : false
 				},
 				{
-					"name" : "d.clip_rect.y0[9]",
+					"name" : "d.vx0.int[8]",
 					"strict" : false
 				},
 				{
-					"name" : "d.tile.y1[10]",
+					"name" : "d.vx0.int[9]",
 					"strict" : false
 				},
 				{
-					"name" : "d.clip_rect.y0[10]",
+					"name" : "d.vx0.int[10]",
 					"strict" : false
 				},
 				{
-					"name" : "d.tile.y1[8]",
+					"name" : "d.vx0.int[11]",
 					"strict" : false
 				},
 				{
-					"name" : "d.clip_rect.y0[8]",
+					"name" : "d.vx0.int[12]",
 					"strict" : false
 				},
 				{
-					"name" : "d.tile.y0[15]",
+					"name" : "d.vx0.int[13]",
 					"strict" : false
 				},
 				{
-					"name" : "d.clip_rect.y1[15]",
+					"name" : "d.vx0.int[14]",
 					"strict" : false
 				},
 				{
-					"name" : "d.tile.y0[3]",
+					"name" : "d.vx0.int[15]",
 					"strict" : false
 				},
 				{
-					"name" : "d.clip_rect.y1[3]",
+					"name" : "d.vy2.int[0]",
 					"strict" : false
 				},
 				{
-					"name" : "d.tile.y0[2]",
+					"name" : "d.vy2.int[1]",
 					"strict" : false
 				},
 				{
-					"name" : "d.clip_rect.y1[2]",
+					"name" : "d.vy2.int[2]",
 					"strict" : false
 				},
 				{
-					"name" : "d.tile.y0[1]",
+					"name" : "d.vy2.int[3]",
 					"strict" : false
 				},
 				{
-					"name" : "d.clip_rect.y1[1]",
+					"name" : "d.vy2.int[4]",
 					"strict" : false
 				},
 				{
-					"name" : "d.tile.y0[0]",
+					"name" : "d.vy2.int[5]",
 					"strict" : false
 				},
 				{
-					"name" : "d.clip_rect.y1[0]",
+					"name" : "d.vy2.int[6]",
 					"strict" : false
 				},
 				{
-					"name" : "d.tile.y0[5]",
+					"name" : "d.vy2.int[7]",
 					"strict" : false
 				},
 				{
-					"name" : "d.clip_rect.y1[5]",
+					"name" : "d.vy2.int[8]",
 					"strict" : false
 				},
 				{
-					"name" : "d.tile.y0[7]",
+					"name" : "d.vy2.int[9]",
 					"strict" : false
 				},
 				{
-					"name" : "d.clip_rect.y1[7]",
+					"name" : "d.vy2.int[10]",
 					"strict" : false
 				},
 				{
-					"name" : "d.tile.y0[6]",
+					"name" : "d.vy2.int[11]",
 					"strict" : false
 				},
 				{
-					"name" : "d.clip_rect.y1[6]",
+					"name" : "d.vy2.int[12]",
 					"strict" : false
 				},
 				{
-					"name" : "d.tile.y0[4]",
+					"name" : "d.vy2.int[13]",
 					"strict" : false
 				},
 				{
-					"name" : "d.clip_rect.y1[4]",
+					"name" : "d.vy2.int[14]",
 					"strict" : false
 				},
 				{
-					"name" : "d.tile.y0[14]",
+					"name" : "d.vy2.int[15]",
 					"strict" : false
 				},
 				{
-					"name" : "d.clip_rect.y1[14]",
+					"name" : "d.vx2.int[0]",
 					"strict" : false
 				},
 				{
-					"name" : "d.tile.y0[13]",
+					"name" : "d.vx2.int[1]",
 					"strict" : false
 				},
 				{
-					"name" : "d.clip_rect.y1[13]",
+					"name" : "d.vx2.int[2]",
 					"strict" : false
 				},
 				{
-					"name" : "d.tile.y0[12]",
+					"name" : "d.vx2.int[3]",
 					"strict" : false
 				},
 				{
-					"name" : "d.clip_rect.y1[12]",
+					"name" : "d.vx2.int[4]",
 					"strict" : false
 				},
 				{
-					"name" : "d.tile.y0[11]",
+					"name" : "d.vx2.int[5]",
 					"strict" : false
 				},
 				{
-					"name" : "d.clip_rect.y1[11]",
+					"name" : "d.vx2.int[6]",
 					"strict" : false
 				},
 				{
-					"name" : "d.tile.y0[9]",
+					"name" : "d.vx2.int[7]",
 					"strict" : false
 				},
 				{
-					"name" : "d.clip_rect.y1[9]",
+					"name" : "d.vx2.int[8]",
 					"strict" : false
 				},
 				{
-					"name" : "d.tile.y0[10]",
+					"name" : "d.vx2.int[9]",
 					"strict" : false
 				},
 				{
-					"name" : "d.clip_rect.y1[10]",
+					"name" : "d.vx2.int[10]",
 					"strict" : false
 				},
 				{
-					"name" : "d.tile.y0[8]",
+					"name" : "d.vx2.int[11]",
 					"strict" : false
 				},
 				{
-					"name" : "d.clip_rect.y1[8]",
+					"name" : "d.vx2.int[12]",
+					"strict" : false
+				},
+				{
+					"name" : "d.vx2.int[13]",
+					"strict" : false
+				},
+				{
+					"name" : "d.vx2.int[14]",
+					"strict" : false
+				},
+				{
+					"name" : "d.vx2.int[15]",
+					"strict" : false
+				},
+				{
+					"name" : "d.vy1.int[0]",
+					"strict" : false
+				},
+				{
+					"name" : "d.vy1.int[1]",
+					"strict" : false
+				},
+				{
+					"name" : "d.vy1.int[2]",
+					"strict" : false
+				},
+				{
+					"name" : "d.vy1.int[3]",
+					"strict" : false
+				},
+				{
+					"name" : "d.vy1.int[4]",
+					"strict" : false
+				},
+				{
+					"name" : "d.vy1.int[5]",
+					"strict" : false
+				},
+				{
+					"name" : "d.vy1.int[6]",
+					"strict" : false
+				},
+				{
+					"name" : "d.vy1.int[7]",
+					"strict" : false
+				},
+				{
+					"name" : "d.vy1.int[8]",
+					"strict" : false
+				},
+				{
+					"name" : "d.vy1.int[9]",
+					"strict" : false
+				},
+				{
+					"name" : "d.vy1.int[10]",
+					"strict" : false
+				},
+				{
+					"name" : "d.vy1.int[11]",
+					"strict" : false
+				},
+				{
+					"name" : "d.vy1.int[12]",
+					"strict" : false
+				},
+				{
+					"name" : "d.vy1.int[13]",
+					"strict" : false
+				},
+				{
+					"name" : "d.vy1.int[14]",
+					"strict" : false
+				},
+				{
+					"name" : "d.vy1.int[15]",
+					"strict" : false
+				},
+				{
+					"name" : "d.vx1.int[0]",
+					"strict" : false
+				},
+				{
+					"name" : "d.vx1.int[1]",
+					"strict" : false
+				},
+				{
+					"name" : "d.vx1.int[2]",
+					"strict" : false
+				},
+				{
+					"name" : "d.vx1.int[3]",
+					"strict" : false
+				},
+				{
+					"name" : "d.vx1.int[4]",
+					"strict" : false
+				},
+				{
+					"name" : "d.vx1.int[5]",
+					"strict" : false
+				},
+				{
+					"name" : "d.vx1.int[6]",
+					"strict" : false
+				},
+				{
+					"name" : "d.vx1.int[7]",
+					"strict" : false
+				},
+				{
+					"name" : "d.vx1.int[8]",
+					"strict" : false
+				},
+				{
+					"name" : "d.vx1.int[9]",
+					"strict" : false
+				},
+				{
+					"name" : "d.vx1.int[10]",
+					"strict" : false
+				},
+				{
+					"name" : "d.vx1.int[11]",
+					"strict" : false
+				},
+				{
+					"name" : "d.vx1.int[12]",
+					"strict" : false
+				},
+				{
+					"name" : "d.vx1.int[13]",
+					"strict" : false
+				},
+				{
+					"name" : "d.vx1.int[14]",
+					"strict" : false
+				},
+				{
+					"name" : "d.vx1.int[15]",
 					"strict" : false
 				},
 				{
@@ -1024,11 +1164,7 @@
 					"strict" : false
 				},
 				{
-					"name" : "d.next_quad",
-					"strict" : false
-				},
-				{
-					"name" : "clock",
+					"name" : "d.start_raster",
 					"strict" : false
 				}
 			]

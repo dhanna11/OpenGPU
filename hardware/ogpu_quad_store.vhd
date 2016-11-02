@@ -5,26 +5,53 @@ use work.ogpu_data_record_pkg.all;
 entity ogpu_quad_store is
 	port(clock: in std_logic;
 		  reset: in std_logic;
-		  quad_mask: in std_logic_vector(0 to 3);
-		  quad: in ogpu_quad;
-		  depth_quad: in ogpu_depth_quad;
-		  start_raster: in std_logic;
-		  store_quad: in std_logic;
-		  store_quad_data: out std_logic :='0';
-		  quad_stored: out std_logic :='0';
-		  quad_data: out ogpu_quad_data);
+		  d: in ogpu_quad_store_in_type;
+		  q: out ogpu_quad_store_out_type);
 end ogpu_quad_store;
 
 architecture quad_store_1 of ogpu_quad_store is
+	type reg_type is record
+		start_raster: std_logic;
+		store_quad: std_logic;
+		store_quad_data: std_logic;
+		quad_stored: std_logic;
+		quad_data: ogpu_quad_data;
+	end record;
+	signal r,rin	:	reg_type;
 begin
-	process(clock)
+comb: process(reset,d,r)
+	variable v : reg_type;
 	begin
-		if clock'event and clock='1' then
-			if reset='1' then
-				
-			else
-				
-			end if;
+		v := r; --default assignment
+		
+		v.start_raster := d.start_raster;
+		v.store_quad := d.store_quad;
+		
+		v.quad_data.x0 := d.quad.x0;
+		v.quad_data.y0 := d.quad.y0;
+		v.quad_data.mask := d.quad_mask;
+		v.quad_data.depth := d.depth_quad;
+		
+		if v.store_quad = '1' then
+			v.store_quad_data := '1';
+			v.quad_stored := '1';
 		end if;
+		
+		if reset = '1' then
+			v.quad_stored := '0';
+			v.store_quad_data := '0';
+		end if;
+		
+		rin <= v;		-- drive register inputs
+		
+		q.quad_stored <= v.quad_stored;  -- drive module outputs
+		q.store_quad_data <= v.store_quad_data;
+		q.quad_data <= v.quad_data;
+		
+	end process;
+	
+seq: process(clock)
+	begin
+		if rising_edge(clock) then r <= rin; end if;
 	end process;
 end quad_store_1;
