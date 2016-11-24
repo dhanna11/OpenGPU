@@ -1,0 +1,3 @@
+#! /bin/sh
+
+./autogen.sh --disable-dependency-tracking --with-dri-drivers="" --disable-gallium-llvm --disable-llvm-shared-libs --with-gallium-drivers=swrast

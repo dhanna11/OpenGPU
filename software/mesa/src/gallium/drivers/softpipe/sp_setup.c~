@@ -2387,7 +2387,7 @@ ogpu_raster_tri(struct setup_context *setup,
 		return;
 	}
 	
-	h2p_lw_led_addr=( unsigned long  )virtual_base + ( ( unsigned long  )( ALT_LWFPGASLVS_OFST + LED_PIO_BASE ) & ( unsigned long)( HW_REGS_MASK ) );
+	h2p_lw_led_addr=virtual_base + ( ( unsigned long  )( ALT_LWFPGASLVS_OFST + LED_PIO_BASE ) & ( unsigned long)( HW_REGS_MASK ) );
 	
 
 	// toggle the LEDs a bit
