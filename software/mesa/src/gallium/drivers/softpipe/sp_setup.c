@@ -56,11 +56,22 @@
 #include <unistd.h>
 #include <fcntl.h>
 #include <sys/mman.h>
+#include <stdlib.h>
+#include <stddef.h>
+#include <stdint.h>
+#include <assert.h>
+#include <string.h>
+#include <math.h>
+#include <time.h>
 
 #define HW_REGS_BASE ( ALT_STM_OFST )
 #define HW_REGS_SPAN ( 0x04000000 )
 #define HW_REGS_MASK ( HW_REGS_SPAN - 1 )
-//
+
+#define ALT_AXI_FPGASLVS_OFST (0xC0000000) // axi_master
+#define HW_FPGA_AXI_SPAN ( 0xFBFFFFFF-ALT_AXI_FPGASLVS_OFST+1 ) // Bridge span
+#define HW_FPGA_AXI_MASK ( HW_FPGA_AXI_SPAN - 1 )
+//OGPU end
 
 #define DEBUG_VERTS 0
 #define DEBUG_FRAGS 0
@@ -2280,6 +2291,83 @@ static void ogpu_raster_control(ogpu_bit clock,
     }
 }
 
+//HARDWARE FUNCTIONS FOR FPGA DE1 SoC
+static int ipow(int base, int exp)
+{
+    int result = 1;
+    while (exp)
+    {
+        if (exp & 1)
+            result *= base;
+        exp >>= 1;
+        base *= base;
+    }
+
+    return result;
+}
+
+//Seven Seg display: 0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F,-, .
+uint8_t _seven_mask[]={
+		0x3F, //0
+		0x06, //1
+		0x5B, //2
+		0x4F, //3
+		0x66, //4
+		0x6D, //5
+		0x7D, //6
+		0x07, //7
+		0x7F, //8
+		0x6F, //9
+		0x77, //A
+		0x7c, //B
+		0x39, //C
+		0x5E, //D
+		0x79, //E
+		0x71, //F
+		0x40, //-
+		0x00};//
+
+static uint8_t d2ss(int value,int digit) //returns seven segment 'digit' configuration according entered 'value'
+{
+	uint8_t res=0xFF;
+	if(digit<0)
+	{
+		if(value<0) res=_seven_mask[16];
+		else res=_seven_mask[17];
+	}
+	else if(digit<100)
+	{
+		uint8_t n;
+		if(value>0) n=(value%ipow(10,digit+1))/ipow(10,digit);
+		else n=17;
+
+		res=_seven_mask[n];
+	}
+	res=~res;
+	return res;
+}
+
+static uint8_t h2ss(int value,int digit) //returns seven segment 'digit' configuration according entered hexadecimal 'value'
+{
+	uint8_t res=0xFF;
+	if(digit<0)
+	{
+		if(value<0) res=_seven_mask[16];
+		else res=_seven_mask[17];
+	}
+	else if(digit<100)
+	{
+		uint8_t n;
+		if(value>0) n=(value%ipow(10,digit+1))/ipow(10,digit);
+		else n=17;
+
+		res=_seven_mask[n];
+	}
+	res=~res;
+	return res;
+}
+//
+
 /**
  * Do triangle rasterization using OPENGPU VIRTUAL RASTERIZER.
  */
@@ -2289,87 +2377,53 @@ ogpu_raster_tri(struct setup_context *setup,
              const float (*v1)[4],
              const float (*v2)[4])
 {
-    ////SOFTPIPE RASTERIZER SETUP FUNCTIONS
-    //TODO: REPLACE THIS FUNCTIONS WITH CUSTOM ONES
-    struct quad_stage *pipe = setup->softpipe->quad.first;
+	////SOFTPIPE RASTERIZER SETUP FUNCTIONS
+	//TODO: REPLACE THIS FUNCTIONS WITH CUSTOM ONES
+	struct quad_stage *pipe = setup->softpipe->quad.first;
 
-    float det;
+	float det;
 
-    uint layer = 0;
-    unsigned viewport_index = 0;
+	uint layer = 0;
+	unsigned viewport_index = 0;
 
-    if (setup->softpipe->no_rast || setup->softpipe->rasterizer->rasterizer_discard)
-      return;
+	if (setup->softpipe->no_rast || setup->softpipe->rasterizer->rasterizer_discard)
+	  return;
 
-    det = calc_det(v0, v1, v2);
+	det = calc_det(v0, v1, v2);
 
-    if (!setup_sort_vertices( setup, det, v0, v1, v2 ))
-      return;
+	if (!setup_sort_vertices( setup, det, v0, v1, v2 ))
+	  return;
 
-    setup_tri_coefficients( setup );
+	setup_tri_coefficients( setup );
 
-    if (setup->softpipe->layer_slot > 0) {
-      layer = *(unsigned *)setup->vprovoke[setup->softpipe->layer_slot];
-      layer = MIN2(layer, setup->max_layer);
-    }
+	if (setup->softpipe->layer_slot > 0) {
+	  layer = *(unsigned *)setup->vprovoke[setup->softpipe->layer_slot];
+	  layer = MIN2(layer, setup->max_layer);
+	}
 
-    if (setup->softpipe->viewport_index_slot > 0) {
-      unsigned *udata = (unsigned*)v0[setup->softpipe->viewport_index_slot];
-      viewport_index = sp_clamp_viewport_idx(*udata);
-    }
-    ////
-
-//    static unsigned counter=0;
-//    printf("Tri %d\nv0\tx:%.1f\ty:%.1f\tz:%.1f\tw:%.1f\n"
-//           "v1\tx:%.1f\ty:%.1f\tz:%.1f\tw:%.1f\n"
-//           "v2\tx:%.1f\ty:%.1f\tz:%.1f\tw:%.1f\n\n",counter++,
-//                                                    v0[0][0],v0[0][1],v0[0][2],v0[0][3],
-//                                                    v1[0][0],v1[0][1],v1[0][2],v1[0][3],
-//                                                    v2[0][0],v2[0][1],v2[0][2],v2[0][3]);
-    static ogpu_bit start_raster=0,next_quad=0,quad_ready=0,end_tile=0,setup_done=0;
-    static ogpu_bit edge_ready[]={0,0,0},edge_test=0;
-    static ogpu_bit edge_mask0[]={0,0,0,0};
-    static ogpu_bit edge_mask1[]={0,0,0,0};
-    static ogpu_bit edge_mask2[]={0,0,0,0};
-    static ogpu_bit clock=0;
-    static ogpu_bit draw_quad=0;
-    static ogpu_bit discard_quad=0;
-    static ogpu_bit quad_mask[]={0,0,0,0};
-    static ogpu_bit depth_ready=0;
-    static ogpu_bit depth_test=0;
-    static ogpu_bit store_quad=0;
-    static ogpu_bit quad_stored=0;
-    static ogpu_bit done=0;
-    static ogpu_bit busy=0;
-    static ogpu_command cmd=OGPU_CMD_RASTER;
-    static struct ogpu_edge e0,e1,e2;
-    static struct ogpu_box box;
-    static struct ogpu_quad quad;
-    static struct ogpu_tile tile;
-    static struct ogpu_depth_coef coef;
-    static struct ogpu_depth_quad depth_quad;
-    static struct ogpu_quad_buffer quad_buffer;
-#define OGPU_TILE_SIZE 64 //by now, it's limited to TILE_SIZE in sp_tile_cache.h
-    struct ogpu_quad_buffer_cell __qb[OGPU_TILE_SIZE/2*OGPU_TILE_SIZE/2];
-
-    ogpu_depth_coef(v0,v1,v2,&coef);
-    tile.x0=setup->softpipe->cliprect[viewport_index].minx;
-    tile.y0=setup->softpipe->cliprect[viewport_index].miny;
-
-    box.x0=setup->softpipe->cliprect[viewport_index].minx;
-    box.y0=setup->softpipe->cliprect[viewport_index].miny;
-    box.x1=setup->softpipe->cliprect[viewport_index].maxx;
-    box.y1=setup->softpipe->cliprect[viewport_index].maxy;
-
-    tile.x1=tile.x0+62; tile.y1=tile.y0+62;
-
+	if (setup->softpipe->viewport_index_slot > 0) {
+	  unsigned *udata = (unsigned*)v0[setup->softpipe->viewport_index_slot];
+	  viewport_index = sp_clamp_viewport_idx(*udata);
+	}
+	////
 //TEST DE1
-	void *virtual_base;
+	void *virtual_base,*h2f_virtual_base;
 	int fd;
 	//int loop_count;
 	static int led_direction=0;
 	static int led_mask=0x1;
-	void *h2p_lw_led_addr;
+	void *h2p_lw_led_addr,*h2p_lw_sw_addr;
+	void *seven_seg_addr[6];
+	void *r1_req,*r1_data_high,*r1_data_low,*r1_ack;
+	void *r1_reset;
+	void *r1_command;
+	void *r1_v0x,*r1_v0y,*r1_v0z;
+	void *r1_v1x,*r1_v1y,*r1_v1z;
+	void *r1_v2x,*r1_v2y,*r1_v2z;
+	void *r1_clip_rect0,*r1_clip_rect1;
+	void *r1_tile0,*r1_tile1,*r1_depth_coef_a,*r1_depth_coef_b,*r1_depth_coef_c;
+	void *r1_quad_buffer_addr_high,*r1_quad_buffer_addr_low;
+	void *r1_status;
 
 	// map the address space for the LED registers into user space so we can interact with them.
 	// we'll actually map in the entire CSR span of the HPS since we want to access various registers within that span
@@ -2386,23 +2440,98 @@ ogpu_raster_tri(struct setup_context *setup,
 		close( fd );
 		return;
 	}
-	
+
 	h2p_lw_led_addr=( unsigned long  )virtual_base + ( ( unsigned long  )( ALT_LWFPGASLVS_OFST + LED_PIO_BASE ) & ( unsigned long)( HW_REGS_MASK ) );
-	
+	h2p_lw_sw_addr=( unsigned long  )virtual_base + ( ( unsigned long  )( ALT_LWFPGASLVS_OFST + DIPSW_PIO_BASE ) & ( unsigned long)( HW_REGS_MASK ) );
+	seven_seg_addr[0]=( unsigned long  )virtual_base + ( ( unsigned long  )( ALT_LWFPGASLVS_OFST + SEVEN_SEG_0_BASE ) & ( unsigned long)( HW_REGS_MASK ) );
+	seven_seg_addr[1]=( unsigned long  )virtual_base + ( ( unsigned long  )( ALT_LWFPGASLVS_OFST + SEVEN_SEG_1_BASE ) & ( unsigned long)( HW_REGS_MASK ) );
+	seven_seg_addr[2]=( unsigned long  )virtual_base + ( ( unsigned long  )( ALT_LWFPGASLVS_OFST + SEVEN_SEG_2_BASE ) & ( unsigned long)( HW_REGS_MASK ) );
+	seven_seg_addr[3]=( unsigned long  )virtual_base + ( ( unsigned long  )( ALT_LWFPGASLVS_OFST + SEVEN_SEG_3_BASE ) & ( unsigned long)( HW_REGS_MASK ) );
+	seven_seg_addr[4]=( unsigned long  )virtual_base + ( ( unsigned long  )( ALT_LWFPGASLVS_OFST + SEVEN_SEG_4_BASE ) & ( unsigned long)( HW_REGS_MASK ) );
+	seven_seg_addr[5]=( unsigned long  )virtual_base + ( ( unsigned long  )( ALT_LWFPGASLVS_OFST + SEVEN_SEG_5_BASE ) & ( unsigned long)( HW_REGS_MASK ) );
 
-	// toggle the LEDs a bit
 
-	//loop_count = 0;
-	//led_mask = 0x01;
-	//led_direction = 0; // 0: left to right direction
-	//while( loop_count < 60 ) {
-		
+	h2f_virtual_base = mmap( NULL, HW_FPGA_AXI_SPAN, ( PROT_READ | PROT_WRITE ), MAP_SHARED, fd,ALT_AXI_FPGASLVS_OFST );
+	if( h2f_virtual_base == MAP_FAILED ) {
+		if( munmap( h2f_virtual_base, HW_FPGA_AXI_SPAN ) != 0 ) {
+				printf( "ERROR: munmap() failed...\n" );
+				close( fd );
+				return;
+		}
+		printf( "ERROR: mmap() failed for h2f mapping...\n" );
+		close( fd );
+		return;
+	}
+
+	r1_reset=( unsigned long  )h2f_virtual_base + ( ( unsigned long  )( OGPU_RESET_BASE ));
+	r1_req=( unsigned long  )h2f_virtual_base + ( ( unsigned long  )( OGPU_QUAD_STORE_REQ_BASE ));
+	r1_data_high=( unsigned long  )h2f_virtual_base + ( ( unsigned long  )( OGPU_QUAD_STORE_DATA_HIGH_BASE ));
+	r1_data_low=( unsigned long  )h2f_virtual_base + ( ( unsigned long  )( OGPU_QUAD_STORE_DATA_LOW_BASE ));
+	r1_ack=( unsigned long  )h2f_virtual_base + ( ( unsigned long  )( OGPU_QUAD_STORE_ACK_BASE ));
+
+	r1_command=( unsigned long  )h2f_virtual_base + ( ( unsigned long  )( OGPU_RASTER_UNIT_COMMAND_BASE ));
+	r1_v0x=( unsigned long  )h2f_virtual_base + ( ( unsigned long  )( OGPU_RASTER_UNIT_V0X_BASE ));
+	r1_v0y=( unsigned long  )h2f_virtual_base + ( ( unsigned long  )( OGPU_RASTER_UNIT_V0Y_BASE ));
+	r1_v0z=( unsigned long  )h2f_virtual_base + ( ( unsigned long  )( OGPU_RASTER_UNIT_V0Z_BASE ));
+	r1_v1x=( unsigned long  )h2f_virtual_base + ( ( unsigned long  )( OGPU_RASTER_UNIT_V1X_BASE ));
+	r1_v1y=( unsigned long  )h2f_virtual_base + ( ( unsigned long  )( OGPU_RASTER_UNIT_V1Y_BASE ));
+	r1_v1z=( unsigned long  )h2f_virtual_base + ( ( unsigned long  )( OGPU_RASTER_UNIT_V1Z_BASE ));
+	r1_v2x=( unsigned long  )h2f_virtual_base + ( ( unsigned long  )( OGPU_RASTER_UNIT_V2X_BASE ));
+	r1_v2y=( unsigned long  )h2f_virtual_base + ( ( unsigned long  )( OGPU_RASTER_UNIT_V2Y_BASE ));
+	r1_v2z=( unsigned long  )h2f_virtual_base + ( ( unsigned long  )( OGPU_RASTER_UNIT_V2Z_BASE ));
+	r1_clip_rect0=( unsigned long  )h2f_virtual_base + ( ( unsigned long  )( OGPU_RASTER_UNIT_CLIP_RECT0_BASE ));
+	r1_clip_rect1=( unsigned long  )h2f_virtual_base + ( ( unsigned long  )( OGPU_RASTER_UNIT_CLIP_RECT1_BASE ));
+	r1_tile0=( unsigned long  )h2f_virtual_base + ( ( unsigned long  )( OGPU_RASTER_UNIT_TILE0_BASE ));
+	r1_tile1=( unsigned long  )h2f_virtual_base + ( ( unsigned long  )( OGPU_RASTER_UNIT_TILE1_BASE ));
+	r1_depth_coef_a=( unsigned long  )h2f_virtual_base + ( ( unsigned long  )( OGPU_RASTER_UNIT_DEPTH_COEF_A_BASE ));
+	r1_depth_coef_b=( unsigned long  )h2f_virtual_base + ( ( unsigned long  )( OGPU_RASTER_UNIT_DEPTH_COEF_B_BASE ));
+	r1_depth_coef_c=( unsigned long  )h2f_virtual_base + ( ( unsigned long  )( OGPU_RASTER_UNIT_DEPTH_COEF_C_BASE ));
+	r1_quad_buffer_addr_high=( unsigned long  )h2f_virtual_base + ( ( unsigned long  )( OGPU_RASTER_UNIT_QUAD_BUFFER_ADDR_HIGH_BASE ));
+	r1_quad_buffer_addr_low=( unsigned long  )h2f_virtual_base + ( ( unsigned long  )( OGPU_RASTER_UNIT_QUAD_BUFFER_ADDR_LOW_BASE ));
+	r1_status=( unsigned long  )h2f_virtual_base + ( ( unsigned long  )( OGPU_RASTER_UNIT_STATUS_BASE ));
+
+
+
+	int sw = alt_read_hword(h2p_lw_sw_addr) & 0x3FF;
+	static unsigned f_counter = 0;
+
+	f_counter++;
+
+	if(sw&4) // information ON
+	{
+		static clock_t t0=0;
+		double seconds = ((double)(clock()-t0))/CLOCKS_PER_SEC;
+		if(seconds>0.25)
+		{
+			unsigned fps=(unsigned)((f_counter/seconds)*1000);
+			t0=clock();
+
+			if(sw&2) //Total frame number after switching to this mode
+			{
+				alt_write_word(seven_seg_addr[0],d2ss(f_counter,0));
+				alt_write_word(seven_seg_addr[1],d2ss(f_counter,1));
+				alt_write_word(seven_seg_addr[2],d2ss(f_counter,2));
+				alt_write_word(seven_seg_addr[3],d2ss(f_counter,3));
+				alt_write_word(seven_seg_addr[4],d2ss(f_counter,4));
+				alt_write_word(seven_seg_addr[5],d2ss(f_counter,5));
+			}
+			else //FPS
+			{
+
+				alt_write_word(seven_seg_addr[0],d2ss(fps,0));
+				alt_write_word(seven_seg_addr[1],d2ss(fps,1));
+				alt_write_word(seven_seg_addr[2],d2ss(fps,2));
+				alt_write_word(seven_seg_addr[3],d2ss(-1,0));
+				alt_write_word(seven_seg_addr[4],d2ss(fps,3));
+				alt_write_word(seven_seg_addr[5],d2ss(fps,4));
+				f_counter=0;
+			}
+		}
+
 		// control led
-		*(uint32_t *)h2p_lw_led_addr = ~led_mask; 
+		if(sw&1) *(uint32_t *)h2p_lw_led_addr = led_mask;
+		else *(uint32_t *)h2p_lw_led_addr = ~led_mask;
 
-		// wait 100ms
-		//usleep( 300*1000 );
-		
 		// update led mask
 		if (led_direction == 0){
 			led_mask <<= 1;
@@ -2410,136 +2539,367 @@ ogpu_raster_tri(struct setup_context *setup,
 				 led_direction = 1;
 		}else{
 			led_mask >>= 1;
-			if (led_mask == 0x01){ 
+			if (led_mask == 0x01){
 				led_direction = 0;
-				//loop_count++;
 			}
 		}
-		
-	//} // while
-	
-
-	// clean up our memory mapping and exit
-	
-	if( munmap( virtual_base, HW_REGS_SPAN ) != 0 ) {
-		printf( "ERROR: munmap() failed...\n" );
-		close( fd );
-		return;
 	}
 
-	close( fd );
-//TEST DE1 END-----
 
-    quad_buffer.b=__qb;
-    do//TILE LOOP
-    {
-        clock=0;
-        quad_buffer.n=0;
-        quad_buffer.tile=tile;
+	if(sw&1) //if sw0 is one, do OGPU HARDWARE APPROACH
+	{
+		static struct ogpu_box box;
+		static struct ogpu_tile tile;
 
-        unsigned _next_raster=1;
+		uint8_t command;
+		uint16_t v0x=ogpu_ufix_float(v0[0][0]),
+				 v0y=ogpu_ufix_float(v0[0][1]),
+				 v0z=ogpu_ufix_float(v0[0][2]);
+		uint16_t v1x=ogpu_ufix_float(v1[0][0]),
+				 v1y=ogpu_ufix_float(v1[0][1]),
+				 v1z=ogpu_ufix_float(v1[0][2]);
+		uint16_t v2x=ogpu_ufix_float(v2[0][0]),
+				 v2y=ogpu_ufix_float(v2[0][1]),
+				 v2z=ogpu_ufix_float(v2[0][2]);
+		uint32_t clip_rect0,clip_rect1,tile0,tile1;
+		box.x0=setup->softpipe->cliprect[viewport_index].minx;
+		box.y0=setup->softpipe->cliprect[viewport_index].miny;
+		box.x1=setup->softpipe->cliprect[viewport_index].maxx;
+		box.y1=setup->softpipe->cliprect[viewport_index].maxy;
+		//printf("clip_rect: p0(%d,%d) p1(%d,%d)\n",x0,y0,x1,y1);
+		clip_rect0=(ogpu_fix_float(box.x0)<<16)|(ogpu_fix_float(box.y0)&0xFFFF);//x0|y0
+		clip_rect1=(ogpu_fix_float(box.x1)<<16)|(ogpu_fix_float(box.y1)&0xFFFF);//x1|y1
 
-        //if(ogpu_quad_buffer_alloc(&quad_buffer,tile)<0){ printf("Memory allocation failed\n"); return;}
-        do//OGPU LOOP -- behavior algorithm implementation
-        {
-            if(_next_raster)
-            {
-                if(!done)
-                {
-                    cmd=OGPU_CMD_RASTER;
-                    _next_raster=0;
-                }
-                else
-                {
-                    cmd=OGPU_CMD_PREPARE;
-                }
-            }
-            ogpu_raster_control(clock,cmd,setup_done,end_tile,quad_ready,depth_ready,quad_stored,
-                                    draw_quad,discard_quad,
-                                &start_raster,&next_quad,&edge_test,&depth_test,&store_quad,
-                                    &busy,&done);
+		tile.x0=setup->softpipe->cliprect[viewport_index].minx;
+		tile.y0=setup->softpipe->cliprect[viewport_index].miny;
+		tile.x1=tile.x0+62;
+		tile.y1=tile.y0+62;
+		tile0=(tile.x0<<16)|(tile.y0&0xFFFF);//x0|y0 tile of 64x64 pixels
+		tile1=(tile.x1<<16)|(tile.y1&0xFFFF);//x1|y1
+		//printf("tile: p0(%x) p1(%x)\n",tile0,tile1);
 
-            ogpu_setup(clock,start_raster,(const float (*)[2])v0,(const float (*)[2])v1,(const float (*)[2])v2,
-                       &e0,&e1,&e2,&setup_done);
-            ogpu_quad_generator(clock,next_quad,box,tile,
-                                &quad_ready,&end_tile,&quad);
+		alt_write_word(r1_reset,0); // reset gpu(active low)
+		alt_write_word(r1_reset,1); // active gpu
+		//printf("status: %x\n",alt_read_word(r1_status));
+		alt_write_word(r1_v0x,v0x); alt_write_word(r1_v0y,v0y); alt_write_word(r1_v0z,v0z);
+		alt_write_word(r1_v1x,v1x); alt_write_word(r1_v1y,v1y); alt_write_word(r1_v1z,v1z);
+		alt_write_word(r1_v2x,v2x); alt_write_word(r1_v2y,v2y); alt_write_word(r1_v2z,v2z);
+		alt_write_word(r1_clip_rect0,clip_rect0); alt_write_word(r1_clip_rect1,clip_rect1);
+		alt_write_word(r1_tile0,tile0); alt_write_word(r1_tile1,tile1);
+		//ogpu_depth_coef(v0,v1,v2,&coef);
+		alt_write_word(r1_depth_coef_a,0);
+		alt_write_word(r1_depth_coef_b,0);
+		alt_write_word(r1_depth_coef_c,0);
+		alt_write_word(r1_quad_buffer_addr_high,0); alt_write_word(r1_quad_buffer_addr_low,0);
 
-            ogpu_quad_edge_test(clock,e0,quad,edge_test,&edge_mask0,&edge_ready[0]);
-            ogpu_quad_edge_test(clock,e1,quad,edge_test,&edge_mask1,&edge_ready[1]);
-            ogpu_quad_edge_test(clock,e2,quad,edge_test,&edge_mask2,&edge_ready[2]);
-            ogpu_triangle_edge_test(clock,&edge_ready,&edge_mask0,&edge_mask1,&edge_mask2,
-                                        &quad_mask,&draw_quad,&discard_quad);
-            ogpu_quad_depth_test(clock,quad,depth_test,coef,
-                                 &depth_ready,&depth_quad);
+		static struct ogpu_quad_buffer quad_buffer;
+	#define OGPU_HW_TILE_SIZE 64 //by now, it's limited to TILE_SIZE in sp_tile_cache.h
+		struct ogpu_quad_buffer_cell __qb[OGPU_HW_TILE_SIZE/2*OGPU_HW_TILE_SIZE/2];
+		memset((void*)__qb,0,sizeof(struct ogpu_quad_buffer_cell)*OGPU_HW_TILE_SIZE/2*OGPU_HW_TILE_SIZE/2);
 
-            ogpu_quad_store(clock,&quad_mask,quad,start_raster,store_quad,tile,depth_quad,
-                            &quad_stored,&quad_buffer);
-            clock^=1;
-        }while(!done || _next_raster);
+		quad_buffer.b=__qb;
 
-    //    printf("e0\tx0:%d y0:%d\tx1:%d y1:%d\n"
-    //           "e1\tx0:%d y0:%d\tx1:%d y1:%d\n"
-    //           "e2\tx0:%d y0:%d\tx1:%d y1:%d\n",e0.x0,e0.y0,e0.x1,e0.y1,
-    //                                            e1.x0,e1.y0,e1.x1,e1.y1,
-    //                                            e2.x0,e2.y0,e2.x1,e2.y1);
-    //    printf("B0(%.1f,%.1f)\n"
-    //           "B1(%.1f,%.1f)\n",box.x0,box.y0,box.x1,box.y1);
+		do//TILE LOOP
+		{
+			//alt_write_word(r1_reset,0); // reset gpu(active low)
+			//alt_write_word(r1_reset,1); // active gpu
+			quad_buffer.n=0;
+			quad_buffer.tile=tile;
 
-        unsigned q,s,m,c;
-        #define OGPU_SOFT_QUAD_SIZE MAX_QUADS
-    //    struct quad_header sp_quad[OGPU_SOFT_QUAD_SIZE];
-    //    struct quad_header *sp_quad_ptrs[OGPU_SOFT_QUAD_SIZE];
-        m=quad_buffer.n;
-        c=0;
-        s=OGPU_SOFT_QUAD_SIZE;
+			//if(ogpu_quad_buffer_alloc(&quad_buffer,tile)<0){ printf("Memory allocation failed\n"); return;}
 
-        do//MEMORY LOOP -- QUAD BUFFER READING AND SOFTPIPE NEXT STAGE INTERFACING
-        {
-            if(m<s) s=m;
-            for(q=0;q<s;q++,c++)
-            {
-                setup->quad[q].input.x0=quad_buffer.b[c].x;
-                setup->quad[q].input.y0=quad_buffer.b[c].y;
+			unsigned ibuf=0;
+			uint32_t dataH,dataL,st,rt;
+			command=0xAA;
+			alt_write_word(r1_command,command);
+			st=alt_read_word(r1_status);
+			while((st&1)==0) //while DONE bit is zero
+			{
+				st=alt_read_word(r1_status);
+				rt=alt_read_word(r1_req);
+				if(rt)
+				{
+					dataH=alt_read_word(r1_data_high);
+					dataL=alt_read_word(r1_data_low);
+					alt_write_word(r1_ack,1);
+					//usleep(10000);
+					while(alt_read_word(r1_req)); // while req signal is high
+					alt_write_word(r1_ack,0);
+					//mem_buf[ibuf++]=(uint64_t)((((uint64_t)dataH)<<32)|(dataL));
+					quad_buffer.b[ibuf].x=(uint16_t)(dataH>>16);
+					quad_buffer.b[ibuf].y=(uint16_t)(dataH&0xFFFF);
+					quad_buffer.b[ibuf].mask=(uint8_t)(dataL&0x0F);
+					ibuf++;
+					if(ibuf>(OGPU_HW_TILE_SIZE/2*OGPU_HW_TILE_SIZE/2))
+					{
+						ibuf=0;
+						printf("OPENGPU: SETUP.C: hardware approach: '__qb': BUFFER OVERFLOW");
+					}
+				}
+			}
+			st=alt_read_word(r1_status);
 
-                setup->quad[q].input.layer=layer;
-                setup->quad[q].input.viewport_index=viewport_index;
-                setup->quad[q].input.coverage[0]=0;
-                setup->quad[q].input.coverage[1]=0;
-                setup->quad[q].input.coverage[2]=0;
-                setup->quad[q].input.coverage[3]=0;
-                setup->quad[q].input.facing=setup->facing;
-                setup->quad[q].inout.mask=quad_buffer.b[c].mask;
-                setup->quad[q].output.depth[0]=0;//quad_buffer.b[c].depth[0];
-                setup->quad[q].output.depth[1]=0;//quad_buffer.b[c].depth[1];
-                setup->quad[q].output.depth[2]=0;//quad_buffer.b[c].depth[2];
-                setup->quad[q].output.depth[3]=0;//quad_buffer.b[c].depth[3];
-//                printf("D%d\t%f\t%f\n\t%f\t%f\n\n",c,quad_buffer.b[c].depth[0],
-//                       quad_buffer.b[c].depth[1],quad_buffer.b[c].depth[2],
-//                       quad_buffer.b[c].depth[3]);
-                setup->quad[q].output.stencil[0]=0;//quad_buffer.b[c].stencil[0];
-                setup->quad[q].output.stencil[1]=0;//quad_buffer.b[c].stencil[0];
-                setup->quad[q].output.stencil[2]=0;//quad_buffer.b[c].stencil[0];
-                setup->quad[q].output.stencil[3]=0;//quad_buffer.b[c].stencil[0];
-                setup->quad[q].coef=setup->coef;
-                setup->quad[q].posCoef=&setup->posCoef;
+			quad_buffer.n=ibuf;
 
-                setup->quad_ptrs[q]=&setup->quad[q];
-            }
-            if(s) pipe->run( pipe, setup->quad_ptrs, s );
-            m-=s;
-        }while(m);
-    tile.x0+=64;
-    tile.x1=tile.x0+62;
-    if(tile.x0>=setup->softpipe->cliprect[viewport_index].maxx)
-    {
-        tile.x0=0;
-        tile.x1=tile.x0+62;
-        tile.y0+=64;
-        tile.y1=tile.y0+62;
-    }
-    }while(tile.y0<setup->softpipe->cliprect[viewport_index].maxy);
+			command=0xA5; //PREPARE FOR NEXT RASTER
+			alt_write_word(r1_command,command);
+			do
+			{
+				st=alt_read_word(r1_status);
+				//printf("status(prepare) (%d us): %x\n",i,s);
+				//usleep(i);
+				//i+=100;
+			}while((st&1)!=0); //while DONE bit is one
 
-    //ogpu_quad_buffer_free(&quad_buffer);
-   //sp_setup_tri(setup,v0,v1,v2);
+		//    printf("e0\tx0:%d y0:%d\tx1:%d y1:%d\n"
+		//           "e1\tx0:%d y0:%d\tx1:%d y1:%d\n"
+		//           "e2\tx0:%d y0:%d\tx1:%d y1:%d\n",e0.x0,e0.y0,e0.x1,e0.y1,
+		//                                            e1.x0,e1.y0,e1.x1,e1.y1,
+		//                                            e2.x0,e2.y0,e2.x1,e2.y1);
+		//    printf("B0(%.1f,%.1f)\n"
+		//           "B1(%.1f,%.1f)\n",box.x0,box.y0,box.x1,box.y1);
+
+			unsigned q,s,m,c;
+			#define OGPU_HW_QUAD_SIZE MAX_QUADS
+		//    struct quad_header sp_quad[OGPU_SOFT_QUAD_SIZE];
+		//    struct quad_header *sp_quad_ptrs[OGPU_SOFT_QUAD_SIZE];
+			m=quad_buffer.n;
+			c=0;
+			s=OGPU_HW_QUAD_SIZE;
+
+			do//MEMORY LOOP -- QUAD BUFFER READING AND SOFTPIPE NEXT STAGE INTERFACING
+			{
+				if(m<s) s=m;
+				for(q=0;q<s;q++,c++)
+				{
+					setup->quad[q].input.x0=quad_buffer.b[c].x;
+					setup->quad[q].input.y0=quad_buffer.b[c].y;
+
+					setup->quad[q].input.layer=layer;
+					setup->quad[q].input.viewport_index=viewport_index;
+					setup->quad[q].input.coverage[0]=0;
+					setup->quad[q].input.coverage[1]=0;
+					setup->quad[q].input.coverage[2]=0;
+					setup->quad[q].input.coverage[3]=0;
+					setup->quad[q].input.facing=setup->facing;
+					setup->quad[q].inout.mask=quad_buffer.b[c].mask;
+					setup->quad[q].output.depth[0]=0;//quad_buffer.b[c].depth[0];
+					setup->quad[q].output.depth[1]=0;//quad_buffer.b[c].depth[1];
+					setup->quad[q].output.depth[2]=0;//quad_buffer.b[c].depth[2];
+					setup->quad[q].output.depth[3]=0;//quad_buffer.b[c].depth[3];
+	//                printf("D%d\t%f\t%f\n\t%f\t%f\n\n",c,quad_buffer.b[c].depth[0],
+	//                       quad_buffer.b[c].depth[1],quad_buffer.b[c].depth[2],
+	//                       quad_buffer.b[c].depth[3]);
+					setup->quad[q].output.stencil[0]=0;//quad_buffer.b[c].stencil[0];
+					setup->quad[q].output.stencil[1]=0;//quad_buffer.b[c].stencil[0];
+					setup->quad[q].output.stencil[2]=0;//quad_buffer.b[c].stencil[0];
+					setup->quad[q].output.stencil[3]=0;//quad_buffer.b[c].stencil[0];
+					setup->quad[q].coef=setup->coef;
+					setup->quad[q].posCoef=&setup->posCoef;
+
+					setup->quad_ptrs[q]=&setup->quad[q];
+				}
+				if(s) pipe->run( pipe, setup->quad_ptrs, s );
+				m-=s;
+			}while(m);
+		tile.x0+=64;
+		tile.x1=tile.x0+62;
+		if(tile.x0>setup->softpipe->cliprect[viewport_index].maxx)
+		{
+			tile.x0=setup->softpipe->cliprect[viewport_index].minx;
+			tile.x1=tile.x0+62;
+			tile.y0+=64;
+			tile.y1=tile.y0+62;
+		}
+		tile0=(tile.x0<<16)|(tile.y0&0xFFFF);//x0|y0 tile of 64x64 pixels
+		tile1=(tile.x1<<16)|(tile.y1&0xFFFF);//x1|y1
+		alt_write_word(r1_tile0,tile0); alt_write_word(r1_tile1,tile1);
+
+		}while(tile.y0<=setup->softpipe->cliprect[viewport_index].maxy);
+	}
+	else // if sw0 is zero, do software approach
+	{
+		if(sw&(1<<9)) // if one, ogpu software model
+		{
+
+
+			//    static unsigned counter=0;
+			//    printf("Tri %d\nv0\tx:%.1f\ty:%.1f\tz:%.1f\tw:%.1f\n"
+			//           "v1\tx:%.1f\ty:%.1f\tz:%.1f\tw:%.1f\n"
+			//           "v2\tx:%.1f\ty:%.1f\tz:%.1f\tw:%.1f\n\n",counter++,
+			//                                                    v0[0][0],v0[0][1],v0[0][2],v0[0][3],
+			//                                                    v1[0][0],v1[0][1],v1[0][2],v1[0][3],
+			//                                                    v2[0][0],v2[0][1],v2[0][2],v2[0][3]);
+			    static ogpu_bit start_raster=0,next_quad=0,quad_ready=0,end_tile=0,setup_done=0;
+			    static ogpu_bit edge_ready[]={0,0,0},edge_test=0;
+			    static ogpu_bit edge_mask0[]={0,0,0,0};
+			    static ogpu_bit edge_mask1[]={0,0,0,0};
+			    static ogpu_bit edge_mask2[]={0,0,0,0};
+			    static ogpu_bit clock=0;
+			    static ogpu_bit draw_quad=0;
+			    static ogpu_bit discard_quad=0;
+			    static ogpu_bit quad_mask[]={0,0,0,0};
+			    static ogpu_bit depth_ready=0;
+			    static ogpu_bit depth_test=0;
+			    static ogpu_bit store_quad=0;
+			    static ogpu_bit quad_stored=0;
+			    static ogpu_bit done=0;
+			    static ogpu_bit busy=0;
+			    static ogpu_command cmd=OGPU_CMD_RASTER;
+			    static struct ogpu_edge e0,e1,e2;
+			    static struct ogpu_box box;
+			    static struct ogpu_quad quad;
+			    static struct ogpu_tile tile;
+			    static struct ogpu_depth_coef coef;
+			    static struct ogpu_depth_quad depth_quad;
+			    static struct ogpu_quad_buffer quad_buffer;
+			#define OGPU_TILE_SIZE 64 //by now, it's limited to TILE_SIZE in sp_tile_cache.h
+			    struct ogpu_quad_buffer_cell __qb[OGPU_TILE_SIZE/2*OGPU_TILE_SIZE/2];
+
+			    ogpu_depth_coef(v0,v1,v2,&coef);
+			    tile.x0=setup->softpipe->cliprect[viewport_index].minx;
+			    tile.y0=setup->softpipe->cliprect[viewport_index].miny;
+
+			    box.x0=setup->softpipe->cliprect[viewport_index].minx;
+			    box.y0=setup->softpipe->cliprect[viewport_index].miny;
+			    box.x1=setup->softpipe->cliprect[viewport_index].maxx;
+			    box.y1=setup->softpipe->cliprect[viewport_index].maxy;
+
+			    tile.x1=tile.x0+62; tile.y1=tile.y0+62;
+
+			    quad_buffer.b=__qb;
+			    do//TILE LOOP
+			    {
+			        clock=0;
+			        quad_buffer.n=0;
+			        quad_buffer.tile=tile;
+
+			        unsigned _next_raster=1;
+
+			        //if(ogpu_quad_buffer_alloc(&quad_buffer,tile)<0){ printf("Memory allocation failed\n"); return;}
+			        do//OGPU LOOP -- behavior algorithm implementation
+			        {
+			            if(_next_raster)
+			            {
+			                if(!done)
+			                {
+			                    cmd=OGPU_CMD_RASTER;
+			                    _next_raster=0;
+			                }
+			                else
+			                {
+			                    cmd=OGPU_CMD_PREPARE;
+			                }
+			            }
+			            ogpu_raster_control(clock,cmd,setup_done,end_tile,quad_ready,depth_ready,quad_stored,
+			                                    draw_quad,discard_quad,
+			                                &start_raster,&next_quad,&edge_test,&depth_test,&store_quad,
+			                                    &busy,&done);
+
+			            ogpu_setup(clock,start_raster,(const float (*)[2])v0,(const float (*)[2])v1,(const float (*)[2])v2,
+			                       &e0,&e1,&e2,&setup_done);
+			            ogpu_quad_generator(clock,next_quad,box,tile,
+			                                &quad_ready,&end_tile,&quad);
+
+			            ogpu_quad_edge_test(clock,e0,quad,edge_test,&edge_mask0,&edge_ready[0]);
+			            ogpu_quad_edge_test(clock,e1,quad,edge_test,&edge_mask1,&edge_ready[1]);
+			            ogpu_quad_edge_test(clock,e2,quad,edge_test,&edge_mask2,&edge_ready[2]);
+			            ogpu_triangle_edge_test(clock,&edge_ready,&edge_mask0,&edge_mask1,&edge_mask2,
+			                                        &quad_mask,&draw_quad,&discard_quad);
+			            ogpu_quad_depth_test(clock,quad,depth_test,coef,
+			                                 &depth_ready,&depth_quad);
+
+			            ogpu_quad_store(clock,&quad_mask,quad,start_raster,store_quad,tile,depth_quad,
+			                            &quad_stored,&quad_buffer);
+			            clock^=1;
+			        }while(!done || _next_raster);
+
+			    //    printf("e0\tx0:%d y0:%d\tx1:%d y1:%d\n"
+			    //           "e1\tx0:%d y0:%d\tx1:%d y1:%d\n"
+			    //           "e2\tx0:%d y0:%d\tx1:%d y1:%d\n",e0.x0,e0.y0,e0.x1,e0.y1,
+			    //                                            e1.x0,e1.y0,e1.x1,e1.y1,
+			    //                                            e2.x0,e2.y0,e2.x1,e2.y1);
+			    //    printf("B0(%.1f,%.1f)\n"
+			    //           "B1(%.1f,%.1f)\n",box.x0,box.y0,box.x1,box.y1);
+
+			        unsigned q,s,m,c;
+			        #define OGPU_SOFT_QUAD_SIZE MAX_QUADS
+			    //    struct quad_header sp_quad[OGPU_SOFT_QUAD_SIZE];
+			    //    struct quad_header *sp_quad_ptrs[OGPU_SOFT_QUAD_SIZE];
+			        m=quad_buffer.n;
+			        c=0;
+			        s=OGPU_SOFT_QUAD_SIZE;
+
+			        do//MEMORY LOOP -- QUAD BUFFER READING AND SOFTPIPE NEXT STAGE INTERFACING
+			        {
+			            if(m<s) s=m;
+			            for(q=0;q<s;q++,c++)
+			            {
+			                setup->quad[q].input.x0=quad_buffer.b[c].x;
+			                setup->quad[q].input.y0=quad_buffer.b[c].y;
+
+			                setup->quad[q].input.layer=layer;
+			                setup->quad[q].input.viewport_index=viewport_index;
+			                setup->quad[q].input.coverage[0]=0;
+			                setup->quad[q].input.coverage[1]=0;
+			                setup->quad[q].input.coverage[2]=0;
+			                setup->quad[q].input.coverage[3]=0;
+			                setup->quad[q].input.facing=setup->facing;
+			                setup->quad[q].inout.mask=quad_buffer.b[c].mask;
+			                setup->quad[q].output.depth[0]=0;//quad_buffer.b[c].depth[0];
+			                setup->quad[q].output.depth[1]=0;//quad_buffer.b[c].depth[1];
+			                setup->quad[q].output.depth[2]=0;//quad_buffer.b[c].depth[2];
+			                setup->quad[q].output.depth[3]=0;//quad_buffer.b[c].depth[3];
+			//                printf("D%d\t%f\t%f\n\t%f\t%f\n\n",c,quad_buffer.b[c].depth[0],
+			//                       quad_buffer.b[c].depth[1],quad_buffer.b[c].depth[2],
+			//                       quad_buffer.b[c].depth[3]);
+			                setup->quad[q].output.stencil[0]=0;//quad_buffer.b[c].stencil[0];
+			                setup->quad[q].output.stencil[1]=0;//quad_buffer.b[c].stencil[0];
+			                setup->quad[q].output.stencil[2]=0;//quad_buffer.b[c].stencil[0];
+			                setup->quad[q].output.stencil[3]=0;//quad_buffer.b[c].stencil[0];
+			                setup->quad[q].coef=setup->coef;
+			                setup->quad[q].posCoef=&setup->posCoef;
+
+			                setup->quad_ptrs[q]=&setup->quad[q];
+			            }
+			            if(s) pipe->run( pipe, setup->quad_ptrs, s );
+			            m-=s;
+			        }while(m);
+			    tile.x0+=64;
+			    tile.x1=tile.x0+62;
+			    if(tile.x0>=setup->softpipe->cliprect[viewport_index].maxx)
+			    {
+			        tile.x0=0;
+			        tile.x1=tile.x0+62;
+			        tile.y0+=64;
+			        tile.y1=tile.y0+62;
+			    }
+			    }while(tile.y0<setup->softpipe->cliprect[viewport_index].maxy);
+
+			    //ogpu_quad_buffer_free(&quad_buffer);
+		}
+		else sp_setup_tri(setup,v0,v1,v2); // if sw9 is zero, use softpipe original function
+	}
+	if( munmap( virtual_base, HW_REGS_SPAN ) != 0 ) {
+			if( munmap( h2f_virtual_base, HW_FPGA_AXI_SPAN ) != 0 ) {
+					printf( "ERROR: h2f munmap() failed...\n" );
+					close( fd );
+					return;
+			}
+			printf( "ERROR: munmap() failed...\n" );
+			close( fd );
+			return;
+		}
+		else
+		{
+			if( munmap( h2f_virtual_base, HW_FPGA_AXI_SPAN ) != 0 ) {
+					printf( "ERROR: h2f munmap() failed...\n" );
+					close( fd );
+					return;
+			}
+		}
+
+		close( fd );
+	//TEST DE1 END-----
 }
 //--OPENGPU
