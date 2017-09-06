@@ -1,0 +1,11 @@
+Exception: STATUS_ACCESS_VIOLATION at eip=610DBFAB
+eax=00000001 ebx=00000000 ecx=00000000 edx=022BABB0 esi=00000148 edi=022BAC44
+ebp=022BAB7C esp=022BAA64 program=\\?\D:\altera\13.0\quartus\bin64\quartus.exe, pid 2880, thread unknown (0x1CB4)
+cs=0023 ds=002B es=002B fs=0053 gs=002B ss=002B
+Stack trace:
+Frame     Function  Args
+022BAB7C  610DBFAB  (00000000, 00000000, 00000000, 00000000)
+022BAC4C  610DCD67  (FFFFFFFF, FFFFFFFF, 00000000, 00000000)
+022BACAC  6102F16F  (00000002, 6967CD82, 022BCDB8, 74B46C9C)
+022BAD38  74B46E51  (00000002, 022BCDB8, 74B46C9C, 00000000)
+     11 [unknown (0x1CB4)] sh 2880! exception::handle: Error while dumping state (probably corrupted stack)

@@ -1,0 +1,125 @@
+<hps>
+  <peripherals>
+    <peripheral name='rgmii0' used='false' />
+    <peripheral name='rgmii1' used='true' />
+    <peripheral name='nand' used='false' />
+    <peripheral name='qspi' used='true'>
+      <config name='CONFIG_HPS_QSPI_CS3' value='0' />
+      <config name='CONFIG_HPS_QSPI_CS2' value='0' />
+      <config name='CONFIG_HPS_QSPI_CS1' value='0' />
+      <config name='CONFIG_HPS_QSPI_CS0' value='1' />
+    </peripheral>
+    <peripheral name='sdmmc' used='true'>
+      <config name='CONFIG_HPS_SDMMC_BUSWIDTH' value='4' />
+    </peripheral>
+    <peripheral name='usb0' used='false' />
+    <peripheral name='usb1' used='true' />
+    <peripheral name='spim0' used='false' />
+    <peripheral name='spim1' used='true' />
+    <peripheral name='spis0' used='false' />
+    <peripheral name='spis1' used='false' />
+    <peripheral name='uart0' used='true'>
+      <config name='CONFIG_HPS_UART0_TX' value='1' />
+      <config name='CONFIG_HPS_UART0_CTS' value='0' />
+      <config name='CONFIG_HPS_UART0_RTS' value='0' />
+      <config name='CONFIG_HPS_UART0_RX' value='1' />
+    </peripheral>
+    <peripheral name='uart1' used='false'>
+      <config name='CONFIG_HPS_UART1_TX' value='0' />
+      <config name='CONFIG_HPS_UART1_CTS' value='0' />
+      <config name='CONFIG_HPS_UART1_RTS' value='0' />
+      <config name='CONFIG_HPS_UART1_RX' value='0' />
+    </peripheral>
+    <peripheral name='i2c0' used='true' />
+    <peripheral name='i2c1' used='true' />
+    <peripheral name='i2c2' used='false' />
+    <peripheral name='i2c3' used='false' />
+    <peripheral name='can0' used='false' />
+    <peripheral name='can1' used='false' />
+  </peripherals>
+  <pin_muxes>
+    <pin_mux name='MIXED1IO0' value='2' />
+    <pin_mux name='MIXED1IO1' value='2' />
+    <pin_mux name='MIXED1IO2' value='2' />
+    <pin_mux name='MIXED1IO3' value='2' />
+    <pin_mux name='MIXED1IO4' value='2' />
+    <pin_mux name='MIXED1IO5' value='2' />
+    <pin_mux name='MIXED1IO6' value='2' />
+    <pin_mux name='MIXED1IO7' value='2' />
+    <pin_mux name='MIXED1IO8' value='2' />
+    <pin_mux name='MIXED1IO9' value='2' />
+    <pin_mux name='MIXED1IO10' value='2' />
+    <pin_mux name='MIXED1IO11' value='2' />
+    <pin_mux name='MIXED1IO12' value='2' />
+    <pin_mux name='MIXED1IO13' value='2' />
+    <pin_mux name='MIXED1IO15' value='3' />
+    <pin_mux name='MIXED1IO16' value='3' />
+    <pin_mux name='MIXED1IO17' value='3' />
+    <pin_mux name='MIXED1IO18' value='3' />
+    <pin_mux name='MIXED1IO19' value='3' />
+    <pin_mux name='MIXED1IO20' value='3' />
+    <pin_mux name='FLASHIO0' value='3' />
+    <pin_mux name='FLASHIO2' value='3' />
+    <pin_mux name='FLASHIO3' value='3' />
+    <pin_mux name='FLASHIO9' value='3' />
+    <pin_mux name='FLASHIO10' value='3' />
+    <pin_mux name='FLASHIO11' value='3' />
+    <pin_mux name='EMACIO1' value='2' />
+    <pin_mux name='EMACIO2' value='2' />
+    <pin_mux name='EMACIO3' value='2' />
+    <pin_mux name='EMACIO4' value='2' />
+    <pin_mux name='EMACIO5' value='2' />
+    <pin_mux name='EMACIO6' value='2' />
+    <pin_mux name='EMACIO7' value='2' />
+    <pin_mux name='EMACIO8' value='2' />
+    <pin_mux name='EMACIO10' value='2' />
+    <pin_mux name='EMACIO11' value='2' />
+    <pin_mux name='EMACIO12' value='2' />
+    <pin_mux name='EMACIO13' value='2' />
+    <pin_mux name='GENERALIO15' value='1' />
+    <pin_mux name='GENERALIO16' value='1' />
+    <pin_mux name='GENERALIO17' value='1' />
+    <pin_mux name='GENERALIO18' value='1' />
+    <pin_mux name='GENERALIO1' value='1' />
+    <pin_mux name='GENERALIO2' value='1' />
+    <pin_mux name='GENERALIO7' value='1' />
+    <pin_mux name='GENERALIO8' value='1' />
+    <pin_mux name='GENERALIO3' value='1' />
+    <pin_mux name='GENERALIO4' value='1' />
+    <pin_mux name='EMACIO9' value='0' />
+    <pin_mux name='GPLMUX9' value='1' />
+    <pin_mux name='MIXED1IO21' value='0' />
+    <pin_mux name='GPLMUX35' value='1' />
+    <pin_mux name='FLASHIO4' value='0' />
+    <pin_mux name='GPLMUX40' value='1' />
+    <pin_mux name='FLASHIO5' value='0' />
+    <pin_mux name='GPLMUX41' value='1' />
+    <pin_mux name='GENERALIO0' value='0' />
+    <pin_mux name='GPLMUX48' value='1' />
+    <pin_mux name='GENERALIO5' value='0' />
+    <pin_mux name='GPLMUX53' value='1' />
+    <pin_mux name='GENERALIO6' value='0' />
+    <pin_mux name='GPLMUX54' value='1' />
+    <pin_mux name='GENERALIO13' value='0' />
+    <pin_mux name='GPLMUX61' value='1' />
+    <pin_mux name='RGMII0USEFPGA' value='0' />
+    <pin_mux name='RGMII1USEFPGA' value='0' />
+    <pin_mux name='NANDUSEFPGA' value='0' />
+    <pin_mux name='QSPIUSEFPGA' value='0' />
+    <pin_mux name='SDMMCUSEFPGA' value='0' />
+    <pin_mux name='USB0USEFPGA' value='0' />
+    <pin_mux name='USB1USEFPGA' value='0' />
+    <pin_mux name='SPIM0USEFPGA' value='0' />
+    <pin_mux name='SPIM1USEFPGA' value='0' />
+    <pin_mux name='SPIS0USEFPGA' value='0' />
+    <pin_mux name='SPIS1USEFPGA' value='0' />
+    <pin_mux name='UART0USEFPGA' value='0' />
+    <pin_mux name='UART1USEFPGA' value='0' />
+    <pin_mux name='I2C0USEFPGA' value='0' />
+    <pin_mux name='I2C1USEFPGA' value='0' />
+    <pin_mux name='I2C2USEFPGA' value='0' />
+    <pin_mux name='I2C3USEFPGA' value='0' />
+    <pin_mux name='CAN0USEFPGA' value='0' />
+    <pin_mux name='CAN1USEFPGA' value='0' />
+  </pin_muxes>
+</hps>

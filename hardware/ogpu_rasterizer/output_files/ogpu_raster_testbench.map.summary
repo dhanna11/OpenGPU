@@ -1,0 +1,17 @@
+Analysis & Synthesis Status : Successful - Sat Jan  7 19:12:46 2017
+Quartus Prime Version : 16.0.2 Build 222 07/20/2016 SJ Lite Edition
+Revision Name : ogpu_raster_testbench
+Top-level Entity Name : ogpu_raster_unit
+Family : Cyclone V
+Logic utilization (in ALMs) : N/A
+Total registers : 261
+Total pins : 570
+Total virtual pins : 0
+Total block memory bits : 0
+Total DSP Blocks : 12
+Total HSSI RX PCSs : 0
+Total HSSI PMA RX Deserializers : 0
+Total HSSI TX PCSs : 0
+Total HSSI PMA TX Serializers : 0
+Total PLLs : 0
+Total DLLs : 0

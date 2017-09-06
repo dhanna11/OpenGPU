@@ -2,189 +2,9 @@
 <CodeBlocks_layout_file>
 	<FileVersion major="1" minor="0" />
 	<ActiveTarget name="Debug " />
-	<File name="../mesa/src/gallium/drivers/softpipe/sp_draw_arrays.c" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="5754" topLine="49" />
-		</Cursor>
-	</File>
-	<File name="../mesa/src/gallium/drivers/softpipe/sp_tile_cache.c" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="18680" topLine="508" />
-		</Cursor>
-	</File>
-	<File name="../mesa/src/gallium/drivers/nouveau/nv30/nvfx_shader.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="0" topLine="408" />
-		</Cursor>
-	</File>
-	<File name="../mesa/src/mesa/drivers/dri/common/dri_util.c" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="21494" topLine="721" />
-		</Cursor>
-	</File>
-	<File name="../mesa/src/gallium/drivers/softpipe/sp_setup.h" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1408" topLine="0" />
-		</Cursor>
-	</File>
 	<File name="../mesa/src/gallium/drivers/nouveau/nouveau_mm.c" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="174" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="../mesa/src/gallium/auxiliary/draw/draw_cliptest_tmp.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="6476" topLine="123" />
-		</Cursor>
-	</File>
-	<File name="../mesa/src/gallium/drivers/softpipe/sp_state.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="0" topLine="180" />
-		</Cursor>
-	</File>
-	<File name="../mesa/src/gallium/auxiliary/draw/draw_pt_fetch_shade_pipeline.c" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="13686" topLine="394" />
-		</Cursor>
-	</File>
-	<File name="../mesa/src/gallium/drivers/nouveau/nv30/nv30_transfer.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="0" topLine="1" />
-		</Cursor>
-	</File>
-	<File name="../mesa/src/gallium/drivers/softpipe/sp_fs_exec.c" open="0" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="4042" topLine="113" />
-		</Cursor>
-	</File>
-	<File name="../mesa/src/gallium/auxiliary/util/u_math.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="7583" topLine="370" />
-		</Cursor>
-	</File>
-	<File name="../mesa/src/gallium/drivers/freedreno/freedreno_batch.c" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="0" topLine="69" />
-		</Cursor>
-	</File>
-	<File name="../mesa/src/gallium/drivers/softpipe/sp_state_rasterizer.c" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1859" topLine="44" />
-		</Cursor>
-	</File>
-	<File name="../mesa/src/gallium/auxiliary/draw/draw_split_tmp.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="5374" topLine="133" />
-		</Cursor>
-	</File>
-	<File name="../mesa/src/gallium/auxiliary/draw/draw_vbuf.h" open="0" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1728" topLine="82" />
-		</Cursor>
-	</File>
-	<File name="../mesa/src/mesa/main/matrix.c" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="9432" topLine="275" />
-		</Cursor>
-	</File>
-	<File name="../mesa/src/gallium/auxiliary/util/u_debug.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="4986" topLine="180" />
-		</Cursor>
-	</File>
-	<File name="../mesa/src/gallium/auxiliary/draw/draw_pt_vsplit_tmp.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="8103" topLine="208" />
-		</Cursor>
-	</File>
-	<File name="../mesa/src/gallium/drivers/softpipe/sp_prim_vbuf.c" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="12609" topLine="347" />
-		</Cursor>
-	</File>
-	<File name="../mesa/src/gallium/drivers/softpipe/sp_tex_sample.c" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="31139" topLine="1027" />
-		</Cursor>
-	</File>
-	<File name="../mesa/src/gallium/drivers/softpipe/sp_context.c" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="2015" topLine="324" />
-		</Cursor>
-	</File>
-	<File name="../mesa/src/gallium/drivers/softpipe/sp_quad.h" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="3218" topLine="77" />
-		</Cursor>
-	</File>
-	<File name="../mesa/src/gallium/drivers/softpipe/sp_state_shader.c" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="0" topLine="27" />
-		</Cursor>
-	</File>
-	<File name="../mesa/src/gallium/drivers/r300/r300_chipset.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="0" topLine="56" />
-		</Cursor>
-	</File>
-	<File name="../mesa/src/gallium/drivers/softpipe/sp_surface.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="0" topLine="10" />
-		</Cursor>
-	</File>
-	<File name="../mesa/src/gallium/drivers/softpipe/sp_quad_blend.c" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="39891" topLine="1167" />
-		</Cursor>
-	</File>
-	<File name="../mesa/src/gallium/drivers/softpipe/sp_quad_fs.c" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="4814" topLine="121" />
-		</Cursor>
-	</File>
-	<File name="../mesa/src/gallium/drivers/softpipe/sp_compute.c" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="0" topLine="27" />
-		</Cursor>
-	</File>
-	<File name="../mesa/src/gallium/drivers/r300/r300_context.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="0" topLine="758" />
-		</Cursor>
-	</File>
-	<File name="../mesa/src/gallium/drivers/freedreno/freedreno_gmem.c" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="3697" topLine="403" />
-		</Cursor>
-	</File>
-	<File name="../mesa/src/gallium/drivers/softpipe/sp_screen.h" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1716" topLine="25" />
-		</Cursor>
-	</File>
-	<File name="../mesa/src/gallium/drivers/softpipe/sp_quad_depth_test.c" open="0" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="27684" topLine="885" />
-		</Cursor>
-	</File>
-	<File name="../mesa/src/gallium/drivers/softpipe/sp_setup.c" open="1" top="0" tabpos="2" split="0" active="1" splitpos="341" zoom_1="1" zoom_2="1">
-		<Cursor>
-			<Cursor1 position="70270" topLine="2320" />
-		</Cursor>
-	</File>
-	<File name="../mesa/src/gallium/auxiliary/util/u_tile.c" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1866" topLine="44" />
-		</Cursor>
-	</File>
-	<File name="../mesa/src/mesa/state_tracker/st_draw.c" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="8183" topLine="227" />
-		</Cursor>
-	</File>
-	<File name="../mesa/src/gallium/drivers/r300/r300_cb.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="0" topLine="112" />
 		</Cursor>
 	</File>
 	<File name="ogpu.c" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -192,19 +12,54 @@
 			<Cursor1 position="28" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="../mesa/Makefile" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="../mesa/src/gallium/auxiliary/draw/draw_split_tmp.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="3723" topLine="89" />
+			<Cursor1 position="5374" topLine="133" />
 		</Cursor>
 	</File>
-	<File name="../mesa/src/gallium/drivers/softpipe/sp_context.h" open="1" top="1" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="../mesa/src/gallium/drivers/r300/r300_chipset.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="2004" topLine="55" />
+			<Cursor1 position="0" topLine="56" />
 		</Cursor>
 	</File>
-	<File name="../mesa/src/gallium/auxiliary/cso_cache/cso_context.c" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="../mesa/src/mesa/main/matrix.c" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="49577" topLine="1639" />
+			<Cursor1 position="9432" topLine="275" />
+		</Cursor>
+	</File>
+	<File name="../mesa/src/gallium/drivers/r300/r300_cb.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="112" />
+		</Cursor>
+	</File>
+	<File name="../mesa/src/gallium/drivers/softpipe/sp_quad_blend.c" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="39891" topLine="1167" />
+		</Cursor>
+	</File>
+	<File name="../mesa/src/gallium/auxiliary/util/u_debug.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="4986" topLine="180" />
+		</Cursor>
+	</File>
+	<File name="../mesa/src/gallium/drivers/softpipe/sp_quad_fs.c" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="4814" topLine="121" />
+		</Cursor>
+	</File>
+	<File name="../mesa/src/gallium/auxiliary/draw/draw_pt_vsplit_tmp.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="8103" topLine="208" />
+		</Cursor>
+	</File>
+	<File name="../mesa/src/gallium/drivers/nouveau/nv30/nvfx_shader.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="408" />
+		</Cursor>
+	</File>
+	<File name="../mesa/src/gallium/drivers/softpipe/sp_tex_sample.c" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="31139" topLine="1027" />
 		</Cursor>
 	</File>
 	<File name="../mesa/src/gallium/auxiliary/draw/draw_pt_emit.c" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -212,24 +67,29 @@
 			<Cursor1 position="8653" topLine="250" />
 		</Cursor>
 	</File>
-	<File name="../mesa/src/gallium/drivers/softpipe/sp_state_vertex.c" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="../mesa/src/gallium/drivers/freedreno/freedreno_batch.c" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="0" topLine="92" />
+			<Cursor1 position="0" topLine="69" />
 		</Cursor>
 	</File>
-	<File name="../mesa/src/gallium/auxiliary/translate/translate_sse.c" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="../mesa/src/mesa/drivers/dri/common/dri_util.c" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="48130" topLine="1438" />
+			<Cursor1 position="21494" topLine="721" />
 		</Cursor>
 	</File>
-	<File name="../mesa/src/mesa/vbo/vbo_exec_api.c" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="../mesa/src/gallium/drivers/softpipe/sp_setup.c" open="1" top="1" tabpos="2" split="0" active="1" splitpos="341" zoom_1="1" zoom_2="1">
 		<Cursor>
-			<Cursor1 position="41814" topLine="1243" />
+			<Cursor1 position="80955" topLine="1034" />
 		</Cursor>
 	</File>
-	<File name="../mesa/src/mesa/vbo/vbo_exec_draw.c" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="../mesa/src/gallium/drivers/softpipe/sp_quad_depth_test.c" open="0" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="15368" topLine="435" />
+			<Cursor1 position="27684" topLine="885" />
+		</Cursor>
+	</File>
+	<File name="../mesa/src/gallium/drivers/softpipe/sp_context.h" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="2004" topLine="49" />
 		</Cursor>
 	</File>
 	<File name="../mesa/src/gallium/drivers/nouveau/nv30/nv30_resource.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -237,14 +97,9 @@
 			<Cursor1 position="0" topLine="37" />
 		</Cursor>
 	</File>
-	<File name="../mesa/src/gallium/drivers/r300/r300_transfer.c" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="../mesa/src/gallium/drivers/softpipe/sp_context.c" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="6519" topLine="164" />
-		</Cursor>
-	</File>
-	<File name="../mesa/src/gallium/auxiliary/draw/draw_pt.c" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="17617" topLine="540" />
+			<Cursor1 position="2015" topLine="324" />
 		</Cursor>
 	</File>
 	<File name="../mesa/src/gallium/drivers/softpipe/sp_tile_cache.h" open="0" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -252,39 +107,34 @@
 			<Cursor1 position="4498" topLine="130" />
 		</Cursor>
 	</File>
+	<File name="../mesa/src/gallium/drivers/softpipe/sp_tile_cache.c" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="18680" topLine="508" />
+		</Cursor>
+	</File>
+	<File name="../mesa/src/mesa/vbo/vbo_exec_api.c" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="41814" topLine="1243" />
+		</Cursor>
+	</File>
 	<File name="../mesa/src/mesa/drivers/dri/r200/r200_vertprog.c" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="15905" topLine="467" />
 		</Cursor>
 	</File>
-	<File name="../mesa/src/gallium/drivers/i915/i915_blit.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="../mesa/src/gallium/drivers/softpipe/sp_draw_arrays.c" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="0" topLine="16" />
+			<Cursor1 position="5754" topLine="49" />
 		</Cursor>
 	</File>
-	<File name="../mesa/src/gallium/drivers/i915/i915_blit.c" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="../mesa/src/gallium/auxiliary/draw/draw_pt.c" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="0" topLine="121" />
+			<Cursor1 position="17617" topLine="540" />
 		</Cursor>
 	</File>
-	<File name="../mesa/src/gallium/drivers/softpipe/sp_flush.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="../mesa/src/gallium/auxiliary/draw/draw_vbuf.h" open="0" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1763" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="../mesa/src/gallium/drivers/softpipe/sp_query.c" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="9157" topLine="264" />
-		</Cursor>
-	</File>
-	<File name="../mesa/src/gallium/auxiliary/util/u_format_table.c" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="12464" topLine="483" />
-		</Cursor>
-	</File>
-	<File name="../mesa/src/gallium/auxiliary/tgsi/tgsi_exec.c" open="0" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="45852" topLine="1531" />
+			<Cursor1 position="1728" topLine="82" />
 		</Cursor>
 	</File>
 	<File name="../mesa/src/gallium/drivers/softpipe/sp_image.c" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -292,9 +142,39 @@
 			<Cursor1 position="0" topLine="45" />
 		</Cursor>
 	</File>
-	<File name="../mesa/src/gallium/drivers/softpipe/sp_prim_vbuf.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="../mesa/src/gallium/drivers/r300/r300_context.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="0" topLine="6" />
+			<Cursor1 position="0" topLine="758" />
+		</Cursor>
+	</File>
+	<File name="../mesa/src/gallium/drivers/softpipe/sp_query.c" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="9157" topLine="264" />
+		</Cursor>
+	</File>
+	<File name="../mesa/src/mesa/vbo/vbo_exec_draw.c" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="15368" topLine="435" />
+		</Cursor>
+	</File>
+	<File name="../mesa/src/gallium/drivers/softpipe/sp_screen.h" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1716" topLine="25" />
+		</Cursor>
+	</File>
+	<File name="../mesa/src/gallium/drivers/i915/i915_blit.c" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="121" />
+		</Cursor>
+	</File>
+	<File name="../mesa/src/gallium/drivers/softpipe/sp_compute.c" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="27" />
+		</Cursor>
+	</File>
+	<File name="../mesa/src/gallium/auxiliary/translate/translate_sse.c" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="48130" topLine="1438" />
 		</Cursor>
 	</File>
 	<File name="../mesa/src/gallium/drivers/r300/r300_flush.c" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -302,10 +182,130 @@
 			<Cursor1 position="2487" topLine="37" />
 		</Cursor>
 	</File>
+	<File name="../mesa/src/gallium/drivers/softpipe/sp_setup.h" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1408" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="../mesa/src/gallium/auxiliary/cso_cache/cso_context.c" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="49577" topLine="1639" />
+		</Cursor>
+	</File>
+	<File name="../mesa/src/gallium/drivers/i915/i915_blit.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="16" />
+		</Cursor>
+	</File>
+	<File name="../mesa/src/gallium/drivers/freedreno/freedreno_gmem.c" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="3697" topLine="403" />
+		</Cursor>
+	</File>
 	<File name="../mesa/src/mapi/glapi/glapi_mapi_tmp.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="238938" topLine="3698" />
 		</Cursor>
 	</File>
-	<EditorTabsLayout layout="0677fa9057ffc3ca0022b70f00000002=0;mesa_project:../mesa/src/gallium/drivers/softpipe/sp_prim_vbuf.c,1;mesa_project:../mesa/src/gallium/drivers/softpipe/sp_setup.c,*2;mesa_project:../mesa/src/gallium/drivers/softpipe/sp_context.h@layout2|name=dummy;caption=;state=2098174;dir=3;layer=0;row=0;pos=0;prop=100000;bestw=489;besth=328;minw=489;minh=328;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|name=0677fa9057ffc3ca0022b70f00000002;caption=;state=2098172;dir=5;layer=1;row=0;pos=0;prop=100000;bestw=585;besth=328;minw=-1;minh=-1;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|dock_size(5,1,0)=587|" />
+	<File name="../mesa/src/gallium/drivers/softpipe/sp_state.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="180" />
+		</Cursor>
+	</File>
+	<File name="../mesa/src/gallium/drivers/softpipe/sp_state_rasterizer.c" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1859" topLine="44" />
+		</Cursor>
+	</File>
+	<File name="../mesa/src/gallium/auxiliary/util/u_tile.c" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1866" topLine="44" />
+		</Cursor>
+	</File>
+	<File name="../mesa/src/gallium/auxiliary/util/u_format_table.c" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="12464" topLine="483" />
+		</Cursor>
+	</File>
+	<File name="../mesa/src/gallium/drivers/softpipe/sp_fs_exec.c" open="0" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="4042" topLine="113" />
+		</Cursor>
+	</File>
+	<File name="../mesa/src/gallium/drivers/softpipe/sp_flush.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1763" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="../mesa/src/gallium/drivers/softpipe/sp_prim_vbuf.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="6" />
+		</Cursor>
+	</File>
+	<File name="../mesa/src/gallium/drivers/softpipe/sp_quad.h" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="3218" topLine="77" />
+		</Cursor>
+	</File>
+	<File name="../mesa/src/gallium/drivers/r300/r300_transfer.c" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="6519" topLine="164" />
+		</Cursor>
+	</File>
+	<File name="../mesa/Makefile" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="3723" topLine="89" />
+		</Cursor>
+	</File>
+	<File name="../mesa/src/gallium/auxiliary/util/u_math.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="7583" topLine="370" />
+		</Cursor>
+	</File>
+	<File name="../mesa/src/gallium/drivers/softpipe/sp_state_shader.c" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="27" />
+		</Cursor>
+	</File>
+	<File name="../mesa/src/mesa/state_tracker/st_draw.c" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="8183" topLine="227" />
+		</Cursor>
+	</File>
+	<File name="../mesa/src/gallium/auxiliary/draw/draw_pt_fetch_shade_pipeline.c" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="13686" topLine="394" />
+		</Cursor>
+	</File>
+	<File name="../mesa/src/gallium/auxiliary/tgsi/tgsi_exec.c" open="0" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="45852" topLine="1531" />
+		</Cursor>
+	</File>
+	<File name="../mesa/src/gallium/drivers/nouveau/nv30/nv30_transfer.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="1" />
+		</Cursor>
+	</File>
+	<File name="../mesa/src/gallium/drivers/softpipe/sp_surface.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="10" />
+		</Cursor>
+	</File>
+	<File name="../mesa/src/gallium/drivers/softpipe/sp_state_vertex.c" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="92" />
+		</Cursor>
+	</File>
+	<File name="../mesa/src/gallium/auxiliary/draw/draw_cliptest_tmp.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="6476" topLine="123" />
+		</Cursor>
+	</File>
+	<File name="../mesa/src/gallium/drivers/softpipe/sp_prim_vbuf.c" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="12609" topLine="347" />
+		</Cursor>
+	</File>
+	<EditorTabsLayout layout="06c88d6058728b910023e82e00000002=0;mesa_project:../mesa/src/gallium/drivers/softpipe/sp_prim_vbuf.c,*1;mesa_project:../mesa/src/gallium/drivers/softpipe/sp_setup.c,2;mesa_project:../mesa/src/gallium/drivers/softpipe/sp_context.h@layout2|name=dummy;caption=;state=2098174;dir=3;layer=0;row=0;pos=0;prop=100000;bestw=512;besth=401;minw=512;minh=401;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|name=06c88d6058728b910023e82e00000002;caption=;state=2098172;dir=5;layer=1;row=0;pos=0;prop=100000;bestw=585;besth=328;minw=-1;minh=-1;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|dock_size(5,1,0)=587|" />
 </CodeBlocks_layout_file>

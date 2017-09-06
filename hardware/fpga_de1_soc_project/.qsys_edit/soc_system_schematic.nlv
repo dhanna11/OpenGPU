@@ -1,0 +1,169 @@
+# # File gsaved with Nlview version 6.3.8  2013-12-19 bk=1.2992 VDI=34 GEI=35
+# 
+preplace inst soc_system.pll_stream -pg 1 -lvl 2 -y 1850
+preplace inst soc_system.master_non_sec.p2b_adapter -pg 1
+preplace inst soc_system.clk_0 -pg 1 -lvl 1 -y 1900
+preplace inst soc_system.ogpu_raster_unit_depth_coef_a -pg 1 -lvl 5 -y 2490
+preplace inst soc_system.hps_0.clk_0 -pg 1
+preplace inst soc_system.ogpu_raster_unit_depth_coef_b -pg 1 -lvl 5 -y 2690
+preplace inst soc_system.dbg_ram -pg 1 -lvl 1 -y 470
+preplace inst soc_system.ogpu_raster_unit_depth_coef_c -pg 1 -lvl 5 -y 2790
+preplace inst soc_system.ogpu_quad_store_data_low -pg 1 -lvl 5 -y 230
+preplace inst soc_system.ogpu_raster_unit_quad_buffer_addr_low -pg 1 -lvl 5 -y 2990
+preplace inst soc_system.master_secure.clk_rst -pg 1
+preplace inst soc_system.hps_0.axi_sdram -pg 1
+preplace inst soc_system -pg 1 -lvl 1 -y 40 -regml 7 -regy -20
+preplace inst soc_system.ogpu_raster_unit_clip_rect0 -pg 1 -lvl 5 -y 2190
+preplace inst soc_system.master_non_sec -pg 1 -lvl 2 -y 2060
+preplace inst soc_system.ogpu_raster_unit_quad_buffer_addr_high -pg 1 -lvl 5 -y 2890
+preplace inst soc_system.ogpu_raster_unit_clip_rect1 -pg 1 -lvl 5 -y 2290
+preplace inst soc_system.hps_0.timer0 -pg 1
+preplace inst soc_system.hps_0.timer1 -pg 1
+preplace inst soc_system.hps_0.i2c0 -pg 1
+preplace inst soc_system.hps_0.timer2 -pg 1
+preplace inst soc_system.hps_0.wd_timer0 -pg 1
+preplace inst soc_system.hps_0.i2c1 -pg 1
+preplace inst soc_system.hps_0.timer3 -pg 1
+preplace inst soc_system.hps_0.wd_timer1 -pg 1
+preplace inst soc_system.hps_0.i2c2 -pg 1
+preplace inst soc_system.hps_0.qspi -pg 1
+preplace inst soc_system.ogpu_raster_unit_v0x -pg 1 -lvl 5 -y 430
+preplace inst soc_system.master_non_sec.clk_rst -pg 1
+preplace inst soc_system.hps_0.gpio0 -pg 1
+preplace inst soc_system.hps_0.i2c3 -pg 1
+preplace inst soc_system.hps_0.clkmgr -pg 1
+preplace inst soc_system.ogpu_raster_unit_v0y -pg 1 -lvl 5 -y 590
+preplace inst soc_system.hps_0.gpio1 -pg 1
+preplace inst soc_system.hps_0.arm_a9_0 -pg 1
+preplace inst soc_system.hps_0.L2 -pg 1
+preplace inst soc_system.ogpu_raster_unit_v0z -pg 1 -lvl 5 -y 690
+preplace inst soc_system.hps_0.gpio2 -pg 1
+preplace inst soc_system.hps_0.arm_a9_1 -pg 1
+preplace inst soc_system.hps_0.uart0 -pg 1
+preplace inst soc_system.hps_0.uart1 -pg 1
+preplace inst soc_system.master_secure.transacto -pg 1
+preplace inst soc_system.master_secure -pg 1 -lvl 3 -y 1690
+preplace inst soc_system.hps_0.spim0 -pg 1
+preplace inst soc_system.ogpu_raster_unit_command -pg 1 -lvl 5 -y 2390
+preplace inst soc_system.master_secure.b2p_adapter -pg 1
+preplace inst soc_system.hps_0.spim1 -pg 1
+preplace inst soc_system.ogpu_raster_unit_status -pg 1 -lvl 5 -y 3090
+preplace inst soc_system.hps_0.timer -pg 1
+preplace inst soc_system.hps_0.sysmgr -pg 1
+preplace inst soc_system.ogpu_quad_store_ack -pg 1 -lvl 5 -y 30
+preplace inst soc_system.master_secure.jtag_phy_embedded_in_jtag_master -pg 1
+preplace inst soc_system.master_secure.clk_src -pg 1
+preplace inst soc_system.hps_0.f2s_periph_ref_clk -pg 1
+preplace inst soc_system.hps_0.l3regs -pg 1
+preplace inst soc_system.seven_seg_0 -pg 1 -lvl 5 -y 1090
+preplace inst soc_system.hps_0.sdmmc -pg 1
+preplace inst soc_system.button_pio -pg 1 -lvl 4 -y 1490
+preplace inst soc_system.hps_0.axi_ocram -pg 1
+preplace inst soc_system.sysid_qsys -pg 1 -lvl 3 -y 2080
+preplace inst soc_system.seven_seg_1 -pg 1 -lvl 5 -y 1290
+preplace inst soc_system.seven_seg_2 -pg 1 -lvl 5 -y 1190
+preplace inst soc_system.ogpu_raster_unit_tile0 -pg 1 -lvl 5 -y 3510
+preplace inst soc_system.seven_seg_3 -pg 1 -lvl 5 -y 1390
+preplace inst soc_system.ogpu_raster_unit_v2x -pg 1 -lvl 5 -y 2590
+preplace inst soc_system.ogpu_raster_unit_tile1 -pg 1 -lvl 5 -y 3190
+preplace inst soc_system.ogpu_quad_store_data_high -pg 1 -lvl 5 -y 130
+preplace inst soc_system.master_non_sec.fifo -pg 1
+preplace inst soc_system.led_pio -pg 1 -lvl 3 -y 1940
+preplace inst soc_system.seven_seg_4 -pg 1 -lvl 5 -y 1680
+preplace inst soc_system.ogpu_raster_unit_v2y -pg 1 -lvl 5 -y 3290
+preplace inst soc_system.hps_0.arm_gic_0 -pg 1
+preplace inst soc_system.alt_vip_vfr_vga -pg 1 -lvl 3 -y 1420
+preplace inst soc_system.hps_0.rstmgr -pg 1
+preplace inst soc_system.seven_seg_5 -pg 1 -lvl 5 -y 1790
+preplace inst soc_system.ogpu_raster_unit_v2z -pg 1 -lvl 5 -y 3390
+preplace inst soc_system.dbg_csig -pg 1 -lvl 1 -y 530
+preplace inst soc_system.hps_0.usb0 -pg 1
+preplace inst soc_system.hps_0.scu -pg 1
+preplace inst soc_system.hps_0.usb1 -pg 1
+preplace inst soc_system.master_secure.p2b_adapter -pg 1
+preplace inst soc_system.master_non_sec.clk_src -pg 1
+preplace inst soc_system.hps_0.hps_io -pg 1
+preplace inst soc_system.ogpu_raster_unit_v1x -pg 1 -lvl 5 -y 790
+preplace inst soc_system.ogpu_raster_unit_v1y -pg 1 -lvl 5 -y 890
+preplace inst soc_system.master_non_sec.timing_adt -pg 1
+preplace inst soc_system.hps_0.nand0 -pg 1
+preplace inst soc_system.ogpu_raster_unit_v1z -pg 1 -lvl 5 -y 990
+preplace inst soc_system.master_secure.b2p -pg 1
+preplace inst soc_system.ogpu_quad_store_req -pg 1 -lvl 5 -y 330
+preplace inst soc_system.master_non_sec.p2b -pg 1
+preplace inst soc_system.hps_0.gmac0 -pg 1
+preplace inst soc_system.hps_0 -pg 1 -lvl 4 -y 2030
+preplace inst soc_system.hps_0.hps_io.border -pg 1
+preplace inst soc_system.hps_0.gmac1 -pg 1
+preplace inst soc_system.hps_0.eosc1 -pg 1
+preplace inst soc_system.hps_0.fpgamgr -pg 1
+preplace inst soc_system.dipsw_pio -pg 1 -lvl 4 -y 1860
+preplace inst soc_system.master_secure.timing_adt -pg 1
+preplace inst soc_system.hps_0.dcan0 -pg 1
+preplace inst soc_system.hps_0.eosc2 -pg 1
+preplace inst soc_system.jtag_uart -pg 1 -lvl 4 -y 1650
+preplace inst soc_system.alt_vip_itc_0 -pg 1 -lvl 3 -y 1050
+preplace inst soc_system.master_secure.fifo -pg 1
+preplace inst soc_system.master_non_sec.transacto -pg 1
+preplace inst soc_system.hps_0.fpga_interfaces -pg 1
+preplace inst soc_system.hps_0.dcan1 -pg 1
+preplace inst soc_system.hps_0.f2s_sdram_ref_clk -pg 1
+preplace inst soc_system.master_non_sec.b2p_adapter -pg 1
+preplace inst soc_system.hps_0.dma -pg 1
+preplace inst soc_system.hps_0.sdrctl -pg 1
+preplace inst soc_system.master_non_sec.b2p -pg 1
+preplace inst soc_system.intr_capturer_0 -pg 1 -lvl 3 -y 1300
+preplace inst soc_system.master_secure.p2b -pg 1
+preplace inst soc_system.hps_0.bridges -pg 1
+preplace inst soc_system.master_non_sec.jtag_phy_embedded_in_jtag_master -pg 1
+preplace netloc EXPORT<net_container>soc_system</net_container>(SLAVE)soc_system.seven_seg_3_external_connection,(SLAVE)seven_seg_3.external_connection) 1 0 5 NJ 1270 NJ 1270 NJ 1270 NJ 1270 NJ
+preplace netloc EXPORT<net_container>soc_system</net_container>(SLAVE)ogpu_raster_unit_depth_coef_b.external_connection,(SLAVE)soc_system.ogpu_raster_unit_depth_coef_b_external_connection) 1 0 5 NJ 2720 NJ 2720 NJ 2720 NJ 2720 NJ
+preplace netloc EXPORT<net_container>soc_system</net_container>(SLAVE)soc_system.dbg_csig_probes,(SLAVE)dbg_csig.probes) 1 0 1 NJ
+preplace netloc EXPORT<net_container>soc_system</net_container>(SLAVE)soc_system.ogpu_quad_store_ack_external_connection,(SLAVE)ogpu_quad_store_ack.external_connection) 1 0 5 NJ 60 NJ 60 NJ 60 NJ 60 NJ
+preplace netloc EXPORT<net_container>soc_system</net_container>(SLAVE)soc_system.clk,(SLAVE)clk_0.clk_in) 1 0 1 NJ
+preplace netloc EXPORT<net_container>soc_system</net_container>(SLAVE)soc_system.reset,(SLAVE)clk_0.clk_in_reset) 1 0 1 NJ
+preplace netloc FAN_OUT<net_container>soc_system</net_container>(SLAVE)alt_vip_itc_0.is_clk_rst_reset,(SLAVE)ogpu_quad_store_data_high.reset,(SLAVE)alt_vip_vfr_vga.clock_master_reset,(SLAVE)seven_seg_2.reset,(SLAVE)seven_seg_0.reset,(SLAVE)ogpu_raster_unit_v0z.reset,(SLAVE)master_secure.clk_reset,(SLAVE)ogpu_quad_store_req.reset,(SLAVE)ogpu_quad_store_ack.reset,(SLAVE)alt_vip_vfr_vga.clock_reset_reset,(SLAVE)ogpu_raster_unit_depth_coef_c.reset,(SLAVE)master_non_sec.clk_reset,(SLAVE)ogpu_raster_unit_depth_coef_a.reset,(SLAVE)ogpu_raster_unit_tile0.reset,(SLAVE)intr_capturer_0.reset_sink,(SLAVE)seven_seg_5.reset,(SLAVE)pll_stream.reset,(SLAVE)ogpu_raster_unit_v0y.reset,(SLAVE)sysid_qsys.reset,(SLAVE)ogpu_raster_unit_clip_rect0.reset,(SLAVE)ogpu_raster_unit_tile1.reset,(SLAVE)ogpu_raster_unit_depth_coef_b.reset,(SLAVE)ogpu_raster_unit_v2z.reset,(SLAVE)ogpu_raster_unit_v1z.reset,(SLAVE)seven_seg_4.reset,(SLAVE)dipsw_pio.reset,(SLAVE)ogpu_raster_unit_v0x.reset,(SLAVE)ogpu_raster_unit_v2y.reset,(SLAVE)seven_seg_3.reset,(SLAVE)ogpu_quad_store_data_low.reset,(SLAVE)led_pio.reset,(SLAVE)jtag_uart.reset,(MASTER)clk_0.clk_reset,(SLAVE)ogpu_raster_unit_command.reset,(SLAVE)ogpu_raster_unit_quad_buffer_addr_low.reset,(SLAVE)ogpu_raster_unit_quad_buffer_addr_high.reset,(SLAVE)ogpu_raster_unit_v1y.reset,(SLAVE)ogpu_raster_unit_v2x.reset,(SLAVE)button_pio.reset,(SLAVE)ogpu_raster_unit_v1x.reset,(SLAVE)seven_seg_1.reset,(SLAVE)ogpu_raster_unit_clip_rect1.reset,(SLAVE)ogpu_raster_unit_status.reset) 1 1 4 450 1820 730 1910 1220 1760 1680
+preplace netloc EXPORT<net_container>soc_system</net_container>(SLAVE)soc_system.ogpu_quad_store_req_external_connection,(SLAVE)ogpu_quad_store_req.external_connection) 1 0 5 NJ 600 NJ 530 NJ 530 NJ 530 NJ
+preplace netloc EXPORT<net_container>soc_system</net_container>(SLAVE)button_pio.external_connection,(SLAVE)soc_system.button_pio_external_connection) 1 0 4 NJ 1410 NJ 1410 NJ 1410 NJ
+preplace netloc EXPORT<net_container>soc_system</net_container>(SLAVE)soc_system.ogpu_raster_unit_v0x_external_connection,(SLAVE)ogpu_raster_unit_v0x.external_connection) 1 0 5 NJ 460 NJ 460 NJ 460 NJ 460 NJ
+preplace netloc EXPORT<net_container>soc_system</net_container>(SLAVE)soc_system.ogpu_quad_store_data_low_external_connection,(SLAVE)ogpu_quad_store_data_low.external_connection) 1 0 5 NJ 580 NJ 510 NJ 510 NJ 510 NJ
+preplace netloc EXPORT<net_container>soc_system</net_container>(SLAVE)ogpu_raster_unit_status.external_connection,(SLAVE)soc_system.ogpu_raster_unit_status_external_connection) 1 0 5 NJ 3120 NJ 3120 NJ 3120 NJ 3120 NJ
+preplace netloc EXPORT<net_container>soc_system</net_container>(SLAVE)soc_system.ogpu_raster_unit_clip_rect1_external_connection,(SLAVE)ogpu_raster_unit_clip_rect1.external_connection) 1 0 5 NJ 2320 NJ 2320 NJ 2320 NJ 2320 NJ
+preplace netloc EXPORT<net_container>soc_system</net_container>(SLAVE)soc_system.ogpu_raster_unit_quad_buffer_addr_low_external_connection,(SLAVE)ogpu_raster_unit_quad_buffer_addr_low.external_connection) 1 0 5 NJ 3020 NJ 3020 NJ 3020 NJ 3020 NJ
+preplace netloc EXPORT<net_container>soc_system</net_container>(SLAVE)ogpu_raster_unit_v1x.external_connection,(SLAVE)soc_system.ogpu_raster_unit_v1x_external_connection) 1 0 5 NJ 820 NJ 820 NJ 820 NJ 820 NJ
+preplace netloc EXPORT<net_container>soc_system</net_container>(SLAVE)soc_system.ogpu_raster_unit_command_external_connection,(SLAVE)ogpu_raster_unit_command.external_connection) 1 0 5 NJ 2420 NJ 2420 NJ 2420 NJ 2420 NJ
+preplace netloc EXPORT<net_container>soc_system</net_container>(SLAVE)soc_system.ogpu_raster_unit_tile0_external_connection,(SLAVE)ogpu_raster_unit_tile0.external_connection) 1 0 5 NJ 3540 NJ 3540 NJ 3540 NJ 3540 NJ
+preplace netloc EXPORT<net_container>soc_system</net_container>(SLAVE)soc_system.seven_seg_0_external_connection,(SLAVE)seven_seg_0.external_connection) 1 0 5 NJ 1040 NJ 1040 NJ 1040 NJ 1040 NJ
+preplace netloc EXPORT<net_container>soc_system</net_container>(SLAVE)soc_system.seven_seg_1_external_connection,(SLAVE)seven_seg_1.external_connection) 1 0 5 NJ 1290 NJ 1290 NJ 1290 NJ 1320 NJ
+preplace netloc EXPORT<net_container>soc_system</net_container>(SLAVE)soc_system.seven_seg_4_external_connection,(SLAVE)seven_seg_4.external_connection) 1 0 5 NJ 1640 NJ 1640 NJ 1640 NJ 1640 NJ
+preplace netloc EXPORT<net_container>soc_system</net_container>(SLAVE)soc_system.ogpu_raster_unit_v1y_external_connection,(SLAVE)ogpu_raster_unit_v1y.external_connection) 1 0 5 NJ 920 NJ 920 NJ 920 NJ 920 NJ
+preplace netloc EXPORT<net_container>soc_system</net_container>(SLAVE)soc_system.memory,(SLAVE)hps_0.memory) 1 0 4 NJ 2190 NJ 2190 NJ 2190 NJ
+preplace netloc EXPORT<net_container>soc_system</net_container>(SLAVE)soc_system.seven_seg_5_external_connection,(SLAVE)seven_seg_5.external_connection) 1 0 5 NJ 1800 NJ 1800 NJ 1800 NJ 1820 NJ
+preplace netloc EXPORT<net_container>soc_system</net_container>(SLAVE)soc_system.ogpu_raster_unit_v0z_external_connection,(SLAVE)ogpu_raster_unit_v0z.external_connection) 1 0 5 NJ 720 NJ 720 NJ 720 NJ 720 NJ
+preplace netloc EXPORT<net_container>soc_system</net_container>(SLAVE)soc_system.alt_vip_itc_0_clocked_video,(SLAVE)alt_vip_itc_0.clocked_video) 1 0 3 NJ 1060 NJ 1060 NJ
+preplace netloc FAN_OUT<net_container>soc_system</net_container>(SLAVE)alt_vip_vfr_vga.clock_reset,(MASTER)pll_stream.outclk0,(SLAVE)alt_vip_itc_0.is_clk_rst) 1 2 1 710
+preplace netloc EXPORT<net_container>soc_system</net_container>(SLAVE)soc_system.led_pio_external_connection,(SLAVE)led_pio.external_connection) 1 0 3 NJ 1970 NJ 1970 NJ
+preplace netloc FAN_OUT<net_container>soc_system</net_container>(SLAVE)jtag_uart.clk,(SLAVE)hps_0.h2f_axi_clock,(SLAVE)ogpu_raster_unit_depth_coef_c.clk,(SLAVE)sysid_qsys.clk,(SLAVE)ogpu_raster_unit_v2z.clk,(SLAVE)ogpu_raster_unit_v1x.clk,(SLAVE)hps_0.h2f_lw_axi_clock,(SLAVE)ogpu_raster_unit_quad_buffer_addr_low.clk,(MASTER)clk_0.clk,(SLAVE)ogpu_raster_unit_command.clk,(SLAVE)seven_seg_5.clk,(SLAVE)ogpu_quad_store_ack.clk,(SLAVE)ogpu_raster_unit_clip_rect1.clk,(SLAVE)led_pio.clk,(SLAVE)button_pio.clk,(SLAVE)ogpu_raster_unit_tile1.clk,(SLAVE)ogpu_raster_unit_status.clk,(SLAVE)ogpu_quad_store_data_low.clk,(SLAVE)ogpu_raster_unit_tile0.clk,(SLAVE)ogpu_raster_unit_v1z.clk,(SLAVE)ogpu_raster_unit_clip_rect0.clk,(SLAVE)ogpu_raster_unit_v2x.clk,(SLAVE)seven_seg_3.clk,(SLAVE)seven_seg_1.clk,(SLAVE)hps_0.f2h_axi_clock,(SLAVE)pll_stream.refclk,(SLAVE)dipsw_pio.clk,(SLAVE)ogpu_quad_store_req.clk,(SLAVE)master_non_sec.clk,(SLAVE)seven_seg_4.clk,(SLAVE)ogpu_raster_unit_v0y.clk,(SLAVE)alt_vip_vfr_vga.clock_master,(SLAVE)ogpu_raster_unit_depth_coef_a.clk,(SLAVE)ogpu_raster_unit_depth_coef_b.clk,(SLAVE)seven_seg_2.clk,(SLAVE)ogpu_quad_store_data_high.clk,(SLAVE)ogpu_raster_unit_quad_buffer_addr_high.clk,(SLAVE)seven_seg_0.clk,(SLAVE)intr_capturer_0.clock,(SLAVE)ogpu_raster_unit_v0x.clk,(SLAVE)master_secure.clk,(SLAVE)ogpu_raster_unit_v2y.clk,(SLAVE)ogpu_raster_unit_v0z.clk,(SLAVE)ogpu_raster_unit_v1y.clk) 1 1 4 410 1840 770 1870 1280 1780 1720
+preplace netloc INTERCONNECT<net_container>soc_system</net_container>(SLAVE)alt_vip_vfr_vga.avalon_slave,(SLAVE)seven_seg_4.s1,(MASTER)master_non_sec.master,(SLAVE)seven_seg_5.s1,(SLAVE)seven_seg_0.s1,(SLAVE)seven_seg_3.s1,(MASTER)hps_0.h2f_lw_axi_master,(SLAVE)seven_seg_2.s1,(SLAVE)jtag_uart.avalon_jtag_slave,(SLAVE)intr_capturer_0.avalon_slave_0,(SLAVE)sysid_qsys.control_slave,(SLAVE)led_pio.s1,(SLAVE)button_pio.s1,(SLAVE)seven_seg_1.s1,(SLAVE)dipsw_pio.s1) 1 2 3 750 1930 1200 1800 1700
+preplace netloc EXPORT<net_container>soc_system</net_container>(SLAVE)ogpu_raster_unit_tile1.external_connection,(SLAVE)soc_system.ogpu_raster_unit_tile1_external_connection) 1 0 5 NJ 3220 NJ 3220 NJ 3220 NJ 3220 NJ
+preplace netloc EXPORT<net_container>soc_system</net_container>(SLAVE)ogpu_raster_unit_quad_buffer_addr_high.external_connection,(SLAVE)soc_system.ogpu_raster_unit_quad_buffer_addr_high_external_connection) 1 0 5 NJ 2920 NJ 2920 NJ 2920 NJ 2920 NJ
+preplace netloc EXPORT<net_container>soc_system</net_container>(SLAVE)soc_system.ogpu_quad_store_data_high_external_connection,(SLAVE)ogpu_quad_store_data_high.external_connection) 1 0 5 NJ 520 NJ 490 NJ 490 NJ 490 NJ
+preplace netloc EXPORT<net_container>soc_system</net_container>(SLAVE)ogpu_raster_unit_v2z.external_connection,(SLAVE)soc_system.ogpu_raster_unit_v2z_external_connection) 1 0 5 NJ 3420 NJ 3420 NJ 3420 NJ 3420 NJ
+preplace netloc FAN_OUT<net_container>soc_system</net_container>(SLAVE)ogpu_raster_unit_depth_coef_c.s1,(SLAVE)ogpu_raster_unit_v1y.s1,(SLAVE)ogpu_raster_unit_clip_rect0.s1,(SLAVE)ogpu_raster_unit_v2x.s1,(SLAVE)ogpu_raster_unit_v2y.s1,(SLAVE)ogpu_quad_store_req.s1,(SLAVE)ogpu_raster_unit_v0z.s1,(SLAVE)ogpu_raster_unit_depth_coef_b.s1,(SLAVE)ogpu_raster_unit_command.s1,(SLAVE)ogpu_raster_unit_depth_coef_a.s1,(SLAVE)ogpu_raster_unit_v0x.s1,(SLAVE)ogpu_quad_store_data_low.s1,(SLAVE)ogpu_raster_unit_v2z.s1,(SLAVE)ogpu_raster_unit_v0y.s1,(SLAVE)ogpu_raster_unit_status.s1,(SLAVE)ogpu_quad_store_ack.s1,(SLAVE)ogpu_raster_unit_tile0.s1,(MASTER)hps_0.h2f_axi_master,(SLAVE)ogpu_quad_store_data_high.s1,(SLAVE)ogpu_raster_unit_quad_buffer_addr_high.s1,(SLAVE)ogpu_raster_unit_quad_buffer_addr_low.s1,(SLAVE)ogpu_raster_unit_tile1.s1,(SLAVE)ogpu_raster_unit_clip_rect1.s1,(SLAVE)ogpu_raster_unit_v1x.s1,(SLAVE)ogpu_raster_unit_v1z.s1) 1 4 1 1740
+preplace netloc EXPORT<net_container>soc_system</net_container>(SLAVE)soc_system.ogpu_raster_unit_v2x_external_connection,(SLAVE)ogpu_raster_unit_v2x.external_connection) 1 0 5 NJ 2620 NJ 2620 NJ 2620 NJ 2620 NJ
+preplace netloc EXPORT<net_container>soc_system</net_container>(SLAVE)soc_system.dipsw_pio_external_connection,(SLAVE)dipsw_pio.external_connection) 1 0 4 NJ 1780 NJ 1780 NJ 1780 NJ
+preplace netloc EXPORT<net_container>soc_system</net_container>(SLAVE)soc_system.ogpu_raster_unit_v1z_external_connection,(SLAVE)ogpu_raster_unit_v1z.external_connection) 1 0 5 NJ 1020 NJ 1020 NJ 1020 NJ 1020 NJ
+preplace netloc EXPORT<net_container>soc_system</net_container>(SLAVE)soc_system.ogpu_raster_unit_depth_coef_c_external_connection,(SLAVE)ogpu_raster_unit_depth_coef_c.external_connection) 1 0 5 NJ 2820 NJ 2820 NJ 2820 NJ 2820 NJ
+preplace netloc EXPORT<net_container>soc_system</net_container>(SLAVE)ogpu_raster_unit_v0y.external_connection,(SLAVE)soc_system.ogpu_raster_unit_v0y_external_connection) 1 0 5 NJ 620 NJ 620 NJ 620 NJ 620 NJ
+preplace netloc EXPORT<net_container>soc_system</net_container>(SLAVE)soc_system.ogpu_raster_unit_depth_coef_a_external_connection,(SLAVE)ogpu_raster_unit_depth_coef_a.external_connection) 1 0 5 NJ 2520 NJ 2520 NJ 2520 NJ 2520 NJ
+preplace netloc FAN_IN<net_container>soc_system</net_container>(MASTER)alt_vip_vfr_vga.avalon_master,(SLAVE)hps_0.f2h_axi_slave,(MASTER)master_secure.master) 1 3 1 1180
+preplace netloc EXPORT<net_container>soc_system</net_container>(SLAVE)ogpu_raster_unit_clip_rect0.external_connection,(SLAVE)soc_system.ogpu_raster_unit_clip_rect0_external_connection) 1 0 5 NJ 2230 NJ 2230 NJ 2230 NJ 2230 NJ
+preplace netloc EXPORT<net_container>soc_system</net_container>(MASTER)hps_0.h2f_reset,(MASTER)soc_system.hps_0_h2f_reset) 1 4 3 NJ 2140 NJ 2140 NJ
+preplace netloc POINT_TO_POINT<net_container>soc_system</net_container>(SLAVE)alt_vip_itc_0.din,(MASTER)alt_vip_vfr_vga.avalon_streaming_source) 1 2 2 790 1600 1160
+preplace netloc EXPORT<net_container>soc_system</net_container>(SLAVE)soc_system.ogpu_raster_unit_v2y_external_connection,(SLAVE)ogpu_raster_unit_v2y.external_connection) 1 0 5 NJ 3320 NJ 3320 NJ 3320 NJ 3320 NJ
+preplace netloc EXPORT<net_container>soc_system</net_container>(SLAVE)hps_0.hps_io,(SLAVE)soc_system.hps_0_hps_io) 1 0 4 NJ 2170 NJ 2170 NJ 2170 NJ
+preplace netloc EXPORT<net_container>soc_system</net_container>(SLAVE)soc_system.seven_seg_2_external_connection,(SLAVE)seven_seg_2.external_connection) 1 0 5 NJ 1220 NJ 1220 NJ 1220 NJ 1220 NJ
+preplace netloc EXPORT<net_container>soc_system</net_container>(SLAVE)dbg_ram.probes,(SLAVE)soc_system.dbg_ram_probes) 1 0 1 NJ
+preplace netloc INTERCONNECT<net_container>soc_system</net_container>(SLAVE)jtag_uart.irq,(SLAVE)button_pio.irq,(MASTER)intr_capturer_0.interrupt_receiver,(MASTER)hps_0.f2h_irq0,(SLAVE)dipsw_pio.irq) 1 3 2 1240 2210 1640
+levelinfo -pg 1 0 200 2160
+levelinfo -hier soc_system 210 240 550 910 1450 1790 2010 2030

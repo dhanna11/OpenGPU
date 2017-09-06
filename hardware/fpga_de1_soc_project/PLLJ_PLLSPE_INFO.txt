@@ -1,0 +1,20 @@
+PLL_Name	soc_system:u0|soc_system_pll_stream:pll_stream|altera_pll:altera_pll_i|general[0].gpll~FRACTIONAL_PLL
+PLLJITTER	93
+PLLSPEmax	100
+PLLSPEmin	-100
+
+PLL_Name	soc_system:u0|soc_system_pll_stream:pll_stream|altera_pll:altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER
+PLLJITTER	NA
+PLLSPEmax	NA
+PLLSPEmin	NA
+
+PLL_Name	vga_pll:vga_pll_inst|vga_pll_0002:vga_pll_inst|altera_pll:altera_pll_i|general[0].gpll~FRACTIONAL_PLL
+PLLJITTER	27
+PLLSPEmax	100
+PLLSPEmin	-100
+
+PLL_Name	vga_pll:vga_pll_inst|vga_pll_0002:vga_pll_inst|altera_pll:altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER
+PLLJITTER	NA
+PLLSPEmax	NA
+PLLSPEmin	NA
+

@@ -1,0 +1,64 @@
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+use work.ogpu_data_record_pkg.all;
+
+entity ogpu_triangle_edge_test_testbench is
+end ogpu_triangle_edge_test_testbench;
+
+architecture ogpu_triangle_edge_test_tb1 of ogpu_triangle_edge_test_testbench is
+	constant clock_period : time := 20 ns;
+	signal clock,reset	: std_logic :='0';
+	--
+	edge_ready: std_logic_vector(0 to 2):=(others=>'0');
+	edge_mask0: std_logic_vector(0 to 3);
+	edge_mask1: std_logic_vector(0 to 3);
+	edge_mask2: std_logic_vector(0 to 3);
+	quad_mask: std_logic_vector(0 to 3);
+	-- DATAPATH/CONTROL interface signals
+	draw_quad: std_logic;
+	discard_quad: std_logic;
+begin
+TE1:  entity work.ogpu_triangle_edge_test(triangle_test_1) port map(
+									-- IN
+									clock=>clock,reset=>reset,
+									d.edge_ready=>edge_ready,
+									d.edge_mask0=>edge_mask0,d.edge_mask1=>edge_mask1,d.edge_mask2=>edge_mask2,
+									-- OUT
+									q.draw_quad=>draw_quad,q.discard_quad=>discard_quad,
+									q.quad_mask=>quad_mask);
+								
+reset_proc: process
+	begin
+		--reset <= '0';
+		--wait for 5*clock_period;
+		reset <= '1';
+		wait for 5*clock_period;
+		reset <= '0';
+		wait;
+	end process;
+	
+init_proc: process
+	begin
+		--wait for 5*clock_period;
+		tile.x0 <= to_unsigned(0,16);		tile.y0 <= to_unsigned(0,16);
+		tile.x1 <= to_unsigned(62,16);	tile.y1 <= to_unsigned(62,16);
+		clip_rect.x0 <= to_unsigned(0,16);		clip_rect.y0 <= to_unsigned(0,16);
+		clip_rect.x1 <= to_unsigned(128,16);		clip_rect.y1 <= to_unsigned(128,16);
+		wait;
+	end process;
+	
+stim_proc: process
+	begin
+		next_quad <= '1';
+		wait until quad_ready = '1';
+		next_quad <= '0';
+		wait for clock_period;
+	end process;
+								
+clock_process: process
+	begin
+		clock <= not clock;
+		wait for clock_period/2;
+	end process;
+end ogpu_triangle_edge_test_tb1;

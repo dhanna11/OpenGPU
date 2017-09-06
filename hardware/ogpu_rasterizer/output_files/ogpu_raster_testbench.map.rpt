@@ -1,0 +1,759 @@
+Analysis & Synthesis report for ogpu_raster_testbench
+Sat Jan  7 19:12:46 2017
+Quartus Prime Version 16.0.2 Build 222 07/20/2016 SJ Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. Analysis & Synthesis DSP Block Usage Summary
+  9. State Machine - |ogpu_raster_unit|ogpu_raster_control:RC1|r.state
+ 10. Registers Removed During Synthesis
+ 11. Removed Registers Triggering Further Register Optimizations
+ 12. General Register Statistics
+ 13. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 14. Post-Synthesis Netlist Statistics for Top Partition
+ 15. Elapsed Time Per Partition
+ 16. Analysis & Synthesis Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2016 Altera Corporation. All rights reserved.
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, the Altera Quartus Prime License Agreement,
+the Altera MegaCore Function License Agreement, or other 
+applicable license agreement, including, without limitation, 
+that your use is for the sole purpose of programming logic 
+devices manufactured by Altera and sold by Altera or its 
+authorized distributors.  Please refer to the applicable 
+agreement for further details.
+
+
+
++-------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                  ;
++---------------------------------+---------------------------------------------+
+; Analysis & Synthesis Status     ; Successful - Sat Jan  7 19:12:46 2017       ;
+; Quartus Prime Version           ; 16.0.2 Build 222 07/20/2016 SJ Lite Edition ;
+; Revision Name                   ; ogpu_raster_testbench                       ;
+; Top-level Entity Name           ; ogpu_raster_unit                            ;
+; Family                          ; Cyclone V                                   ;
+; Logic utilization (in ALMs)     ; N/A                                         ;
+; Total registers                 ; 261                                         ;
+; Total pins                      ; 570                                         ;
+; Total virtual pins              ; 0                                           ;
+; Total block memory bits         ; 0                                           ;
+; Total DSP Blocks                ; 12                                          ;
+; Total HSSI RX PCSs              ; 0                                           ;
+; Total HSSI PMA RX Deserializers ; 0                                           ;
+; Total HSSI TX PCSs              ; 0                                           ;
+; Total HSSI PMA TX Serializers   ; 0                                           ;
+; Total PLLs                      ; 0                                           ;
+; Total DLLs                      ; 0                                           ;
++---------------------------------+---------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                                ;
++---------------------------------------------------------------------------------+--------------------+-----------------------+
+; Option                                                                          ; Setting            ; Default Value         ;
++---------------------------------------------------------------------------------+--------------------+-----------------------+
+; Device                                                                          ; 5CSEMA5F31C6       ;                       ;
+; Top-level entity name                                                           ; ogpu_raster_unit   ; ogpu_raster_testbench ;
+; Family name                                                                     ; Cyclone V          ; Cyclone V             ;
+; VHDL Show LMF Mapping Messages                                                  ; Off                ;                       ;
+; VHDL Version                                                                    ; VHDL_2008          ; VHDL_1993             ;
+; Use smart compilation                                                           ; Off                ; Off                   ;
+; Enable parallel Assembler and TimeQuest Timing Analyzer during compilation      ; On                 ; On                    ;
+; Enable compact report table                                                     ; Off                ; Off                   ;
+; Restructure Multiplexers                                                        ; Auto               ; Auto                  ;
+; MLAB Add Timing Constraints For Mixed-Port Feed-Through Mode Setting Don't Care ; Off                ; Off                   ;
+; Create Debugging Nodes for IP Cores                                             ; Off                ; Off                   ;
+; Preserve fewer node names                                                       ; On                 ; On                    ;
+; Disable OpenCore Plus hardware evaluation                                       ; Off                ; Off                   ;
+; Verilog Version                                                                 ; Verilog_2001       ; Verilog_2001          ;
+; State Machine Processing                                                        ; Auto               ; Auto                  ;
+; Safe State Machine                                                              ; Off                ; Off                   ;
+; Extract Verilog State Machines                                                  ; On                 ; On                    ;
+; Extract VHDL State Machines                                                     ; On                 ; On                    ;
+; Ignore Verilog initial constructs                                               ; Off                ; Off                   ;
+; Iteration limit for constant Verilog loops                                      ; 5000               ; 5000                  ;
+; Iteration limit for non-constant Verilog loops                                  ; 250                ; 250                   ;
+; Add Pass-Through Logic to Inferred RAMs                                         ; On                 ; On                    ;
+; Infer RAMs from Raw Logic                                                       ; On                 ; On                    ;
+; Parallel Synthesis                                                              ; On                 ; On                    ;
+; DSP Block Balancing                                                             ; Auto               ; Auto                  ;
+; NOT Gate Push-Back                                                              ; On                 ; On                    ;
+; Power-Up Don't Care                                                             ; On                 ; On                    ;
+; Remove Redundant Logic Cells                                                    ; Off                ; Off                   ;
+; Remove Duplicate Registers                                                      ; On                 ; On                    ;
+; Ignore CARRY Buffers                                                            ; Off                ; Off                   ;
+; Ignore CASCADE Buffers                                                          ; Off                ; Off                   ;
+; Ignore GLOBAL Buffers                                                           ; Off                ; Off                   ;
+; Ignore ROW GLOBAL Buffers                                                       ; Off                ; Off                   ;
+; Ignore LCELL Buffers                                                            ; Off                ; Off                   ;
+; Ignore SOFT Buffers                                                             ; On                 ; On                    ;
+; Limit AHDL Integers to 32 Bits                                                  ; Off                ; Off                   ;
+; Optimization Technique                                                          ; Balanced           ; Balanced              ;
+; Carry Chain Length                                                              ; 70                 ; 70                    ;
+; Auto Carry Chains                                                               ; On                 ; On                    ;
+; Auto Open-Drain Pins                                                            ; On                 ; On                    ;
+; Perform WYSIWYG Primitive Resynthesis                                           ; Off                ; Off                   ;
+; Auto ROM Replacement                                                            ; On                 ; On                    ;
+; Auto RAM Replacement                                                            ; On                 ; On                    ;
+; Auto DSP Block Replacement                                                      ; On                 ; On                    ;
+; Auto Shift Register Replacement                                                 ; Auto               ; Auto                  ;
+; Allow Shift Register Merging across Hierarchies                                 ; Auto               ; Auto                  ;
+; Auto Clock Enable Replacement                                                   ; On                 ; On                    ;
+; Strict RAM Replacement                                                          ; Off                ; Off                   ;
+; Allow Synchronous Control Signals                                               ; On                 ; On                    ;
+; Force Use of Synchronous Clear Signals                                          ; Off                ; Off                   ;
+; Auto Resource Sharing                                                           ; Off                ; Off                   ;
+; Allow Any RAM Size For Recognition                                              ; Off                ; Off                   ;
+; Allow Any ROM Size For Recognition                                              ; Off                ; Off                   ;
+; Allow Any Shift Register Size For Recognition                                   ; Off                ; Off                   ;
+; Use LogicLock Constraints during Resource Balancing                             ; On                 ; On                    ;
+; Ignore translate_off and synthesis_off directives                               ; Off                ; Off                   ;
+; Timing-Driven Synthesis                                                         ; On                 ; On                    ;
+; Report Parameter Settings                                                       ; On                 ; On                    ;
+; Report Source Assignments                                                       ; On                 ; On                    ;
+; Report Connectivity Checks                                                      ; On                 ; On                    ;
+; Ignore Maximum Fan-Out Assignments                                              ; Off                ; Off                   ;
+; Synchronization Register Chain Length                                           ; 3                  ; 3                     ;
+; PowerPlay Power Optimization During Synthesis                                   ; Normal compilation ; Normal compilation    ;
+; HDL message level                                                               ; Level2             ; Level2                ;
+; Suppress Register Optimization Related Messages                                 ; Off                ; Off                   ;
+; Number of Removed Registers Reported in Synthesis Report                        ; 5000               ; 5000                  ;
+; Number of Swept Nodes Reported in Synthesis Report                              ; 5000               ; 5000                  ;
+; Number of Inverted Registers Reported in Synthesis Report                       ; 100                ; 100                   ;
+; Clock MUX Protection                                                            ; On                 ; On                    ;
+; Auto Gated Clock Conversion                                                     ; Off                ; Off                   ;
+; Block Design Naming                                                             ; Auto               ; Auto                  ;
+; SDC constraint protection                                                       ; Off                ; Off                   ;
+; Synthesis Effort                                                                ; Auto               ; Auto                  ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal                    ; On                 ; On                    ;
+; Pre-Mapping Resynthesis Optimization                                            ; Off                ; Off                   ;
+; Analysis & Synthesis Message Level                                              ; Medium             ; Medium                ;
+; Disable Register Merging Across Hierarchies                                     ; Auto               ; Auto                  ;
+; Resource Aware Inference For Block RAM                                          ; On                 ; On                    ;
+; Synthesis Seed                                                                  ; 1                  ; 1                     ;
+; Automatic Parallel Synthesis                                                    ; On                 ; On                    ;
+; Partial Reconfiguration Bitstream ID                                            ; Off                ; Off                   ;
++---------------------------------------------------------------------------------+--------------------+-----------------------+
+
+
+Parallel compilation was disabled, but you have multiple processors available. Enable parallel compilation to reduce compilation time.
++-------------------------------------+
+; Parallel Compilation                ;
++----------------------------+--------+
+; Processors                 ; Number ;
++----------------------------+--------+
+; Number detected on machine ; 4      ;
+; Maximum allowed            ; 1      ;
++----------------------------+--------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                       ;
++----------------------------------+-----------------+-----------------+-----------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type       ; File Name with Absolute Path                                                ; Library ;
++----------------------------------+-----------------+-----------------+-----------------------------------------------------------------------------+---------+
+; ogpu_triangle_edge_test.vhd      ; yes             ; User VHDL File  ; /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_triangle_edge_test.vhd ;         ;
+; ogpu_setup.vhd                   ; yes             ; User VHDL File  ; /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_setup.vhd              ;         ;
+; ogpu_raster_unit.vhd             ; yes             ; User VHDL File  ; /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd        ;         ;
+; ogpu_raster_control.vhd          ; yes             ; User VHDL File  ; /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_control.vhd     ;         ;
+; ogpu_quad_store.vhd              ; yes             ; User VHDL File  ; /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_quad_store.vhd         ;         ;
+; ogpu_quad_generator.vhd          ; yes             ; User VHDL File  ; /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_quad_generator.vhd     ;         ;
+; ogpu_edge_test.vhd               ; yes             ; User VHDL File  ; /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_edge_test.vhd          ;         ;
+; ogpu_depth_test.vhd              ; yes             ; User VHDL File  ; /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_depth_test.vhd         ;         ;
+; ogpu_data_record_pkg.vhd         ; yes             ; User VHDL File  ; /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_data_record_pkg.vhd    ;         ;
++----------------------------------+-----------------+-----------------+-----------------------------------------------------------------------------+---------+
+
+
++-----------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary               ;
++---------------------------------------------+-------------+
+; Resource                                    ; Usage       ;
++---------------------------------------------+-------------+
+; Estimate of Logic utilization (ALMs needed) ; 549         ;
+;                                             ;             ;
+; Combinational ALUT usage for logic          ; 878         ;
+;     -- 7 input functions                    ; 1           ;
+;     -- 6 input functions                    ; 214         ;
+;     -- 5 input functions                    ; 238         ;
+;     -- 4 input functions                    ; 115         ;
+;     -- <=3 input functions                  ; 310         ;
+;                                             ;             ;
+; Dedicated logic registers                   ; 261         ;
+;                                             ;             ;
+; I/O pins                                    ; 570         ;
+;                                             ;             ;
+; Total DSP Blocks                            ; 12          ;
+;                                             ;             ;
+; Maximum fan-out node                        ; clock~input ;
+; Maximum fan-out                             ; 261         ;
+; Total fan-out                               ; 6397        ;
+; Average fan-out                             ; 2.79        ;
++---------------------------------------------+-------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                 ;
++----------------------------------+-------------------+--------------+-------------------+------------+------+--------------+-----------------------------------------------+-------------------------+--------------+
+; Compilation Hierarchy Node       ; LC Combinationals ; LC Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                           ; Entity Name             ; Library Name ;
++----------------------------------+-------------------+--------------+-------------------+------------+------+--------------+-----------------------------------------------+-------------------------+--------------+
+; |ogpu_raster_unit                ; 878 (2)           ; 261 (0)      ; 0                 ; 12         ; 570  ; 0            ; |ogpu_raster_unit                             ; ogpu_raster_unit        ; work         ;
+;    |ogpu_depth_test:DT1|         ; 0 (0)             ; 1 (1)        ; 0                 ; 0          ; 0    ; 0            ; |ogpu_raster_unit|ogpu_depth_test:DT1         ; ogpu_depth_test         ; work         ;
+;    |ogpu_quad_edge_test:ET1|     ; 106 (106)         ; 1 (1)        ; 0                 ; 4          ; 0    ; 0            ; |ogpu_raster_unit|ogpu_quad_edge_test:ET1     ; ogpu_quad_edge_test     ; work         ;
+;    |ogpu_quad_edge_test:ET2|     ; 106 (106)         ; 0 (0)        ; 0                 ; 4          ; 0    ; 0            ; |ogpu_raster_unit|ogpu_quad_edge_test:ET2     ; ogpu_quad_edge_test     ; work         ;
+;    |ogpu_quad_edge_test:ET3|     ; 106 (106)         ; 1 (1)        ; 0                 ; 4          ; 0    ; 0            ; |ogpu_raster_unit|ogpu_quad_edge_test:ET3     ; ogpu_quad_edge_test     ; work         ;
+;    |ogpu_quad_generator:QG1|     ; 348 (348)         ; 148 (148)    ; 0                 ; 0          ; 0    ; 0            ; |ogpu_raster_unit|ogpu_quad_generator:QG1     ; ogpu_quad_generator     ; work         ;
+;    |ogpu_quad_store:QS1|         ; 154 (154)         ; 93 (93)      ; 0                 ; 0          ; 0    ; 0            ; |ogpu_raster_unit|ogpu_quad_store:QS1         ; ogpu_quad_store         ; work         ;
+;    |ogpu_raster_control:RC1|     ; 46 (46)           ; 11 (11)      ; 0                 ; 0          ; 0    ; 0            ; |ogpu_raster_unit|ogpu_raster_control:RC1     ; ogpu_raster_control     ; work         ;
+;    |ogpu_triangle_edge_test:TE1| ; 10 (10)           ; 6 (6)        ; 0                 ; 0          ; 0    ; 0            ; |ogpu_raster_unit|ogpu_triangle_edge_test:TE1 ; ogpu_triangle_edge_test ; work         ;
++----------------------------------+-------------------+--------------+-------------------+------------+------+--------------+-----------------------------------------------+-------------------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++----------------------------------------------+
+; Analysis & Synthesis DSP Block Usage Summary ;
++-------------------------------+--------------+
+; Statistic                     ; Number Used  ;
++-------------------------------+--------------+
+; Sum of two 18x18              ; 12           ;
+; Total number of DSP blocks    ; 12           ;
+;                               ;              ;
+; Fixed Point Signed Multiplier ; 24           ;
++-------------------------------+--------------+
+
+
+Encoding Type:  One-Hot
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |ogpu_raster_unit|ogpu_raster_control:RC1|r.state                                                                                                                                                                                                        ;
++----------------------------------------+----------------------------------------+---------------------------------------+--------------------------------------+-----------------------------------+----------------------------------+----------------------------------+
+; Name                                   ; r.state.OGPU_RASTER_CONTROL_STORE_QUAD ; r.state.OGPU_RASTER_CONTROL_QUAD_TEST ; r.state.OGPU_RASTER_CONTROL_QUAD_GEN ; r.state.OGPU_RASTER_CONTROL_SETUP ; r.state.OGPU_RASTER_CONTROL_DONE ; r.state.OGPU_RASTER_CONTROL_IDLE ;
++----------------------------------------+----------------------------------------+---------------------------------------+--------------------------------------+-----------------------------------+----------------------------------+----------------------------------+
+; r.state.OGPU_RASTER_CONTROL_IDLE       ; 0                                      ; 0                                     ; 0                                    ; 0                                 ; 0                                ; 0                                ;
+; r.state.OGPU_RASTER_CONTROL_DONE       ; 0                                      ; 0                                     ; 0                                    ; 0                                 ; 1                                ; 1                                ;
+; r.state.OGPU_RASTER_CONTROL_SETUP      ; 0                                      ; 0                                     ; 0                                    ; 1                                 ; 0                                ; 1                                ;
+; r.state.OGPU_RASTER_CONTROL_QUAD_GEN   ; 0                                      ; 0                                     ; 1                                    ; 0                                 ; 0                                ; 1                                ;
+; r.state.OGPU_RASTER_CONTROL_QUAD_TEST  ; 0                                      ; 1                                     ; 0                                    ; 0                                 ; 0                                ; 1                                ;
+; r.state.OGPU_RASTER_CONTROL_STORE_QUAD ; 1                                      ; 0                                     ; 0                                    ; 0                                 ; 0                                ; 1                                ;
++----------------------------------------+----------------------------------------+---------------------------------------+--------------------------------------+-----------------------------------+----------------------------------+----------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                                             ;
++------------------------------------------------------+---------------------------------------------------------+
+; Register name                                        ; Reason for Removal                                      ;
++------------------------------------------------------+---------------------------------------------------------+
+; ogpu_quad_edge_test:ET1|r.edge_test                  ; Merged with ogpu_quad_edge_test:ET3|r.edge_test         ;
+; ogpu_quad_edge_test:ET2|r.edge_test                  ; Merged with ogpu_quad_edge_test:ET3|r.edge_test         ;
+; ogpu_raster_control:RC1|r.start_raster               ; Merged with ogpu_raster_control:RC1|r.busy              ;
+; ogpu_setup:ST1|r.setup_done                          ; Merged with ogpu_quad_store:QS1|r.start_raster          ;
+; ogpu_quad_store:QS1|r.buffer_address[1,2]            ; Merged with ogpu_quad_store:QS1|r.buffer_address[0]     ;
+; ogpu_quad_store:QS1|r.buffer_pointer[1,2]            ; Merged with ogpu_quad_store:QS1|r.buffer_pointer[0]     ;
+; ogpu_quad_store:QS1|r.buffer_byte_enable[1..7]       ; Merged with ogpu_quad_store:QS1|r.buffer_byte_enable[0] ;
+; ogpu_quad_edge_test:ET2|r.edge_ready                 ; Merged with ogpu_quad_edge_test:ET1|r.edge_ready        ;
+; ogpu_quad_edge_test:ET3|r.edge_ready                 ; Merged with ogpu_quad_edge_test:ET1|r.edge_ready        ;
+; ogpu_quad_store:QS1|r.buffer_write_data[4..9,11..27] ; Merged with ogpu_quad_store:QS1|r.buffer_write_data[10] ;
+; ogpu_quad_store:QS1|r.buffer_write_data[29..31]      ; Merged with ogpu_quad_store:QS1|r.buffer_write_data[28] ;
+; ogpu_quad_generator:QG1|r.quad.y1[0]                 ; Merged with ogpu_quad_generator:QG1|r.quad.y0[0]        ;
+; ogpu_quad_generator:QG1|r.quad.y1[1]                 ; Merged with ogpu_quad_generator:QG1|r.quad.y0[1]        ;
+; ogpu_quad_generator:QG1|r.quad.y1[2]                 ; Merged with ogpu_quad_generator:QG1|r.quad.y0[2]        ;
+; ogpu_quad_generator:QG1|r.quad.y1[3]                 ; Merged with ogpu_quad_generator:QG1|r.quad.y0[3]        ;
+; ogpu_quad_generator:QG1|r.quad.y1[4]                 ; Merged with ogpu_quad_generator:QG1|r.quad.y0[4]        ;
+; ogpu_quad_generator:QG1|r.quad.y1[5]                 ; Merged with ogpu_quad_generator:QG1|r.quad.y0[5]        ;
+; ogpu_quad_generator:QG1|r.quad.y1[6]                 ; Merged with ogpu_quad_generator:QG1|r.quad.y0[6]        ;
+; ogpu_quad_generator:QG1|r.quad.y1[7]                 ; Merged with ogpu_quad_generator:QG1|r.quad.y0[7]        ;
+; ogpu_quad_generator:QG1|r.quad.y1[8]                 ; Merged with ogpu_quad_generator:QG1|r.quad.y0[8]        ;
+; ogpu_quad_generator:QG1|r.quad.y1[9]                 ; Merged with ogpu_quad_generator:QG1|r.quad.y0[9]        ;
+; ogpu_quad_generator:QG1|r.quad.y1[10]                ; Merged with ogpu_quad_generator:QG1|r.quad.y0[10]       ;
+; ogpu_quad_generator:QG1|r.quad.y1[11]                ; Merged with ogpu_quad_generator:QG1|r.quad.y0[11]       ;
+; ogpu_quad_generator:QG1|r.quad.y1[12]                ; Merged with ogpu_quad_generator:QG1|r.quad.y0[12]       ;
+; ogpu_quad_generator:QG1|r.quad.y1[13]                ; Merged with ogpu_quad_generator:QG1|r.quad.y0[13]       ;
+; ogpu_quad_generator:QG1|r.quad.y1[14]                ; Merged with ogpu_quad_generator:QG1|r.quad.y0[14]       ;
+; ogpu_quad_generator:QG1|r.quad.y1[15]                ; Merged with ogpu_quad_generator:QG1|r.quad.y0[15]       ;
+; ogpu_quad_generator:QG1|r.quad.x2[0]                 ; Merged with ogpu_quad_generator:QG1|r.quad.x0[0]        ;
+; ogpu_quad_generator:QG1|r.quad.x2[1]                 ; Merged with ogpu_quad_generator:QG1|r.quad.x0[1]        ;
+; ogpu_quad_generator:QG1|r.quad.x2[2]                 ; Merged with ogpu_quad_generator:QG1|r.quad.x0[2]        ;
+; ogpu_quad_generator:QG1|r.quad.x2[3]                 ; Merged with ogpu_quad_generator:QG1|r.quad.x0[3]        ;
+; ogpu_quad_generator:QG1|r.quad.x2[4]                 ; Merged with ogpu_quad_generator:QG1|r.quad.x0[4]        ;
+; ogpu_quad_generator:QG1|r.quad.x2[5]                 ; Merged with ogpu_quad_generator:QG1|r.quad.x0[5]        ;
+; ogpu_quad_generator:QG1|r.quad.x2[6]                 ; Merged with ogpu_quad_generator:QG1|r.quad.x0[6]        ;
+; ogpu_quad_generator:QG1|r.quad.x2[7]                 ; Merged with ogpu_quad_generator:QG1|r.quad.x0[7]        ;
+; ogpu_quad_generator:QG1|r.quad.x2[8]                 ; Merged with ogpu_quad_generator:QG1|r.quad.x0[8]        ;
+; ogpu_quad_generator:QG1|r.quad.x2[9]                 ; Merged with ogpu_quad_generator:QG1|r.quad.x0[9]        ;
+; ogpu_quad_generator:QG1|r.quad.x2[10]                ; Merged with ogpu_quad_generator:QG1|r.quad.x0[10]       ;
+; ogpu_quad_generator:QG1|r.quad.x2[11]                ; Merged with ogpu_quad_generator:QG1|r.quad.x0[11]       ;
+; ogpu_quad_generator:QG1|r.quad.x2[12]                ; Merged with ogpu_quad_generator:QG1|r.quad.x0[12]       ;
+; ogpu_quad_generator:QG1|r.quad.x2[13]                ; Merged with ogpu_quad_generator:QG1|r.quad.x0[13]       ;
+; ogpu_quad_generator:QG1|r.quad.x2[14]                ; Merged with ogpu_quad_generator:QG1|r.quad.x0[14]       ;
+; ogpu_quad_generator:QG1|r.quad.x2[15]                ; Merged with ogpu_quad_generator:QG1|r.quad.x0[15]       ;
+; ogpu_raster_control:RC1|r.edge_test                  ; Merged with ogpu_raster_control:RC1|r.depth_test        ;
+; ogpu_quad_generator:QG1|r.quad.x3[15]                ; Merged with ogpu_quad_generator:QG1|r.quad.x1[15]       ;
+; ogpu_quad_generator:QG1|r.quad.x3[14]                ; Merged with ogpu_quad_generator:QG1|r.quad.x1[14]       ;
+; ogpu_quad_generator:QG1|r.quad.x3[13]                ; Merged with ogpu_quad_generator:QG1|r.quad.x1[13]       ;
+; ogpu_quad_generator:QG1|r.quad.x3[12]                ; Merged with ogpu_quad_generator:QG1|r.quad.x1[12]       ;
+; ogpu_quad_generator:QG1|r.quad.x3[11]                ; Merged with ogpu_quad_generator:QG1|r.quad.x1[11]       ;
+; ogpu_quad_generator:QG1|r.quad.x3[10]                ; Merged with ogpu_quad_generator:QG1|r.quad.x1[10]       ;
+; ogpu_quad_generator:QG1|r.quad.x3[9]                 ; Merged with ogpu_quad_generator:QG1|r.quad.x1[9]        ;
+; ogpu_quad_generator:QG1|r.quad.x3[8]                 ; Merged with ogpu_quad_generator:QG1|r.quad.x1[8]        ;
+; ogpu_quad_generator:QG1|r.quad.x3[7]                 ; Merged with ogpu_quad_generator:QG1|r.quad.x1[7]        ;
+; ogpu_quad_generator:QG1|r.quad.x3[6]                 ; Merged with ogpu_quad_generator:QG1|r.quad.x1[6]        ;
+; ogpu_quad_generator:QG1|r.quad.x3[5]                 ; Merged with ogpu_quad_generator:QG1|r.quad.x1[5]        ;
+; ogpu_quad_generator:QG1|r.quad.x3[4]                 ; Merged with ogpu_quad_generator:QG1|r.quad.x1[4]        ;
+; ogpu_quad_generator:QG1|r.quad.x3[3]                 ; Merged with ogpu_quad_generator:QG1|r.quad.x1[3]        ;
+; ogpu_quad_generator:QG1|r.quad.x3[2]                 ; Merged with ogpu_quad_generator:QG1|r.quad.x1[2]        ;
+; ogpu_quad_generator:QG1|r.quad.x3[1]                 ; Merged with ogpu_quad_generator:QG1|r.quad.x1[1]        ;
+; ogpu_quad_generator:QG1|r.quad.x3[0]                 ; Merged with ogpu_quad_generator:QG1|r.quad.x1[0]        ;
+; ogpu_quad_generator:QG1|r.quad.y3[15]                ; Merged with ogpu_quad_generator:QG1|r.quad.y2[15]       ;
+; ogpu_quad_generator:QG1|r.quad.y3[14]                ; Merged with ogpu_quad_generator:QG1|r.quad.y2[14]       ;
+; ogpu_quad_generator:QG1|r.quad.y3[13]                ; Merged with ogpu_quad_generator:QG1|r.quad.y2[13]       ;
+; ogpu_quad_generator:QG1|r.quad.y3[12]                ; Merged with ogpu_quad_generator:QG1|r.quad.y2[12]       ;
+; ogpu_quad_generator:QG1|r.quad.y3[11]                ; Merged with ogpu_quad_generator:QG1|r.quad.y2[11]       ;
+; ogpu_quad_generator:QG1|r.quad.y3[10]                ; Merged with ogpu_quad_generator:QG1|r.quad.y2[10]       ;
+; ogpu_quad_generator:QG1|r.quad.y3[9]                 ; Merged with ogpu_quad_generator:QG1|r.quad.y2[9]        ;
+; ogpu_quad_generator:QG1|r.quad.y3[8]                 ; Merged with ogpu_quad_generator:QG1|r.quad.y2[8]        ;
+; ogpu_quad_generator:QG1|r.quad.y3[7]                 ; Merged with ogpu_quad_generator:QG1|r.quad.y2[7]        ;
+; ogpu_quad_generator:QG1|r.quad.y3[6]                 ; Merged with ogpu_quad_generator:QG1|r.quad.y2[6]        ;
+; ogpu_quad_generator:QG1|r.quad.y3[5]                 ; Merged with ogpu_quad_generator:QG1|r.quad.y2[5]        ;
+; ogpu_quad_generator:QG1|r.quad.y3[4]                 ; Merged with ogpu_quad_generator:QG1|r.quad.y2[4]        ;
+; ogpu_quad_generator:QG1|r.quad.y3[3]                 ; Merged with ogpu_quad_generator:QG1|r.quad.y2[3]        ;
+; ogpu_quad_generator:QG1|r.quad.y3[2]                 ; Merged with ogpu_quad_generator:QG1|r.quad.y2[2]        ;
+; ogpu_quad_generator:QG1|r.quad.y3[1]                 ; Merged with ogpu_quad_generator:QG1|r.quad.y2[1]        ;
+; ogpu_quad_generator:QG1|r.quad.y3[0]                 ; Merged with ogpu_quad_generator:QG1|r.quad.y2[0]        ;
+; ogpu_quad_store:QS1|r.buffer_write_data[10,28]       ; Stuck at GND due to stuck port data_in                  ;
+; ogpu_quad_store:QS1|r.buffer_pointer[0]              ; Stuck at GND due to stuck port data_in                  ;
+; ogpu_quad_store:QS1|r.buffer_address[0]              ; Stuck at GND due to stuck port data_in                  ;
+; Total Number of Removed Registers = 112              ;                                                         ;
++------------------------------------------------------+---------------------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                                                   ;
++-----------------------------------------+---------------------------+-----------------------------------------+
+; Register name                           ; Reason for Removal        ; Registers Removed due to This Register  ;
++-----------------------------------------+---------------------------+-----------------------------------------+
+; ogpu_quad_store:QS1|r.buffer_pointer[0] ; Stuck at GND              ; ogpu_quad_store:QS1|r.buffer_address[0] ;
+;                                         ; due to stuck port data_in ;                                         ;
++-----------------------------------------+---------------------------+-----------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 261   ;
+; Number of registers using Synchronous Clear  ; 185   ;
+; Number of registers using Synchronous Load   ; 32    ;
+; Number of registers using Asynchronous Clear ; 0     ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 194   ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                                                 ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                                       ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------------------------------+
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; Yes        ; |ogpu_raster_unit|ogpu_triangle_edge_test:TE1|r.draw_quad                        ;
+; 3:1                ; 49 bits   ; 98 LEs        ; 0 LEs                ; 98 LEs                 ; Yes        ; |ogpu_raster_unit|ogpu_quad_generator:QG1|r.x1[7]                                ;
+; 4:1                ; 13 bits   ; 26 LEs        ; 0 LEs                ; 26 LEs                 ; Yes        ; |ogpu_raster_unit|ogpu_quad_store:QS1|r.buffer_pointer[14]                       ;
+; 4:1                ; 31 bits   ; 62 LEs        ; 0 LEs                ; 62 LEs                 ; Yes        ; |ogpu_raster_unit|ogpu_quad_generator:QG1|r.j[9]                                 ;
+; 3:1                ; 36 bits   ; 72 LEs        ; 72 LEs               ; 0 LEs                  ; No         ; |ogpu_raster_unit|ogpu_quad_store:QS1|q.buffer_write_data[41]                    ;
+; 3:1                ; 15 bits   ; 30 LEs        ; 30 LEs               ; 0 LEs                  ; No         ; |ogpu_raster_unit|ogpu_quad_generator:QG1|v                                      ;
+; 3:1                ; 15 bits   ; 30 LEs        ; 30 LEs               ; 0 LEs                  ; No         ; |ogpu_raster_unit|ogpu_quad_generator:QG1|v                                      ;
+; 3:1                ; 15 bits   ; 30 LEs        ; 30 LEs               ; 0 LEs                  ; No         ; |ogpu_raster_unit|ogpu_quad_generator:QG1|v                                      ;
+; 4:1                ; 37 bits   ; 74 LEs        ; 74 LEs               ; 0 LEs                  ; No         ; |ogpu_raster_unit|ogpu_quad_store:QS1|q.quad_buffer_length[19]                   ;
+; 16:1               ; 4 bits    ; 40 LEs        ; 20 LEs               ; 20 LEs                 ; No         ; |ogpu_raster_unit|ogpu_raster_control:RC1|\comb:v.state.OGPU_RASTER_CONTROL_IDLE ;
+; 16:1               ; 2 bits    ; 20 LEs        ; 12 LEs               ; 8 LEs                  ; No         ; |ogpu_raster_unit|ogpu_raster_control:RC1|\comb:v.state.OGPU_RASTER_CONTROL_DONE ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Top Partition ;
++-----------------------+-----------------------------+
+; Type                  ; Count                       ;
++-----------------------+-----------------------------+
+; arriav_ff             ; 261                         ;
+;     ENA               ; 64                          ;
+;     ENA SCLR          ; 99                          ;
+;     ENA SCLR SLD      ; 31                          ;
+;     SCLR              ; 55                          ;
+;     SLD               ; 1                           ;
+;     plain             ; 11                          ;
+; arriav_lcell_comb     ; 879                         ;
+;     arith             ; 315                         ;
+;         0 data inputs ; 24                          ;
+;         1 data inputs ; 37                          ;
+;         3 data inputs ; 62                          ;
+;         5 data inputs ; 192                         ;
+;     extend            ; 1                           ;
+;         7 data inputs ; 1                           ;
+;     normal            ; 461                         ;
+;         0 data inputs ; 1                           ;
+;         2 data inputs ; 53                          ;
+;         3 data inputs ; 32                          ;
+;         4 data inputs ; 115                         ;
+;         5 data inputs ; 46                          ;
+;         6 data inputs ; 214                         ;
+;     shared            ; 102                         ;
+;         0 data inputs ; 6                           ;
+;         2 data inputs ; 96                          ;
+; arriav_mac            ; 12                          ;
+; boundary_port         ; 570                         ;
+;                       ;                             ;
+; Max LUT depth         ; 10.30                       ;
+; Average LUT depth     ; 5.08                        ;
++-----------------------+-----------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:01     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Analysis & Synthesis
+    Info: Version 16.0.2 Build 222 07/20/2016 SJ Lite Edition
+    Info: Processing started: Sat Jan  7 19:12:31 2017
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off ogpu_raster_testbench -c ogpu_raster_testbench
+Warning (20028): Parallel compilation is not licensed and has been disabled
+Info (12021): Found 2 design units, including 1 entities, in source file ogpu_triangle_edge_test.vhd
+    Info (12022): Found design unit 1: ogpu_triangle_edge_test-triangle_test_1 File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_triangle_edge_test.vhd Line: 12
+    Info (12023): Found entity 1: ogpu_triangle_edge_test File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_triangle_edge_test.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file ogpu_setup_testbench.vhd
+    Info (12022): Found design unit 1: ogpu_setup_testbench-ogpu_setup_tb1 File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_setup_testbench.vhd Line: 11
+    Info (12023): Found entity 1: ogpu_setup_testbench File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_setup_testbench.vhd Line: 8
+Info (12021): Found 2 design units, including 1 entities, in source file ogpu_setup.vhd
+    Info (12022): Found design unit 1: ogpu_setup-setup_1 File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_setup.vhd Line: 12
+    Info (12023): Found entity 1: ogpu_setup File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_setup.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file ogpu_raster_unit.vhd
+    Info (12022): Found design unit 1: ogpu_raster_unit-structure_1 File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 36
+    Info (12023): Found entity 1: ogpu_raster_unit File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 8
+Info (12021): Found 2 design units, including 1 entities, in source file ogpu_raster_control.vhd
+    Info (12022): Found design unit 1: ogpu_raster_control-raster_control_1 File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_control.vhd Line: 13
+    Info (12023): Found entity 1: ogpu_raster_control File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_control.vhd Line: 6
+Info (12021): Found 4 design units, including 1 entities, in source file ogpu_quad_store.vhd
+    Info (12022): Found design unit 1: ogpu_quad_store-quad_store_1 File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_quad_store.vhd Line: 13
+    Info (12022): Found design unit 2: ogpu_quad_store-quad_store_2 File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_quad_store.vhd Line: 115
+    Info (12022): Found design unit 3: ogpu_quad_store-test_1 File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_quad_store.vhd Line: 213
+    Info (12023): Found entity 1: ogpu_quad_store File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_quad_store.vhd Line: 6
+Info (12021): Found 2 design units, including 1 entities, in source file ogpu_quad_generator_testbench.vhd
+    Info (12022): Found design unit 1: ogpu_quad_generator_testbench-ogpu_quad_generator_tb1 File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_quad_generator_testbench.vhd Line: 9
+    Info (12023): Found entity 1: ogpu_quad_generator_testbench File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_quad_generator_testbench.vhd Line: 6
+Info (12021): Found 3 design units, including 1 entities, in source file ogpu_quad_generator.vhd
+    Info (12022): Found design unit 1: ogpu_quad_generator-generator_1 File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_quad_generator.vhd Line: 15
+    Info (12022): Found design unit 2: ogpu_quad_generator-generator_2 File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_quad_generator.vhd Line: 141
+    Info (12023): Found entity 1: ogpu_quad_generator File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_quad_generator.vhd Line: 8
+Info (12021): Found 2 design units, including 1 entities, in source file ogpu_edge_test.vhd
+    Info (12022): Found design unit 1: ogpu_quad_edge_test-edge_test_1 File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_edge_test.vhd Line: 16
+    Info (12023): Found entity 1: ogpu_quad_edge_test File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_edge_test.vhd Line: 9
+Info (12021): Found 2 design units, including 1 entities, in source file ogpu_depth_test.vhd
+    Info (12022): Found design unit 1: ogpu_depth_test-depth_test_1 File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_depth_test.vhd Line: 15
+    Info (12023): Found entity 1: ogpu_depth_test File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_depth_test.vhd Line: 8
+Info (12021): Found 2 design units, including 0 entities, in source file ogpu_data_record_pkg.vhd
+    Info (12022): Found design unit 1: ogpu_data_record_pkg File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_data_record_pkg.vhd Line: 5
+    Info (12022): Found design unit 2: ogpu_data_record_pkg-body File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_data_record_pkg.vhd Line: 180
+Info (12021): Found 2 design units, including 1 entities, in source file ogpu_edge_test_testbench.vhd
+    Info (12022): Found design unit 1: ogpu_edge_test_testbench-ogpu_edge_test_tb1 File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_edge_test_testbench.vhd Line: 9
+    Info (12023): Found entity 1: ogpu_edge_test_testbench File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_edge_test_testbench.vhd Line: 6
+Info (12021): Found 2 design units, including 1 entities, in source file ogpu_triangle_edge_test_testbench.vhd
+    Info (12022): Found design unit 1: ogpu_triangle_edge_test_testbench-ogpu_triangle_edge_test_tb1 File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_triangle_edge_test_testbench.vhd Line: 9
+    Info (12023): Found entity 1: ogpu_triangle_edge_test_testbench File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_triangle_edge_test_testbench.vhd Line: 6
+Info (12021): Found 2 design units, including 1 entities, in source file ogpu_quad_store_testbench.vhd
+    Info (12022): Found design unit 1: ogpu_quad_store_testbench-ogpu_quad_store_testbench_tb1 File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_quad_store_testbench.vhd Line: 9
+    Info (12023): Found entity 1: ogpu_quad_store_testbench File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_quad_store_testbench.vhd Line: 6
+Info (12021): Found 2 design units, including 1 entities, in source file ogpu_raster_unit_testbench.vhd
+    Info (12022): Found design unit 1: ogpu_raster_unit_testbench-ogpu_raster_unit_testbench_tb1 File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit_testbench.vhd Line: 9
+    Info (12023): Found entity 1: ogpu_raster_unit_testbench File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit_testbench.vhd Line: 6
+Info (12127): Elaborating entity "ogpu_raster_unit" for the top level hierarchy
+Info (12129): Elaborating entity "ogpu_raster_control" using architecture "A:raster_control_1" for hierarchy "ogpu_raster_control:RC1" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 101
+Info (12129): Elaborating entity "ogpu_setup" using architecture "A:setup_1" for hierarchy "ogpu_setup:ST1" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 120
+Info (12129): Elaborating entity "ogpu_quad_generator" using architecture "A:generator_1" for hierarchy "ogpu_quad_generator:QG1" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 129
+Info (12129): Elaborating entity "ogpu_quad_edge_test" using architecture "A:edge_test_1" for hierarchy "ogpu_quad_edge_test:ET1" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 137
+Info (12129): Elaborating entity "ogpu_triangle_edge_test" using architecture "A:triangle_test_1" for hierarchy "ogpu_triangle_edge_test:TE1" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 161
+Info (12129): Elaborating entity "ogpu_depth_test" using architecture "A:depth_test_1" for hierarchy "ogpu_depth_test:DT1" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 169
+Info (12129): Elaborating entity "ogpu_quad_store" using architecture "A:quad_store_1" for hierarchy "ogpu_quad_store:QS1" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 178
+Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "ext_buffer_address[0]" is stuck at GND File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 28
+    Warning (13410): Pin "ext_buffer_address[1]" is stuck at GND File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 28
+    Warning (13410): Pin "ext_buffer_address[2]" is stuck at GND File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 28
+    Warning (13410): Pin "ext_buffer_write_data[4]" is stuck at GND File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 31
+    Warning (13410): Pin "ext_buffer_write_data[5]" is stuck at GND File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 31
+    Warning (13410): Pin "ext_buffer_write_data[6]" is stuck at GND File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 31
+    Warning (13410): Pin "ext_buffer_write_data[7]" is stuck at GND File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 31
+    Warning (13410): Pin "ext_buffer_write_data[8]" is stuck at GND File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 31
+    Warning (13410): Pin "ext_buffer_write_data[9]" is stuck at GND File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 31
+    Warning (13410): Pin "ext_buffer_write_data[10]" is stuck at GND File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 31
+    Warning (13410): Pin "ext_buffer_write_data[11]" is stuck at GND File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 31
+    Warning (13410): Pin "ext_buffer_write_data[12]" is stuck at GND File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 31
+    Warning (13410): Pin "ext_buffer_write_data[13]" is stuck at GND File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 31
+    Warning (13410): Pin "ext_buffer_write_data[14]" is stuck at GND File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 31
+    Warning (13410): Pin "ext_buffer_write_data[15]" is stuck at GND File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 31
+    Warning (13410): Pin "ext_buffer_write_data[16]" is stuck at GND File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 31
+    Warning (13410): Pin "ext_buffer_write_data[17]" is stuck at GND File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 31
+    Warning (13410): Pin "ext_buffer_write_data[18]" is stuck at GND File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 31
+    Warning (13410): Pin "ext_buffer_write_data[19]" is stuck at GND File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 31
+    Warning (13410): Pin "ext_buffer_write_data[20]" is stuck at GND File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 31
+    Warning (13410): Pin "ext_buffer_write_data[21]" is stuck at GND File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 31
+    Warning (13410): Pin "ext_buffer_write_data[22]" is stuck at GND File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 31
+    Warning (13410): Pin "ext_buffer_write_data[23]" is stuck at GND File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 31
+    Warning (13410): Pin "ext_buffer_write_data[24]" is stuck at GND File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 31
+    Warning (13410): Pin "ext_buffer_write_data[25]" is stuck at GND File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 31
+    Warning (13410): Pin "ext_buffer_write_data[26]" is stuck at GND File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 31
+    Warning (13410): Pin "ext_buffer_write_data[27]" is stuck at GND File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 31
+    Warning (13410): Pin "ext_buffer_write_data[28]" is stuck at GND File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 31
+    Warning (13410): Pin "ext_buffer_write_data[29]" is stuck at GND File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 31
+    Warning (13410): Pin "ext_buffer_write_data[30]" is stuck at GND File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 31
+    Warning (13410): Pin "ext_buffer_write_data[31]" is stuck at GND File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 31
+Info (286030): Timing-Driven Synthesis is running
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Warning (21074): Design contains 208 input pin(s) that do not drive logic
+    Warning (15610): No output dependent on input pin "v0z[0]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 12
+    Warning (15610): No output dependent on input pin "v0z[1]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 12
+    Warning (15610): No output dependent on input pin "v0z[2]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 12
+    Warning (15610): No output dependent on input pin "v0z[3]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 12
+    Warning (15610): No output dependent on input pin "v0z[4]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 12
+    Warning (15610): No output dependent on input pin "v0z[5]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 12
+    Warning (15610): No output dependent on input pin "v0z[6]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 12
+    Warning (15610): No output dependent on input pin "v0z[7]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 12
+    Warning (15610): No output dependent on input pin "v0z[8]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 12
+    Warning (15610): No output dependent on input pin "v0z[9]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 12
+    Warning (15610): No output dependent on input pin "v0z[10]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 12
+    Warning (15610): No output dependent on input pin "v0z[11]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 12
+    Warning (15610): No output dependent on input pin "v0z[12]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 12
+    Warning (15610): No output dependent on input pin "v0z[13]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 12
+    Warning (15610): No output dependent on input pin "v0z[14]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 12
+    Warning (15610): No output dependent on input pin "v0z[15]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 12
+    Warning (15610): No output dependent on input pin "v1z[0]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 13
+    Warning (15610): No output dependent on input pin "v1z[1]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 13
+    Warning (15610): No output dependent on input pin "v1z[2]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 13
+    Warning (15610): No output dependent on input pin "v1z[3]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 13
+    Warning (15610): No output dependent on input pin "v1z[4]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 13
+    Warning (15610): No output dependent on input pin "v1z[5]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 13
+    Warning (15610): No output dependent on input pin "v1z[6]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 13
+    Warning (15610): No output dependent on input pin "v1z[7]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 13
+    Warning (15610): No output dependent on input pin "v1z[8]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 13
+    Warning (15610): No output dependent on input pin "v1z[9]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 13
+    Warning (15610): No output dependent on input pin "v1z[10]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 13
+    Warning (15610): No output dependent on input pin "v1z[11]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 13
+    Warning (15610): No output dependent on input pin "v1z[12]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 13
+    Warning (15610): No output dependent on input pin "v1z[13]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 13
+    Warning (15610): No output dependent on input pin "v1z[14]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 13
+    Warning (15610): No output dependent on input pin "v1z[15]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 13
+    Warning (15610): No output dependent on input pin "v2z[0]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 14
+    Warning (15610): No output dependent on input pin "v2z[1]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 14
+    Warning (15610): No output dependent on input pin "v2z[2]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 14
+    Warning (15610): No output dependent on input pin "v2z[3]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 14
+    Warning (15610): No output dependent on input pin "v2z[4]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 14
+    Warning (15610): No output dependent on input pin "v2z[5]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 14
+    Warning (15610): No output dependent on input pin "v2z[6]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 14
+    Warning (15610): No output dependent on input pin "v2z[7]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 14
+    Warning (15610): No output dependent on input pin "v2z[8]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 14
+    Warning (15610): No output dependent on input pin "v2z[9]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 14
+    Warning (15610): No output dependent on input pin "v2z[10]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 14
+    Warning (15610): No output dependent on input pin "v2z[11]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 14
+    Warning (15610): No output dependent on input pin "v2z[12]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 14
+    Warning (15610): No output dependent on input pin "v2z[13]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 14
+    Warning (15610): No output dependent on input pin "v2z[14]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 14
+    Warning (15610): No output dependent on input pin "v2z[15]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 14
+    Warning (15610): No output dependent on input pin "depth_coef_a[0]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 19
+    Warning (15610): No output dependent on input pin "depth_coef_a[1]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 19
+    Warning (15610): No output dependent on input pin "depth_coef_a[2]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 19
+    Warning (15610): No output dependent on input pin "depth_coef_a[3]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 19
+    Warning (15610): No output dependent on input pin "depth_coef_a[4]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 19
+    Warning (15610): No output dependent on input pin "depth_coef_a[5]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 19
+    Warning (15610): No output dependent on input pin "depth_coef_a[6]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 19
+    Warning (15610): No output dependent on input pin "depth_coef_a[7]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 19
+    Warning (15610): No output dependent on input pin "depth_coef_a[8]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 19
+    Warning (15610): No output dependent on input pin "depth_coef_a[9]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 19
+    Warning (15610): No output dependent on input pin "depth_coef_a[10]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 19
+    Warning (15610): No output dependent on input pin "depth_coef_a[11]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 19
+    Warning (15610): No output dependent on input pin "depth_coef_a[12]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 19
+    Warning (15610): No output dependent on input pin "depth_coef_a[13]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 19
+    Warning (15610): No output dependent on input pin "depth_coef_a[14]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 19
+    Warning (15610): No output dependent on input pin "depth_coef_a[15]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 19
+    Warning (15610): No output dependent on input pin "depth_coef_a[16]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 19
+    Warning (15610): No output dependent on input pin "depth_coef_a[17]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 19
+    Warning (15610): No output dependent on input pin "depth_coef_a[18]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 19
+    Warning (15610): No output dependent on input pin "depth_coef_a[19]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 19
+    Warning (15610): No output dependent on input pin "depth_coef_a[20]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 19
+    Warning (15610): No output dependent on input pin "depth_coef_a[21]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 19
+    Warning (15610): No output dependent on input pin "depth_coef_a[22]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 19
+    Warning (15610): No output dependent on input pin "depth_coef_a[23]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 19
+    Warning (15610): No output dependent on input pin "depth_coef_a[24]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 19
+    Warning (15610): No output dependent on input pin "depth_coef_a[25]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 19
+    Warning (15610): No output dependent on input pin "depth_coef_a[26]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 19
+    Warning (15610): No output dependent on input pin "depth_coef_a[27]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 19
+    Warning (15610): No output dependent on input pin "depth_coef_a[28]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 19
+    Warning (15610): No output dependent on input pin "depth_coef_a[29]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 19
+    Warning (15610): No output dependent on input pin "depth_coef_a[30]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 19
+    Warning (15610): No output dependent on input pin "depth_coef_a[31]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 19
+    Warning (15610): No output dependent on input pin "depth_coef_b[0]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 20
+    Warning (15610): No output dependent on input pin "depth_coef_b[1]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 20
+    Warning (15610): No output dependent on input pin "depth_coef_b[2]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 20
+    Warning (15610): No output dependent on input pin "depth_coef_b[3]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 20
+    Warning (15610): No output dependent on input pin "depth_coef_b[4]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 20
+    Warning (15610): No output dependent on input pin "depth_coef_b[5]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 20
+    Warning (15610): No output dependent on input pin "depth_coef_b[6]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 20
+    Warning (15610): No output dependent on input pin "depth_coef_b[7]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 20
+    Warning (15610): No output dependent on input pin "depth_coef_b[8]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 20
+    Warning (15610): No output dependent on input pin "depth_coef_b[9]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 20
+    Warning (15610): No output dependent on input pin "depth_coef_b[10]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 20
+    Warning (15610): No output dependent on input pin "depth_coef_b[11]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 20
+    Warning (15610): No output dependent on input pin "depth_coef_b[12]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 20
+    Warning (15610): No output dependent on input pin "depth_coef_b[13]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 20
+    Warning (15610): No output dependent on input pin "depth_coef_b[14]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 20
+    Warning (15610): No output dependent on input pin "depth_coef_b[15]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 20
+    Warning (15610): No output dependent on input pin "depth_coef_b[16]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 20
+    Warning (15610): No output dependent on input pin "depth_coef_b[17]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 20
+    Warning (15610): No output dependent on input pin "depth_coef_b[18]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 20
+    Warning (15610): No output dependent on input pin "depth_coef_b[19]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 20
+    Warning (15610): No output dependent on input pin "depth_coef_b[20]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 20
+    Warning (15610): No output dependent on input pin "depth_coef_b[21]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 20
+    Warning (15610): No output dependent on input pin "depth_coef_b[22]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 20
+    Warning (15610): No output dependent on input pin "depth_coef_b[23]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 20
+    Warning (15610): No output dependent on input pin "depth_coef_b[24]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 20
+    Warning (15610): No output dependent on input pin "depth_coef_b[25]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 20
+    Warning (15610): No output dependent on input pin "depth_coef_b[26]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 20
+    Warning (15610): No output dependent on input pin "depth_coef_b[27]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 20
+    Warning (15610): No output dependent on input pin "depth_coef_b[28]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 20
+    Warning (15610): No output dependent on input pin "depth_coef_b[29]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 20
+    Warning (15610): No output dependent on input pin "depth_coef_b[30]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 20
+    Warning (15610): No output dependent on input pin "depth_coef_b[31]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 20
+    Warning (15610): No output dependent on input pin "depth_coef_c[0]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 21
+    Warning (15610): No output dependent on input pin "depth_coef_c[1]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 21
+    Warning (15610): No output dependent on input pin "depth_coef_c[2]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 21
+    Warning (15610): No output dependent on input pin "depth_coef_c[3]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 21
+    Warning (15610): No output dependent on input pin "depth_coef_c[4]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 21
+    Warning (15610): No output dependent on input pin "depth_coef_c[5]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 21
+    Warning (15610): No output dependent on input pin "depth_coef_c[6]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 21
+    Warning (15610): No output dependent on input pin "depth_coef_c[7]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 21
+    Warning (15610): No output dependent on input pin "depth_coef_c[8]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 21
+    Warning (15610): No output dependent on input pin "depth_coef_c[9]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 21
+    Warning (15610): No output dependent on input pin "depth_coef_c[10]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 21
+    Warning (15610): No output dependent on input pin "depth_coef_c[11]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 21
+    Warning (15610): No output dependent on input pin "depth_coef_c[12]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 21
+    Warning (15610): No output dependent on input pin "depth_coef_c[13]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 21
+    Warning (15610): No output dependent on input pin "depth_coef_c[14]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 21
+    Warning (15610): No output dependent on input pin "depth_coef_c[15]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 21
+    Warning (15610): No output dependent on input pin "depth_coef_c[16]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 21
+    Warning (15610): No output dependent on input pin "depth_coef_c[17]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 21
+    Warning (15610): No output dependent on input pin "depth_coef_c[18]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 21
+    Warning (15610): No output dependent on input pin "depth_coef_c[19]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 21
+    Warning (15610): No output dependent on input pin "depth_coef_c[20]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 21
+    Warning (15610): No output dependent on input pin "depth_coef_c[21]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 21
+    Warning (15610): No output dependent on input pin "depth_coef_c[22]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 21
+    Warning (15610): No output dependent on input pin "depth_coef_c[23]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 21
+    Warning (15610): No output dependent on input pin "depth_coef_c[24]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 21
+    Warning (15610): No output dependent on input pin "depth_coef_c[25]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 21
+    Warning (15610): No output dependent on input pin "depth_coef_c[26]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 21
+    Warning (15610): No output dependent on input pin "depth_coef_c[27]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 21
+    Warning (15610): No output dependent on input pin "depth_coef_c[28]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 21
+    Warning (15610): No output dependent on input pin "depth_coef_c[29]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 21
+    Warning (15610): No output dependent on input pin "depth_coef_c[30]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 21
+    Warning (15610): No output dependent on input pin "depth_coef_c[31]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 21
+    Warning (15610): No output dependent on input pin "quad_buffer_addr[0]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 22
+    Warning (15610): No output dependent on input pin "quad_buffer_addr[1]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 22
+    Warning (15610): No output dependent on input pin "quad_buffer_addr[2]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 22
+    Warning (15610): No output dependent on input pin "quad_buffer_addr[3]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 22
+    Warning (15610): No output dependent on input pin "quad_buffer_addr[4]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 22
+    Warning (15610): No output dependent on input pin "quad_buffer_addr[5]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 22
+    Warning (15610): No output dependent on input pin "quad_buffer_addr[6]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 22
+    Warning (15610): No output dependent on input pin "quad_buffer_addr[7]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 22
+    Warning (15610): No output dependent on input pin "quad_buffer_addr[8]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 22
+    Warning (15610): No output dependent on input pin "quad_buffer_addr[9]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 22
+    Warning (15610): No output dependent on input pin "quad_buffer_addr[10]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 22
+    Warning (15610): No output dependent on input pin "quad_buffer_addr[11]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 22
+    Warning (15610): No output dependent on input pin "quad_buffer_addr[12]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 22
+    Warning (15610): No output dependent on input pin "quad_buffer_addr[13]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 22
+    Warning (15610): No output dependent on input pin "quad_buffer_addr[14]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 22
+    Warning (15610): No output dependent on input pin "quad_buffer_addr[15]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 22
+    Warning (15610): No output dependent on input pin "quad_buffer_addr[16]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 22
+    Warning (15610): No output dependent on input pin "quad_buffer_addr[17]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 22
+    Warning (15610): No output dependent on input pin "quad_buffer_addr[18]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 22
+    Warning (15610): No output dependent on input pin "quad_buffer_addr[19]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 22
+    Warning (15610): No output dependent on input pin "quad_buffer_addr[20]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 22
+    Warning (15610): No output dependent on input pin "quad_buffer_addr[21]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 22
+    Warning (15610): No output dependent on input pin "quad_buffer_addr[22]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 22
+    Warning (15610): No output dependent on input pin "quad_buffer_addr[23]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 22
+    Warning (15610): No output dependent on input pin "quad_buffer_addr[24]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 22
+    Warning (15610): No output dependent on input pin "quad_buffer_addr[25]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 22
+    Warning (15610): No output dependent on input pin "quad_buffer_addr[26]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 22
+    Warning (15610): No output dependent on input pin "quad_buffer_addr[27]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 22
+    Warning (15610): No output dependent on input pin "quad_buffer_addr[28]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 22
+    Warning (15610): No output dependent on input pin "quad_buffer_addr[29]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 22
+    Warning (15610): No output dependent on input pin "quad_buffer_addr[30]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 22
+    Warning (15610): No output dependent on input pin "quad_buffer_addr[31]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 22
+    Warning (15610): No output dependent on input pin "quad_buffer_addr[32]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 22
+    Warning (15610): No output dependent on input pin "quad_buffer_addr[33]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 22
+    Warning (15610): No output dependent on input pin "quad_buffer_addr[34]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 22
+    Warning (15610): No output dependent on input pin "quad_buffer_addr[35]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 22
+    Warning (15610): No output dependent on input pin "quad_buffer_addr[36]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 22
+    Warning (15610): No output dependent on input pin "quad_buffer_addr[37]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 22
+    Warning (15610): No output dependent on input pin "quad_buffer_addr[38]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 22
+    Warning (15610): No output dependent on input pin "quad_buffer_addr[39]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 22
+    Warning (15610): No output dependent on input pin "quad_buffer_addr[40]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 22
+    Warning (15610): No output dependent on input pin "quad_buffer_addr[41]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 22
+    Warning (15610): No output dependent on input pin "quad_buffer_addr[42]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 22
+    Warning (15610): No output dependent on input pin "quad_buffer_addr[43]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 22
+    Warning (15610): No output dependent on input pin "quad_buffer_addr[44]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 22
+    Warning (15610): No output dependent on input pin "quad_buffer_addr[45]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 22
+    Warning (15610): No output dependent on input pin "quad_buffer_addr[46]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 22
+    Warning (15610): No output dependent on input pin "quad_buffer_addr[47]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 22
+    Warning (15610): No output dependent on input pin "quad_buffer_addr[48]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 22
+    Warning (15610): No output dependent on input pin "quad_buffer_addr[49]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 22
+    Warning (15610): No output dependent on input pin "quad_buffer_addr[50]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 22
+    Warning (15610): No output dependent on input pin "quad_buffer_addr[51]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 22
+    Warning (15610): No output dependent on input pin "quad_buffer_addr[52]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 22
+    Warning (15610): No output dependent on input pin "quad_buffer_addr[53]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 22
+    Warning (15610): No output dependent on input pin "quad_buffer_addr[54]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 22
+    Warning (15610): No output dependent on input pin "quad_buffer_addr[55]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 22
+    Warning (15610): No output dependent on input pin "quad_buffer_addr[56]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 22
+    Warning (15610): No output dependent on input pin "quad_buffer_addr[57]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 22
+    Warning (15610): No output dependent on input pin "quad_buffer_addr[58]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 22
+    Warning (15610): No output dependent on input pin "quad_buffer_addr[59]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 22
+    Warning (15610): No output dependent on input pin "quad_buffer_addr[60]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 22
+    Warning (15610): No output dependent on input pin "quad_buffer_addr[61]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 22
+    Warning (15610): No output dependent on input pin "quad_buffer_addr[62]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 22
+    Warning (15610): No output dependent on input pin "quad_buffer_addr[63]" File: /home/fabricio/OpenGPU/hardware/ogpu_rasterizer/ogpu_raster_unit.vhd Line: 22
+Info (21057): Implemented 1649 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 443 input pins
+    Info (21059): Implemented 127 output pins
+    Info (21061): Implemented 1067 logic cells
+    Info (21062): Implemented 12 DSP elements
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 242 warnings
+    Info: Peak virtual memory: 1319 megabytes
+    Info: Processing ended: Sat Jan  7 19:12:46 2017
+    Info: Elapsed time: 00:00:15
+    Info: Total CPU time (on all processors): 00:00:27
+
+
