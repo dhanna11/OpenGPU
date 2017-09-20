@@ -42,11 +42,12 @@ module soc_system_led_pio (
   input            write_n;
   input   [ 31: 0] writedata;
 
-  wire             clk_en;
-  reg     [  9: 0] data_out;
-  wire    [  9: 0] out_port;
-  wire    [  9: 0] read_mux_out;
-  wire    [ 31: 0] readdata;
+
+wire             clk_en;
+reg     [  9: 0] data_out;
+wire    [  9: 0] out_port;
+wire    [  9: 0] read_mux_out;
+wire    [ 31: 0] readdata;
   assign clk_en = 1;
   //s1, which is an e_avalon_slave
   assign read_mux_out = {10 {(address == 0)}} & data_out;

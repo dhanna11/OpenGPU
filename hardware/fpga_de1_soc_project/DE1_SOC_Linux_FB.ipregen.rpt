@@ -1,6 +1,6 @@
 IP Upgrade report for DE1_SOC_Linux_FB
-Fri Dec  2 20:50:47 2016
-Quartus Prime Version 16.0.2 Build 222 07/20/2016 SJ Lite Edition
+Wed Sep 20 18:44:51 2017
+Quartus Prime Version 17.0.2 Build 602 07/19/2017 SJ Lite Edition
 
 
 ---------------------
@@ -16,18 +16,18 @@ Quartus Prime Version 16.0.2 Build 222 07/20/2016 SJ Lite Edition
 ----------------
 ; Legal Notice ;
 ----------------
-Copyright (C) 1991-2016 Altera Corporation. All rights reserved.
-Your use of Altera Corporation's design tools, logic functions 
+Copyright (C) 2017  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
 and other software and tools, and its AMPP partner logic 
 functions, and any output files from any of the foregoing 
 (including device programming or simulation files), and any 
 associated documentation or information are expressly subject 
-to the terms and conditions of the Altera Program License 
-Subscription Agreement, the Altera Quartus Prime License Agreement,
-the Altera MegaCore Function License Agreement, or other 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel MegaCore Function License Agreement, or other 
 applicable license agreement, including, without limitation, 
 that your use is for the sole purpose of programming logic 
-devices manufactured by Altera and sold by Altera or its 
+devices manufactured by Intel and sold by Intel or its 
 authorized distributors.  Please refer to the applicable 
 agreement for further details.
 
@@ -36,8 +36,8 @@ agreement for further details.
 +----------------------------------------------------------------------------+
 ; IP Upgrade Summary                                                         ;
 +------------------------------+---------------------------------------------+
-; IP Components Upgrade Status ; Passed - Fri Dec  2 20:50:47 2016           ;
-; Quartus Prime Version        ; 16.0.2 Build 222 07/20/2016 SJ Lite Edition ;
+; IP Components Upgrade Status ; Passed - Wed Sep 20 18:44:51 2017           ;
+; Quartus Prime Version        ; 17.0.2 Build 602 07/19/2017 SJ Lite Edition ;
 ; Revision Name                ; DE1_SOC_Linux_FB                            ;
 ; Top-level Entity Name        ; DE1_SOC_Linux_FB                            ;
 ; Family                       ; Cyclone V                                   ;
@@ -49,21 +49,23 @@ agreement for further details.
 +-------------+----------------+---------+----------------------+----------------------+-----------------+---------+
 ; Entity Name ; Component Name ; Version ; Original Source File ; Generation File Path ; New Source File ; Message ;
 +-------------+----------------+---------+----------------------+----------------------+-----------------+---------+
-; vga_pll     ; altera_pll     ; 13.1    ; vga_pll.qip          ; vga_pll.v            ; vga_pll.qip     ;         ;
+; soc_system  ; Qsys           ; N/A     ; soc_system.qsys      ; soc_system.qsys      ;                 ;         ;
 +-------------+----------------+---------+----------------------+----------------------+-----------------+---------+
 
 
 +---------------------+
 ; IP Upgrade Messages ;
 +---------------------+
-Info (11902): Backing up file "vga_pll.v" to "vga_pll.BAK.v"
-Info (11837): Started upgrading IP component altera_pll with file "vga_pll.v"
-Info (11131): Completed upgrading IP component altera_pll with file "vga_pll.v"
-Info (23030): Evaluation of Tcl script /opt/altera/16.0/quartus/common/tcl/internal/ip_regen/ip_regen.tcl was successful
+Info (11902): Backing up file "soc_system.qsys" to "soc_system.BAK.qsys"
+Info (11837): Started upgrading IP component Qsys with file "soc_system.qsys"
+Info: 2017.09.20.18:44:50 Info: Starting to upgrade the IP cores in the Qsys system
+Info: 2017.09.20.18:44:50 Info: Finished upgrading the ip cores
+Info (11131): Completed upgrading IP component Qsys with file "soc_system.qsys"
+Info (23030): Evaluation of Tcl script /opt/intelFPGA_lite/17.0/quartus/common/tcl/internal/ip_regen/ip_regen.tcl was successful
 Info: Quartus Prime Shell was successful. 0 errors, 0 warnings
-    Info: Peak virtual memory: 1400 megabytes
-    Info: Processing ended: Fri Dec  2 20:50:56 2016
-    Info: Elapsed time: 00:00:55
-    Info: Total CPU time (on all processors): 00:01:32
+    Info: Peak virtual memory: 1063 megabytes
+    Info: Processing ended: Wed Sep 20 18:44:51 2017
+    Info: Elapsed time: 00:00:39
+    Info: Total CPU time (on all processors): 00:01:23
 
 

@@ -2596,6 +2596,8 @@ ogpu_raster_tri(struct setup_context *setup,
 		tile1=(tile.x1<<16)|(tile.y1&0xFFFF);//x1|y1
 		//printf("tile: p0(%x) p1(%x)\n",tile0,tile1);
 
+		alt_write_word(r1_reset,0); // reset gpu(active low)
+		alt_write_word(r1_reset,1); // active gpu
 		//printf("status: %x\n",alt_read_word(r1_status));
 		alt_write_word(r1_v0x,v0x); alt_write_word(r1_v0y,v0y); alt_write_word(r1_v0z,v0z);
 		alt_write_word(r1_v1x,v1x); alt_write_word(r1_v1y,v1y); alt_write_word(r1_v1z,v1z);
@@ -2608,9 +2610,6 @@ ogpu_raster_tri(struct setup_context *setup,
 		alt_write_word(r1_depth_coef_c,0);
 		alt_write_word(r1_quad_buffer_addr_high,0); alt_write_word(r1_quad_buffer_addr_low,0);
 
-		alt_write_word(r1_reset,0); // reset gpu(active low)
-		alt_write_word(r1_reset,1); // active gpu
-
 		static struct ogpu_quad_buffer quad_buffer;
 	#define OGPU_HW_TILE_SIZE 64 //by now, it's limited to TILE_SIZE in sp_tile_cache.h
 		struct ogpu_quad_buffer_cell __qb[OGPU_HW_TILE_SIZE/2*OGPU_HW_TILE_SIZE/2];
@@ -2620,6 +2619,8 @@ ogpu_raster_tri(struct setup_context *setup,
 
 		do//TILE LOOP
 		{
+			//alt_write_word(r1_reset,0); // reset gpu(active low)
+			//alt_write_word(r1_reset,1); // active gpu
 			quad_buffer.n=0;
 			quad_buffer.tile=tile;
 
@@ -2647,7 +2648,11 @@ ogpu_raster_tri(struct setup_context *setup,
 					quad_buffer.b[ibuf].y=(uint16_t)(dataH&0xFFFF);
 					quad_buffer.b[ibuf].mask=(uint8_t)(dataL&0x0F);
 					ibuf++;
-					if(ibuf>(OGPU_HW_TILE_SIZE/2*OGPU_HW_TILE_SIZE/2)) break;
+					if(ibuf>(OGPU_HW_TILE_SIZE/2*OGPU_HW_TILE_SIZE/2))
+					{
+						ibuf=0;
+						printf("OPENGPU: SETUP.C: hardware approach: '__qb': BUFFER OVERFLOW");
+					}
 				}
 			}
 			st=alt_read_word(r1_status);
@@ -2717,14 +2722,18 @@ ogpu_raster_tri(struct setup_context *setup,
 			}while(m);
 		tile.x0+=64;
 		tile.x1=tile.x0+62;
-		if(tile.x0>=setup->softpipe->cliprect[viewport_index].maxx)
+		if(tile.x0>setup->softpipe->cliprect[viewport_index].maxx)
 		{
-			tile.x0=0;
+			tile.x0=setup->softpipe->cliprect[viewport_index].minx;
 			tile.x1=tile.x0+62;
 			tile.y0+=64;
 			tile.y1=tile.y0+62;
 		}
-		}while(tile.y0<setup->softpipe->cliprect[viewport_index].maxy);
+		tile0=(tile.x0<<16)|(tile.y0&0xFFFF);//x0|y0 tile of 64x64 pixels
+		tile1=(tile.x1<<16)|(tile.y1&0xFFFF);//x1|y1
+		alt_write_word(r1_tile0,tile0); alt_write_word(r1_tile1,tile1);
+
+		}while(tile.y0<=setup->softpipe->cliprect[viewport_index].maxy);
 	}
 	else // if sw0 is zero, do software approach
 	{

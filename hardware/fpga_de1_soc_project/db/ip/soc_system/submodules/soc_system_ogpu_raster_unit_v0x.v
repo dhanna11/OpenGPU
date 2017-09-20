@@ -42,11 +42,12 @@ module soc_system_ogpu_raster_unit_v0x (
   input            write_n;
   input   [ 31: 0] writedata;
 
-  wire             clk_en;
-  reg     [ 15: 0] data_out;
-  wire    [ 15: 0] out_port;
-  wire    [ 15: 0] read_mux_out;
-  wire    [ 31: 0] readdata;
+
+wire             clk_en;
+reg     [ 15: 0] data_out;
+wire    [ 15: 0] out_port;
+wire    [ 15: 0] read_mux_out;
+wire    [ 31: 0] readdata;
   assign clk_en = 1;
   //s1, which is an e_avalon_slave
   assign read_mux_out = {16 {(address == 0)}} & data_out;

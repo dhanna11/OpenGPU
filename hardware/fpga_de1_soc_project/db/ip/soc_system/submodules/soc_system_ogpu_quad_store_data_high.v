@@ -36,10 +36,11 @@ module soc_system_ogpu_quad_store_data_high (
   input   [ 31: 0] in_port;
   input            reset_n;
 
-  wire             clk_en;
-  wire    [ 31: 0] data_in;
-  wire    [ 31: 0] read_mux_out;
-  reg     [ 31: 0] readdata;
+
+wire             clk_en;
+wire    [ 31: 0] data_in;
+wire    [ 31: 0] read_mux_out;
+reg     [ 31: 0] readdata;
   assign clk_en = 1;
   //s1, which is an e_avalon_slave
   assign read_mux_out = {32 {(address == 0)}} & data_in;
